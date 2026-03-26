@@ -34,70 +34,70 @@ export type SocialLink = {
 export const profile = {
   name: 'Chitresh Yadav',
   handle: '~csy',
-  role: 'Flutter developer crafting polished mobile products',
-  strapline: 'Flutter • Dart • Firebase',
+  role: 'MERN + Flutter developer shipping scalable products',
+  strapline: 'MERN • Flutter • FastAPI • Firebase',
   heroTitle: 'Building mobile products that feel calm, fast, and finished.',
   heroSummary:
-    'I build production-ready Flutter apps with a strong bias for UX polish, performance, and maintainable delivery.',
+    'I build production-ready apps across web and mobile: MERN-grade backend work with FastAPI, and Flutter experiences with real UX polish.',
   heroDescription:
-    'This new csy20.works keeps the story from the older portfolio, but rebuilds it as a lean static front-end with a clearer visual voice and sharper project presentation.',
+    'This new csy20.works keeps the story, but reframes it as full-stack delivery: clean APIs, Flutter-grade UI feel, and ML-ready workflows.',
   aboutPrimary:
-    'I am a Flutter developer who obsesses over smooth animations, maintainable state management, and interfaces that feel native on every device.',
+    'I’m a MERN + Flutter developer who obsesses over smooth animations, maintainable data flows, and interfaces that feel native on every device.',
   aboutSecondary:
-    'My sweet spot is taking rough product ideas, shaping them into coherent UI systems, and shipping experiences that feel reliable under real usage rather than only inside demos.',
+    'My sweet spot is turning rough ideas into scalable systems: REST APIs, MongoDB-backed data models, and AI features built for real usage—not just demo moments.',
 }
 
 export const heroHighlights = [
   {
     label: 'Primary stack',
-    value: 'Flutter + Dart',
+    value: 'MERN + Flutter',
   },
   {
     label: 'Shipping focus',
-    value: 'Play Store-ready apps',
+    value: 'Production web + mobile',
   },
   {
     label: 'Current edge',
-    value: 'PWA + AI-assisted workflows',
+    value: 'FastAPI + ML pipelines',
   },
 ] as const
 
 export const workflow = [
   'Design-system driven UI with a sharp eye for spacing, hierarchy, and motion.',
-  'State management experience across Riverpod, Provider, and BLoC.',
-  'A build process that values strong typing, automation, and stable delivery.',
+  'Backend discipline with FastAPI, MongoDB, and API ergonomics that stay maintainable.',
+  'ML delivery that turns PyTorch/scikit-learn pipelines into reliable, performance-aware features.',
 ]
 
 export const currentInterests = [
-  'Background isolates and Flutter performance tuning.',
-  'Reusable clean architecture for faster feature delivery.',
-  'Web and PWA experiences that complement native mobile builds.',
+  'PyTorch performance tuning and efficient model inference.',
+  'Reusable architecture that scales features across web + mobile.',
+  'MERN backends and PWA surfaces that complement native builds.',
 ]
 
 export const techStack: StackItem[] = [
   {
     name: 'Flutter',
-    detail: 'Cross-platform product delivery with polished interaction work.',
+    detail: 'Mobile UX delivery with smooth interactions and production-grade Flutter architecture.',
   },
   {
     name: 'Dart',
-    detail: 'Typed app architecture, async-heavy flows, and maintainable features.',
+    detail: 'Typed app logic with async-heavy flows, clean state, and scalable features.',
   },
   {
     name: 'Firebase',
-    detail: 'Auth, storage, analytics, and fast product iteration loops.',
+    detail: 'Auth/storage/analytics that keep delivery fast, stable, and measurable.',
   },
   {
     name: 'MongoDB',
-    detail: 'Flexible data modelling for practical backend integrations.',
+    detail: 'MERN data modeling with flexible schemas and performance-focused querying.',
   },
   {
     name: 'GitHub',
-    detail: 'Versioned workflows, learning repos, and clean iteration history.',
+    detail: 'Versioned delivery with clean PRs, learning iterations, and reproducible work.',
   },
   {
     name: 'Ubuntu',
-    detail: 'My day-to-day build environment for coding, tooling, and deployment.',
+    detail: 'Daily build environment for Dockerized dev, tooling, and deployments.',
   },
 ]
 
@@ -206,4 +206,4 @@ export const socialLinks: SocialLink[] = [
 ]
 
 export const resumeUrl =
-  'https://drive.google.com/file/d/1PK4MIdvpAt95H9aLlDd684GszWYS0i1l/view?usp=sharing'
+  'https://drive.google.com/uc?export=download&id=1vApe158f-0X5fXjQX5DuUNLJzdGFIiCK'

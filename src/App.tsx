@@ -163,7 +163,7 @@ function App() {
                   rel="noreferrer"
                   className={`${ctaButtonClasses} button-secondary`}
                 >
-                  Open resume
+                  Get resume
                   <span className="button-icon">
                     <DownloadIcon />
                   </span>
@@ -507,7 +507,7 @@ function App() {
                   rel="noreferrer"
                   className={`${ctaButtonClasses} button-panel`}
                 >
-                  Open resume
+                  Get resume
                   <span className="button-icon">
                     <DownloadIcon />
                   </span>
