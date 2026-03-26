@@ -1,24 +1,8 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 
-export type Theme = 'light' | 'dark'
-
-type ThemeContextValue = {
-  theme: Theme
-  setTheme: (theme: Theme) => void
-  toggleTheme: () => void
-}
+import { ThemeContext, type Theme } from './useTheme'
 
 const STORAGE_KEY = 'csy20-theme'
-
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined)
-
-function resolveInitialTheme(): Theme {
-  if (typeof document !== 'undefined') {
-    return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-  }
-
-  return 'light'
-}
 
 function readPreferredTheme(): Theme {
   if (typeof window === 'undefined') {
@@ -34,11 +18,7 @@ function readPreferredTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(resolveInitialTheme)
-
-  useEffect(() => {
-    setThemeState(readPreferredTheme())
-  }, [])
+  const [theme, setThemeState] = useState<Theme>(readPreferredTheme)
 
   useEffect(() => {
     const root = window.document.documentElement
@@ -60,14 +40,4 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       {children}
     </ThemeContext.Provider>
   )
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext)
-
-  if (!context) {
-    throw new Error('useTheme must be used within ThemeProvider')
-  }
-
-  return context
 }

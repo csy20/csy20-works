@@ -23,8 +23,10 @@
   --text-subtle: #8b7768;
   --text-on-dark: #fbf4ec;
   --text-on-dark-soft: #ece0d3;
-  --accent: #b06a46;
-  --accent-strong: #c97a53;
+  --accent: #ba6a43;
+  --accent-strong: #d8885c;
+  --accent-soft: #efd3bf;
+  --accent-glow: rgba(216, 136, 92, 0.24);
   --surface: rgba(255, 251, 245, 0.88);
   --surface-raised: #fffaf4;
   --surface-soft: #f7f0e7;
@@ -53,6 +55,36 @@
   --dock-bg: rgba(255, 251, 245, 0.82);
   --dock-border: rgba(42, 33, 28, 0.1);
   --dock-button-hover: #f4ece2;
+  --dock-button-bg: rgba(255, 250, 244, 0.68);
+  --focus-ring: rgba(216, 136, 92, 0.24);
+  --button-ink-bg: linear-gradient(135deg, #241b18 0%, #3a2b26 100%);
+  --button-ink-bg-hover: linear-gradient(135deg, #2d211d 0%, #43312c 100%);
+  --button-ink-border: rgba(78, 53, 42, 0.34);
+  --button-ink-text: #fff8f1;
+  --button-clay-bg: linear-gradient(135deg, #de9266 0%, #bb6b45 100%);
+  --button-clay-bg-hover: linear-gradient(135deg, #e79f75 0%, #c67650 100%);
+  --button-clay-border: rgba(186, 106, 67, 0.34);
+  --button-clay-text: #fffaf4;
+  --button-mint-bg: linear-gradient(135deg, #3b635d 0%, #2a4843 100%);
+  --button-mint-bg-hover: linear-gradient(135deg, #456e67 0%, #31524c 100%);
+  --button-mint-border: rgba(59, 99, 93, 0.34);
+  --button-mint-text: #f8f4ee;
+  --button-secondary-bg: rgba(255, 250, 244, 0.96);
+  --button-secondary-bg-hover: #fff4e8;
+  --button-secondary-border: rgba(42, 33, 28, 0.12);
+  --button-secondary-text: #1e1815;
+  --button-panel-bg: rgba(255, 251, 245, 0.12);
+  --button-panel-bg-hover: rgba(255, 251, 245, 0.18);
+  --button-panel-border: rgba(255, 255, 255, 0.12);
+  --button-panel-text: #fbf4ec;
+  --button-shadow-soft: 0 18px 32px -24px rgba(42, 29, 23, 0.24);
+  --button-shadow-strong: 0 24px 42px -22px rgba(42, 29, 23, 0.32);
+  --card-shadow: 0 18px 38px -30px rgba(42, 29, 23, 0.22);
+  --card-shadow-hover: 0 28px 52px -30px rgba(42, 29, 23, 0.28);
+  --card-border-hover: rgba(186, 106, 67, 0.26);
+  --card-spotlight:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.44), transparent 54%),
+    linear-gradient(140deg, rgba(216, 136, 92, 0.18), transparent 62%);
 }
 
 :root.dark {
@@ -71,8 +103,10 @@
   --text-subtle: #9a8d82;
   --text-on-dark: #fbf4ec;
   --text-on-dark-soft: #e3d7ca;
-  --accent: #d79b72;
-  --accent-strong: #c87955;
+  --accent: #dfa17a;
+  --accent-strong: #e7b189;
+  --accent-soft: rgba(223, 161, 122, 0.18);
+  --accent-glow: rgba(223, 161, 122, 0.28);
   --surface: rgba(24, 27, 30, 0.84);
   --surface-raised: #181b1f;
   --surface-soft: #1d2125;
@@ -101,6 +135,36 @@
   --dock-bg: rgba(19, 22, 25, 0.84);
   --dock-border: rgba(244, 235, 223, 0.1);
   --dock-button-hover: rgba(255, 255, 255, 0.045);
+  --dock-button-bg: rgba(255, 255, 255, 0.06);
+  --focus-ring: rgba(223, 161, 122, 0.24);
+  --button-ink-bg: linear-gradient(135deg, #f1e4d7 0%, #dbc6b3 100%);
+  --button-ink-bg-hover: linear-gradient(135deg, #f7ebdf 0%, #e5d0bc 100%);
+  --button-ink-border: rgba(244, 235, 223, 0.14);
+  --button-ink-text: #1b1412;
+  --button-clay-bg: linear-gradient(135deg, #e2a67e 0%, #c87a54 100%);
+  --button-clay-bg-hover: linear-gradient(135deg, #ebb18a 0%, #d48761 100%);
+  --button-clay-border: rgba(223, 161, 122, 0.34);
+  --button-clay-text: #fffaf4;
+  --button-mint-bg: linear-gradient(135deg, #568278 0%, #3d665f 100%);
+  --button-mint-bg-hover: linear-gradient(135deg, #628e84 0%, #46716a 100%);
+  --button-mint-border: rgba(110, 150, 141, 0.24);
+  --button-mint-text: #f7efe6;
+  --button-secondary-bg: rgba(255, 255, 255, 0.06);
+  --button-secondary-bg-hover: rgba(255, 255, 255, 0.1);
+  --button-secondary-border: rgba(244, 235, 223, 0.1);
+  --button-secondary-text: #f2e8dc;
+  --button-panel-bg: rgba(255, 255, 255, 0.08);
+  --button-panel-bg-hover: rgba(255, 255, 255, 0.12);
+  --button-panel-border: rgba(244, 235, 223, 0.1);
+  --button-panel-text: #fbf4ec;
+  --button-shadow-soft: 0 16px 34px -24px rgba(0, 0, 0, 0.42);
+  --button-shadow-strong: 0 24px 48px -24px rgba(0, 0, 0, 0.52);
+  --card-shadow: 0 18px 40px -32px rgba(0, 0, 0, 0.44);
+  --card-shadow-hover: 0 30px 56px -28px rgba(0, 0, 0, 0.56);
+  --card-border-hover: rgba(223, 161, 122, 0.24);
+  --card-spotlight:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.14), transparent 54%),
+    linear-gradient(140deg, rgba(223, 161, 122, 0.18), transparent 62%);
 }
 
 html {
@@ -128,6 +192,20 @@ body::before {
   background-size: 24px 24px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 92%);
   opacity: 0.11;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  right: -10%;
+  bottom: -14%;
+  height: 28rem;
+  width: 28rem;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 68%);
+  filter: blur(18px);
+  opacity: 0.88;
+  animation: glowPulse 16s ease-in-out infinite;
 }
 
 a {
@@ -158,6 +236,12 @@ section {
   body::before {
     background-size: 28px 28px;
     opacity: 0.08;
+  }
+
+  body::after {
+    height: 22rem;
+    width: 22rem;
+    opacity: 0.72;
   }
 }
 
@@ -211,6 +295,250 @@ section {
 
   50% {
     transform: translate3d(8px, -6px, 0);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.96;
+    transform: scale(1.08);
+  }
+}
+
+@layer components {
+  .button-shell {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid transparent;
+    box-shadow: var(--button-shadow-soft);
+    color: inherit;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    transition:
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 260ms ease,
+      color 260ms ease,
+      background 260ms ease,
+      opacity 260ms ease;
+  }
+
+  .button-shell::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, transparent 12%, rgba(255, 255, 255, 0.22) 42%, transparent 70%);
+    opacity: 0;
+    transform: translate3d(-24%, 18%, 0);
+    transition:
+      opacity 320ms ease,
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .button-shell > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .button-shell:hover,
+  .button-shell:focus-visible {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: var(--button-shadow-strong);
+  }
+
+  .button-shell:hover::before,
+  .button-shell:focus-visible::before {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .button-shell:active {
+    transform: translateY(-1px) scale(0.99);
+  }
+
+  .button-shell:focus-visible,
+  .dock-icon-button:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px var(--focus-ring),
+      var(--button-shadow-strong);
+  }
+
+  .button-icon {
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .button-shell:hover .button-icon,
+  .button-shell:focus-visible .button-icon,
+  .dock-icon-button:hover .button-icon,
+  .dock-icon-button:focus-visible .button-icon,
+  .interactive-card:hover .button-icon,
+  .interactive-card:focus-within .button-icon {
+    transform: translate3d(3px, -1px, 0);
+  }
+
+  .button-ink {
+    background: var(--button-ink-bg);
+    border-color: var(--button-ink-border);
+    color: var(--button-ink-text);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+  }
+
+  .button-ink:hover,
+  .button-ink:focus-visible {
+    background: var(--button-ink-bg-hover);
+  }
+
+  .button-clay {
+    background: var(--button-clay-bg);
+    border-color: var(--button-clay-border);
+    color: var(--button-clay-text);
+  }
+
+  .button-clay:hover,
+  .button-clay:focus-visible {
+    background: var(--button-clay-bg-hover);
+  }
+
+  .button-mint {
+    background: var(--button-mint-bg);
+    border-color: var(--button-mint-border);
+    color: var(--button-mint-text);
+  }
+
+  .button-mint:hover,
+  .button-mint:focus-visible {
+    background: var(--button-mint-bg-hover);
+  }
+
+  .button-secondary {
+    background: var(--button-secondary-bg);
+    border-color: var(--button-secondary-border);
+    color: var(--button-secondary-text);
+  }
+
+  .button-secondary:hover,
+  .button-secondary:focus-visible {
+    background: var(--button-secondary-bg-hover);
+  }
+
+  .button-panel {
+    background: var(--button-panel-bg);
+    border-color: var(--button-panel-border);
+    color: var(--button-panel-text);
+  }
+
+  .button-panel:hover,
+  .button-panel:focus-visible {
+    background: var(--button-panel-bg-hover);
+  }
+
+  .dock-icon-button {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-secondary);
+    transition:
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 240ms ease,
+      color 240ms ease,
+      background-color 240ms ease;
+  }
+
+  .dock-icon-button:hover,
+  .dock-icon-button:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--dock-border);
+    background: var(--dock-button-bg);
+    color: var(--text-primary);
+    box-shadow: var(--button-shadow-soft);
+  }
+
+  .interactive-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition:
+      transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 320ms ease,
+      background-color 320ms ease;
+  }
+
+  .interactive-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: var(--card-spotlight);
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.98);
+    transform-origin: top left;
+    transition:
+      opacity 320ms ease,
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .interactive-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .interactive-card:hover,
+  .interactive-card:focus-within {
+    transform: translateY(-6px);
+    border-color: var(--card-border-hover);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  .interactive-card:hover::before,
+  .interactive-card:focus-within::before {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translate3d(0, 22px, 0) scale(0.985);
+    transition:
+      opacity 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      filter 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      transform 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+    will-change: opacity, filter, transform;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .reveal-delay-1 {
+    --reveal-delay: 90ms;
+  }
+
+  .reveal-delay-2 {
+    --reveal-delay: 160ms;
+  }
+
+  .reveal-delay-3 {
+    --reveal-delay: 230ms;
+  }
+
+  .reveal-delay-4 {
+    --reveal-delay: 300ms;
   }
 }
 

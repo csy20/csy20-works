@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 
 import { ThemeToggle } from './components/ThemeToggle'
 import {
@@ -21,22 +21,61 @@ const navigation = [
   { label: 'Contact', href: '#contact' },
 ]
 
+const revealDelayClasses = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3', 'reveal-delay-4'] as const
+const ctaButtonClasses =
+  'button-shell inline-flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold sm:w-auto'
+const projectButtonClasses =
+  'button-shell inline-flex min-h-[3.15rem] w-full items-center justify-between gap-2 rounded-[1.05rem] px-5 py-3 text-sm font-semibold sm:min-h-0 sm:w-auto sm:justify-center sm:rounded-full'
+const dockButtonClasses =
+  'dock-icon-button flex h-10 w-10 flex-none items-center justify-center rounded-full'
+
 const linkToneClasses: Record<ProjectLinkTone, string> = {
-  ink: 'bg-[var(--surface-dark)] text-[var(--text-on-dark)] hover:opacity-90',
-  clay: 'bg-[var(--accent-strong)] text-white hover:brightness-95',
-  mint: 'bg-[#345c56] text-[#f8f2eb] hover:bg-[#2a4b46]',
+  ink: 'button-ink',
+  clay: 'button-clay',
+  mint: 'button-mint',
 }
 
 const featuredProject = projects.find((project) => project.featured)
 const standardProjects = projects.filter((project) => !project.featured)
 
+function getRevealDelayClass(index: number) {
+  return revealDelayClasses[Math.min(index, revealDelayClasses.length - 1)] ?? 'reveal-delay-4'
+}
+
 function App() {
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'))
+
+    if (!elements.length) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      {
+        threshold: 0.16,
+        rootMargin: '0px 0px -8% 0px',
+      },
+    )
+
+    elements.forEach((element) => observer.observe(element))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="relative isolate overflow-hidden text-[var(--text-primary)]">
       <BackgroundOrbs />
 
       <header className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[var(--header-bg)] backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:gap-6 sm:px-6 sm:py-4 lg:px-8">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-6 sm:py-4 lg:px-8">
           <a href="#top" className="flex min-w-0 items-center gap-3 text-[var(--text-primary)]">
             <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-raised)] text-sm font-bold shadow-[0_12px_24px_-22px_rgba(20,15,11,0.28)]">
               c.
@@ -70,10 +109,10 @@ function App() {
 
       <main
         id="top"
-        className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-32 pt-6 sm:px-6 lg:px-8"
+        className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-32 pt-4 sm:gap-10 sm:px-6 sm:pt-6 lg:px-8"
         style={{ paddingBottom: 'calc(8rem + env(safe-area-inset-bottom))' }}
       >
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-2.5 md:hidden">
           <nav className="hide-scrollbar flex flex-1 gap-2 overflow-x-auto pb-2 text-sm">
             {navigation.map((item) => (
               <a
@@ -88,9 +127,9 @@ function App() {
           <ThemeToggle compact />
         </div>
 
-        <section className="space-y-5 pb-2 pt-2 sm:pt-4 lg:space-y-8 lg:pb-6 lg:pt-8">
-          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:gap-12">
-            <div className="space-y-8 animate-rise">
+        <section className="space-y-4 pb-1 pt-1 sm:space-y-5 sm:pb-2 sm:pt-4 lg:space-y-8 lg:pb-6 lg:pt-8">
+          <div className="grid gap-7 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:gap-12">
+            <div className="space-y-6 reveal-on-scroll sm:space-y-8" data-reveal>
               <div className="space-y-4">
                 <p className="text-[11px] uppercase tracking-[0.34em] text-[var(--accent)] sm:text-sm sm:tracking-[0.4em]">
                   {profile.strapline}
@@ -99,7 +138,7 @@ function App() {
                   <p className="font-serif-accent text-2xl italic text-[var(--accent)] sm:text-4xl">
                     {profile.name} {profile.handle}
                   </p>
-                  <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-[0.94] tracking-[-0.05em] text-[var(--text-primary)] sm:text-6xl lg:text-7xl">
+                  <h1 className="max-w-3xl text-balance font-display text-[clamp(3rem,11vw,4.7rem)] font-semibold leading-[0.92] tracking-[-0.055em] text-[var(--text-primary)] sm:text-6xl lg:text-7xl">
                     {profile.heroTitle}
                   </h1>
                 </div>
@@ -113,26 +152,30 @@ function App() {
               <div className="flex flex-col gap-4 sm:flex-row">
                 <a
                   href="#projects"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--surface-dark)] px-6 py-3 text-sm font-semibold text-[var(--text-on-dark)] shadow-[0_16px_28px_-22px_rgba(20,15,11,0.4)] transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 sm:w-auto"
+                  className={`${ctaButtonClasses} button-clay`}
                 >
                   View work
-                  <ArrowUpRightIcon />
+                  <span className="button-icon">
+                    <ArrowUpRightIcon />
+                  </span>
                 </a>
                 <a
                   href={resumeUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--border-accent)] bg-[var(--surface-raised)] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface)] sm:w-auto"
+                  className={`${ctaButtonClasses} button-secondary`}
                 >
                   Open resume
-                  <DownloadIcon />
+                  <span className="button-icon">
+                    <DownloadIcon />
+                  </span>
                 </a>
               </div>
             </div>
 
-            <div className="animate-rise-delay">
+            <div className="reveal-on-scroll reveal-delay-2" data-reveal>
               <div className="relative mx-auto max-w-sm sm:max-w-md">
-                <article className="overflow-hidden rounded-[2rem] border border-[var(--surface-dark-strong)] bg-[var(--surface-dark-strong)] p-4 shadow-[0_34px_80px_-46px_rgba(17,14,12,0.55)]">
+                <article className="interactive-card overflow-hidden rounded-[2rem] border border-[var(--surface-dark-strong)] bg-[var(--surface-dark-strong)] p-4 shadow-[0_34px_80px_-46px_rgba(17,14,12,0.55)]">
                   <div
                     className="rounded-[1.6rem] p-4"
                     style={{ background: 'var(--hero-card-gradient)' }}
@@ -145,7 +188,7 @@ function App() {
                   </div>
 
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-[1.4rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-4">
+                    <div className="interactive-card rounded-[1.4rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-4">
                       <p className="text-xs uppercase tracking-[0.24em] text-[var(--panel-accent)]">
                         Currently exploring
                       </p>
@@ -153,7 +196,7 @@ function App() {
                         AI-assisted handoffs, PWA surfaces, and cleaner frontend storytelling.
                       </p>
                     </div>
-                    <div className="rounded-[1.4rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-4">
+                    <div className="interactive-card rounded-[1.4rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-4">
                       <p className="text-xs uppercase tracking-[0.24em] text-[var(--panel-accent)]">
                         Open to
                       </p>
@@ -168,10 +211,11 @@ function App() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_1.15fr]">
-            {heroHighlights.map((item) => (
+            {heroHighlights.map((item, index) => (
               <article
                 key={item.label}
-                className="rounded-[1.5rem] border border-[var(--border-soft)] bg-[var(--surface-raised)] p-4 shadow-[0_14px_30px_-24px_rgba(20,15,11,0.2)] sm:p-5"
+                className={`interactive-card reveal-on-scroll rounded-[1.5rem] border border-[var(--border-soft)] bg-[var(--surface-raised)] p-4 shadow-[0_14px_30px_-24px_rgba(20,15,11,0.2)] sm:p-5 ${getRevealDelayClass(index + 1)}`}
+                data-reveal
               >
                 <p className="text-xs uppercase tracking-[0.24em] text-[var(--accent)]">{item.label}</p>
                 <p className="mt-3 text-xl font-semibold tracking-[-0.03em] text-[var(--text-primary)] sm:text-2xl">
@@ -180,7 +224,10 @@ function App() {
               </article>
             ))}
 
-            <article className="flex h-full flex-col justify-between rounded-[1.5rem] border border-[var(--border-accent)] bg-[var(--surface)] p-4 shadow-[0_14px_28px_-24px_rgba(20,15,11,0.16)] sm:p-5">
+            <article
+              className="interactive-card reveal-on-scroll flex h-full flex-col justify-between rounded-[1.5rem] border border-[var(--border-accent)] bg-[var(--surface)] p-4 shadow-[0_14px_28px_-24px_rgba(20,15,11,0.16)] sm:p-5 reveal-delay-4"
+              data-reveal
+            >
               <div>
                 <p className="text-xs uppercase tracking-[0.28em] text-[var(--accent)]">Design stance</p>
                 <h2 className="mt-3 text-xl font-semibold tracking-[-0.03em] text-[var(--text-primary)] sm:text-2xl">
@@ -197,7 +244,9 @@ function App() {
                 className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)]"
               >
                 Read the profile
-                <ArrowUpRightIcon />
+                <span className="button-icon">
+                  <ArrowUpRightIcon />
+                </span>
               </a>
             </article>
           </div>
@@ -205,7 +254,8 @@ function App() {
 
         <section
           id="about"
-          className="relative overflow-hidden rounded-[2.2rem] border border-[var(--border-soft)] bg-[var(--surface)] p-6 shadow-[0_26px_60px_-42px_rgba(20,15,11,0.16)] sm:p-8"
+          className="reveal-on-scroll relative overflow-hidden rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface)] p-5 shadow-[0_26px_60px_-42px_rgba(20,15,11,0.16)] sm:rounded-[2.2rem] sm:p-8 reveal-delay-1"
+          data-reveal
         >
           <div
             className="pointer-events-none absolute inset-x-0 top-0 h-28 opacity-70 blur-3xl"
@@ -220,7 +270,7 @@ function App() {
           />
 
           <div className="relative grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <article className="rounded-[1.75rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] p-6 text-base leading-7 text-[var(--text-secondary)] sm:text-lg sm:leading-8">
+            <article className="interactive-card rounded-[1.6rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] p-5 text-base leading-7 text-[var(--text-secondary)] sm:rounded-[1.75rem] sm:p-6 sm:text-lg sm:leading-8">
               <p>{profile.aboutPrimary}</p>
               <p className="mt-5">{profile.aboutSecondary}</p>
             </article>
@@ -234,7 +284,8 @@ function App() {
 
         <section
           id="stack"
-          className="rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface-dark)] p-6 text-[var(--text-on-dark)] shadow-[0_24px_60px_-42px_rgba(10,10,10,0.38)] sm:p-8"
+          className="reveal-on-scroll rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface-dark)] p-5 text-[var(--text-on-dark)] shadow-[0_24px_60px_-42px_rgba(10,10,10,0.38)] sm:p-8 reveal-delay-1"
+          data-reveal
         >
           <SectionHeading
             eyebrow="Stack"
@@ -247,7 +298,7 @@ function App() {
             {techStack.map((item) => (
               <article
                 key={item.name}
-                className="rounded-[1.6rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-5 transition-transform duration-200 hover:-translate-y-0.5"
+                className="interactive-card rounded-[1.5rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-4 sm:rounded-[1.6rem] sm:p-5"
               >
                 <p className="text-xs uppercase tracking-[0.28em] text-[var(--panel-accent)]">{item.name}</p>
                 <p className="mt-3 text-base leading-7 text-[var(--text-on-dark)]">{item.detail}</p>
@@ -258,7 +309,8 @@ function App() {
 
         <section
           id="projects"
-          className="space-y-8 rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface)] p-6 sm:p-8"
+          className="reveal-on-scroll space-y-7 rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface)] p-5 sm:space-y-8 sm:p-8 reveal-delay-1"
+          data-reveal
         >
           <SectionHeading
             eyebrow="Selected work"
@@ -269,14 +321,35 @@ function App() {
           {featuredProject ? (
             <article
               id="featured-release"
-              className="overflow-hidden rounded-[2rem] border shadow-[0_26px_60px_-40px_rgba(17,14,12,0.36)]"
+              className="interactive-card reveal-on-scroll overflow-hidden rounded-[2rem] border shadow-[0_26px_60px_-40px_rgba(17,14,12,0.36)] reveal-delay-2"
               style={{
                 borderColor: 'var(--release-border)',
                 background: 'var(--release-background)',
               }}
+              data-reveal
             >
-              <div className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+              <div className="grid gap-5 p-5 sm:gap-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
                 <div className="space-y-5">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                    <div className="flex h-16 w-16 flex-none items-center justify-center overflow-hidden rounded-[1.15rem] border border-[var(--release-card-border)] bg-[#090c10] p-2 shadow-[0_16px_32px_-22px_rgba(0,0,0,0.45)] sm:h-[4.6rem] sm:w-[4.6rem] sm:rounded-[1.3rem]">
+                      <img
+                        src="/bytewise-logo.png"
+                        alt="Bytewise logo"
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+
+                    <div className="min-w-0">
+                      <h3 className="text-4xl font-semibold tracking-[-0.05em] text-[var(--release-text)] sm:text-5xl">
+                        {featuredProject.title}
+                      </h3>
+                      <p className="mt-1 flex items-center gap-2 text-sm text-[var(--release-muted)] sm:text-[15px]">
+                        <span>com.csy20.bytewise</span>
+                        <span aria-hidden="true">•</span>
+                      </p>
+                    </div>
+                  </div>
+
                   <div className="inline-flex items-center gap-2 rounded-full border border-[var(--release-card-border)] bg-[var(--release-card)] px-4 py-2 text-xs uppercase tracking-[0.28em] text-[var(--release-text)]">
                     Featured release
                     <SparkIcon />
@@ -286,9 +359,6 @@ function App() {
                     <p className="text-sm uppercase tracking-[0.28em] text-[var(--release-muted)]">
                       {featuredProject.eyebrow}
                     </p>
-                    <h3 className="text-3xl font-semibold tracking-[-0.04em] text-[var(--release-text)] sm:text-5xl">
-                      {featuredProject.title}
-                    </h3>
                     <p className="max-w-2xl text-[15px] leading-7 text-[var(--release-body)] sm:text-base sm:leading-8">
                       {featuredProject.description}
                     </p>
@@ -317,17 +387,19 @@ function App() {
                         href={link.href}
                         target="_blank"
                         rel="noreferrer"
-                        className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors duration-200 sm:w-auto ${linkToneClasses[link.tone]}`}
+                        className={`${ctaButtonClasses} px-5 py-3 ${linkToneClasses[link.tone]}`}
                       >
                         {link.label}
-                        <ArrowUpRightIcon />
+                        <span className="button-icon">
+                          <ArrowUpRightIcon />
+                        </span>
                       </a>
                     ))}
                   </div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                  <article className="rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-card)] p-5">
+                  <article className="interactive-card rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-card)] p-5">
                     <p className="text-xs uppercase tracking-[0.3em] text-[var(--release-muted)]">
                       Release signal
                     </p>
@@ -340,7 +412,7 @@ function App() {
                     </p>
                   </article>
 
-                  <article className="rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-highlight)] p-5 text-[var(--release-highlight-text)]">
+                  <article className="interactive-card rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-highlight)] p-5 text-[var(--release-highlight-text)]">
                     <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
                       Why it stands out
                     </p>
@@ -354,21 +426,22 @@ function App() {
             </article>
           ) : null}
 
-          <div className="grid gap-5 lg:grid-cols-2">
-            {standardProjects.map((project) => (
+          <div className="grid gap-4 sm:gap-5 lg:grid-cols-2">
+            {standardProjects.map((project, index) => (
               <article
                 key={project.title}
-                className="group flex h-full flex-col rounded-[1.9rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--border-accent)] hover:shadow-[0_18px_36px_-28px_rgba(20,15,11,0.18)] sm:p-6"
+                className={`interactive-card group reveal-on-scroll flex h-full flex-col rounded-[1.65rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] p-4 sm:rounded-[1.9rem] sm:p-6 ${getRevealDelayClass((index % 4) + 1)}`}
+                data-reveal
               >
-                <div className="space-y-3">
+                <div className="space-y-2.5 sm:space-y-3">
                   <p className="text-xs uppercase tracking-[0.32em] text-[var(--accent)]">{project.eyebrow}</p>
-                    <h3 className="text-xl font-semibold tracking-[-0.03em] text-[var(--text-primary)] sm:text-2xl">
-                      {project.title}
-                    </h3>
+                  <h3 className="text-xl font-semibold tracking-[-0.03em] text-[var(--text-primary)] sm:text-2xl">
+                    {project.title}
+                  </h3>
                   <p className="text-base leading-7 text-[var(--text-secondary)]">{project.description}</p>
                 </div>
 
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={`${project.title}-${tag}`}
@@ -379,17 +452,19 @@ function App() {
                   ))}
                 </div>
 
-                <div className="mt-auto flex flex-wrap gap-3 pt-7">
+                <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap sm:pt-7">
                   {project.links.map((link) => (
                     <a
                       key={`${project.title}-${link.label}`}
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                        className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 sm:w-auto ${linkToneClasses[link.tone]}`}
+                      className={`${projectButtonClasses} ${linkToneClasses[link.tone]}`}
                     >
                       {link.label}
-                      <ArrowUpRightIcon />
+                      <span className="button-icon">
+                        <ArrowUpRightIcon />
+                      </span>
                     </a>
                   ))}
                 </div>
@@ -400,7 +475,8 @@ function App() {
 
         <section
           id="contact"
-          className="rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface-dark)] p-6 text-[var(--text-on-dark)] sm:p-8"
+          className="reveal-on-scroll rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface-dark)] p-5 text-[var(--text-on-dark)] sm:p-8 reveal-delay-1"
+          data-reveal
         >
           <SectionHeading
             eyebrow="Contact"
@@ -409,8 +485,8 @@ function App() {
             invert
           />
 
-          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <article className="rounded-[1.8rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-6">
+          <div className="grid gap-5 sm:gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <article className="interactive-card rounded-[1.65rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-5 sm:rounded-[1.8rem] sm:p-6">
               <p className="font-serif-accent text-4xl italic text-[var(--panel-accent)]">csy20.works</p>
               <p className="mt-4 text-base leading-7 text-[var(--text-on-dark-soft)]">
                 Best for freelance product work, mobile-first builds, and frontend redesigns
@@ -420,31 +496,36 @@ function App() {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <a
                   href="mailto:chitreshy20@gmail.com"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--surface-raised)] px-5 py-3 text-sm font-semibold text-[var(--text-primary)] transition-colors duration-200 hover:bg-[var(--surface)] sm:w-auto"
+                  className={`${ctaButtonClasses} button-clay`}
                 >
                   Send an email
-                  <MailIcon />
+                  <span className="button-icon">
+                    <MailIcon />
+                  </span>
                 </a>
                 <a
                   href={resumeUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--panel-border)] px-5 py-3 text-sm font-semibold text-[var(--text-on-dark)] transition-colors duration-200 hover:bg-[var(--panel-card)] sm:w-auto"
+                  className={`${ctaButtonClasses} button-panel`}
                 >
                   Open resume
-                  <DownloadIcon />
+                  <span className="button-icon">
+                    <DownloadIcon />
+                  </span>
                 </a>
               </div>
             </article>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {socialLinks.map((link) => (
+              {socialLinks.map((link, index) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-[1.6rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--panel-card)]"
+                  className={`interactive-card reveal-on-scroll rounded-[1.5rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-4 sm:rounded-[1.6rem] sm:p-5 ${getRevealDelayClass((index % 4) + 1)}`}
+                  data-reveal
                 >
                   <div className="flex items-center gap-3">
                     <div className="rounded-full border border-[var(--panel-border)] bg-[var(--panel-card)] p-3 text-[var(--panel-accent)]">
@@ -482,10 +563,10 @@ function SectionHeading({ eyebrow, title, description, invert = false }: Section
   const descriptionColor = invert ? 'text-[var(--text-on-dark-soft)]' : 'text-[var(--text-secondary)]'
 
   return (
-    <div className="mb-8 max-w-3xl">
+    <div className="mb-6 max-w-3xl sm:mb-8">
       <p className={`text-[11px] uppercase tracking-[0.3em] sm:text-xs sm:tracking-[0.34em] ${eyebrowColor}`}>{eyebrow}</p>
       <h2
-        className={`mt-3 text-balance font-display text-3xl font-semibold tracking-[-0.04em] ${titleColor} sm:text-5xl`}
+        className={`mt-3 text-balance font-display text-[2rem] font-semibold tracking-[-0.04em] ${titleColor} sm:text-5xl`}
       >
         {title}
       </h2>
@@ -496,7 +577,7 @@ function SectionHeading({ eyebrow, title, description, invert = false }: Section
 
 function DetailCard({ title, items }: { title: string; items: string[] }) {
   return (
-    <article className="rounded-[1.75rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] p-6">
+    <article className="interactive-card rounded-[1.6rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] p-5 sm:rounded-[1.75rem] sm:p-6">
       <p className="text-xs uppercase tracking-[0.28em] text-[var(--accent)]">{title}</p>
       <ul className="mt-4 space-y-4 text-sm leading-7 text-[var(--text-secondary)]">
         {items.map((item) => (
@@ -530,8 +611,9 @@ function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
       style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
     >
       <nav
-        className="hide-scrollbar flex max-w-[calc(100vw-1rem)] items-center gap-1 overflow-x-auto rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-[0_18px_42px_-30px_rgba(20,15,11,0.2)] backdrop-blur-2xl sm:max-w-none sm:gap-2 sm:px-3"
+        className="hide-scrollbar reveal-on-scroll flex max-w-[calc(100vw-1rem)] items-center gap-1 overflow-x-auto rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-[0_18px_42px_-30px_rgba(20,15,11,0.2)] backdrop-blur-2xl reveal-delay-4 sm:max-w-none sm:gap-2 sm:px-3"
         aria-label="Quick links"
+        data-reveal
       >
         <DockButton href="#top" label="Back to top">
           <HomeIcon />
@@ -590,9 +672,9 @@ function DockButton({
       aria-label={label}
       target={external && href.startsWith('http') ? '_blank' : undefined}
       rel={external && href.startsWith('http') ? 'noreferrer' : undefined}
-      className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-transparent text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--dock-border)] hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)]"
+      className={dockButtonClasses}
     >
-      {children}
+      <span className="button-icon">{children}</span>
     </a>
   )
 }

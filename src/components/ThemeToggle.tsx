@@ -1,4 +1,4 @@
-import { useTheme } from './ThemeProvider'
+import { useTheme } from './useTheme'
 
 type ThemeToggleProps = {
   compact?: boolean
@@ -15,11 +15,11 @@ export function ThemeToggle({ compact = false }: ThemeToggleProps) {
       aria-label={`Switch to ${nextTheme} theme`}
       className={
         compact
-          ? 'flex h-10 w-10 flex-none items-center justify-center rounded-full border border-[var(--dock-border)] text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)]'
-          : 'inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface-raised)] px-4 py-2.5 text-sm font-medium text-[var(--text-primary)] shadow-[0_12px_24px_-22px_rgba(20,15,11,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--border-accent)] hover:bg-[var(--surface)]'
+          ? 'dock-icon-button flex h-10 w-10 flex-none items-center justify-center rounded-full'
+          : 'button-shell button-secondary inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium'
       }
     >
-      {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+      <span className="button-icon">{theme === 'dark' ? <SunIcon /> : <MoonIcon />}</span>
       {!compact ? (
         <span className="hidden sm:inline">{theme === 'dark' ? 'Light theme' : 'Dark theme'}</span>
       ) : null}
