@@ -26,8 +26,6 @@ const ctaButtonClasses =
   'button-shell inline-flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold sm:w-auto'
 const projectButtonClasses =
   'button-shell inline-flex min-h-[3.15rem] w-full items-center justify-between gap-2 rounded-[1.05rem] px-5 py-3 text-sm font-semibold sm:min-h-0 sm:w-auto sm:justify-center sm:rounded-full'
-const dockButtonClasses =
-  'dock-icon-button flex h-10 w-10 flex-none items-center justify-center rounded-full'
 
 const linkToneClasses: Record<ProjectLinkTone, string> = {
   ink: 'button-ink',
@@ -611,9 +609,8 @@ function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
       style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
     >
       <nav
-        className="hide-scrollbar reveal-on-scroll flex max-w-[calc(100vw-1rem)] items-center gap-1 overflow-x-auto rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-[0_18px_42px_-30px_rgba(20,15,11,0.2)] backdrop-blur-2xl reveal-delay-4 sm:max-w-none sm:gap-2 sm:px-3"
+        className="hide-scrollbar flex max-w-[calc(100vw-1rem)] items-center gap-1 overflow-x-auto rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-[0_18px_42px_-30px_rgba(20,15,11,0.2)] backdrop-blur-2xl sm:max-w-none sm:gap-2 sm:px-3"
         aria-label="Quick links"
-        data-reveal
       >
         <DockButton href="#top" label="Back to top">
           <HomeIcon />
@@ -672,9 +669,9 @@ function DockButton({
       aria-label={label}
       target={external && href.startsWith('http') ? '_blank' : undefined}
       rel={external && href.startsWith('http') ? 'noreferrer' : undefined}
-      className={dockButtonClasses}
+      className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-transparent text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--dock-border)] hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)]"
     >
-      <span className="button-icon">{children}</span>
+      {children}
     </a>
   )
 }
