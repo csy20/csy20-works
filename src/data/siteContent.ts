@@ -112,7 +112,7 @@ export const projects: Project[] = [
       {
         label: 'GitHub',
         href: 'https://github.com/csy20/jobjaldi',
-        tone: 'ink',
+        tone: 'clay',
       },
     ],
   },
@@ -144,7 +144,7 @@ export const projects: Project[] = [
       {
         label: 'GitHub',
         href: 'https://github.com/csy20/day21',
-        tone: 'ink',
+        tone: 'clay',
       },
     ],
   },
@@ -158,7 +158,7 @@ export const projects: Project[] = [
       {
         label: 'GitHub',
         href: 'https://github.com/csy20/proj23',
-        tone: 'ink',
+        tone: 'clay',
       },
     ],
   },
@@ -172,7 +172,7 @@ export const projects: Project[] = [
       {
         label: 'GitHub',
         href: 'https://github.com/csy20/proj23',
-        tone: 'ink',
+        tone: 'clay',
       },
     ],
   },
