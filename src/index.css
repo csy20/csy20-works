@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap');
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap");
+@import "tailwindcss";
 
 :root,
 :root.light {
   color-scheme: light;
-  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -39,11 +39,21 @@
   --chip-border: #dfcfbf;
   --chip-bg: rgba(255, 250, 244, 0.88);
   --header-bg: rgba(250, 244, 236, 0.78);
-  --hero-card-gradient: linear-gradient(160deg, #efe0cd 0%, #faf4ec 42%, #d9ab87 100%);
+  --hero-card-gradient: linear-gradient(
+    160deg,
+    #efe0cd 0%,
+    #faf4ec 42%,
+    #d9ab87 100%
+  );
   --panel-border: rgba(255, 255, 255, 0.08);
   --panel-card: rgba(255, 255, 255, 0.045);
   --panel-accent: #d4bca6;
-  --release-background: linear-gradient(145deg, #191a19 0%, #24302e 40%, #bc9977 150%);
+  --release-background: linear-gradient(
+    145deg,
+    #191a19 0%,
+    #24302e 40%,
+    #bc9977 150%
+  );
   --release-border: rgba(86, 103, 96, 0.42);
   --release-text: #fff8f0;
   --release-body: #eee7df;
@@ -77,13 +87,17 @@
   --button-panel-bg-hover: rgba(255, 251, 245, 0.18);
   --button-panel-border: rgba(255, 255, 255, 0.12);
   --button-panel-text: #fbf4ec;
-  --button-shadow-soft: 0 18px 32px -24px rgba(42, 29, 23, 0.24);
-  --button-shadow-strong: 0 24px 42px -22px rgba(42, 29, 23, 0.32);
-  --card-shadow: 0 18px 38px -30px rgba(42, 29, 23, 0.22);
-  --card-shadow-hover: 0 28px 52px -30px rgba(42, 29, 23, 0.28);
+  --button-shadow-soft: 0 4px 12px -4px rgba(0, 0, 0, 0.08);
+  --button-shadow-strong: 0 8px 16px -4px rgba(0, 0, 0, 0.12);
+  --card-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
   --card-border-hover: rgba(186, 106, 67, 0.26);
   --card-spotlight:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.44), transparent 54%),
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.44),
+      transparent 54%
+    ),
     linear-gradient(140deg, rgba(216, 136, 92, 0.18), transparent 62%);
 }
 
@@ -119,11 +133,21 @@
   --chip-border: rgba(244, 235, 223, 0.1);
   --chip-bg: rgba(255, 255, 255, 0.03);
   --header-bg: rgba(16, 18, 20, 0.76);
-  --hero-card-gradient: linear-gradient(160deg, #3b332d 0%, #4d453d 38%, #566764 100%);
+  --hero-card-gradient: linear-gradient(
+    160deg,
+    #3b332d 0%,
+    #4d453d 38%,
+    #566764 100%
+  );
   --panel-border: rgba(255, 255, 255, 0.065);
   --panel-card: rgba(255, 255, 255, 0.032);
   --panel-accent: #d9c2aa;
-  --release-background: linear-gradient(145deg, #121414 0%, #1a2322 40%, #5c5349 145%);
+  --release-background: linear-gradient(
+    145deg,
+    #121414 0%,
+    #1a2322 40%,
+    #5c5349 145%
+  );
   --release-border: rgba(115, 128, 122, 0.3);
   --release-text: #faf2e9;
   --release-body: #ded6ce;
@@ -157,13 +181,17 @@
   --button-panel-bg-hover: rgba(255, 255, 255, 0.12);
   --button-panel-border: rgba(244, 235, 223, 0.1);
   --button-panel-text: #fbf4ec;
-  --button-shadow-soft: 0 16px 34px -24px rgba(0, 0, 0, 0.42);
-  --button-shadow-strong: 0 24px 48px -24px rgba(0, 0, 0, 0.52);
-  --card-shadow: 0 18px 40px -32px rgba(0, 0, 0, 0.44);
-  --card-shadow-hover: 0 30px 56px -28px rgba(0, 0, 0, 0.56);
+  --button-shadow-soft: 0 4px 12px -4px rgba(0, 0, 0, 0.2);
+  --button-shadow-strong: 0 8px 16px -4px rgba(0, 0, 0, 0.3);
+  --card-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.15);
+  --card-shadow-hover: 0 12px 24px -8px rgba(0, 0, 0, 0.25);
   --card-border-hover: rgba(223, 161, 122, 0.24);
   --card-spotlight:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.14), transparent 54%),
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.14),
+      transparent 54%
+    ),
     linear-gradient(140deg, rgba(223, 161, 122, 0.18), transparent 62%);
 }
 
@@ -179,12 +207,17 @@ body {
   background:
     radial-gradient(circle at top left, var(--orb-one), transparent 28%),
     radial-gradient(circle at 82% 24%, var(--orb-two), transparent 24%),
-    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 38%, var(--bg-bottom) 100%);
+    linear-gradient(
+      180deg,
+      var(--bg-top) 0%,
+      var(--bg-mid) 38%,
+      var(--bg-bottom) 100%
+    );
   color: var(--text-primary);
 }
 
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -195,7 +228,7 @@ body::before {
 }
 
 body::after {
-  content: '';
+  content: "";
   position: fixed;
   right: -10%;
   bottom: -14%;
@@ -331,11 +364,16 @@ section {
   }
 
   .button-shell::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 1px;
     border-radius: inherit;
-    background: linear-gradient(120deg, transparent 12%, rgba(255, 255, 255, 0.22) 42%, transparent 70%);
+    background: linear-gradient(
+      120deg,
+      transparent 12%,
+      rgba(255, 255, 255, 0.22) 42%,
+      transparent 70%
+    );
     opacity: 0;
     transform: translate3d(-24%, 18%, 0);
     transition:
@@ -476,7 +514,7 @@ section {
   }
 
   .interactive-card::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: -1px;
     border-radius: inherit;
@@ -544,11 +582,11 @@ section {
 
 @layer utilities {
   .font-display {
-    font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   }
 
   .font-serif-accent {
-    font-family: 'Instrument Serif', Georgia, serif;
+    font-family: "Instrument Serif", Georgia, serif;
   }
 
   .animate-rise {
@@ -578,5 +616,20 @@ section {
 
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@layer utilities {
+  .github-streak-light {
+    display: block;
+  }
+  .github-streak-dark {
+    display: none;
+  }
+  :root.dark .github-streak-light {
+    display: none;
+  }
+  :root.dark .github-streak-dark {
+    display: block;
   }
 }
