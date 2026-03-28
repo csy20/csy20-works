@@ -1,0 +1,8 @@
+# robots.txt for csy20.works
+User-agent: *
+Allow: /
+
+# Disallow admin or private sections if any
+# Disallow: /admin/
+
+Sitemap: https://csy20.works/sitemap.xml
