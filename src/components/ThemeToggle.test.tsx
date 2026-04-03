@@ -8,8 +8,8 @@ describe("ThemeToggle", () => {
   beforeEach(() => {
     // Clear localStorage before each test
     localStorage.clear();
-    // Remove theme classes
-    document.documentElement.classList.remove("light", "dark");
+    // Remove data-theme attribute
+    document.documentElement.removeAttribute("data-theme");
   });
 
   it("renders the theme toggle button", () => {
@@ -44,7 +44,7 @@ describe("ThemeToggle", () => {
 
   it("respects initial theme from localStorage", () => {
     localStorage.setItem("csy20-theme", "dark");
-    document.documentElement.classList.add("dark");
+    document.documentElement.setAttribute("data-theme", "dark");
 
     render(
       <ThemeProvider>
@@ -52,6 +52,6 @@ describe("ThemeToggle", () => {
       </ThemeProvider>,
     );
 
-    expect(document.documentElement.classList.contains("dark")).toBe(true);
+    expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
   });
 });
