@@ -54,17 +54,17 @@ export type SocialLink = {
 export const profile = {
   name: "Chitresh Yadav",
   handle: "~csy",
-  role: "React, React Native + Flutter developer shipping polished products",
+  role: "Building with React, React Native, and Flutter",
   strapline: "React • React Native • Flutter • FastAPI",
-  heroTitle: "Building mobile products that feel calm, fast, and finished.",
+  heroTitle: "I build apps that feel right — fast, smooth, and done properly.",
   heroSummary:
-    "I build production-ready apps across web and mobile: React and Next.js for the frontend, React Native and Flutter for polished mobile delivery, and backend work that stays practical.",
+    "I work across web and mobile, mostly with React, Next.js, React Native, and Flutter. I care about how things feel to use, not just how they look in a screenshot.",
   heroDescription:
-    "This portfolio stays focused on full-stack delivery: clean APIs, React Native and Flutter experiences with real product feel, and systems built to ship without visual clutter.",
+    "Everything here is real work — APIs that actually run, animations that don't stutter, and apps that got finished instead of staying half-built.",
   aboutPrimary:
-    "I’m a MERN + Flutter developer who obsesses over smooth animations, maintainable data flows, and interfaces that feel native on every device.",
+    "I'm a full-stack developer who gets way too into smooth animations, clean data flows, and making things feel native on every device.",
   aboutSecondary:
-    "My sweet spot is turning rough ideas into scalable systems: REST APIs, MongoDB-backed data models, and AI features built for real usage—not just demo moments.",
+    "I like taking rough ideas and turning them into real systems — REST APIs, proper data models, and features people actually use.",
 };
 
 export const techStack: StackItem[] = [
@@ -168,9 +168,9 @@ export const techStack: StackItem[] = [
 export const projects: Project[] = [
   {
     title: "Jobjaldi",
-    eyebrow: "Job discovery platform",
+    eyebrow: "Job search app",
     description:
-      "A job discovery platform built for modern job seekers with streamlined browsing, filtering, and application flow.",
+      "A job search app I built to make browsing and filtering listings actually painless. Ended up learning a lot about search UX.",
     tags: ["Flutter", "Dart", "Job Board"],
     links: [
       {
@@ -182,14 +182,14 @@ export const projects: Project[] = [
   },
   {
     title: "Bytewise",
-    eyebrow: "Play Store release",
+    eyebrow: "Published on Play Store",
     description:
-      "A Flutter app shipped to the Google Play Store with a user-facing product surface and production-style release flow.",
+      "A Flutter app I actually shipped to the Play Store — not just a demo, but a real release with proper versioning, store listing, and all that.",
     tags: ["Flutter", "Dart", "Android", "Play Store"],
     featured: true,
     spotlight: "Live on Google Play",
     releaseNote:
-      "This is the clearest proof that the work is not just a concept screen. It shipped as a public app with release discipline, store readiness, and a real delivery bar.",
+      "This one matters to me because it's not sitting in a repo somewhere. People can install it. That forced me to deal with things like release signing, store guidelines, and writing a proper listing.",
     links: [
       {
         label: "Play Store",
@@ -200,9 +200,9 @@ export const projects: Project[] = [
   },
   {
     title: "News App",
-    eyebrow: "Realtime content experience",
+    eyebrow: "Live API feed",
     description:
-      "A news experience built on top of a live API with category filters and a fast-scanning content layout.",
+      "A news reader that pulls from a live API, with category tabs and a layout that makes scanning headlines quick.",
     tags: ["Flutter", "API Integration", "Realtime"],
     links: [
       {
@@ -214,9 +214,9 @@ export const projects: Project[] = [
   },
   {
     title: "Weather App",
-    eyebrow: "Location-aware utility",
+    eyebrow: "Location + API",
     description:
-      "A forecast app with live location data, timely weather feedback, and a clean Material-inspired interface.",
+      "Grabs your location, hits a weather API, and shows you a clean forecast. Simple, but the Material design turned out nice.",
     tags: ["Flutter", "Weather API", "Location"],
     links: [
       {
@@ -228,9 +228,9 @@ export const projects: Project[] = [
   },
   {
     title: "GitHub View",
-    eyebrow: "Developer tooling UI",
+    eyebrow: "Dev tool",
     description:
-      "A GitHub profile lookup tool for quickly inspecting user stats, repositories, and activity from a single screen.",
+      "A quick tool to look up any GitHub user — see their stats, repos, and recent activity all on one screen.",
     tags: ["Flutter", "GitHub API", "User Profiles"],
     links: [
       {
@@ -247,25 +247,25 @@ export const socialLinks: SocialLink[] = [
     label: "GitHub",
     href: "https://github.com/csy20",
     icon: "github",
-    detail: "Open source work and learning repos.",
+    detail: "Where all my code lives.",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/csy20/",
     icon: "linkedin",
-    detail: "Career profile and collaboration touchpoint.",
+    detail: "Connect with me here.",
   },
   {
     label: "X",
     href: "https://x.com/the__csy20",
     icon: "x",
-    detail: "Thoughts, experiments, and public build notes.",
+    detail: "Random thoughts and stuff I'm working on.",
   },
   {
     label: "Email",
     href: "mailto:chitreshy20@gmail.com",
     icon: "email",
-    detail: "Best route for project inquiries and direct contact.",
+    detail: "Best way to reach me directly.",
   },
 ];
 

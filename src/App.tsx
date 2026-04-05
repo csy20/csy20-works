@@ -165,47 +165,29 @@ function App() {
           <ThemeToggle compact />
         </div>
 
-        <section className="hero-shell space-y-5 pb-0 pt-0 sm:space-y-6 sm:pb-1 sm:pt-2 lg:space-y-8 lg:pb-4 lg:pt-5">
-          <div className="grid gap-5 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-10">
-            <div
-              className="space-y-5 reveal-on-scroll sm:space-y-7"
-              data-reveal
-            >
-              <div className="space-y-4">
-                <p className="text-[11px] uppercase tracking-[0.34em] text-[var(--accent)] sm:text-sm sm:tracking-[0.4em]">
-                  {profile.strapline}
-                </p>
-                <div className="space-y-3">
-                  <p className="font-serif-accent text-2xl italic text-[var(--accent)] sm:text-4xl">
+        <section className="hero-shell">
+          <div className="hero-grid">
+            <div className="hero-copy reveal-on-scroll" data-reveal>
+              <div className="hero-intro space-y-3 sm:space-y-4">
+                <div className="space-y-3 sm:space-y-4">
+                  <p className="hero-signature font-serif-accent text-3xl italic text-[var(--accent)] sm:text-[2.75rem]">
                     {profile.name} {profile.handle}
                   </p>
-                  <h1 className="max-w-3xl text-balance font-display text-[clamp(3rem,11vw,4.7rem)] font-semibold leading-[0.92] tracking-[-0.055em] text-[var(--text-primary)] sm:text-6xl lg:text-7xl">
+                  <h1 className="hero-title text-balance font-display font-semibold text-[var(--text-primary)]">
                     {profile.heroTitle}
                   </h1>
                 </div>
               </div>
 
-              <div className="max-w-2xl space-y-4 text-balance text-base leading-7 text-[var(--text-secondary)] sm:text-lg sm:leading-8">
+              <div className="hero-body space-y-4 text-balance text-base leading-7 sm:text-[1.04rem] sm:leading-8">
                 <p>{profile.heroSummary}</p>
                 <p>{profile.heroDescription}</p>
               </div>
 
-              <div className="flex flex-wrap gap-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--text-subtle)] sm:text-xs">
-                <span className="rounded-full border border-[var(--chip-border)] bg-[var(--chip-bg)] px-3 py-1.5">
-                  React Native
-                </span>
-                <span className="rounded-full border border-[var(--chip-border)] bg-[var(--chip-bg)] px-3 py-1.5">
-                  Flutter
-                </span>
-                <span className="rounded-full border border-[var(--chip-border)] bg-[var(--chip-bg)] px-3 py-1.5">
-                  Full-stack delivery
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="hero-actions flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#projects"
-                  className={`${ctaButtonClasses} button-clay`}
+                  className={`${ctaButtonClasses} hero-primary-button button-clay`}
                 >
                   View work
                   <span className="button-icon">
@@ -216,7 +198,7 @@ function App() {
                   href={resumeUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className={`${ctaButtonClasses} button-secondary`}
+                  className={`${ctaButtonClasses} hero-secondary-button button-secondary`}
                 >
                   Get resume
                   <span className="button-icon">
@@ -226,46 +208,7 @@ function App() {
               </div>
             </div>
 
-            <div
-              className="reveal-on-scroll reveal-delay-2 lg:pt-3"
-              data-reveal
-            >
-              <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
-                <article className="interactive-card hero-portrait-card overflow-hidden rounded-3xl border border-[var(--surface-dark-strong)] bg-[var(--surface-dark-strong)] p-2 shadow-md sm:p-4">
-                  <div
-                    className="rounded-2xl p-2.5 sm:p-4"
-                    style={{ background: "var(--hero-card-gradient)" }}
-                  >
-                    <img
-                      src="/pfp.jpeg"
-                      alt="Portrait of Chitresh Yadav"
-                      className="aspect-[4/5] w-full rounded-[1.35rem] object-cover object-center"
-                    />
-                  </div>
-
-                  <div className="mt-2 grid gap-2 sm:mt-4 sm:grid-cols-2">
-                    <div className="interactive-card rounded-[1.35rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-3 sm:p-4">
-                      <p className="text-xs uppercase tracking-[0.24em] text-[var(--panel-accent)]">
-                        Mobile focus
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-[var(--text-on-dark-soft)]">
-                        React Native and Flutter builds with calmer motion,
-                        tighter spacing, and interfaces that feel finished.
-                      </p>
-                    </div>
-                    <div className="interactive-card rounded-[1.35rem] border border-[var(--panel-border)] bg-[var(--panel-card)] p-3 sm:p-4">
-                      <p className="text-xs uppercase tracking-[0.24em] text-[var(--panel-accent)]">
-                        Shipping style
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-[var(--text-on-dark-soft)]">
-                        Product-focused delivery across frontend, backend, and
-                        native mobile without heavy or noisy UI.
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
+            <HeroPortraitPanel />
           </div>
         </section>
 
@@ -276,23 +219,23 @@ function App() {
         >
           <SectionHeading
             eyebrow="Stack"
-            title="Tools I use to ship web and native products."
-            description="A tighter look at the tools I actually reach for when building interfaces, APIs, React Native and Flutter flows, and the platform layer underneath them."
+            title="What I actually build with."
+            description="These are the tools I reach for day to day — for frontend, backend, mobile, and everything around them."
             invert
           />
 
           <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
             <article className="interactive-card stack-showcase-panel rounded-[1.8rem] border p-5 sm:p-6">
               <p className="text-xs uppercase tracking-[0.28em] text-[var(--panel-accent)]">
-                Product-ready toolkit
+                My toolkit
               </p>
               <h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-[var(--text-on-dark)] sm:text-[2rem]">
-                A working stack for web and native mobile.
+                Covers web and mobile, front to back.
               </h3>
               <p className="mt-4 max-w-md text-sm leading-7 text-[var(--text-on-dark-soft)] sm:text-base">
-                The mix is intentionally broad: frontend layers, backend
-                services, React Native and Flutter delivery, and the environment
-                I build in day to day.
+                I don't stick to one framework — I pick whatever fits the
+                project. Frontend, backend, React Native, Flutter, and the
+                tools around them.
               </p>
 
               <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
@@ -353,17 +296,17 @@ function App() {
         >
           <SectionHeading
             eyebrow="Activity"
-            title="Consistent shipping."
-            description="My GitHub streak and daily contributions."
+            title="I try to write code every day."
+            description="Here's what my GitHub looks like over the past year."
           />
 
           <div className="activity-surface mt-8 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-soft)] p-3 sm:p-5">
             <div className="activity-meta-row">
               <p className="activity-mobile-hint">
-                Swipe to explore the full year
+                Swipe to see the full year
               </p>
               <p className="activity-desktop-note">
-                A year-long heatmap of daily shipping rhythm.
+                Contributions over the past year.
               </p>
             </div>
 
@@ -404,9 +347,9 @@ function App() {
           data-reveal
         >
           <SectionHeading
-            eyebrow="Selected work"
-            title="Projects that show what I ship and how I think."
-            description="I kept the strongest work from the older portfolio and reframed it with cleaner hierarchy, clearer tags, and faster scanning."
+            eyebrow="Projects"
+            title="Things I've built."
+            description="A mix of apps I've shipped, side projects I learned from, and tools I made because I needed them."
           />
 
           {featuredProject ? (
@@ -492,25 +435,25 @@ function App() {
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
                   <article className="interactive-card rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-card)] p-5">
                     <p className="text-xs uppercase tracking-[0.3em] text-[var(--release-muted)]">
-                      Release signal
+                      Status
                     </p>
                     <p className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[var(--release-text)]">
                       {featuredProject.spotlight}
                     </p>
                     <p className="mt-3 text-sm leading-7 text-[var(--release-body)]">
-                      A public release matters because it shows end-to-end
-                      product execution, not just interface polish.
+                      Having something on the Play Store is different from having
+                      it on GitHub. It means the whole thing actually works.
                     </p>
                   </article>
 
                   <article className="interactive-card rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-highlight)] p-5 text-[var(--release-highlight-text)]">
                     <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
-                      Why it stands out
+                      Why it's up here
                     </p>
                     <p className="mt-3 text-sm leading-7">
-                      Among the portfolio pieces, this is the clearest shipping
-                      proof, so it gets featured separately before the rest of
-                      the project grid.
+                      Out of everything I've built, this is the one that
+                      actually made it to a store. That's why it gets
+                      its own section.
                     </p>
                   </article>
                 </div>
@@ -522,7 +465,7 @@ function App() {
             {standardProjects.map((project, index) => (
               <article
                 key={project.title}
-                className={`interactive-card group reveal-on-scroll flex h-full flex-col rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-soft)] p-4 sm:rounded-[1.5rem] sm:p-6 ${getRevealDelayClass((index % 4) + 1)}`}
+                className={`project-card interactive-card group reveal-on-scroll flex h-full flex-col rounded-2xl border border-[var(--border-soft)] p-4 sm:rounded-[1.5rem] sm:p-6 ${getRevealDelayClass((index % 4) + 1)}`}
                 data-reveal
               >
                 <div className="space-y-2.5 sm:space-y-3">
@@ -537,7 +480,7 @@ function App() {
                   </p>
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="project-tag-row mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={`${project.title}-${tag}`}
@@ -548,14 +491,14 @@ function App() {
                   ))}
                 </div>
 
-                <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap sm:pt-7">
+                <div className="project-card-actions mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap sm:pt-7">
                   {project.links.map((link) => (
                     <a
                       key={`${project.title}-${link.label}`}
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className={`${projectButtonClasses} ${linkToneClasses[link.tone]}`}
+                      className={`${projectButtonClasses} project-link-button ${linkToneClasses[link.tone]}`}
                     >
                       {link.label}
                       <span className="button-icon">
@@ -576,26 +519,26 @@ function App() {
         >
           <SectionHeading
             eyebrow="Contact"
-            title="If the product needs both taste and execution, let’s talk."
-            description="This first Vite version stays static on purpose: direct links, quick context, and a clear path to reach me."
+            title="Want to work together? Say hi."
+            description="Easiest way is email, but I'm around on all of these."
             invert
           />
 
-          <div className="grid gap-5 sm:gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <article className="interactive-card rounded-2xl border border-[var(--panel-border)] bg-[var(--panel-card)] p-5 sm:rounded-[1.5rem] sm:p-6">
+          <div className="contact-layout grid gap-5 sm:gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <article className="contact-panel interactive-card rounded-2xl border border-[var(--panel-border)] p-5 sm:rounded-[1.5rem] sm:p-6">
               <p className="font-serif-accent text-4xl italic text-[var(--panel-accent)]">
                 csy20.works
               </p>
               <p className="mt-4 text-base leading-7 text-[var(--text-on-dark-soft)]">
-                Best for freelance product work, mobile-first builds, and
-                frontend redesigns that need stronger visual clarity without
-                losing technical rigor.
+                I'm open to freelance work, contract projects, and
+                collaborations — especially if it involves mobile apps
+                or making an existing frontend better.
               </p>
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <div className="contact-actions mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <a
                   href="mailto:chitreshy20@gmail.com"
-                  className={`${ctaButtonClasses} button-clay`}
+                  className={`${ctaButtonClasses} contact-primary-button button-clay`}
                 >
                   Send an email
                   <span className="button-icon">
@@ -606,7 +549,7 @@ function App() {
                   href={resumeUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className={`${ctaButtonClasses} button-panel`}
+                  className={`${ctaButtonClasses} contact-secondary-button button-panel`}
                 >
                   Get resume
                   <span className="button-icon">
@@ -623,14 +566,14 @@ function App() {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className={`interactive-card reveal-on-scroll rounded-2xl border border-[var(--panel-border)] bg-[var(--panel-card)] p-4 sm:rounded-2xl sm:p-5 ${getRevealDelayClass((index % 4) + 1)}`}
+                  className={`contact-link-card interactive-card reveal-on-scroll rounded-2xl border border-[var(--panel-border)] p-4 sm:rounded-2xl sm:p-5 ${getRevealDelayClass((index % 4) + 1)}`}
                   data-reveal
                 >
                   <div className="flex items-center gap-3">
-                    <div className="rounded-full border border-[var(--panel-border)] bg-[var(--panel-card)] p-3 text-[var(--panel-accent)]">
+                    <div className="contact-link-icon rounded-full border border-[var(--panel-border)] p-3 text-[var(--panel-accent)]">
                       <SocialGlyph icon={link.icon} />
                     </div>
-                    <div>
+                    <div className="contact-link-copy">
                       <p className="text-sm uppercase tracking-[0.24em] text-[var(--panel-accent)]">
                         {link.label}
                       </p>
@@ -647,6 +590,31 @@ function App() {
       </main>
 
       <BottomDock showFeaturedLink={Boolean(featuredProject)} />
+    </div>
+  );
+}
+
+function HeroPortraitPanel() {
+  return (
+    <div
+      className="hero-visual reveal-on-scroll reveal-delay-2"
+      data-reveal
+      aria-hidden="true"
+    >
+      <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+        <article className="interactive-card hero-portrait-card overflow-hidden rounded-3xl border border-[var(--surface-dark-strong)] bg-[var(--surface-dark-strong)] p-2 shadow-md sm:p-4">
+          <div
+            className="rounded-2xl p-2.5 sm:p-4"
+            style={{ background: "var(--hero-card-gradient)" }}
+          >
+            <img
+              src="/pfp.jpeg"
+              alt="Portrait of Chitresh Yadav"
+              className="aspect-[4/5] w-full rounded-[1.35rem] object-cover object-center"
+            />
+          </div>
+        </article>
+      </div>
     </div>
   );
 }
