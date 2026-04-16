@@ -29,7 +29,13 @@ describe("App stack showcase", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /Tools I use to ship web and native products\./i,
+        name: profile.heroTitle,
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("heading", {
+        name: /What I actually build with\./i,
       }),
     ).toBeInTheDocument();
 
@@ -38,8 +44,8 @@ describe("App stack showcase", () => {
 
     for (const item of techStack) {
       expect(
-        within(stackSection as HTMLElement).getByText(item.name),
-      ).toBeInTheDocument();
+        within(stackSection as HTMLElement).getAllByText(item.name).length,
+      ).toBeGreaterThan(0);
     }
 
     expect(screen.getByText(profile.heroSummary)).toBeInTheDocument();
@@ -47,14 +53,12 @@ describe("App stack showcase", () => {
     expect(screen.queryByText("Primary stack")).not.toBeInTheDocument();
     expect(container.querySelector("#about")).toBeNull();
     expect(
-      within(stackSection as HTMLElement).getByText("React Native"),
-    ).toBeInTheDocument();
+      within(stackSection as HTMLElement).getAllByText("React Native").length,
+    ).toBeGreaterThan(0);
     expect(
-      screen.getByRole("heading", { name: /Consistent shipping\./i }),
+      screen.getByRole("heading", { name: /I try to write code every day\./i }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(/Swipe to explore the full year/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Swipe to see the full year/i)).toBeInTheDocument();
     expect(container.querySelector(".activity-scroll")).not.toBeNull();
   });
 });
