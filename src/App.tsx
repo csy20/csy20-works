@@ -1,4 +1,14 @@
 import { useEffect, type ReactNode } from "react";
+import { motion } from "framer-motion";
+
+import { RevealText } from "./components/animations/RevealText";
+import { MarqueeTicker } from "./components/animations/MarqueeTicker";
+import { MagneticCard } from "./components/animations/MagneticCard";
+import { CursorGlow } from "./components/animations/CursorGlow";
+import { InkTransition } from "./components/animations/InkTransition";
+import { NavUnderline } from "./components/animations/NavUnderline";
+import { ScrollProgressBar } from "./components/animations/ScrollProgressBar";
+import { ThemeTransitionOverlay } from "./components/animations/ThemeTransitionOverlay";
 
 import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "./components/useTheme";
@@ -38,6 +48,13 @@ const linkToneClasses: Record<ProjectLinkTone, string> = {
   clay: "button-clay",
   mint: "button-mint",
 };
+const githubCalendarTheme = {
+  light: ["#fbf4ea", "#ead6c1", "#d1ab84", "#b97a49", "#7e5031"],
+  dark: ["#171311", "#4d392d", "#7e5d46", "#c18657", "#e1b68b"],
+};
+const githubCalendarStyle = {
+  color: "var(--text-primary)",
+};
 
 const featuredProject = projects.find((project) => project.featured);
 const standardProjects = projects.filter((project) => !project.featured);
@@ -72,9 +89,10 @@ function getStackGroups(items: StackItem[]) {
     .filter((group) => group.items.length > 0);
 }
 
+const stackGroups = getStackGroups(techStack);
+
 function App() {
   const { theme } = useTheme();
-  const stackGroups = getStackGroups(techStack);
 
   useEffect(() => {
     const elements = Array.from(
@@ -106,322 +124,441 @@ function App() {
   }, []);
 
   return (
-    <div className="relative isolate overflow-hidden text-[var(--text-primary)]">
-      <BackgroundOrbs />
+    <InkTransition>
+      <div className="relative isolate overflow-hidden text-[var(--text-primary)]">
+        <ScrollProgressBar />
+        <CursorGlow />
+        <ThemeTransitionOverlay />
+        <BackgroundOrbs />
 
-      <header className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[var(--header-bg)] backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-6 sm:py-4 lg:px-8">
-          <a
-            href="#top"
-            className="flex min-w-0 items-center gap-3 text-[var(--text-primary)]"
-          >
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-raised)] text-sm font-bold shadow-sm">
-              c.
-            </div>
-            <div className="min-w-0">
-              <p className="truncate text-[13px] uppercase tracking-[0.28em] text-[var(--accent)] sm:text-sm sm:tracking-[0.32em]">
-                csy20.works
-              </p>
-              <p className="hidden truncate text-sm text-[var(--text-secondary)] sm:block">
-                {profile.role}
-              </p>
-            </div>
-          </a>
+        <header className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[var(--header-bg)] backdrop-blur-2xl">
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-6 sm:py-4 lg:px-8">
+            <a
+              href="#top"
+              className="flex min-w-0 items-center gap-3 text-[var(--text-primary)]"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-raised)] text-sm font-bold shadow-sm">
+                c.
+              </div>
+              <div className="min-w-0">
+                <p className="truncate text-[13px] uppercase tracking-[0.28em] text-[var(--accent)] sm:text-sm sm:tracking-[0.32em]">
+                  csy20.works
+                </p>
+                <p className="hidden truncate text-sm text-[var(--text-secondary)] sm:block">
+                  {profile.role}
+                </p>
+              </div>
+            </a>
 
-          <div className="hidden items-center gap-3 md:flex">
-            <nav className="flex items-center gap-5 text-sm text-[var(--text-secondary)]">
+            <div className="hidden items-center gap-3 md:flex">
+              <nav className="flex items-center gap-5 text-sm text-[var(--text-secondary)]">
+                {navigation.map((item) => (
+                  <NavUnderline
+                    key={item.href}
+                    href={item.href}
+                    className="transition-colors duration-200 hover:text-[var(--text-primary)]"
+                  >
+                    {item.label}
+                  </NavUnderline>
+                ))}
+              </nav>
+              <ThemeToggle />
+            </div>
+          </div>
+        </header>
+
+        <main
+          id="top"
+          className="mx-auto flex max-w-6xl flex-col gap-4 px-4 pb-32 pt-2 sm:gap-8 sm:px-6 sm:pt-5 lg:gap-10 lg:px-8"
+          style={{ paddingBottom: "calc(8rem + env(safe-area-inset-bottom))" }}
+        >
+          <div className="flex items-center gap-2.5 md:hidden">
+            <nav className="hide-scrollbar flex flex-1 gap-2 overflow-x-auto pb-1.5 text-sm">
               {navigation.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="transition-colors duration-200 hover:text-[var(--text-primary)]"
+                  className="mobile-nav-chip whitespace-nowrap rounded-full border border-[var(--border-soft)] bg-[var(--surface-raised)] px-3.5 py-2 text-[13px] text-[var(--text-secondary)]"
                 >
                   {item.label}
                 </a>
               ))}
             </nav>
-            <ThemeToggle />
+            <ThemeToggle compact />
           </div>
-        </div>
-      </header>
 
-      <main
-        id="top"
-        className="mx-auto flex max-w-6xl flex-col gap-4 px-4 pb-32 pt-2 sm:gap-8 sm:px-6 sm:pt-5 lg:gap-10 lg:px-8"
-        style={{ paddingBottom: "calc(8rem + env(safe-area-inset-bottom))" }}
-      >
-        <div className="flex items-center gap-2.5 md:hidden">
-          <nav className="hide-scrollbar flex flex-1 gap-2 overflow-x-auto pb-1.5 text-sm">
-            {navigation.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="mobile-nav-chip whitespace-nowrap rounded-full border border-[var(--border-soft)] bg-[var(--surface-raised)] px-3.5 py-2 text-[13px] text-[var(--text-secondary)]"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <ThemeToggle compact />
-        </div>
+          <section className="hero-shell">
+            <div className="hero-grid">
+              <div className="hero-copy reveal-on-scroll" data-reveal>
+                <div className="hero-intro space-y-3 sm:space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="hero-signature font-serif-accent text-3xl italic text-[var(--accent)] sm:text-[2.75rem]">
+                      <RevealText text={`${profile.name} ${profile.handle}`} />
+                    </div>
+                    <h1 className="hero-title text-balance font-display font-semibold text-[var(--text-primary)]">
+                      <RevealText text={profile.heroTitle} delay={0.2} />
+                    </h1>
+                  </div>
+                </div>
 
-        <section className="hero-shell">
-          <div className="hero-grid">
-            <div className="hero-copy reveal-on-scroll" data-reveal>
-              <div className="hero-intro space-y-3 sm:space-y-4">
-                <div className="space-y-3 sm:space-y-4">
-                  <p className="hero-signature font-serif-accent text-3xl italic text-[var(--accent)] sm:text-[2.75rem]">
-                    {profile.name} {profile.handle}
-                  </p>
-                  <h1 className="hero-title text-balance font-display font-semibold text-[var(--text-primary)]">
-                    {profile.heroTitle}
-                  </h1>
+                <div className="hero-body space-y-4 text-balance text-base leading-7 sm:text-[1.04rem] sm:leading-8">
+                  <p>{profile.heroSummary}</p>
+                  <p>{profile.heroDescription}</p>
+                </div>
+
+                <div className="hero-actions flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href="#projects"
+                    className={`${ctaButtonClasses} hero-primary-button button-clay`}
+                  >
+                    View work
+                    <span className="button-icon">
+                      <ArrowUpRightIcon />
+                    </span>
+                  </a>
+                  <a
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${ctaButtonClasses} hero-secondary-button button-secondary`}
+                  >
+                    Get resume
+                    <span className="button-icon">
+                      <DownloadIcon />
+                    </span>
+                  </a>
                 </div>
               </div>
 
-              <div className="hero-body space-y-4 text-balance text-base leading-7 sm:text-[1.04rem] sm:leading-8">
-                <p>{profile.heroSummary}</p>
-                <p>{profile.heroDescription}</p>
-              </div>
-
-              <div className="hero-actions flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#projects"
-                  className={`${ctaButtonClasses} hero-primary-button button-clay`}
-                >
-                  View work
-                  <span className="button-icon">
-                    <ArrowUpRightIcon />
-                  </span>
-                </a>
-                <a
-                  href={resumeUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`${ctaButtonClasses} hero-secondary-button button-secondary`}
-                >
-                  Get resume
-                  <span className="button-icon">
-                    <DownloadIcon />
-                  </span>
-                </a>
-              </div>
+              <HeroPortraitPanel />
             </div>
+          </section>
 
-            <HeroPortraitPanel />
-          </div>
-        </section>
+          <section
+            id="stack"
+            className="stack-showcase reveal-on-scroll rounded-3xl border border-[var(--border-soft)] p-5 text-[var(--text-on-dark)] sm:p-8 reveal-delay-1"
+            data-reveal
+          >
+            <SectionHeading
+              eyebrow="Stack"
+              title="What I actually build with."
+              description="These are the tools I reach for day to day — for frontend, backend, mobile, and everything around them."
+              invert
+            />
 
-        <section
-          id="stack"
-          className="stack-showcase reveal-on-scroll rounded-3xl border border-[var(--border-soft)] p-5 text-[var(--text-on-dark)] sm:p-8 reveal-delay-1"
-          data-reveal
-        >
-          <SectionHeading
-            eyebrow="Stack"
-            title="What I actually build with."
-            description="These are the tools I reach for day to day — for frontend, backend, mobile, and everything around them."
-            invert
-          />
-
-          <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
-            <article className="interactive-card stack-showcase-panel rounded-[1.8rem] border p-5 sm:p-6">
-              <p className="text-xs uppercase tracking-[0.28em] text-[var(--panel-accent)]">
-                My toolkit
-              </p>
-              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-[var(--text-on-dark)] sm:text-[2rem]">
-                Covers web and mobile, front to back.
-              </h3>
-              <p className="mt-4 max-w-md text-sm leading-7 text-[var(--text-on-dark-soft)] sm:text-base">
-                I don't stick to one framework — I pick whatever fits the
-                project. Frontend, backend, React Native, Flutter, and the
-                tools around them.
-              </p>
-
-              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
-                {stackGroups.map((group, index) => (
-                  <div
-                    key={group.category}
-                    className={`rounded-[1.25rem] border border-[var(--release-card-border)] bg-[var(--release-card)] px-4 py-3 ${getRevealDelayClass(index + 1)}`}
-                  >
-                    <p className="text-xs uppercase tracking-[0.28em] text-[var(--panel-accent)]">
-                      {group.label}
-                    </p>
-                    <p className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[var(--release-text)]">
-                      {group.items.length}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            <div className="grid gap-4">
-              {stackGroups.map((group, groupIndex) => (
-                <article
-                  key={group.category}
-                  className={`interactive-card stack-group rounded-[1.7rem] border p-4 sm:p-5 ${getRevealDelayClass((groupIndex % 4) + 1)}`}
+            <MarqueeTicker className="mb-10 py-2">
+              {techStack.map((tool) => (
+                <div
+                  key={tool.name}
+                  className="stack-pill group flex items-center gap-2.5 rounded-full border border-[var(--stack-pill-border)] bg-[var(--stack-pill-bg)] py-2 pl-2 pr-4 shadow-[var(--stack-pill-shadow)] ring-1 ring-inset ring-white/5 transition-all hover:border-[var(--stack-pill-border-hover)] hover:bg-[var(--stack-pill-bg-hover)]"
                 >
-                  <div className="mb-4 flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.32em] text-[var(--panel-accent)]">
+                  <div className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[var(--stack-pill-icon-bg)] shadow-inner ring-1 ring-white/10 transition-transform group-hover:scale-105">
+                    <StackGlyph icon={tool.icon} />
+                  </div>
+                  <span className="text-[13px] font-medium tracking-wide text-[var(--stack-pill-text)]">
+                    {tool.name}
+                  </span>
+                </div>
+              ))}
+            </MarqueeTicker>
+
+            <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
+              <article className="interactive-card stack-showcase-panel rounded-[1.8rem] border p-5 sm:p-6">
+                <p className="text-xs uppercase tracking-[0.28em] text-[var(--panel-accent)]">
+                  My toolkit
+                </p>
+                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-[var(--text-on-dark)] sm:text-[2rem]">
+                  Covers web and mobile, front to back.
+                </h3>
+                <p className="mt-4 max-w-md text-sm leading-7 text-[var(--text-on-dark-soft)] sm:text-base">
+                  I don't stick to one framework — I pick whatever fits the
+                  project. Frontend, backend, React Native, Flutter, and the
+                  tools around them.
+                </p>
+
+                <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
+                  {stackGroups.map((group, index) => (
+                    <div
+                      key={group.category}
+                      className={`rounded-[1.25rem] border border-[var(--release-card-border)] bg-[var(--release-card)] px-4 py-3 ${getRevealDelayClass(index + 1)}`}
+                    >
+                      <p className="text-xs uppercase tracking-[0.28em] text-[var(--panel-accent)]">
                         {group.label}
                       </p>
-                      <p className="mt-2 text-sm text-[var(--text-on-dark-soft)]">
-                        {group.items.length} tools
+                      <p className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[var(--release-text)]">
+                        {group.items.length}
                       </p>
                     </div>
-                    <span className="stack-group-pulse" aria-hidden="true" />
-                  </div>
+                  ))}
+                </div>
+              </article>
 
-                  <div className="stack-pill-grid flex flex-wrap gap-3">
-                    {group.items.map((item) => (
-                      <div key={item.name} className="stack-pill">
-                        <span className="stack-pill-icon" aria-hidden="true">
-                          <StackGlyph icon={item.icon} />
-                        </span>
-                        <span>{item.name}</span>
+              <div className="grid gap-4">
+                {stackGroups.map((group, groupIndex) => (
+                  <article
+                    key={group.category}
+                    className={`interactive-card stack-group rounded-[1.7rem] border p-4 sm:p-5 ${getRevealDelayClass((groupIndex % 4) + 1)}`}
+                  >
+                    <div className="mb-4 flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.32em] text-[var(--panel-accent)]">
+                          {group.label}
+                        </p>
+                        <p className="mt-2 text-sm text-[var(--text-on-dark-soft)]">
+                          {group.items.length} tools
+                        </p>
                       </div>
-                    ))}
+                      <span className="stack-group-pulse" aria-hidden="true" />
+                    </div>
+
+                    <motion.div
+                      className="stack-pill-grid flex flex-wrap gap-3"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-80px" }}
+                      variants={{
+                        visible: { transition: { staggerChildren: 0.06 } },
+                        hidden: {},
+                      }}
+                    >
+                      {group.items.map((item) => (
+                        <motion.div
+                          key={item.name}
+                          className="stack-pill"
+                          variants={{
+                            hidden: { y: 20, opacity: 0 },
+                            visible: {
+                              y: 0,
+                              opacity: 1,
+                              transition: { duration: 0.4 },
+                            },
+                          }}
+                        >
+                          <span className="stack-pill-icon" aria-hidden="true">
+                            <StackGlyph icon={item.icon} />
+                          </span>
+                          <span>{item.name}</span>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="activity"
+            className="reveal-on-scroll rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-5 sm:p-8 reveal-delay-1"
+            data-reveal
+          >
+            <SectionHeading
+              eyebrow="Activity"
+              title="I try to write code every day."
+              description="Here's what my GitHub looks like over the past year."
+            />
+
+            <div className="activity-surface mt-8 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-soft)] p-3 sm:p-5">
+              <div className="activity-meta-row">
+                <p className="activity-mobile-hint">
+                  Swipe to see the full year
+                </p>
+                <p className="activity-desktop-note">
+                  Contributions over the past year.
+                </p>
+              </div>
+
+              <div className="activity-scroll-shell">
+                <div className="activity-scroll hide-scrollbar">
+                  <div className="activity-calendar-track">
+                    <GitHubCalendar
+                      username="csy20"
+                      colorScheme={theme === "dark" ? "dark" : "light"}
+                      theme={githubCalendarTheme}
+                      style={githubCalendarStyle}
+                    />
                   </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="activity"
-          className="reveal-on-scroll rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-5 sm:p-8 reveal-delay-1"
-          data-reveal
-        >
-          <SectionHeading
-            eyebrow="Activity"
-            title="I try to write code every day."
-            description="Here's what my GitHub looks like over the past year."
-          />
-
-          <div className="activity-surface mt-8 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-soft)] p-3 sm:p-5">
-            <div className="activity-meta-row">
-              <p className="activity-mobile-hint">
-                Swipe to see the full year
-              </p>
-              <p className="activity-desktop-note">
-                Contributions over the past year.
-              </p>
-            </div>
-
-            <div className="activity-scroll-shell">
-              <div className="activity-scroll hide-scrollbar">
-                <div className="activity-calendar-track">
-                  <GitHubCalendar
-                    username="csy20"
-                    colorScheme={theme === "dark" ? "dark" : "light"}
-                    theme={{
-                      light: [
-                        "#fbf4ea",
-                        "#ead6c1",
-                        "#d1ab84",
-                        "#b97a49",
-                        "#7e5031",
-                      ],
-                      dark: [
-                        "#171311",
-                        "#4d392d",
-                        "#7e5d46",
-                        "#c18657",
-                        "#e1b68b",
-                      ],
-                    }}
-                    style={{
-                      color: "var(--text-primary)",
-                    }}
-                  />
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        <section
-          id="projects"
-          className="reveal-on-scroll space-y-7 rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-5 sm:space-y-8 sm:p-8 reveal-delay-1"
-          data-reveal
-        >
-          <SectionHeading
-            eyebrow="Projects"
-            title="Things I've built."
-            description="A mix of apps I've shipped, side projects I learned from, and tools I made because I needed them."
-          />
+          </section>
+          <section
+            id="projects"
+            className="reveal-on-scroll space-y-7 rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] p-5 sm:space-y-8 sm:p-8 reveal-delay-1"
+            data-reveal
+          >
+            <SectionHeading
+              eyebrow="Projects"
+              title="Things I've built."
+              description="A mix of apps I've shipped, side projects I learned from, and tools I made because I needed them."
+            />
 
-          {featuredProject ? (
-            <article
-              id="featured-release"
-              className="interactive-card reveal-on-scroll overflow-hidden rounded-3xl border reveal-delay-2"
-              style={{
-                borderColor: "var(--release-border)",
-                background: "var(--release-background)",
-              }}
-              data-reveal
-            >
-              <div className="grid gap-5 p-5 sm:gap-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-                <div className="space-y-5">
-                  <div className="featured-header-row flex flex-col gap-4 sm:flex-row sm:items-center">
-                    <div className="flex h-16 w-16 flex-none items-center justify-center overflow-hidden rounded-[1.15rem] border border-[var(--release-card-border)] bg-[var(--surface-dark-strong)] p-2 shadow-sm sm:h-[4.6rem] sm:w-[4.6rem] sm:rounded-[1.3rem]">
-                      <img
-                        src="/bytewise-logo.png"
-                        alt="Bytewise logo"
-                        className="h-full w-full object-contain"
-                      />
+            {featuredProject ? (
+              <article
+                id="featured-release"
+                className="interactive-card reveal-on-scroll overflow-hidden rounded-3xl border reveal-delay-2"
+                style={{
+                  borderColor: "var(--release-border)",
+                  background: "var(--release-background)",
+                }}
+                data-reveal
+              >
+                <div className="grid gap-5 p-5 sm:gap-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+                  <div className="space-y-5">
+                    <div className="featured-header-row flex flex-col gap-4 sm:flex-row sm:items-center">
+                      <div className="flex h-16 w-16 flex-none items-center justify-center overflow-hidden rounded-[1.15rem] border border-[var(--release-card-border)] bg-[var(--surface-dark-strong)] p-2 shadow-sm sm:h-[4.6rem] sm:w-[4.6rem] sm:rounded-[1.3rem]">
+                        <motion.img
+                          src="/bytewise-logo.png"
+                          alt="Bytewise logo"
+                          loading="lazy"
+                          decoding="async"
+                          width={512}
+                          height={512}
+                          className="h-full w-full object-contain"
+                          initial={{ clipPath: "inset(100% 0 0 0)" }}
+                          whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+                          viewport={{ once: true }}
+                          transition={{
+                            ease: [0.76, 0, 0.24, 1],
+                            duration: 0.75,
+                          }}
+                        />
+                      </div>
+
+                      <div className="min-w-0">
+                        <h3 className="text-4xl font-semibold tracking-[-0.05em] text-[var(--release-text)] sm:text-5xl">
+                          {featuredProject.title}
+                        </h3>
+                        <p className="mt-1 flex items-center gap-2 text-sm text-[var(--release-muted)] sm:text-[15px]">
+                          <span>com.csy20.bytewise</span>
+                          <span aria-hidden="true">•</span>
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="min-w-0">
-                      <h3 className="text-4xl font-semibold tracking-[-0.05em] text-[var(--release-text)] sm:text-5xl">
-                        {featuredProject.title}
-                      </h3>
-                      <p className="mt-1 flex items-center gap-2 text-sm text-[var(--release-muted)] sm:text-[15px]">
-                        <span>com.csy20.bytewise</span>
-                        <span aria-hidden="true">•</span>
+                    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--release-card-border)] bg-[var(--release-card)] px-4 py-2 text-xs uppercase tracking-[0.28em] text-[var(--release-text)]">
+                      Featured release
+                      <SparkIcon />
+                    </div>
+
+                    <div className="space-y-3">
+                      <p className="text-sm uppercase tracking-[0.28em] text-[var(--release-muted)]">
+                        {featuredProject.eyebrow}
                       </p>
-                    </div>
-                  </div>
-
-                  <div className="inline-flex items-center gap-2 rounded-full border border-[var(--release-card-border)] bg-[var(--release-card)] px-4 py-2 text-xs uppercase tracking-[0.28em] text-[var(--release-text)]">
-                    Featured release
-                    <SparkIcon />
-                  </div>
-
-                  <div className="space-y-3">
-                    <p className="text-sm uppercase tracking-[0.28em] text-[var(--release-muted)]">
-                      {featuredProject.eyebrow}
-                    </p>
-                    <p className="max-w-2xl text-[15px] leading-7 text-[var(--release-body)] sm:text-base sm:leading-8">
-                      {featuredProject.description}
-                    </p>
-                    {featuredProject.releaseNote ? (
                       <p className="max-w-2xl text-[15px] leading-7 text-[var(--release-body)] sm:text-base sm:leading-8">
-                        {featuredProject.releaseNote}
+                        {featuredProject.description}
                       </p>
-                    ) : null}
+                      {featuredProject.releaseNote ? (
+                        <p className="max-w-2xl text-[15px] leading-7 text-[var(--release-body)] sm:text-base sm:leading-8">
+                          {featuredProject.releaseNote}
+                        </p>
+                      ) : null}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {featuredProject.tags.map((tag) => (
+                        <span
+                          key={`${featuredProject.title}-${tag}`}
+                          className="rounded-full border border-[var(--release-card-border)] bg-[var(--release-card)] px-3 py-1 text-xs uppercase tracking-[0.22em] text-[var(--release-text)]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-3">
+                      {featuredProject.links.map((link) => (
+                        <a
+                          key={`${featuredProject.title}-${link.label}`}
+                          href={link.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={`${ctaButtonClasses} px-5 py-3 ${linkToneClasses[link.tone]}`}
+                        >
+                          {link.label}
+                          <span className="button-icon">
+                            <ArrowUpRightIcon />
+                          </span>
+                        </a>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
-                    {featuredProject.tags.map((tag) => (
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                    <article className="interactive-card rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-card)] p-5">
+                      <p className="text-xs uppercase tracking-[0.3em] text-[var(--release-muted)]">
+                        Status
+                      </p>
+                      <p className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[var(--release-text)]">
+                        {featuredProject.spotlight}
+                      </p>
+                      <p className="mt-3 text-sm leading-7 text-[var(--release-body)]">
+                        Having something on the Play Store is different from
+                        having it on GitHub. It means the whole thing actually
+                        works.
+                      </p>
+                    </article>
+
+                    <article className="interactive-card rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-highlight)] p-5 text-[var(--release-highlight-text)]">
+                      <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
+                        Why it's up here
+                      </p>
+                      <p className="mt-3 text-sm leading-7">
+                        Out of everything I've built, this is the one that
+                        actually made it to a store. That's why it gets its own
+                        section.
+                      </p>
+                    </article>
+                  </div>
+                </div>
+              </article>
+            ) : null}
+
+            <div className="grid gap-4 sm:gap-5 lg:grid-cols-2">
+              {standardProjects.map((project, index) => (
+                <MagneticCard
+                  key={project.title}
+                  className={`project-card interactive-card group flex h-full flex-col rounded-2xl border border-[var(--border-soft)] p-4 sm:rounded-[1.5rem] sm:p-6`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: (index % 4) * 0.1,
+                  }}
+                >
+                  <div className="space-y-2.5 sm:space-y-3">
+                    <p className="text-xs uppercase tracking-[0.32em] text-[var(--accent)]">
+                      {project.eyebrow}
+                    </p>
+                    <h3 className="text-xl font-semibold tracking-[-0.03em] text-[var(--text-primary)] sm:text-2xl">
+                      {project.title}
+                    </h3>
+                    <p className="text-base leading-7 text-[var(--text-secondary)]">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="project-tag-row mt-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
                       <span
-                        key={`${featuredProject.title}-${tag}`}
-                        className="rounded-full border border-[var(--release-card-border)] bg-[var(--release-card)] px-3 py-1 text-xs uppercase tracking-[0.22em] text-[var(--release-text)]"
+                        key={`${project.title}-${tag}`}
+                        className="rounded-full border border-[var(--chip-border)] bg-[var(--chip-bg)] px-3 py-1 text-xs uppercase tracking-[0.22em] text-[var(--text-subtle)]"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex flex-wrap gap-3">
-                    {featuredProject.links.map((link) => (
+                  <div className="project-card-actions mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap sm:pt-7">
+                    {project.links.map((link) => (
                       <a
-                        key={`${featuredProject.title}-${link.label}`}
+                        key={`${project.title}-${link.label}`}
                         href={link.href}
                         target="_blank"
                         rel="noreferrer"
-                        className={`${ctaButtonClasses} px-5 py-3 ${linkToneClasses[link.tone]}`}
+                        className={`${projectButtonClasses} project-link-button ${linkToneClasses[link.tone]}`}
                       >
                         {link.label}
                         <span className="button-icon">
@@ -430,167 +567,91 @@ function App() {
                       </a>
                     ))}
                   </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                  <article className="interactive-card rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-card)] p-5">
-                    <p className="text-xs uppercase tracking-[0.3em] text-[var(--release-muted)]">
-                      Status
-                    </p>
-                    <p className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[var(--release-text)]">
-                      {featuredProject.spotlight}
-                    </p>
-                    <p className="mt-3 text-sm leading-7 text-[var(--release-body)]">
-                      Having something on the Play Store is different from having
-                      it on GitHub. It means the whole thing actually works.
-                    </p>
-                  </article>
-
-                  <article className="interactive-card rounded-[1.7rem] border border-[var(--release-card-border)] bg-[var(--release-highlight)] p-5 text-[var(--release-highlight-text)]">
-                    <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
-                      Why it's up here
-                    </p>
-                    <p className="mt-3 text-sm leading-7">
-                      Out of everything I've built, this is the one that
-                      actually made it to a store. That's why it gets
-                      its own section.
-                    </p>
-                  </article>
-                </div>
-              </div>
-            </article>
-          ) : null}
-
-          <div className="grid gap-4 sm:gap-5 lg:grid-cols-2">
-            {standardProjects.map((project, index) => (
-              <article
-                key={project.title}
-                className={`project-card interactive-card group reveal-on-scroll flex h-full flex-col rounded-2xl border border-[var(--border-soft)] p-4 sm:rounded-[1.5rem] sm:p-6 ${getRevealDelayClass((index % 4) + 1)}`}
-                data-reveal
-              >
-                <div className="space-y-2.5 sm:space-y-3">
-                  <p className="text-xs uppercase tracking-[0.32em] text-[var(--accent)]">
-                    {project.eyebrow}
-                  </p>
-                  <h3 className="text-xl font-semibold tracking-[-0.03em] text-[var(--text-primary)] sm:text-2xl">
-                    {project.title}
-                  </h3>
-                  <p className="text-base leading-7 text-[var(--text-secondary)]">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className="project-tag-row mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={`${project.title}-${tag}`}
-                      className="rounded-full border border-[var(--chip-border)] bg-[var(--chip-bg)] px-3 py-1 text-xs uppercase tracking-[0.22em] text-[var(--text-subtle)]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="project-card-actions mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap sm:pt-7">
-                  {project.links.map((link) => (
-                    <a
-                      key={`${project.title}-${link.label}`}
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={`${projectButtonClasses} project-link-button ${linkToneClasses[link.tone]}`}
-                    >
-                      {link.label}
-                      <span className="button-icon">
-                        <ArrowUpRightIcon />
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section
-          id="contact"
-          className="reveal-on-scroll rounded-3xl border border-[var(--border-soft)] bg-[var(--surface-dark)] p-5 text-[var(--text-on-dark)] sm:p-8 reveal-delay-1"
-          data-reveal
-        >
-          <SectionHeading
-            eyebrow="Contact"
-            title="Want to work together? Say hi."
-            description="Easiest way is email, but I'm around on all of these."
-            invert
-          />
-
-          <div className="contact-layout grid gap-5 sm:gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <article className="contact-panel interactive-card rounded-2xl border border-[var(--panel-border)] p-5 sm:rounded-[1.5rem] sm:p-6">
-              <p className="font-serif-accent text-4xl italic text-[var(--panel-accent)]">
-                csy20.works
-              </p>
-              <p className="mt-4 text-base leading-7 text-[var(--text-on-dark-soft)]">
-                I'm open to freelance work, contract projects, and
-                collaborations — especially if it involves mobile apps
-                or making an existing frontend better.
-              </p>
-
-              <div className="contact-actions mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <a
-                  href="mailto:chitreshy20@gmail.com"
-                  className={`${ctaButtonClasses} contact-primary-button button-clay`}
-                >
-                  Send an email
-                  <span className="button-icon">
-                    <MailIcon />
-                  </span>
-                </a>
-                <a
-                  href={resumeUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`${ctaButtonClasses} contact-secondary-button button-panel`}
-                >
-                  Get resume
-                  <span className="button-icon">
-                    <DownloadIcon />
-                  </span>
-                </a>
-              </div>
-            </article>
-
-            <div className="contact-social-grid grid gap-4 sm:grid-cols-2">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`contact-link-card interactive-card reveal-on-scroll rounded-2xl border border-[var(--panel-border)] p-4 sm:rounded-2xl sm:p-5 ${getRevealDelayClass((index % 4) + 1)}`}
-                  data-reveal
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="contact-link-icon rounded-full border border-[var(--panel-border)] p-3 text-[var(--panel-accent)]">
-                      <SocialGlyph icon={link.icon} />
-                    </div>
-                    <div className="contact-link-copy">
-                      <p className="text-sm uppercase tracking-[0.24em] text-[var(--panel-accent)]">
-                        {link.label}
-                      </p>
-                      <p className="mt-1 text-sm text-[var(--text-on-dark)]">
-                        {link.detail}
-                      </p>
-                    </div>
-                  </div>
-                </a>
+                </MagneticCard>
               ))}
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
 
-      <BottomDock showFeaturedLink={Boolean(featuredProject)} />
-    </div>
+          <section
+            id="contact"
+            className="reveal-on-scroll rounded-3xl border border-[var(--border-soft)] bg-[var(--surface-dark)] p-5 text-[var(--text-on-dark)] sm:p-8 reveal-delay-1"
+            data-reveal
+          >
+            <SectionHeading
+              eyebrow="Contact"
+              title="Want to work together? Say hi."
+              description="Easiest way is email, but I'm around on all of these."
+              invert
+            />
+
+            <div className="contact-layout grid gap-5 sm:gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+              <article className="contact-panel interactive-card rounded-2xl border border-[var(--panel-border)] p-5 sm:rounded-[1.5rem] sm:p-6">
+                <p className="font-serif-accent text-4xl italic text-[var(--panel-accent)]">
+                  csy20.works
+                </p>
+                <p className="mt-4 text-base leading-7 text-[var(--text-on-dark-soft)]">
+                  I'm open to freelance work, contract projects, and
+                  collaborations — especially if it involves mobile apps or
+                  making an existing frontend better.
+                </p>
+
+                <div className="contact-actions mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
+                  <a
+                    href="mailto:chitreshy20@gmail.com"
+                    className={`${ctaButtonClasses} contact-primary-button button-clay`}
+                  >
+                    Send an email
+                    <span className="button-icon">
+                      <MailIcon />
+                    </span>
+                  </a>
+                  <a
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${ctaButtonClasses} contact-secondary-button button-panel`}
+                  >
+                    Get resume
+                    <span className="button-icon">
+                      <DownloadIcon />
+                    </span>
+                  </a>
+                </div>
+              </article>
+
+              <div className="contact-social-grid grid gap-4 sm:grid-cols-2">
+                {socialLinks.map((link, index) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`contact-link-card interactive-card reveal-on-scroll rounded-2xl border border-[var(--panel-border)] p-4 sm:rounded-2xl sm:p-5 ${getRevealDelayClass((index % 4) + 1)}`}
+                    data-reveal
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="contact-link-icon rounded-full border border-[var(--panel-border)] p-3 text-[var(--panel-accent)]">
+                        <SocialGlyph icon={link.icon} />
+                      </div>
+                      <div className="contact-link-copy">
+                        <p className="text-sm uppercase tracking-[0.24em] text-[var(--panel-accent)]">
+                          {link.label}
+                        </p>
+                        <p className="mt-1 text-sm text-[var(--text-on-dark)]">
+                          {link.detail}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <BottomDock showFeaturedLink={Boolean(featuredProject)} />
+      </div>
+    </InkTransition>
   );
 }
 
@@ -607,10 +668,19 @@ function HeroPortraitPanel() {
             className="rounded-2xl p-2.5 sm:p-4"
             style={{ background: "var(--hero-card-gradient)" }}
           >
-            <img
+            <motion.img
               src="/pfp.jpeg"
               alt="Portrait of Chitresh Yadav"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              width={1200}
+              height={1200}
               className="aspect-[4/5] w-full rounded-[1.35rem] object-cover object-center"
+              initial={{ clipPath: "inset(100% 0 0 0)" }}
+              whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+              viewport={{ once: true }}
+              transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.75 }}
             />
           </div>
         </article>
