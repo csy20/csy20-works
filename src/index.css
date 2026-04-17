@@ -526,7 +526,11 @@ body::after {
   }
 
   .project-card {
-    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+    background: linear-gradient(
+      180deg,
+      var(--surface) 0%,
+      var(--surface-soft) 100%
+    );
     box-shadow: 0 20px 42px -30px rgba(24, 20, 16, 0.18);
   }
 
@@ -564,7 +568,10 @@ body::after {
       rgba(255, 255, 255, 0.02) 100%
     );
     padding: 0.95rem;
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     box-shadow: 0 30px 70px -42px rgba(24, 20, 16, 0.32);
   }
 
@@ -832,7 +839,10 @@ body::after {
   .stack-group {
     border-color: var(--stack-panel-border);
     background: var(--stack-panel-bg);
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .stack-group-pulse {
