@@ -7,6 +7,19 @@ type NavUnderlineProps = {
   className?: string;
 };
 
+const underlineVariants = {
+  initial: {
+    scaleX: 0,
+    originX: 1,
+    transition: { duration: 0.25, ease: [0.4, 0, 0.2, 1] as const },
+  },
+  hover: {
+    scaleX: 1,
+    originX: 0,
+    transition: { duration: 0.25, ease: [0.4, 0, 0.2, 1] as const },
+  },
+};
+
 export function NavUnderline({
   children,
   href,
@@ -32,18 +45,7 @@ export function NavUnderline({
       {children}
       <motion.span
         className="absolute -bottom-1 left-0 h-[1.5px] w-full bg-current"
-        variants={{
-          initial: {
-            scaleX: 0,
-            originX: 1,
-            transition: { duration: 0.25, ease: "easeInOut" },
-          },
-          hover: {
-            scaleX: 1,
-            originX: 0,
-            transition: { duration: 0.25, ease: "easeInOut" },
-          },
-        }}
+        variants={underlineVariants}
       />
     </motion.a>
   );

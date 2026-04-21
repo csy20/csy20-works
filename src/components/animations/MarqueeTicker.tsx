@@ -25,13 +25,26 @@ export function MarqueeTicker({
   return (
     <div
       className={`relative block w-full overflow-hidden whitespace-nowrap ${className}`}
+      style={{
+        // Give the parent its own stacking context and transform layer
+        transform: "translateZ(0)",
+        willChange: "transform",
+      }}
     >
       <motion.div
         className="inline-flex min-w-fit flex-nowrap items-center gap-4"
         animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         whileHover={{ animationPlayState: "paused" }}
-        style={{ width: "max-content" }}
+        style={{
+          width: "max-content",
+          // Force hardware acceleration and prevent sub-pixel tearing
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
+          // Prevent font smoothing artifacts
+          WebkitFontSmoothing: "antialiased",
+        }}
       >
         <div className="flex gap-4 pr-4">{children}</div>
         <div className="flex gap-4 pr-4" aria-hidden="true">
