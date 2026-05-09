@@ -39,8 +39,14 @@ export function CursorGlow() {
     if (theme !== "dark" || shouldReduceMotion || !hasFinePointer) return;
 
     let frameId = 0;
+    let lastX = 0;
+    let lastY = 0;
 
     const moveCursor = (e: MouseEvent) => {
+      if (e.clientX === lastX && e.clientY === lastY) return;
+      lastX = e.clientX;
+      lastY = e.clientY;
+
       if (frameId) {
         cancelAnimationFrame(frameId);
       }
@@ -48,6 +54,7 @@ export function CursorGlow() {
       frameId = requestAnimationFrame(() => {
         x.set(e.clientX - 100);
         y.set(e.clientY - 100);
+        frameId = 0;
       });
     };
 
@@ -59,7 +66,8 @@ export function CursorGlow() {
       }
       window.removeEventListener("mousemove", moveCursor);
     };
-  }, [hasFinePointer, x, y, theme, shouldReduceMotion]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- x,y are stable motion values, effect intentionally doesn't depend on them
+  }, [hasFinePointer, theme, shouldReduceMotion]);
 
   if (theme !== "dark" || shouldReduceMotion || !hasFinePointer) return null;
 

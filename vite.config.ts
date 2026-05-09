@@ -15,13 +15,6 @@ export default defineConfig({
             if (id.includes("react") || id.includes("react-dom")) {
               return "react-vendor";
             }
-            if (
-              id.includes("react-hook-form") ||
-              id.includes("zod") ||
-              id.includes("@hookform")
-            ) {
-              return "form-vendor";
-            }
             if (id.includes("framer-motion")) {
               return "motion-vendor";
             }

@@ -1131,13 +1131,13 @@ body::after {
       opacity 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
       filter 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
       transform 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
-    will-change: opacity, filter, transform;
   }
 
   .reveal-on-scroll.is-visible {
     opacity: 1;
     filter: blur(0);
     transform: translate3d(0, 0, 0) scale(1);
+    will-change: auto;
   }
 
   .reveal-delay-1 {
@@ -1384,12 +1384,7 @@ body::after {
 body,
 header,
 main,
-footer,
-nav,
-aside,
-section,
-article,
-div {
+footer {
   transition:
     background 0.25s ease,
     color 0.2s ease;
@@ -1399,18 +1394,17 @@ div {
   h1,
   h2 {
     font-family: "Georgia", serif;
+    font-weight: 800;
   }
 
   h1 {
     font-size: 52px;
-    font-weight: 800;
     letter-spacing: -3px;
     line-height: 0.95;
   }
 
   h2 {
     font-size: 32px;
-    font-weight: 800;
     letter-spacing: -1.5px;
   }
 

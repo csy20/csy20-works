@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, type ReactNode, memo } from "react";
 import { motion } from "framer-motion";
 
 import { RevealText } from "./components/animations/RevealText";
@@ -696,7 +696,7 @@ type SectionHeadingProps = {
   invert?: boolean;
 };
 
-function SectionHeading({
+const SectionHeading = memo(function SectionHeading({
   eyebrow,
   title,
   description,
@@ -731,7 +731,7 @@ function SectionHeading({
       </p>
     </div>
   );
-}
+});
 
 function BackgroundOrbs() {
   return (
@@ -881,7 +881,7 @@ function StackGlyph({ icon }: { icon: StackItem["icon"] }) {
   }
 }
 
-function ArrowUpRightIcon() {
+const ArrowUpRightIcon = memo(function ArrowUpRightIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
       <path
@@ -893,9 +893,9 @@ function ArrowUpRightIcon() {
       />
     </svg>
   );
-}
+});
 
-function SparkIcon() {
+const SparkIcon = memo(function SparkIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
       <path
@@ -906,9 +906,9 @@ function SparkIcon() {
       />
     </svg>
   );
-}
+});
 
-function DownloadIcon() {
+const DownloadIcon = memo(function DownloadIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
       <path
@@ -920,9 +920,9 @@ function DownloadIcon() {
       />
     </svg>
   );
-}
+});
 
-function MailIcon() {
+const MailIcon = memo(function MailIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
       <path
@@ -934,9 +934,9 @@ function MailIcon() {
       />
     </svg>
   );
-}
+});
 
-function HomeIcon() {
+const HomeIcon = memo(function HomeIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5" aria-hidden="true">
       <path
@@ -948,9 +948,9 @@ function HomeIcon() {
       />
     </svg>
   );
-}
+});
 
-function PlayStoreIcon() {
+const PlayStoreIcon = memo(function PlayStoreIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5" aria-hidden="true">
       <path
@@ -962,9 +962,9 @@ function PlayStoreIcon() {
       />
     </svg>
   );
-}
+});
 
-function ContactIcon() {
+const ContactIcon = memo(function ContactIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5" aria-hidden="true">
       <path
@@ -976,9 +976,9 @@ function ContactIcon() {
       />
     </svg>
   );
-}
+});
 
-function CoffeeIcon() {
+const CoffeeIcon = memo(function CoffeeIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5" aria-hidden="true">
       <path
@@ -989,16 +989,16 @@ function CoffeeIcon() {
         strokeLinejoin="round"
       />
       <path
-        d="M7 4.5c0 .55-.35.85-.7 1.16-.33.29-.67.59-.67 1.14M9.75 4.5c0 .55-.35.85-.7 1.16-.33.29-.67.59-.67 1.14"
+        d="M7 4.5c0,.55-.35.85-.7 1.16-.33.29-.67.59-.67 1.14M9.75 4.5c0,.55-.35.85-.7 1.16-.33.29-.67.59-.67 1.14"
         stroke="currentColor"
         strokeWidth="1.3"
         strokeLinecap="round"
       />
     </svg>
   );
-}
+});
 
-function GitHubIcon() {
+const GitHubIcon = memo(function GitHubIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -1009,9 +1009,9 @@ function GitHubIcon() {
       <path d="M12 .5a12 12 0 0 0-3.794 23.383c.6.111.82-.258.82-.577 0-.285-.011-1.228-.017-2.226-3.338.726-4.042-1.415-4.042-1.415-.546-1.385-1.334-1.754-1.334-1.754-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.071 1.834 2.809 1.304 3.494.997.107-.775.419-1.304.763-1.603-2.665-.304-5.466-1.334-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.526.117-3.178 0 0 1.009-.323 3.306 1.23a11.5 11.5 0 0 1 6.018 0c2.297-1.553 3.305-1.23 3.305-1.23.653 1.652.242 2.875.119 3.178.77.84 1.235 1.91 1.235 3.22 0 4.608-2.804 5.623-5.476 5.922.431.372.815 1.102.815 2.222 0 1.605-.014 2.898-.014 3.292 0 .321.217.694.825.576A12.001 12.001 0 0 0 12 .5Z" />
     </svg>
   );
-}
+});
 
-function LinkedInIcon() {
+const LinkedInIcon = memo(function LinkedInIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -1022,9 +1022,9 @@ function LinkedInIcon() {
       <path d="M4.98 3.5A2.48 2.48 0 1 0 5 8.46a2.48 2.48 0 0 0-.02-4.96ZM3 9h4v12H3zm7 0h3.83v1.71h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.66 4.8 6.12V21h-4v-5.54c0-1.32-.03-3.02-1.84-3.02-1.85 0-2.13 1.44-2.13 2.92V21h-4z" />
     </svg>
   );
-}
+});
 
-function XIcon() {
+const XIcon = memo(function XIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -1035,9 +1035,9 @@ function XIcon() {
       <path d="M18.901 2H21.99l-6.75 7.714L23.18 22h-6.215l-4.866-6.973L6.01 22H2.92l7.22-8.252L.82 2h6.372l4.398 6.295L18.9 2Zm-1.09 18h1.712L6.258 3.895H4.42L17.81 20Z" />
     </svg>
   );
-}
+});
 
-function HtmlIcon() {
+const HtmlIcon = memo(function HtmlIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1055,9 +1055,9 @@ function HtmlIcon() {
       />
     </svg>
   );
-}
+});
 
-function CssIcon() {
+const CssIcon = memo(function CssIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1075,9 +1075,9 @@ function CssIcon() {
       />
     </svg>
   );
-}
+});
 
-function JavaScriptIcon() {
+const JavaScriptIcon = memo(function JavaScriptIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <rect
@@ -1098,9 +1098,9 @@ function JavaScriptIcon() {
       />
     </svg>
   );
-}
+});
 
-function TypeScriptIcon() {
+const TypeScriptIcon = memo(function TypeScriptIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <rect
@@ -1121,9 +1121,9 @@ function TypeScriptIcon() {
       />
     </svg>
   );
-}
+});
 
-function JsxIcon() {
+const JsxIcon = memo(function JsxIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1142,9 +1142,9 @@ function JsxIcon() {
       />
     </svg>
   );
-}
+});
 
-function TsxIcon() {
+const TsxIcon = memo(function TsxIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <circle
@@ -1163,9 +1163,9 @@ function TsxIcon() {
       />
     </svg>
   );
-}
+});
 
-function NextJsIcon() {
+const NextJsIcon = memo(function NextJsIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <circle
@@ -1184,9 +1184,9 @@ function NextJsIcon() {
       />
     </svg>
   );
-}
+});
 
-function ReactIcon() {
+const ReactIcon = memo(function ReactIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <ellipse
@@ -1218,9 +1218,9 @@ function ReactIcon() {
       <circle cx="10" cy="10" r="1.4" fill="currentColor" />
     </svg>
   );
-}
+});
 
-function ReactNativeIcon() {
+const ReactNativeIcon = memo(function ReactNativeIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <ellipse
@@ -1261,9 +1261,9 @@ function ReactNativeIcon() {
       <circle cx="10" cy="9.6" r="1.25" fill="currentColor" />
     </svg>
   );
-}
+});
 
-function MongoDbIcon() {
+const MongoDbIcon = memo(function MongoDbIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1281,9 +1281,9 @@ function MongoDbIcon() {
       />
     </svg>
   );
-}
+});
 
-function ExpressIcon() {
+const ExpressIcon = memo(function ExpressIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1300,9 +1300,9 @@ function ExpressIcon() {
       />
     </svg>
   );
-}
+});
 
-function UbuntuIcon() {
+const UbuntuIcon = memo(function UbuntuIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <circle
@@ -1323,9 +1323,9 @@ function UbuntuIcon() {
       />
     </svg>
   );
-}
+});
 
-function FlutterIcon() {
+const FlutterIcon = memo(function FlutterIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1337,9 +1337,9 @@ function FlutterIcon() {
       />
     </svg>
   );
-}
+});
 
-function GoIcon() {
+const GoIcon = memo(function GoIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1359,9 +1359,9 @@ function GoIcon() {
       />
     </svg>
   );
-}
+});
 
-function FirebaseIcon() {
+const FirebaseIcon = memo(function FirebaseIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1373,9 +1373,9 @@ function FirebaseIcon() {
       />
     </svg>
   );
-}
+});
 
-function SupabaseIcon() {
+const SupabaseIcon = memo(function SupabaseIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1386,9 +1386,9 @@ function SupabaseIcon() {
       />
     </svg>
   );
-}
+});
 
-function DartIcon() {
+const DartIcon = memo(function DartIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1406,9 +1406,9 @@ function DartIcon() {
       />
     </svg>
   );
-}
+});
 
-function TailwindCssIcon() {
+const TailwindCssIcon = memo(function TailwindCssIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1420,9 +1420,9 @@ function TailwindCssIcon() {
       />
     </svg>
   );
-}
+});
 
-function PythonIcon() {
+const PythonIcon = memo(function PythonIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
       <path
@@ -1442,6 +1442,6 @@ function PythonIcon() {
       />
     </svg>
   );
-}
+});
 
 export default App;
