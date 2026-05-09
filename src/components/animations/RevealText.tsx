@@ -38,7 +38,7 @@ function RevealTextInner({
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: delay! * i },
+      transition: { staggerChildren: 0.08, delayChildren: (delay ?? 0) * i },
     }),
   };
 
