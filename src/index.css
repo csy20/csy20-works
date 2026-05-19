@@ -1157,6 +1157,12 @@ body::after {
     will-change: auto;
   }
 
+  @media (max-width: 640px) {
+    .reveal-on-scroll {
+      filter: blur(6px);
+    }
+  }
+
   .reveal-delay-1 {
     --reveal-delay: 90ms;
   }
@@ -1340,10 +1346,6 @@ body::after {
   .featured-header-row {
     align-items: flex-start;
     gap: 0.75rem;
-  }
-
-  .reveal-on-scroll {
-    filter: blur(6px);
   }
 }
 
