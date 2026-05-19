@@ -26,9 +26,9 @@ export function MarqueeTicker({
     <div
       className={`relative block w-full overflow-hidden whitespace-nowrap ${className}`}
       style={{
-        // Give the parent its own stacking context and transform layer
+        // Establish a stacking context without permanently promoting to GPU layer
+        // willChange on the static wrapper wastes GPU memory on mobile — omit it here
         transform: "translateZ(0)",
-        willChange: "transform",
       }}
     >
       <motion.div

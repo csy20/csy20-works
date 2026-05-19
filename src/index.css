@@ -275,6 +275,8 @@ body {
       var(--bg-bottom) 100%
     );
   color: var(--text-primary);
+  /* Prevent iOS overscroll bounce from revealing the raw background color */
+  overscroll-behavior: none;
 }
 
 body::before {
@@ -290,9 +292,11 @@ body::before {
 
 body::after {
   content: "";
-  position: fixed;
+  /* Use absolute instead of fixed to avoid iOS compositing / blank-flash glitch
+     caused by filter:blur on a fixed element interacting with sticky headers */
+  position: absolute;
   right: -10%;
-  bottom: -14%;
+  bottom: 0;
   height: 28rem;
   width: 28rem;
   pointer-events: none;
@@ -300,6 +304,8 @@ body::after {
   filter: blur(18px);
   opacity: 0.88;
   animation: glowPulse 16s ease-in-out infinite;
+  /* Prevent this element from creating an unwanted stacking context on mobile */
+  will-change: opacity;
 }
 
 @layer base {
@@ -561,7 +567,9 @@ body::after {
 
   .hero-panel {
     position: relative;
-    overflow: visible;
+    /* backdrop-filter requires overflow:hidden or clip on many Android WebViews;
+       using clip instead of hidden avoids clipping absolutely-positioned children */
+    overflow: clip;
     border: 1px solid var(--border-soft);
     border-radius: 2rem;
     background: linear-gradient(
@@ -712,7 +720,8 @@ body::after {
 
   .hero-floating-card {
     position: absolute;
-    right: -1.1rem;
+    /* Clamp the negative offset so it never overflows viewport on narrow phones */
+    right: max(-1.1rem, -4vw);
     bottom: -0.4rem;
     width: min(15rem, 76%);
     border-radius: 1.4rem;
@@ -720,6 +729,8 @@ body::after {
     background: var(--surface-raised);
     padding: 1rem;
     box-shadow: 0 24px 48px -26px rgba(24, 20, 16, 0.28);
+    /* Prevent the card from triggering horizontal scroll on iOS */
+    max-width: calc(100% + 1.1rem);
   }
 
   .hero-floating-kicker {

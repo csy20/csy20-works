@@ -4,9 +4,31 @@ import {
   useSpring,
   useReducedMotion,
 } from "framer-motion";
-import { type ComponentProps, type MouseEvent, useRef } from "react";
+import {
+  type ComponentProps,
+  type MouseEvent,
+  useRef,
+  useEffect,
+  useState,
+} from "react";
 
 type MagneticCardProps = ComponentProps<typeof motion.article>;
+
+function useHasTouchScreen() {
+  // Read the initial value during render via lazy initializer (avoids setState-in-effect)
+  const [isTouch, setIsTouch] = useState(() =>
+    typeof window === "undefined"
+      ? false
+      : window.matchMedia("(pointer: coarse)").matches,
+  );
+  useEffect(() => {
+    const media = window.matchMedia("(pointer: coarse)");
+    const handler = (e: MediaQueryListEvent) => setIsTouch(e.matches);
+    media.addEventListener("change", handler);
+    return () => media.removeEventListener("change", handler);
+  }, []);
+  return isTouch;
+}
 
 export function MagneticCard({
   children,
@@ -16,6 +38,7 @@ export function MagneticCard({
 }: MagneticCardProps) {
   const ref = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const isTouch = useHasTouchScreen();
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -25,7 +48,8 @@ export function MagneticCard({
   const smoothY = useSpring(y, springConfig);
 
   const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
-    if (!ref.current || shouldReduceMotion) return;
+    // Skip on touch devices — touch events simulate mousemove on iOS causing jank
+    if (!ref.current || shouldReduceMotion || isTouch) return;
 
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
@@ -37,7 +61,7 @@ export function MagneticCard({
   };
 
   const handleMouseLeave = () => {
-    if (shouldReduceMotion) return;
+    if (shouldReduceMotion || isTouch) return;
     x.set(0);
     y.set(0);
   };
@@ -49,7 +73,7 @@ export function MagneticCard({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={
-        shouldReduceMotion
+        shouldReduceMotion || isTouch
           ? (style ?? {})
           : { ...style, x: smoothX, y: smoothY }
       }
