@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode, memo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { RevealText } from "./components/animations/RevealText";
 import { MarqueeTicker } from "./components/animations/MarqueeTicker";
@@ -131,7 +131,10 @@ function App() {
         <ThemeTransitionOverlay />
         <BackgroundOrbs />
 
-        <header className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[var(--header-bg)] backdrop-blur-2xl">
+        <header
+          className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[var(--header-bg)] backdrop-blur-2xl"
+          style={{ transform: "translateZ(0)" }}
+        >
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-6 sm:py-4 lg:px-8">
             <a
               href="#top"
@@ -785,6 +788,7 @@ function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
       >
         <nav
           className="flex items-center gap-0 rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-1.5 py-1.5 shadow-lg backdrop-blur-2xl"
+          style={{ transform: "translateZ(0)" }}
           aria-label="Navigation"
         >
           {mobileTabs.map((tab) => {
@@ -807,17 +811,18 @@ function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
                 <span className="text-[10px] font-medium leading-none tracking-tight">
                   {tab.label}
                 </span>
-                {isActive && (
-                  <motion.span
-                    layoutId="mobile-tab-indicator"
-                    className="absolute inset-0 -z-10 rounded-full bg-[var(--dock-button-hover)]"
-                    transition={{
-                      type: "spring",
-                      stiffness: 340,
-                      damping: 28,
-                    }}
-                  />
-                )}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.span
+                      key="mobile-tab-indicator"
+                      className="absolute inset-0 -z-10 rounded-full bg-[var(--dock-button-hover)]"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    />
+                  )}
+                </AnimatePresence>
               </a>
             );
           })}
@@ -836,6 +841,7 @@ function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
       >
         <nav
           className="hide-scrollbar flex items-center gap-1 overflow-x-auto rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-sm backdrop-blur-2xl sm:max-w-none sm:gap-2 sm:px-3"
+          style={{ transform: "translateZ(0)" }}
           aria-label="Quick links"
         >
           <DockButton href="#top" label="Back to top">
