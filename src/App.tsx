@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode, memo } from "react";
+import { useEffect, type ReactNode, memo, useState } from "react";
 import { motion } from "framer-motion";
 
 import { RevealText } from "./components/animations/RevealText";
@@ -170,23 +170,8 @@ function App() {
         <main
           id="top"
           className="mx-auto flex max-w-6xl flex-col gap-4 px-4 pb-32 pt-2 sm:gap-8 sm:px-6 sm:pt-5 lg:gap-10 lg:px-8"
-          style={{ paddingBottom: "calc(8rem + env(safe-area-inset-bottom))" }}
+          style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }}
         >
-          <div className="flex items-center gap-2.5 md:hidden">
-            <nav className="hide-scrollbar flex flex-1 gap-2 overflow-x-auto pb-1.5 text-sm">
-              {navigation.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="mobile-nav-chip whitespace-nowrap rounded-full border border-[var(--border-soft)] bg-[var(--surface-raised)] px-3.5 py-2 text-[13px] text-[var(--text-secondary)]"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-            <ThemeToggle compact />
-          </div>
-
           <section className="hero-shell">
             <div className="hero-grid">
               <div className="hero-copy reveal-on-scroll" data-reveal>
@@ -617,6 +602,18 @@ function App() {
                     </span>
                   </a>
                 </div>
+
+                <div className="mt-5 border-t border-[var(--panel-border)] pt-4">
+                  <a
+                    href="https://buymeacoffee.com/csy2402200q"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-[var(--text-on-dark-soft)] transition-colors hover:text-[var(--text-on-dark)]"
+                  >
+                    <CoffeeIcon />
+                    Buy me a coffee
+                  </a>
+                </div>
               </article>
 
               <div className="contact-social-grid grid gap-4 sm:grid-cols-2">
@@ -747,57 +744,144 @@ function BackgroundOrbs() {
 }
 
 function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
+  const [activeSection, setActiveSection] = useState<string>("#top");
+
+  useEffect(() => {
+    const ids = ["top", "stack", "activity", "projects", "contact"];
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        }
+      },
+      { threshold: 0.18, rootMargin: "-64px 0px -72% 0px" },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const mobileTabs = [
+    { id: "#top", label: "Home", icon: <HomeIcon /> },
+    { id: "#stack", label: "Stack", icon: <StackLayersIcon /> },
+    { id: "#projects", label: "Work", icon: <WorkIcon /> },
+    { id: "#contact", label: "Contact", icon: <ContactIcon /> },
+  ];
+
   return (
-    <div
-      className="fixed left-1/2 z-50 -translate-x-1/2"
-      style={{ bottom: "max(1rem, env(safe-area-inset-bottom))" }}
-    >
-      <nav
-        className="hide-scrollbar flex max-w-[calc(100vw-1rem)] items-center gap-1 overflow-x-auto rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-sm backdrop-blur-2xl sm:max-w-none sm:gap-2 sm:px-3"
-        aria-label="Quick links"
+    <>
+      {/* Mobile tab bar */}
+      <div
+        className="fixed left-1/2 z-50 -translate-x-1/2 sm:hidden"
+        style={{ bottom: "max(0.375rem, env(safe-area-inset-bottom))" }}
       >
-        <DockButton href="#top" label="Back to top">
-          <HomeIcon />
-        </DockButton>
-        {showFeaturedLink ? (
-          <DockButton href="#featured-release" label="Featured release">
-            <PlayStoreIcon />
-          </DockButton>
-        ) : null}
-        <DockButton href="#contact" label="Contact">
-          <ContactIcon />
-        </DockButton>
-        <DockButton
-          href="https://buymeacoffee.com/csy2402200q"
-          label="Buy me a coffee"
-          external
+        <nav
+          className="flex items-center gap-0 rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-1.5 py-1.5 shadow-lg backdrop-blur-2xl"
+          aria-label="Navigation"
         >
-          <CoffeeIcon />
-        </DockButton>
+          {mobileTabs.map((tab) => {
+            const isActive = activeSection === tab.id;
+            return (
+              <a
+                key={tab.id}
+                href={tab.id}
+                aria-label={tab.label}
+                aria-current={isActive ? "page" : undefined}
+                className={`relative flex flex-col items-center gap-0.5 rounded-full px-3 py-1.5 transition-colors duration-200 ${
+                  isActive
+                    ? "text-[var(--text-primary)]"
+                    : "text-[var(--text-subtle)]"
+                }`}
+              >
+                <span className="flex h-5 w-5 items-center justify-center">
+                  {tab.icon}
+                </span>
+                <span className="text-[10px] font-medium leading-none tracking-tight">
+                  {tab.label}
+                </span>
+                {isActive && (
+                  <motion.span
+                    layoutId="mobile-tab-indicator"
+                    className="absolute inset-0 -z-10 rounded-full bg-[var(--dock-button-hover)]"
+                    transition={{
+                      type: "spring",
+                      stiffness: 340,
+                      damping: 28,
+                    }}
+                  />
+                )}
+              </a>
+            );
+          })}
+          <div
+            className="mx-0.5 h-6 w-px bg-[var(--dock-border)]"
+            aria-hidden="true"
+          />
+          <ThemeToggle compact />
+        </nav>
+      </div>
 
-        <div
-          className="mx-1 hidden h-8 w-px bg-[var(--dock-border)] sm:block"
-          aria-hidden="true"
-        />
-
-        <div className="hidden sm:contents">
-          {socialLinks.map((link) => (
-            <DockButton
-              key={link.label}
-              href={link.href}
-              label={link.label}
-              external={
-                link.href.startsWith("http") || link.href.startsWith("mailto:")
-              }
-            >
-              <SocialGlyph icon={link.icon} />
+      {/* Desktop dock */}
+      <div
+        className="fixed left-1/2 z-50 -translate-x-1/2 hidden sm:block"
+        style={{ bottom: "max(1rem, env(safe-area-inset-bottom))" }}
+      >
+        <nav
+          className="hide-scrollbar flex items-center gap-1 overflow-x-auto rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-sm backdrop-blur-2xl sm:max-w-none sm:gap-2 sm:px-3"
+          aria-label="Quick links"
+        >
+          <DockButton href="#top" label="Back to top">
+            <HomeIcon />
+          </DockButton>
+          {showFeaturedLink ? (
+            <DockButton href="#featured-release" label="Featured release">
+              <PlayStoreIcon />
             </DockButton>
-          ))}
-        </div>
+          ) : null}
+          <DockButton href="#contact" label="Contact">
+            <ContactIcon />
+          </DockButton>
+          <DockButton
+            href="https://buymeacoffee.com/csy2402200q"
+            label="Buy me a coffee"
+            external
+          >
+            <CoffeeIcon />
+          </DockButton>
 
-        <ThemeToggle compact />
-      </nav>
-    </div>
+          <div
+            className="mx-1 hidden h-8 w-px bg-[var(--dock-border)] sm:block"
+            aria-hidden="true"
+          />
+
+          <div className="hidden sm:contents">
+            {socialLinks.map((link) => (
+              <DockButton
+                key={link.label}
+                href={link.href}
+                label={link.label}
+                external={
+                  link.href.startsWith("http") ||
+                  link.href.startsWith("mailto:")
+                }
+              >
+                <SocialGlyph icon={link.icon} />
+              </DockButton>
+            ))}
+          </div>
+
+          <ThemeToggle compact />
+        </nav>
+      </div>
+    </>
   );
 }
 
@@ -973,6 +1057,42 @@ const ContactIcon = memo(function ContactIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+    </svg>
+  );
+});
+
+const StackLayersIcon = memo(function StackLayersIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5" aria-hidden="true">
+      <path
+        d="M3.5 7 10 10l6.5-3M3.5 10l6.5 3 6.5-3M3.5 13l6.5 3 6.5-3"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+});
+
+const WorkIcon = memo(function WorkIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5" aria-hidden="true">
+      <rect
+        x="3"
+        y="5.5"
+        width="14"
+        height="10.5"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M7 5.5V4a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 13 4v1.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );

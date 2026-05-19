@@ -14,13 +14,13 @@ function RevealTextInner({
   text,
   className,
   delay,
+  shouldReduceMotion,
 }: {
   text: string;
   className?: string;
   delay?: number;
+  shouldReduceMotion: boolean | null;
 }) {
-  const shouldReduceMotion = useReducedMotion();
-
   const childVariants = {
     visible: {
       opacity: 1,
@@ -89,5 +89,12 @@ export function RevealText({
     );
   }
 
-  return <RevealTextInner text={text} className={className} delay={delay} />;
+  return (
+    <RevealTextInner
+      text={text}
+      className={className}
+      delay={delay}
+      shouldReduceMotion={shouldReduceMotion}
+    />
+  );
 }

@@ -167,15 +167,15 @@ export const techStack: StackItem[] = [
 
 export const projects: Project[] = [
   {
-    title: "Jobjaldi",
-    eyebrow: "Job search app",
+    title: "MediaPipe AI",
+    eyebrow: "AI Pipeline",
     description:
-      "A job search app I built to make browsing and filtering listings actually painless. Ended up learning a lot about search UX.",
-    tags: ["Flutter", "Dart", "Job Board"],
+      "A production-grade AI Media Processing Pipeline with React frontend, Express API gateway, Python AI worker, and PostgreSQL database, all orchestrated via Docker Compose.",
+    tags: ["React", "Express", "Python", "PostgreSQL", "Docker", "AI"],
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/csy20/jobjaldi",
+        href: "https://github.com/csy20/mediapipe-ai",
         tone: "clay",
       },
     ],
@@ -199,43 +199,43 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "News App",
-    eyebrow: "Live API feed",
+    title: "Forge",
+    eyebrow: "CLI Tool",
     description:
-      "A news reader that pulls from a live API, with category tabs and a layout that makes scanning headlines quick.",
-    tags: ["Flutter", "API Integration", "Realtime"],
+      "A production-grade CLI tool for scaffolding opinionated project templates with Docker, linting, testing, and CI/CD pre-configured.",
+    tags: ["CLI", "Docker", "CI/CD", "Templates", "Node.js"],
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/csy20/day21",
+        href: "https://github.com/csy20/forge",
         tone: "clay",
       },
     ],
   },
   {
-    title: "Weather App",
-    eyebrow: "Location + API",
+    title: "Rem LLM",
+    eyebrow: "ML Training Pipeline",
     description:
-      "Grabs your location, hits a weather API, and shows you a clean forecast. Simple, but the Material design turned out nice.",
-    tags: ["Flutter", "Weather API", "Location"],
+      "Trains a coding assistant model named rem-coder using a 7-phase workflow: data prep, baseline eval, QLoRA training, adapter merge, GGUF export, and Ollama packaging.",
+    tags: ["Python", "LLM", "QLoRA", "Unsloth", "Ollama", "ML"],
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/csy20/proj23",
+        href: "https://github.com/csy20/rem-llm",
         tone: "clay",
       },
     ],
   },
   {
-    title: "GitHub View",
-    eyebrow: "Dev tool",
+    title: "Nen",
+    eyebrow: "Music App",
     description:
-      "A quick tool to look up any GitHub user — see their stats, repos, and recent activity all on one screen.",
-    tags: ["Flutter", "GitHub API", "User Profiles"],
+      "A music app written in Flutter with a custom audio engine written in C++ for native performance and low-latency playback.",
+    tags: ["Flutter", "Dart", "C++", "Audio Engine"],
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/csy20/proj23",
+        href: "https://github.com/csy20/nen",
         tone: "clay",
       },
     ],
@@ -270,4 +270,4 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const resumeUrl =
-  "https://drive.google.com/uc?export=download&id=1vApe158f-0X5fXjQX5DuUNLJzdGFIiCK";
+  "https://drive.google.com/uc?export=download&id=195gbT0ii9Q_coaHyTS5srOfqXaI8cNdn";
