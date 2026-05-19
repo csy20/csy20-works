@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode, memo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { RevealText } from "./components/animations/RevealText";
 import { MarqueeTicker } from "./components/animations/MarqueeTicker";
@@ -133,7 +133,10 @@ function App() {
 
         <header
           className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[var(--header-bg)] backdrop-blur-2xl"
-          style={{ transform: "translateZ(0)" }}
+          style={{
+            transform: "translateZ(0)",
+            WebkitTransform: "translateZ(0)",
+          }}
         >
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-6 sm:py-4 lg:px-8">
             <a
@@ -741,9 +744,9 @@ function BackgroundOrbs() {
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
       aria-hidden="true"
     >
-      <div className="animate-float-slow absolute left-[-8rem] top-[-6rem] h-64 w-64 rounded-full bg-[var(--orb-one)] blur-3xl sm:h-80 sm:w-80" />
-      <div className="animate-drift absolute right-[-8rem] top-1/3 h-72 w-72 rounded-full bg-[var(--orb-two)] blur-3xl sm:h-96 sm:w-96" />
-      <div className="animate-float-slow absolute bottom-[-10rem] left-1/3 h-72 w-72 rounded-full bg-[var(--orb-three)] blur-3xl sm:h-[28rem] sm:w-[28rem]" />
+      <div className="animate-float-slow absolute left-[-8rem] top-[-6rem] h-64 w-64 rounded-full bg-[var(--orb-one)] blur-2xl sm:blur-3xl sm:h-80 sm:w-80" />
+      <div className="animate-drift absolute right-[-8rem] top-1/3 h-72 w-72 rounded-full bg-[var(--orb-two)] blur-2xl sm:blur-3xl sm:h-96 sm:w-96" />
+      <div className="animate-float-slow absolute bottom-[-10rem] left-1/3 h-72 w-72 rounded-full bg-[var(--orb-three)] blur-2xl sm:blur-3xl sm:h-[28rem] sm:w-[28rem]" />
     </div>
   );
 }
@@ -790,7 +793,10 @@ function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
       >
         <nav
           className="flex items-center gap-0 rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-1.5 py-1.5 shadow-lg backdrop-blur-2xl"
-          style={{ transform: "translateZ(0)" }}
+          style={{
+            transform: "translateZ(0)",
+            WebkitTransform: "translateZ(0)",
+          }}
           aria-label="Navigation"
         >
           {mobileTabs.map((tab) => {
@@ -813,18 +819,11 @@ function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
                 <span className="text-[10px] font-medium leading-none tracking-tight">
                   {tab.label}
                 </span>
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.span
-                      key="mobile-tab-indicator"
-                      className="absolute inset-0 -z-10 rounded-full bg-[var(--dock-button-hover)]"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  )}
-                </AnimatePresence>
+                <span
+                  className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[var(--dock-button-hover)] transition-opacity duration-200"
+                  style={{ opacity: isActive ? 1 : 0 }}
+                  aria-hidden="true"
+                />
               </a>
             );
           })}
@@ -843,7 +842,10 @@ function BottomDock({ showFeaturedLink }: { showFeaturedLink: boolean }) {
       >
         <nav
           className="hide-scrollbar flex items-center gap-1 overflow-x-auto rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-sm backdrop-blur-2xl sm:max-w-none sm:gap-2 sm:px-3"
-          style={{ transform: "translateZ(0)" }}
+          style={{
+            transform: "translateZ(0)",
+            WebkitTransform: "translateZ(0)",
+          }}
           aria-label="Quick links"
         >
           <DockButton href="#top" label="Back to top">
