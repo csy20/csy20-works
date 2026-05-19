@@ -125,7 +125,7 @@ function App() {
 
   return (
     <InkTransition>
-      <div className="relative isolate overflow-hidden text-[var(--text-primary)]">
+      <div className="relative isolate overflow-clip text-[var(--text-primary)]">
         <ScrollProgressBar />
         <CursorGlow />
         <ThemeTransitionOverlay />
