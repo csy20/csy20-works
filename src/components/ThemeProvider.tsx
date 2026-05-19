@@ -10,27 +10,25 @@ import { ThemeContext, type Theme } from "./useTheme";
 
 const STORAGE_KEY = "csy20-theme";
 
-function readPreferredTheme(): Theme {
-  if (typeof window === "undefined") {
-    return "light";
-  }
-
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === "light" || stored === "dark") {
-      return stored;
-    }
-  } catch {
-    return "light";
-  }
-
-  return window.matchMedia?.("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(readPreferredTheme);
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
+
+    try {
+      const stored = window.localStorage.getItem(STORAGE_KEY);
+      if (stored === "light" || stored === "dark") {
+        return stored;
+      }
+    } catch {
+      // fall through
+    }
+
+    return window.matchMedia?.("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;

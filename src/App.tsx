@@ -359,12 +359,14 @@ function App() {
               <div className="activity-scroll-shell">
                 <div className="activity-scroll hide-scrollbar">
                   <div className="activity-calendar-track">
-                    <GitHubCalendar
-                      username="csy20"
-                      colorScheme={theme === "dark" ? "dark" : "light"}
-                      theme={githubCalendarTheme}
-                      style={githubCalendarStyle}
-                    />
+                    <div style={{ minHeight: "180px" }}>
+                      <GitHubCalendar
+                        username="csy20"
+                        colorScheme={theme === "dark" ? "dark" : "light"}
+                        theme={githubCalendarTheme}
+                        style={githubCalendarStyle}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
