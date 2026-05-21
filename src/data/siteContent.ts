@@ -38,7 +38,8 @@ export type StackItem = {
     | "supabase"
     | "dart"
     | "tailwindcss"
-    | "python";
+    | "python"
+    | "docker";
   category: "frontend" | "backend" | "mobile" | "platform";
 };
 
@@ -161,6 +162,11 @@ export const techStack: StackItem[] = [
   {
     name: "Ubuntu",
     icon: "ubuntu",
+    category: "platform",
+  },
+  {
+    name: "Docker",
+    icon: "docker",
     category: "platform",
   },
 ];

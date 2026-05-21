@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
 import { useTheme } from "./useTheme";
 
-type ThemeToggleProps = {
-  compact?: boolean;
-};
-
-export function ThemeToggle({ compact = false }: ThemeToggleProps) {
+export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
   const nextTheme = isDark ? "light" : "dark";
@@ -15,17 +11,13 @@ export function ThemeToggle({ compact = false }: ThemeToggleProps) {
       type="button"
       onClick={toggleTheme}
       aria-label={`Switch to ${nextTheme} theme`}
-      className={
-        compact
-          ? "flex h-10 w-10 flex-none items-center justify-center rounded-full border border-[var(--dock-border)] text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)]"
-          : "theme-toggle-fixed" // Keep original if not compact
-      }
+      className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]"
     >
       <motion.div
         initial={false}
         animate={{ rotateY: isDark ? 0 : 180 }}
         transition={{ duration: 0.3 }}
-        style={{ display: "flex" }} // maintain alignment
+        style={{ display: "flex" }}
       >
         {isDark ? <SunIcon /> : <MoonIcon />}
       </motion.div>

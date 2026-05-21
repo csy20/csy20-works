@@ -7,7 +7,7 @@ const slideVariants = {
   initial: { y: 0 },
   enter: {
     y: "-100vh",
-    transition: { duration: 0.55, ease: EASE },
+    transition: { duration: 0.4, ease: EASE },
     transitionEnd: { display: "none" },
   },
 };

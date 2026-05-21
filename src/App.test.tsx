@@ -9,6 +9,15 @@ vi.mock("react-github-calendar", () => ({
   GitHubCalendar: () => <div data-testid="github-calendar" />,
 }));
 
+vi.mock("framer-motion", async () => {
+  const actual = await vi.importActual("framer-motion");
+  return {
+    ...actual,
+    useInView: () => true,
+    useReducedMotion: () => true,
+  };
+});
+
 beforeAll(() => {
   class MockIntersectionObserver {
     observe = vi.fn();
@@ -19,8 +28,8 @@ beforeAll(() => {
   vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
 });
 
-describe("App stack showcase", () => {
-  it("renders the updated stack section and every configured tool", () => {
+describe("App", () => {
+  it("renders all sections and content correctly", () => {
     const { container } = render(
       <ThemeProvider>
         <App />
@@ -28,15 +37,15 @@ describe("App stack showcase", () => {
     );
 
     expect(
-      screen.getByRole("heading", {
-        name: profile.heroTitle,
-      }),
+      screen.getByRole("heading", { name: profile.name }),
     ).toBeInTheDocument();
 
+    expect(screen.getByText(profile.handle)).toBeInTheDocument();
+
+    expect(screen.getByText(profile.heroDescription)).toBeInTheDocument();
+
     expect(
-      screen.getByRole("heading", {
-        name: /What I actually build with\./i,
-      }),
+      screen.getByRole("heading", { name: "Tech stack" }),
     ).toBeInTheDocument();
 
     const stackSection = container.querySelector("#stack");
@@ -44,21 +53,34 @@ describe("App stack showcase", () => {
 
     for (const item of techStack) {
       expect(
-        within(stackSection as HTMLElement).getAllByText(item.name).length,
-      ).toBeGreaterThan(0);
+        within(stackSection as HTMLElement).getByText(item.name),
+      ).toBeInTheDocument();
     }
 
-    expect(screen.getByText(profile.heroSummary)).toBeInTheDocument();
-    expect(screen.queryByText("About")).not.toBeInTheDocument();
-    expect(screen.queryByText("Primary stack")).not.toBeInTheDocument();
-    expect(container.querySelector("#about")).toBeNull();
     expect(
-      within(stackSection as HTMLElement).getAllByText("React Native").length,
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getByRole("heading", { name: /I try to write code every day\./i }),
+      screen.getByRole("heading", { name: "Activity" }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Swipe to see the full year/i)).toBeInTheDocument();
-    expect(container.querySelector(".activity-scroll")).not.toBeNull();
+
+    expect(screen.getByTestId("github-calendar")).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("heading", { name: "Apps & Projects" }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("heading", { name: "MediaPipe AI" }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("heading", { name: "Bytewise" }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("heading", { name: "Get in touch" }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("link", { name: /Send email/i }),
+    ).toBeInTheDocument();
   });
 });
