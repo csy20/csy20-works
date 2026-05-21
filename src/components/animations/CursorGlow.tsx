@@ -5,12 +5,14 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useTheme } from "../useTheme";
 
 function supportsFinePointer() {
   return window.matchMedia("(pointer: fine)").matches;
 }
 
 export function CursorGlow() {
+  const { theme } = useTheme();
   const shouldReduceMotion = useReducedMotion();
   const [hasFinePointer, setHasFinePointer] = useState(() =>
     typeof window === "undefined" ? false : supportsFinePointer(),
@@ -34,7 +36,7 @@ export function CursorGlow() {
   }, []);
 
   useEffect(() => {
-    if (shouldReduceMotion || !hasFinePointer) return;
+    if (theme !== "dark" || shouldReduceMotion || !hasFinePointer) return;
 
     let frameId = 0;
     let lastX = 0;
@@ -65,9 +67,9 @@ export function CursorGlow() {
       window.removeEventListener("mousemove", moveCursor);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- x,y are stable motion values, effect intentionally doesn't depend on them
-  }, [hasFinePointer, shouldReduceMotion]);
+  }, [hasFinePointer, theme, shouldReduceMotion]);
 
-  if (shouldReduceMotion || !hasFinePointer) return null;
+  if (theme !== "dark" || shouldReduceMotion || !hasFinePointer) return null;
 
   return (
     <motion.div
@@ -76,8 +78,8 @@ export function CursorGlow() {
         x: cursorX,
         y: cursorY,
         background:
-          "radial-gradient(circle, rgba(24,20,16,0.04) 0%, rgba(24,20,16,0) 70%)",
-        mixBlendMode: "multiply",
+          "radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%)",
+        mixBlendMode: "screen",
         filter: "blur(20px)",
       }}
     />

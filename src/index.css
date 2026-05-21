@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
-/* ═══ Warm Paper ═══ */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* ═══ Warm Paper (light) ═══ */
 :root {
   color-scheme: light;
   font-family: system-ui, sans-serif;
@@ -36,6 +38,38 @@
   --card-shadow-hover: 0 16px 30px -10px rgba(24, 20, 16, 0.1);
   --button-shadow: 0 10px 20px -10px rgba(24, 20, 16, 0.12);
   --button-shadow-hover: 0 18px 34px -16px rgba(24, 20, 16, 0.2);
+}
+
+/* ═══ Graphite (dark) ═══ */
+[data-theme="dark"] {
+  color-scheme: dark;
+  background-color: #141414;
+  color: #e8e4dc;
+
+  --bg-primary: #141414;
+  --bg-secondary: #1e1e1c;
+  --text-primary: #e8e4dc;
+  --text-secondary: #585450;
+  --text-muted: #383632;
+  --border: #222220;
+  --border-soft: rgba(34, 34, 32, 0.55);
+  --accent: #e8e4dc;
+  --accent-fg: #141414;
+  --surface: rgba(20, 20, 20, 0.92);
+  --surface-raised: #1e1e1c;
+  --surface-soft: #1e1e1c;
+  --surface-glass: rgba(14, 14, 14, 0.88);
+
+  --dock-bg: rgba(14, 14, 14, 0.9);
+  --dock-border: rgba(232, 228, 220, 0.08);
+  --dock-button-hover: rgba(255, 255, 255, 0.04);
+  --dock-button-bg: rgba(255, 255, 255, 0.05);
+
+  --focus-ring: rgba(232, 228, 220, 0.18);
+  --card-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
+  --button-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.25);
+  --button-shadow-hover: 0 8px 16px -4px rgba(0, 0, 0, 0.35);
 }
 
 /* ═══ Base ═══ */
@@ -93,6 +127,19 @@ body {
   background: rgba(24, 20, 16, 0.14);
 }
 
+[data-theme="dark"] ::selection {
+  background: rgba(232, 228, 220, 0.18);
+}
+
+/* ═══ Transitions ═══ */
+body,
+header,
+main {
+  transition:
+    background 0.25s ease,
+    color 0.2s ease;
+}
+
 /* ═══ Utilities ═══ */
 @layer utilities {
   .font-display {
@@ -106,4 +153,21 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ═══ Section Dark ═══ */
+.section-dark {
+  --sd-text: #ffffff;
+  --sd-text-soft: #e8e4dc;
+  --sd-muted: #c8c4bc;
+  --sd-panel-bg: rgba(255, 255, 255, 0.06);
+  --sd-panel-border: rgba(255, 255, 255, 0.15);
+  --sd-pill-bg: rgba(255, 255, 255, 0.08);
+  --sd-pill-bg-hover: rgba(255, 255, 255, 0.14);
+  --sd-pill-border: rgba(255, 255, 255, 0.2);
+  --sd-pill-border-hover: rgba(255, 255, 255, 0.4);
+  --sd-pill-text: #ffffff;
+  --sd-pill-icon-bg: rgba(255, 255, 255, 0.12);
+  background: #1a1a1a;
+  color: var(--sd-text);
 }
