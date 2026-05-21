@@ -2,6 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi, beforeAll } from "vitest";
 
 import App from "./App";
+import { ThemeProvider } from "./components/ThemeProvider";
 import { profile, techStack } from "./data/siteContent";
 
 vi.mock("react-github-calendar", () => ({
@@ -29,7 +30,11 @@ beforeAll(() => {
 
 describe("App", () => {
   it("renders all sections and content correctly", () => {
-    const { container } = render(<App />);
+    const { container } = render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>,
+    );
 
     expect(
       screen.getByRole("heading", { name: profile.name }),
