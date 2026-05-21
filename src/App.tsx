@@ -1,7 +1,6 @@
 import { InkTransition } from "./components/animations/InkTransition";
 import { CursorGlow } from "./components/animations/CursorGlow";
 import { ScrollProgressBar } from "./components/animations/ScrollProgressBar";
-import { ThemeTransitionOverlay } from "./components/animations/ThemeTransitionOverlay";
 import { BackgroundMesh } from "./components/BackgroundMesh";
 import { Navigation } from "./components/Navigation";
 import { HeroSection } from "./sections/HeroSection";
@@ -16,7 +15,6 @@ export default function App() {
       <div className="relative min-h-screen overflow-clip">
         <ScrollProgressBar />
         <CursorGlow />
-        <ThemeTransitionOverlay />
         <BackgroundMesh />
         <Navigation />
         <main>
