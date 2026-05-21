@@ -46,21 +46,7 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="mobile-web-app-capable" content="yes" />
 
-  <script>
-    (() => {
-      const key = 'csy20-theme'
-      const stored = localStorage.getItem(key)
-      const resolved =
-        stored === 'light' || stored === 'dark'
-          ? stored
-          : window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light'
-
-      document.documentElement.setAttribute('data-theme', resolved)
-    })()
-  </script>
-  <meta name="theme-color" content="#201812" />
+  <meta name="theme-color" content="#f6f3ed" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">

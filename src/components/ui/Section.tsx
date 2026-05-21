@@ -7,7 +7,6 @@ type SectionProps = {
   subtitle?: string;
   children: ReactNode;
   className?: string;
-  dark?: boolean;
 };
 
 const containerVariants: Variants = {
@@ -37,7 +36,6 @@ export function Section({
   subtitle,
   children,
   className = "",
-  dark = false,
 }: SectionProps) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px 0px -40px 0px" });
@@ -49,17 +47,15 @@ export function Section({
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
-      className={`relative ${dark ? "section-dark" : ""} ${className}`}
+      className={`relative ${className}`}
     >
       {(title || subtitle) && (
         <motion.div
           variants={headingVariants}
-          className={`mx-auto max-w-5xl px-4 pb-8 pt-16 sm:pb-12 sm:pt-24 lg:px-8 ${dark ? "text-[var(--sd-text)]" : ""}`}
+          className="mx-auto max-w-5xl px-4 pb-8 pt-16 sm:pb-12 sm:pt-24 lg:px-8"
         >
           {subtitle && (
-            <p
-              className={`font-display text-xs tracking-[0.2em] uppercase mb-3 ${dark ? "text-[var(--sd-muted)]" : "text-[var(--text-muted)]"}`}
-            >
+            <p className="font-display text-xs tracking-[0.2em] uppercase mb-3 text-[var(--text-muted)]">
               {subtitle}
             </p>
           )}
