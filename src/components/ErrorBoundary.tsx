@@ -30,7 +30,7 @@ export class ErrorBoundary extends Component<
     if (this.state.hasError) {
       return (
         <div className="flex min-h-screen items-center justify-center bg-[var(--bg-primary)] px-4">
-          <div className="interactive-card max-w-lg rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8 text-center space-y-4">
+          <div className="max-w-lg rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8 text-center space-y-4 shadow-[var(--card-shadow)]">
             <p className="font-serif-accent text-3xl italic text-[var(--accent)]">
               csy20.works
             </p>
@@ -47,7 +47,7 @@ export class ErrorBoundary extends Component<
                 this.setState({ hasError: false, error: null });
                 window.location.reload();
               }}
-              className="button-shell inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold button-clay"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] text-[var(--accent-fg)] px-6 py-3 text-sm font-medium font-display hover:opacity-90 transition-opacity"
             >
               Reload page
             </button>

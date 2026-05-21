@@ -56,8 +56,8 @@ export function MagneticCard({
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
 
-    x.set(middleX * 0.15);
-    y.set(middleY * 0.15);
+    x.set(middleX * 0.08);
+    y.set(middleY * 0.08);
   };
 
   const handleMouseLeave = () => {
