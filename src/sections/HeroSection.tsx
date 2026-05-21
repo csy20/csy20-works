@@ -105,7 +105,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mx-auto w-48 sm:w-56 lg:w-64 shrink-0"
+            className="mx-auto w-full max-w-[320px] sm:max-w-[340px] lg:max-w-[360px] shrink-0"
           >
             <div className="overflow-hidden rounded-3xl border border-[var(--border-soft)] shadow-[var(--card-shadow)]">
               <img
