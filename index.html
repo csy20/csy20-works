@@ -57,9 +57,7 @@
             ? 'dark'
             : 'light'
 
-      if (resolved === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark')
-      }
+      document.documentElement.setAttribute('data-theme', resolved)
     })()
   </script>
   <meta name="theme-color" content="#201812" />
