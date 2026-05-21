@@ -22,7 +22,7 @@ export function InkTransition({ children }: { children: ReactNode }) {
       <motion.div
         layoutRoot
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-[100] bg-[var(--text-primary)]"
+        className="pointer-events-none fixed inset-0 z-[100] bg-[var(--bg-primary)]"
         initial="initial"
         animate="enter"
         variants={slideVariants}
