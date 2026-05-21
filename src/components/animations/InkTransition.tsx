@@ -20,7 +20,6 @@ export function InkTransition({ children }: { children: ReactNode }) {
   return (
     <>
       <motion.div
-        layoutRoot
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-[100] bg-[var(--bg-primary)]"
         initial="initial"
