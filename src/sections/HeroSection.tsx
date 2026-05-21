@@ -111,6 +111,8 @@ export function HeroSection() {
               <img
                 src="/pfp.jpeg"
                 alt={profile.name}
+                width={640}
+                height={640}
                 className="w-full h-auto block"
                 loading="eager"
               />

@@ -40,8 +40,8 @@ export function Navigation() {
           <a
             key={link.label}
             href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={link.icon !== "email" ? "_blank" : undefined}
+            rel={link.icon !== "email" ? "noopener noreferrer" : undefined}
             className="flex h-10 w-10 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)]"
             aria-label={link.label}
           >
