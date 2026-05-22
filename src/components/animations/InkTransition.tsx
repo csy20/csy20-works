@@ -1,5 +1,6 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { type ReactNode } from "react";
+import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 const EASE = [0.76, 0, 0.24, 1] as const;
 
@@ -13,9 +14,9 @@ const slideVariants = {
 };
 
 export function InkTransition({ children }: { children: ReactNode }) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldUseSafeMotion = useAnimationSafeMode();
 
-  if (shouldReduceMotion) return <>{children}</>;
+  if (shouldUseSafeMotion) return <>{children}</>;
 
   return (
     <>

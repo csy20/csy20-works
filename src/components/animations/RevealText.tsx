@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { type ReactNode } from "react";
+import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 type RevealTextProps = {
   text?: string;
@@ -74,7 +75,32 @@ export function RevealText({
   className = "",
   delay = 0,
 }: RevealTextProps) {
+  const shouldUseSafeMotion = useAnimationSafeMode();
   const shouldReduceMotion = useReducedMotion();
+
+  if (shouldUseSafeMotion) {
+    if (!text) {
+      return <div className={className}>{children}</div>;
+    }
+
+    const words = text.split(" ");
+
+    return (
+      <div aria-label={text} className={`flex flex-wrap ${className}`}>
+        {words.map((word, index) => (
+          <span
+            key={`${word}-${index}`}
+            aria-hidden="true"
+            style={
+              index < words.length - 1 ? { marginRight: "0.25em" } : undefined
+            }
+          >
+            {word}
+          </span>
+        ))}
+      </div>
+    );
+  }
 
   if (!text) {
     return (

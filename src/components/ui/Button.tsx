@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
 
@@ -20,6 +21,7 @@ export function Button({
   className = "",
   compact = false,
 }: ButtonProps) {
+  const shouldUseSafeMotion = useAnimationSafeMode();
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full font-display text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]";
 
@@ -40,6 +42,19 @@ export function Button({
   };
 
   if (href) {
+    if (shouldUseSafeMotion) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes}
+        >
+          {children}
+        </a>
+      );
+    }
+
     return (
       <motion.a
         href={href}
@@ -50,6 +65,14 @@ export function Button({
       >
         {children}
       </motion.a>
+    );
+  }
+
+  if (shouldUseSafeMotion) {
+    return (
+      <button type="button" onClick={onClick} className={classes}>
+        {children}
+      </button>
     );
   }
 

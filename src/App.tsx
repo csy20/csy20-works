@@ -1,9 +1,11 @@
+import { MotionConfig } from "framer-motion";
 import { InkTransition } from "./components/animations/InkTransition";
 import { CursorGlow } from "./components/animations/CursorGlow";
 import { ScrollProgressBar } from "./components/animations/ScrollProgressBar";
 import { ThemeTransitionOverlay } from "./components/animations/ThemeTransitionOverlay";
 import { BackgroundMesh } from "./components/BackgroundMesh";
 import { Navigation } from "./components/Navigation";
+import { useAnimationSafeMode } from "./components/useAnimationSafeMode";
 import { HeroSection } from "./sections/HeroSection";
 import { StackSection } from "./sections/StackSection";
 import { ActivitySection } from "./sections/ActivitySection";
@@ -11,22 +13,26 @@ import { ProjectsSection } from "./sections/ProjectsSection";
 import { ContactSection } from "./sections/ContactSection";
 
 export default function App() {
+  const shouldUseSafeMotion = useAnimationSafeMode();
+
   return (
-    <InkTransition>
-      <div className="relative min-h-screen overflow-x-hidden">
-        <ScrollProgressBar />
-        <CursorGlow />
-        <ThemeTransitionOverlay />
-        <BackgroundMesh />
-        <Navigation />
-        <main>
-          <HeroSection />
-          <StackSection />
-          <ActivitySection />
-          <ProjectsSection />
-          <ContactSection />
-        </main>
-      </div>
-    </InkTransition>
+    <MotionConfig reducedMotion={shouldUseSafeMotion ? "always" : "user"}>
+      <InkTransition>
+        <div className="relative min-h-screen overflow-x-hidden">
+          <ScrollProgressBar />
+          <CursorGlow />
+          <ThemeTransitionOverlay />
+          <BackgroundMesh />
+          <Navigation />
+          <main>
+            <HeroSection />
+            <StackSection />
+            <ActivitySection />
+            <ProjectsSection />
+            <ContactSection />
+          </main>
+        </div>
+      </InkTransition>
+    </MotionConfig>
   );
 }

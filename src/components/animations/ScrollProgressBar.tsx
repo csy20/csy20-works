@@ -1,10 +1,11 @@
-import { motion, useScroll, useReducedMotion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
+import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 export function ScrollProgressBar() {
   const { scrollYProgress } = useScroll();
-  const shouldReduceMotion = useReducedMotion();
+  const shouldUseSafeMotion = useAnimationSafeMode();
 
-  if (shouldReduceMotion) return null;
+  if (shouldUseSafeMotion) return null;
 
   return (
     <motion.div
