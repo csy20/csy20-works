@@ -12,7 +12,7 @@ export function Navigation() {
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-      className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-[var(--dock-border)] bg-[var(--dock-bg)] px-2 py-2 shadow-lg backdrop-blur-md"
+      className="glass-dock fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-[var(--dock-border)] px-2 py-2 shadow-lg"
     >
       <button
         type="button"

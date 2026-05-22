@@ -29,6 +29,7 @@
   --surface-glass: rgba(246, 243, 237, 0.88);
 
   --dock-bg: rgba(246, 243, 237, 0.88);
+  --dock-bg-mobile: rgba(246, 243, 237, 0.96);
   --dock-border: rgba(24, 20, 16, 0.1);
   --dock-button-hover: #ece7de;
   --dock-button-bg: rgba(246, 243, 237, 0.7);
@@ -61,6 +62,7 @@
   --surface-glass: rgba(14, 14, 14, 0.88);
 
   --dock-bg: rgba(14, 14, 14, 0.9);
+  --dock-bg-mobile: rgba(14, 14, 14, 0.96);
   --dock-border: rgba(232, 228, 220, 0.08);
   --dock-button-hover: rgba(255, 255, 255, 0.04);
   --dock-button-bg: rgba(255, 255, 255, 0.05);
@@ -153,6 +155,41 @@ main {
   .text-balance {
     text-wrap: balance;
   }
+
+  .glass-panel-dark,
+  .glass-dock {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .glass-panel-dark::before,
+  .glass-dock::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .glass-panel-dark > *,
+  .glass-dock > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .glass-panel-dark::before {
+    background: var(--sd-panel-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
+
+  .glass-dock::before {
+    background: var(--dock-bg);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
 }
 
 /* ═══ Section Dark ═══ */
@@ -161,6 +198,7 @@ main {
   --sd-text-soft: #e8e4dc;
   --sd-muted: #c8c4bc;
   --sd-panel-bg: rgba(255, 255, 255, 0.06);
+  --sd-panel-bg-mobile: rgba(255, 255, 255, 0.1);
   --sd-panel-border: rgba(255, 255, 255, 0.15);
   --sd-pill-bg: rgba(255, 255, 255, 0.08);
   --sd-pill-bg-hover: rgba(255, 255, 255, 0.14);
@@ -170,4 +208,18 @@ main {
   --sd-pill-icon-bg: rgba(255, 255, 255, 0.12);
   background: #1a1a1a;
   color: var(--sd-text);
+}
+
+@media (pointer: coarse) {
+  .glass-panel-dark::before {
+    background: var(--sd-panel-bg-mobile);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .glass-dock::before {
+    background: var(--dock-bg-mobile);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }

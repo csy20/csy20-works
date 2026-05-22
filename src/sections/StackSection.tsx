@@ -43,7 +43,7 @@ export function StackSection() {
           {categories.map((cat) => (
             <div
               key={cat.key}
-              className="rounded-xl border border-[var(--sd-panel-border)] bg-[var(--sd-panel-bg)] p-4 backdrop-blur-lg sm:p-5"
+              className="glass-panel-dark rounded-xl border border-[var(--sd-panel-border)] p-4 sm:p-5"
             >
               <p className="font-display text-xs tracking-[0.15em] uppercase text-[var(--sd-muted)]">
                 {cat.label}
