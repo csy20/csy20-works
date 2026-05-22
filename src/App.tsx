@@ -13,7 +13,7 @@ import { ContactSection } from "./sections/ContactSection";
 export default function App() {
   return (
     <InkTransition>
-      <div className="relative min-h-screen overflow-clip">
+      <div className="relative min-h-screen overflow-x-hidden">
         <ScrollProgressBar />
         <CursorGlow />
         <ThemeTransitionOverlay />
