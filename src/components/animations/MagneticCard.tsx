@@ -5,12 +5,15 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import {
+  type CSSProperties,
   type ComponentProps,
   type MouseEvent,
+  type ReactNode,
   useRef,
   useEffect,
   useState,
 } from "react";
+import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 type MagneticCardProps = ComponentProps<typeof motion.article>;
 
@@ -38,6 +41,7 @@ export function MagneticCard({
 }: MagneticCardProps) {
   const ref = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const shouldUseSafeMotion = useAnimationSafeMode();
   const isTouch = useHasTouchScreen();
 
   const x = useMotionValue(0);
@@ -65,6 +69,14 @@ export function MagneticCard({
     x.set(0);
     y.set(0);
   };
+
+  if (shouldUseSafeMotion || isTouch) {
+    return (
+      <article className={className} style={style as CSSProperties | undefined}>
+        {children as ReactNode}
+      </article>
+    );
+  }
 
   return (
     <motion.article

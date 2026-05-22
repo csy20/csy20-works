@@ -158,7 +158,6 @@ main {
 
   .glass-panel-dark,
   .glass-dock {
-    position: relative;
     isolation: isolate;
     overflow: hidden;
   }
