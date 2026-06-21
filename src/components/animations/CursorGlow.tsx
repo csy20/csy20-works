@@ -4,19 +4,14 @@ import {
   useSpring,
   useReducedMotion,
 } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTheme } from "../useTheme";
-
-function supportsFinePointer() {
-  return window.matchMedia("(pointer: fine)").matches;
-}
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 export function CursorGlow() {
   const { theme } = useTheme();
   const shouldReduceMotion = useReducedMotion();
-  const [hasFinePointer, setHasFinePointer] = useState(() =>
-    typeof window === "undefined" ? false : supportsFinePointer(),
-  );
+  const hasFinePointer = useMediaQuery("(pointer: fine)");
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
@@ -24,16 +19,6 @@ export function CursorGlow() {
   const springConfig = { stiffness: 120, damping: 20 };
   const cursorX = useSpring(x, springConfig);
   const cursorY = useSpring(y, springConfig);
-
-  useEffect(() => {
-    const media = window.matchMedia("(pointer: fine)");
-    const syncPointer = () => setHasFinePointer(media.matches);
-
-    syncPointer();
-    media.addEventListener("change", syncPointer);
-
-    return () => media.removeEventListener("change", syncPointer);
-  }, []);
 
   useEffect(() => {
     if (theme !== "dark" || shouldReduceMotion || !hasFinePointer) return;
@@ -67,7 +52,7 @@ export function CursorGlow() {
       window.removeEventListener("mousemove", moveCursor);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- x,y are stable motion values, effect intentionally doesn't depend on them
-  }, [hasFinePointer, theme, shouldReduceMotion]);
+  }, [theme, shouldReduceMotion, hasFinePointer]);
 
   if (theme !== "dark" || shouldReduceMotion || !hasFinePointer) return null;
 

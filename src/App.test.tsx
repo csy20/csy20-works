@@ -29,7 +29,7 @@ beforeAll(() => {
 });
 
 describe("App", () => {
-  it("renders all sections and content correctly", () => {
+  it("renders all sections and content correctly", async () => {
     const { container } = render(
       <ThemeProvider>
         <App />
@@ -58,7 +58,7 @@ describe("App", () => {
     }
 
     expect(
-      screen.getByRole("heading", { name: "Activity" }),
+      await screen.findByRole("heading", { name: "Activity" }),
     ).toBeInTheDocument();
 
     expect(screen.getByTestId("github-calendar")).toBeInTheDocument();
@@ -76,7 +76,7 @@ describe("App", () => {
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("heading", { name: "Get in touch" }),
+      await screen.findByRole("heading", { name: "Get in touch" }),
     ).toBeInTheDocument();
 
     expect(
