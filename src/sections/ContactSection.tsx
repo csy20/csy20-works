@@ -4,6 +4,7 @@ import { Button } from "../components/ui/Button";
 import { Icon } from "../components/ui/Icon";
 import { socialLinks } from "../data/siteContent";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
+import { config } from "../config";
 
 export function ContactSection() {
   const shouldUseSafeMotion = useAnimationSafeMode();
@@ -21,7 +22,7 @@ export function ContactSection() {
               variant="primary"
               href={
                 socialLinks.find((l) => l.icon === "email")?.href ??
-                "mailto:chitreshy20@gmail.com"
+                `mailto:${config.email}`
               }
             >
               Send email
@@ -82,7 +83,7 @@ export function ContactSection() {
               variant="primary"
               href={
                 socialLinks.find((l) => l.icon === "email")?.href ??
-                "mailto:chitreshy20@gmail.com"
+                `mailto:${config.email}`
               }
             >
               Send email

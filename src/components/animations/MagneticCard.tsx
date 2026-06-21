@@ -10,28 +10,11 @@ import {
   type MouseEvent,
   type ReactNode,
   useRef,
-  useEffect,
-  useState,
 } from "react";
 import { useAnimationSafeMode } from "../useAnimationSafeMode";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 type MagneticCardProps = ComponentProps<typeof motion.article>;
-
-function useHasTouchScreen() {
-  // Read the initial value during render via lazy initializer (avoids setState-in-effect)
-  const [isTouch, setIsTouch] = useState(() =>
-    typeof window === "undefined"
-      ? false
-      : window.matchMedia("(pointer: coarse)").matches,
-  );
-  useEffect(() => {
-    const media = window.matchMedia("(pointer: coarse)");
-    const handler = (e: MediaQueryListEvent) => setIsTouch(e.matches);
-    media.addEventListener("change", handler);
-    return () => media.removeEventListener("change", handler);
-  }, []);
-  return isTouch;
-}
 
 export function MagneticCard({
   children,
@@ -42,7 +25,7 @@ export function MagneticCard({
   const ref = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const shouldUseSafeMotion = useAnimationSafeMode();
-  const isTouch = useHasTouchScreen();
+  const isTouch = useMediaQuery("(pointer: coarse)");
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);

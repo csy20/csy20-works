@@ -7,8 +7,9 @@ import {
 } from "react";
 
 import { ThemeContext, type Theme } from "./useTheme";
+import { config } from "../config";
 
-const STORAGE_KEY = "csy20-theme";
+const STORAGE_KEY = config.themeStorageKey;
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {

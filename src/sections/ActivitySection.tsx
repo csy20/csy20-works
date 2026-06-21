@@ -3,6 +3,7 @@ import { GitHubCalendar } from "react-github-calendar";
 import { Section } from "../components/ui/Section";
 import { useTheme } from "../components/useTheme";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
+import { config } from "../config";
 
 export function ActivitySection() {
   const { theme } = useTheme();
@@ -17,7 +18,7 @@ export function ActivitySection() {
           </p>
           <div className="overflow-x-auto pb-1 min-h-[110px]">
             <GitHubCalendar
-              username="csy20"
+              username={config.githubUsername}
               colorScheme={theme === "dark" ? "dark" : "light"}
               blockSize={13}
               blockMargin={4}
@@ -38,7 +39,7 @@ export function ActivitySection() {
           </p>
           <div className="overflow-x-auto pb-1 min-h-[110px]">
             <GitHubCalendar
-              username="csy20"
+              username={config.githubUsername}
               colorScheme={theme === "dark" ? "dark" : "light"}
               blockSize={13}
               blockMargin={4}

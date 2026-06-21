@@ -1,3 +1,5 @@
+import { config } from "../config";
+
 export type ProjectLinkTone = "ink" | "clay" | "mint";
 
 export type ProjectLink = {
@@ -269,11 +271,10 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "Email",
-    href: "mailto:chitreshy20@gmail.com",
+    href: `mailto:${config.email}`,
     icon: "email",
     detail: "Best way to reach me directly.",
   },
 ];
 
-export const resumeUrl =
-  "https://drive.google.com/uc?export=download&id=195gbT0ii9Q_coaHyTS5srOfqXaI8cNdn";
+export const resumeUrl = config.resumeUrl;
