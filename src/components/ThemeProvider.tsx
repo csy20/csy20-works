@@ -23,7 +23,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         return stored;
       }
     } catch {
-      // fall through
+      if (import.meta.env.DEV) {
+        console.warn("[ThemeProvider] localStorage unavailable during init");
+      }
     }
 
     return "light";
@@ -39,7 +41,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
     } catch {
-      // Ignore unavailable storage; the DOM theme still updates.
+      if (import.meta.env.DEV) {
+        console.warn("[ThemeProvider] localStorage unavailable during write");
+      }
     }
   }, [theme]);
 

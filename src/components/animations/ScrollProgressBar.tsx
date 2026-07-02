@@ -2,8 +2,8 @@ import { motion, useScroll } from "framer-motion";
 import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 export function ScrollProgressBar() {
-  const { scrollYProgress } = useScroll();
   const shouldUseSafeMotion = useAnimationSafeMode();
+  const { scrollYProgress } = useScroll();
 
   if (shouldUseSafeMotion) return null;
 

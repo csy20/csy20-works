@@ -13,6 +13,8 @@ export function CursorGlow() {
   const shouldReduceMotion = useReducedMotion();
   const hasFinePointer = useMediaQuery("(pointer: fine)");
 
+  const showGlow = theme === "dark" && !shouldReduceMotion && hasFinePointer;
+
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
 
@@ -21,7 +23,7 @@ export function CursorGlow() {
   const cursorY = useSpring(y, springConfig);
 
   useEffect(() => {
-    if (theme !== "dark" || shouldReduceMotion || !hasFinePointer) return;
+    if (!showGlow) return;
 
     let frameId = 0;
     let lastX = 0;
@@ -52,9 +54,9 @@ export function CursorGlow() {
       window.removeEventListener("mousemove", moveCursor);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- x,y are stable motion values, effect intentionally doesn't depend on them
-  }, [theme, shouldReduceMotion, hasFinePointer]);
+  }, [showGlow]);
 
-  if (theme !== "dark" || shouldReduceMotion || !hasFinePointer) return null;
+  if (!showGlow) return null;
 
   return (
     <motion.div

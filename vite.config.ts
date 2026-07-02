@@ -8,9 +8,10 @@ export default defineConfig({
     react(),
     tailwindcss(),
     compression({ algorithm: "gzip", ext: ".gz", threshold: 10240 }),
+    compression({ algorithm: "brotliCompress", ext: ".br", threshold: 10240 }),
   ],
   build: {
-    target: "es2020",
+    target: "es2022",
     minify: "esbuild",
     cssMinify: true,
     rollupOptions: {

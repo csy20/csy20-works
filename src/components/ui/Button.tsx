@@ -4,14 +4,25 @@ import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
 
-type ButtonProps = {
+type ButtonAsLink = {
   children: ReactNode;
-  onClick?: () => void;
-  href?: string;
+  href: string;
+  onClick?: never;
   variant?: ButtonVariant;
   className?: string;
   compact?: boolean;
 };
+
+type ButtonAsButton = {
+  children: ReactNode;
+  href?: never;
+  onClick?: () => void;
+  variant?: ButtonVariant;
+  className?: string;
+  compact?: boolean;
+};
+
+type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 export function Button({
   children,
@@ -35,44 +46,25 @@ export function Button({
 
   const classes = `${base} ${variants[variant]} ${sizes} ${className}`;
 
-  const motionProps = {
-    whileHover: { y: -2, scale: 1.01 },
-    whileTap: { y: 0, scale: 0.98 },
-    transition: { type: "spring" as const, stiffness: 400, damping: 25 },
-  };
+  const animationProps = shouldUseSafeMotion
+    ? {}
+    : {
+        whileHover: { y: -2, scale: 1.01 },
+        whileTap: { y: 0, scale: 0.98 },
+        transition: { type: "spring" as const, stiffness: 400, damping: 25 },
+      };
 
   if (href) {
-    if (shouldUseSafeMotion) {
-      return (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={classes}
-        >
-          {children}
-        </a>
-      );
-    }
-
     return (
       <motion.a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
         className={classes}
-        {...motionProps}
+        {...animationProps}
       >
         {children}
       </motion.a>
-    );
-  }
-
-  if (shouldUseSafeMotion) {
-    return (
-      <button type="button" onClick={onClick} className={classes}>
-        {children}
-      </button>
     );
   }
 
@@ -81,7 +73,7 @@ export function Button({
       type="button"
       onClick={onClick}
       className={classes}
-      {...motionProps}
+      {...animationProps}
     >
       {children}
     </motion.button>

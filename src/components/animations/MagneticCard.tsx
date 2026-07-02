@@ -2,30 +2,25 @@ import {
   motion,
   useMotionValue,
   useSpring,
-  useReducedMotion,
+  type MotionStyle,
 } from "framer-motion";
-import {
-  type CSSProperties,
-  type ComponentProps,
-  type MouseEvent,
-  type ReactNode,
-  useRef,
-} from "react";
-import { useAnimationSafeMode } from "../useAnimationSafeMode";
-import { useMediaQuery } from "../hooks/useMediaQuery";
+import type { MouseEvent } from "react";
+import { useRef } from "react";
+import { useSkipExpensiveAnimation } from "../useSkipExpensiveAnimation";
 
-type MagneticCardProps = ComponentProps<typeof motion.article>;
+type MagneticCardProps = {
+  children?: React.ReactNode;
+  className?: string;
+  style?: MotionStyle;
+};
 
 export function MagneticCard({
   children,
   className = "",
   style,
-  ...rest
 }: MagneticCardProps) {
-  const ref = useRef<HTMLElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-  const shouldUseSafeMotion = useAnimationSafeMode();
-  const isTouch = useMediaQuery("(pointer: coarse)");
+  const ref = useRef<HTMLDivElement>(null);
+  const skipExpensive = useSkipExpensiveAnimation();
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -34,9 +29,8 @@ export function MagneticCard({
   const smoothX = useSpring(x, springConfig);
   const smoothY = useSpring(y, springConfig);
 
-  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
-    // Skip on touch devices — touch events simulate mousemove on iOS causing jank
-    if (!ref.current || shouldReduceMotion || isTouch) return;
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
 
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
@@ -48,33 +42,24 @@ export function MagneticCard({
   };
 
   const handleMouseLeave = () => {
-    if (shouldReduceMotion || isTouch) return;
     x.set(0);
     y.set(0);
   };
 
-  if (shouldUseSafeMotion || isTouch) {
-    return (
-      <article className={className} style={style as CSSProperties | undefined}>
-        {children as ReactNode}
-      </article>
-    );
-  }
-
   return (
-    <motion.article
-      {...rest}
+    <motion.div
       ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={
-        shouldReduceMotion || isTouch
-          ? (style ?? {})
-          : { ...style, x: smoothX, y: smoothY }
-      }
       className={className}
+      style={{
+        ...style,
+        ...(!skipExpensive ? { x: smoothX, y: smoothY } : {}),
+      }}
+      {...(!skipExpensive && {
+        onMouseMove: handleMouseMove,
+        onMouseLeave: handleMouseLeave,
+      })}
     >
       {children}
-    </motion.article>
+    </motion.div>
   );
 }

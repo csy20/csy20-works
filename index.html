@@ -48,16 +48,16 @@
 
   <script>
     (() => {
-      const key = 'csy20-theme'
-      const stored = localStorage.getItem(key)
-      const resolved =
-        stored === 'light' || stored === 'dark'
-          ? stored
-          : window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light'
-
-      document.documentElement.setAttribute('data-theme', resolved)
+      try {
+        const key = 'csy20-theme'
+        const stored = localStorage.getItem(key)
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.setAttribute('data-theme', stored)
+          return
+        }
+      } catch {}
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
     })()
   </script>
   <meta name="theme-color" content="#201812" />

@@ -4,13 +4,15 @@ import { useMediaQuery } from "./useMediaQuery";
 
 describe("useMediaQuery", () => {
   let listeners: Array<() => void> = [];
-  let matches = false;
+  const mediaQueryState = { matches: false };
 
   beforeEach(() => {
     listeners = [];
-    matches = false;
+    mediaQueryState.matches = false;
     window.matchMedia = vi.fn().mockImplementation((query: string) => ({
-      matches,
+      get matches() {
+        return mediaQueryState.matches;
+      },
       media: query,
       onchange: null,
       addListener: vi.fn(),
@@ -31,7 +33,7 @@ describe("useMediaQuery", () => {
   });
 
   it("returns true initially when query matches", () => {
-    matches = true;
+    mediaQueryState.matches = true;
     const { result } = renderHook(() => useMediaQuery("(pointer: coarse)"));
     expect(result.current).toBe(true);
   });
@@ -40,10 +42,11 @@ describe("useMediaQuery", () => {
     const { result } = renderHook(() => useMediaQuery("(pointer: coarse)"));
     expect(result.current).toBe(false);
 
+    mediaQueryState.matches = true;
     act(() => {
       listeners.forEach((l) => l());
     });
 
-    expect(result.current).toBe(false);
+    expect(result.current).toBe(true);
   });
 });

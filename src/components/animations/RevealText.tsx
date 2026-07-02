@@ -11,17 +11,18 @@ type RevealTextProps = {
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-function RevealTextInner({
+function RevealTextWords({
   text,
   className,
   delay,
-  shouldReduceMotion,
+  shouldUseSafeMotion,
 }: {
   text: string;
   className?: string;
   delay?: number;
-  shouldReduceMotion: boolean | null;
+  shouldUseSafeMotion: boolean;
 }) {
+  const words = text.split(" ");
   const childVariants = {
     visible: {
       opacity: 1,
@@ -30,11 +31,9 @@ function RevealTextInner({
     },
     hidden: {
       opacity: 0,
-      y: shouldReduceMotion ? 0 : 40,
+      y: 40,
     },
   };
-
-  const words = text.split(" ");
   const container = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
@@ -47,22 +46,28 @@ function RevealTextInner({
     <motion.div
       aria-label={text}
       className={`flex flex-wrap ${className}`}
-      variants={container}
-      initial="hidden"
-      animate="visible"
+      {...(!shouldUseSafeMotion && {
+        variants: container,
+        initial: "hidden",
+        animate: "visible",
+      })}
     >
       {words.map((word, index) => (
         <span
           key={`${word}-${index}`}
-          className="overflow-hidden"
+          className={shouldUseSafeMotion ? undefined : "overflow-hidden"}
           aria-hidden="true"
           style={
             index < words.length - 1 ? { marginRight: "0.25em" } : undefined
           }
         >
-          <motion.span variants={childVariants} className="inline-block">
-            {word}
-          </motion.span>
+          {shouldUseSafeMotion ? (
+            word
+          ) : (
+            <motion.span variants={childVariants} className="inline-block">
+              {word}
+            </motion.span>
+          )}
         </span>
       ))}
     </motion.div>
@@ -78,31 +83,11 @@ export function RevealText({
   const shouldUseSafeMotion = useAnimationSafeMode();
   const shouldReduceMotion = useReducedMotion();
 
-  if (shouldUseSafeMotion) {
-    if (!text) {
+  if (!text) {
+    if (shouldUseSafeMotion) {
       return <div className={className}>{children}</div>;
     }
 
-    const words = text.split(" ");
-
-    return (
-      <div aria-label={text} className={`flex flex-wrap ${className}`}>
-        {words.map((word, index) => (
-          <span
-            key={`${word}-${index}`}
-            aria-hidden="true"
-            style={
-              index < words.length - 1 ? { marginRight: "0.25em" } : undefined
-            }
-          >
-            {word}
-          </span>
-        ))}
-      </div>
-    );
-  }
-
-  if (!text) {
     return (
       <motion.div
         className={className}
@@ -116,11 +101,11 @@ export function RevealText({
   }
 
   return (
-    <RevealTextInner
+    <RevealTextWords
       text={text}
       className={className}
       delay={delay}
-      shouldReduceMotion={shouldReduceMotion}
+      shouldUseSafeMotion={shouldUseSafeMotion}
     />
   );
 }
