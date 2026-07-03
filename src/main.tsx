@@ -4,8 +4,6 @@ import "./index.css";
 import App from "./App.tsx";
 import { ErrorBoundary } from "./components/ErrorBoundary.tsx";
 import { ThemeProvider } from "./components/ThemeProvider.tsx";
-import { initWebVitals } from "./utils/webVitals";
-
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ErrorBoundary>
@@ -16,4 +14,6 @@ createRoot(document.getElementById("root")!).render(
   </StrictMode>,
 );
 
-initWebVitals();
+if (import.meta.env.DEV) {
+  import("./utils/webVitals").then(({ initWebVitals }) => initWebVitals());
+}

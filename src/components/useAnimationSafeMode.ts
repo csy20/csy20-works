@@ -1,6 +1,5 @@
-import { useReducedMotion } from "framer-motion";
+import { useMediaQuery } from "./hooks/useMediaQuery";
 
 export function useAnimationSafeMode() {
-  const prefersReducedMotion = useReducedMotion();
-  return Boolean(prefersReducedMotion);
+  return useMediaQuery("(prefers-reduced-motion: reduce)");
 }

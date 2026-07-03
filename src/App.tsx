@@ -8,9 +8,13 @@ import { BackgroundMesh } from "./components/BackgroundMesh";
 import { Navigation } from "./components/Navigation";
 import { useAnimationSafeMode } from "./components/useAnimationSafeMode";
 import { HeroSection } from "./sections/HeroSection";
-import { StackSection } from "./sections/StackSection";
 import { ProjectsSection } from "./sections/ProjectsSection";
 
+const StackSection = lazy(() =>
+  import("./sections/StackSection").then((m) => ({
+    default: m.StackSection,
+  })),
+);
 const ActivitySection = lazy(() =>
   import("./sections/ActivitySection").then((m) => ({
     default: m.ActivitySection,
@@ -42,7 +46,9 @@ export default function App() {
           <Navigation />
           <main id="main-content">
             <HeroSection />
-            <StackSection />
+            <Suspense fallback={null}>
+              <StackSection />
+            </Suspense>
             <Suspense fallback={null}>
               <ActivitySection />
             </Suspense>

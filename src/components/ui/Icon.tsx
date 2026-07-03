@@ -692,6 +692,65 @@ function RawIcon({ name, size = 18 }: { name: IconName; size?: number }) {
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
         </svg>
       );
+    case "youtube":
+      return (
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <rect
+            x="2"
+            y="4"
+            width="20"
+            height="16"
+            rx="4"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M10 8.5l7 3.5-7 3.5V8.5z"
+            fill="currentColor"
+            stroke="none"
+          />
+        </svg>
+      );
+    case "instagram":
+      return (
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <rect
+            x="2"
+            y="2"
+            width="20"
+            height="20"
+            rx="5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="4.5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <circle
+            cx="17.5"
+            cy="6.5"
+            r="1.2"
+            fill="currentColor"
+            stroke="none"
+          />
+        </svg>
+      );
     default:
       return null;
   }

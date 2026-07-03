@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { useMemo } from "react";
 import { Section } from "../components/ui/Section";
 import { Icon } from "../components/ui/Icon";
 import { techStack } from "../data/siteContent";
 
 import { useTheme } from "../components/useTheme";
-import { useSkipExpensiveAnimation } from "../components/useSkipExpensiveAnimation";
+import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 
 const categories = [
   { key: "frontend", label: "Frontend" },
@@ -22,10 +21,11 @@ function buildGroupedMap() {
   return map;
 }
 
+const groupedTechStack = buildGroupedMap();
+
 export function StackSection() {
   const { theme } = useTheme();
-  const shouldUseSafeMotion = useSkipExpensiveAnimation();
-  const groupedMap = useMemo(() => buildGroupedMap(), []);
+  const shouldUseSafeMotion = useAnimationSafeMode();
 
   return (
     <Section
@@ -54,7 +54,7 @@ export function StackSection() {
                 {cat.label}
               </p>
               <p className="mt-1 font-serif-accent text-2xl tracking-tight text-[var(--sd-text)]">
-                {groupedMap[cat.key]?.length ?? 0}
+                {groupedTechStack[cat.key]?.length ?? 0}
               </p>
             </div>
           ))}
@@ -62,7 +62,7 @@ export function StackSection() {
 
         <div className="space-y-6">
           {categories.map((cat) => {
-            const items = groupedMap[cat.key];
+            const items = groupedTechStack[cat.key];
             if (!items?.length) return null;
 
             return (

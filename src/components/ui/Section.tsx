@@ -42,7 +42,10 @@ export function Section({
 }: SectionProps) {
   const ref = useRef<HTMLElement>(null);
   const shouldUseSafeMotion = useAnimationSafeMode();
-  const inView = useInView(ref, { once: true, margin: "-80px 0px -40px 0px" });
+  const inView = useInView(shouldUseSafeMotion ? null : ref, {
+    once: true,
+    margin: "-80px 0px -40px 0px",
+  });
 
   return (
     <motion.section
@@ -60,7 +63,13 @@ export function Section({
       {(title || subtitle) && (
         <motion.div
           className={`mx-auto max-w-5xl px-4 pb-8 pt-16 sm:pb-12 sm:pt-24 lg:px-8 ${dark ? "text-[var(--sd-text)]" : ""}`}
-          {...(shouldUseSafeMotion ? {} : { variants: headingVariants })}
+          {...(shouldUseSafeMotion
+            ? {}
+            : {
+                variants: headingVariants,
+                initial: "hidden",
+                animate: inView ? "visible" : "hidden",
+              })}
         >
           {subtitle && (
             <p

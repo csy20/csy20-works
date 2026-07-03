@@ -36,7 +36,16 @@
   <meta name="twitter:description"
     content="I build apps that feel right — fast, smooth, and done properly. React, React Native, Flutter, and full-stack work." />
   <meta name="twitter:image" content="https://csy20.works/og-image.png" />
-  <meta name="twitter:creator" content="@csy20" />
+  <meta name="twitter:creator" content="@the__csy20" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.github.com" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+  />
 
   <!-- Additional SEO -->
   <meta name="application-name" content="csy20.works" />
@@ -45,6 +54,7 @@
   <meta name="apple-mobile-web-app-title" content="csy20.works" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="manifest" href="/manifest.json" />
 
   <script>
     (() => {
@@ -59,8 +69,12 @@
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
       document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
     })()
+    const meta = document.querySelector('meta[name="theme-color"]')
+    if (meta) {
+      meta.content = document.documentElement.getAttribute('data-theme') === 'dark' ? '#141414' : '#f6f3ed'
+    }
   </script>
-  <meta name="theme-color" content="#201812" />
+  <meta name="theme-color" content="#f6f3ed" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -76,7 +90,10 @@
       "knowsAbout": ["React", "Node.js", "MongoDB", "Express", "Flutter", "FastAPI", "Python", "TypeScript", "Machine Learning", "Mobile Development"],
       "sameAs": [
         "https://github.com/csy20",
-        "https://www.linkedin.com/in/csy20/"
+        "https://www.linkedin.com/in/csy20/",
+        "https://www.youtube.com/@emt__edits20",
+        "https://www.instagram.com/emt__edits/",
+        "https://www.instagram.com/the__csy20/"
       ]
     }
     </script>

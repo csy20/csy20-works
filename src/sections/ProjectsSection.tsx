@@ -4,13 +4,13 @@ import { Button } from "../components/ui/Button";
 import { MagneticCard } from "../components/animations/MagneticCard";
 import { Icon } from "../components/ui/Icon";
 import { projects, type Project } from "../data/siteContent";
-import { useSkipExpensiveAnimation } from "../components/useSkipExpensiveAnimation";
+import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 
 const featuredApp = projects.find((p) => p.featured);
 const otherProjects = projects.filter((p) => !p.featured);
 
 export function ProjectsSection() {
-  const shouldUseSafeMotion = useSkipExpensiveAnimation();
+  const shouldUseSafeMotion = useAnimationSafeMode();
 
   return (
     <Section id="projects" title="Apps & Projects" subtitle="Real work">
@@ -40,7 +40,7 @@ export function ProjectsSection() {
 }
 
 function AppCard({ app }: { app: Project }) {
-  const shouldUseSafeMotion = useSkipExpensiveAnimation();
+  const shouldUseSafeMotion = useAnimationSafeMode();
 
   return (
     <motion.div

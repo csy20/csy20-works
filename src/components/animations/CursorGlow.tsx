@@ -1,19 +1,15 @@
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect } from "react";
 import { useTheme } from "../useTheme";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 export function CursorGlow() {
   const { theme } = useTheme();
-  const shouldReduceMotion = useReducedMotion();
+  const shouldUseSafeMotion = useAnimationSafeMode();
   const hasFinePointer = useMediaQuery("(pointer: fine)");
 
-  const showGlow = theme === "dark" && !shouldReduceMotion && hasFinePointer;
+  const showGlow = theme === "dark" && !shouldUseSafeMotion && hasFinePointer;
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);

@@ -2,12 +2,16 @@ import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
 import { Section } from "../components/ui/Section";
 import { useTheme } from "../components/useTheme";
-import { useSkipExpensiveAnimation } from "../components/useSkipExpensiveAnimation";
+import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
+import { useMediaQuery } from "../components/hooks/useMediaQuery";
 import { config } from "../config";
 
 export function ActivitySection() {
   const { theme } = useTheme();
-  const shouldUseSafeMotion = useSkipExpensiveAnimation();
+  const shouldUseSafeMotion = useAnimationSafeMode();
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
+  const blockSize = isSmallScreen ? 10 : 13;
+  const blockMargin = isSmallScreen ? 2 : 4;
 
   return (
     <Section id="activity" title="Activity" subtitle="Open source">
@@ -27,8 +31,8 @@ export function ActivitySection() {
           <GitHubCalendar
             username={config.githubUsername}
             colorScheme={theme === "dark" ? "dark" : "light"}
-            blockSize={13}
-            blockMargin={4}
+            blockSize={blockSize}
+            blockMargin={blockMargin}
             fontSize={13}
           />
         </div>

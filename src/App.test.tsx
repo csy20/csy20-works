@@ -44,9 +44,10 @@ describe("App", () => {
 
     expect(screen.getByText(profile.heroDescription)).toBeInTheDocument();
 
-    expect(
-      screen.getByRole("heading", { name: "Tech stack" }),
-    ).toBeInTheDocument();
+    const stackHeading = await screen.findByRole("heading", {
+      name: "Tech stack",
+    });
+    expect(stackHeading).toBeInTheDocument();
 
     const stackSection = container.querySelector("#stack");
     expect(stackSection).not.toBeNull();

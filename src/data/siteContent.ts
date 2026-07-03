@@ -45,7 +45,13 @@ export type StackItem = {
   category: "frontend" | "backend" | "mobile" | "platform";
 };
 
-export type SocialIcon = "github" | "linkedin" | "x" | "email";
+export type SocialIcon =
+  | "github"
+  | "linkedin"
+  | "x"
+  | "email"
+  | "youtube"
+  | "instagram";
 
 export type SocialLink = {
   label: string;
@@ -268,6 +274,24 @@ export const socialLinks: SocialLink[] = [
     href: "https://x.com/the__csy20",
     icon: "x",
     detail: "Random thoughts and stuff I'm working on.",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@emt__edits20",
+    icon: "youtube",
+    detail: "Editing work and creative projects.",
+  },
+  {
+    label: "Instagram (emt__edits)",
+    href: "https://www.instagram.com/emt__edits/",
+    icon: "instagram",
+    detail: "Edits and creative content.",
+  },
+  {
+    label: "Instagram (csy20)",
+    href: "https://www.instagram.com/the__csy20/",
+    icon: "instagram",
+    detail: "Personal feed and updates.",
   },
   {
     label: "Email",

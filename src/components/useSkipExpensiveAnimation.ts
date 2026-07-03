@@ -1,8 +1,9 @@
-import { useReducedMotion } from "framer-motion";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 
 export function useSkipExpensiveAnimation() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useMediaQuery(
+    "(prefers-reduced-motion: reduce)",
+  );
   const isCoarsePointer = useMediaQuery("(pointer: coarse), (hover: none)");
-  return Boolean(prefersReducedMotion || isCoarsePointer);
+  return prefersReducedMotion || isCoarsePointer;
 }

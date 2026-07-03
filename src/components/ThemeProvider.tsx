@@ -28,6 +28,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       }
     }
 
+    try {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      if (prefersDark) return "dark";
+    } catch {
+      /* ignore */
+    }
+
     return "light";
   });
 
@@ -37,6 +46,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.setAttribute("data-theme", "dark");
     } else {
       root.removeAttribute("data-theme");
+    }
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+      meta.setAttribute("content", theme === "dark" ? "#141414" : "#f6f3ed");
     }
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);

@@ -3,11 +3,11 @@ import { Section } from "../components/ui/Section";
 import { Button } from "../components/ui/Button";
 import { Icon } from "../components/ui/Icon";
 import { socialLinks } from "../data/siteContent";
-import { useSkipExpensiveAnimation } from "../components/useSkipExpensiveAnimation";
+import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import { config } from "../config";
 
 export function ContactSection() {
-  const shouldUseSafeMotion = useSkipExpensiveAnimation();
+  const shouldUseSafeMotion = useAnimationSafeMode();
 
   return (
     <Section id="contact" title="Get in touch" subtitle="Connect">

@@ -15,7 +15,6 @@ export function ThemeTransitionOverlay() {
           key={theme}
           initial={{ opacity: 0.15 }}
           animate={{ opacity: 0 }}
-          exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
           className="absolute inset-0 bg-current pointer-events-none"
           style={{

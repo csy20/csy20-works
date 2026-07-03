@@ -8,7 +8,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
     compression({ algorithm: "gzip", ext: ".gz", threshold: 10240 }),
-    compression({ algorithm: "brotliCompress", ext: ".br", threshold: 10240 }),
   ],
   build: {
     target: "es2022",
@@ -23,6 +22,9 @@ export default defineConfig({
             }
             if (id.includes("framer-motion")) {
               return "motion-vendor";
+            }
+            if (id.includes("react-github-calendar")) {
+              return "github-calendar";
             }
           }
         },

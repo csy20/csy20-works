@@ -1,6 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { type ReactNode } from "react";
-import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 type RevealTextProps = {
   text?: string;
@@ -15,13 +14,20 @@ function RevealTextWords({
   text,
   className,
   delay,
-  shouldUseSafeMotion,
+  noAnimation,
 }: {
   text: string;
   className?: string;
   delay?: number;
-  shouldUseSafeMotion: boolean;
+  noAnimation: boolean;
 }) {
+  if (noAnimation) {
+    return (
+      <div aria-label={text} className={`flex flex-wrap ${className}`}>
+        {text}
+      </div>
+    );
+  }
   const words = text.split(" ");
   const childVariants = {
     visible: {
@@ -36,38 +42,32 @@ function RevealTextWords({
   };
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: (delay ?? 0) * i },
-    }),
+      transition: { staggerChildren: 0.08, delayChildren: delay ?? 0 },
+    },
   };
 
   return (
     <motion.div
       aria-label={text}
       className={`flex flex-wrap ${className}`}
-      {...(!shouldUseSafeMotion && {
-        variants: container,
-        initial: "hidden",
-        animate: "visible",
-      })}
+      variants={container}
+      initial="hidden"
+      animate="visible"
     >
       {words.map((word, index) => (
         <span
           key={`${word}-${index}`}
-          className={shouldUseSafeMotion ? undefined : "overflow-hidden"}
+          className="overflow-hidden"
           aria-hidden="true"
           style={
             index < words.length - 1 ? { marginRight: "0.25em" } : undefined
           }
         >
-          {shouldUseSafeMotion ? (
-            word
-          ) : (
-            <motion.span variants={childVariants} className="inline-block">
-              {word}
-            </motion.span>
-          )}
+          <motion.span variants={childVariants} className="inline-block">
+            {word}
+          </motion.span>
         </span>
       ))}
     </motion.div>
@@ -80,18 +80,19 @@ export function RevealText({
   className = "",
   delay = 0,
 }: RevealTextProps) {
-  const shouldUseSafeMotion = useAnimationSafeMode();
-  const shouldReduceMotion = useReducedMotion();
+  const noAnimation =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!text) {
-    if (shouldUseSafeMotion) {
+    if (noAnimation) {
       return <div className={className}>{children}</div>;
     }
 
     return (
       <motion.div
         className={className}
-        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 40 }}
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: EASE, delay }}
       >
@@ -105,7 +106,7 @@ export function RevealText({
       text={text}
       className={className}
       delay={delay}
-      shouldUseSafeMotion={shouldUseSafeMotion}
+      noAnimation={noAnimation}
     />
   );
 }
