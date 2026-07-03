@@ -42,7 +42,7 @@ export function Section({
 }: SectionProps) {
   const ref = useRef<HTMLElement>(null);
   const shouldUseSafeMotion = useAnimationSafeMode();
-  const inView = useInView(shouldUseSafeMotion ? null : ref, {
+  const inView = useInView(ref, {
     once: true,
     margin: "-80px 0px -40px 0px",
   });
