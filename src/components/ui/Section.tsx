@@ -1,5 +1,5 @@
+import { memo, useMemo, useRef, type ReactNode } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { useRef, type ReactNode } from "react";
 import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 type SectionProps = {
@@ -32,7 +32,7 @@ const headingVariants: Variants = {
   },
 };
 
-export function Section({
+function SectionInner({
   id,
   title,
   subtitle,
@@ -47,6 +47,35 @@ export function Section({
     margin: "-80px 0px -40px 0px",
   });
 
+  const heading = useMemo(() => {
+    if (!title && !subtitle) return null;
+    return (
+      <motion.div
+        className={`mx-auto max-w-5xl px-4 pb-8 pt-16 sm:pb-12 sm:pt-24 lg:px-8 ${dark ? "text-[var(--sd-text)]" : ""}`}
+        {...(shouldUseSafeMotion
+          ? {}
+          : {
+              variants: headingVariants,
+              initial: "hidden",
+              animate: inView ? "visible" : "hidden",
+            })}
+      >
+        {subtitle && (
+          <p
+            className={`font-display text-xs tracking-[0.2em] uppercase mb-3 ${dark ? "text-[var(--sd-muted)]" : "text-[var(--text-muted)]"}`}
+          >
+            {subtitle}
+          </p>
+        )}
+        {title && (
+          <h2 className="font-serif-accent text-3xl sm:text-4xl lg:text-5xl tracking-tight">
+            {title}
+          </h2>
+        )}
+      </motion.div>
+    );
+  }, [title, subtitle, dark, shouldUseSafeMotion, inView]);
+
   return (
     <motion.section
       ref={ref}
@@ -60,34 +89,12 @@ export function Section({
             animate: inView ? "visible" : "hidden",
           })}
     >
-      {(title || subtitle) && (
-        <motion.div
-          className={`mx-auto max-w-5xl px-4 pb-8 pt-16 sm:pb-12 sm:pt-24 lg:px-8 ${dark ? "text-[var(--sd-text)]" : ""}`}
-          {...(shouldUseSafeMotion
-            ? {}
-            : {
-                variants: headingVariants,
-                initial: "hidden",
-                animate: inView ? "visible" : "hidden",
-              })}
-        >
-          {subtitle && (
-            <p
-              className={`font-display text-xs tracking-[0.2em] uppercase mb-3 ${dark ? "text-[var(--sd-muted)]" : "text-[var(--text-muted)]"}`}
-            >
-              {subtitle}
-            </p>
-          )}
-          {title && (
-            <h2 className="font-serif-accent text-3xl sm:text-4xl lg:text-5xl tracking-tight">
-              {title}
-            </h2>
-          )}
-        </motion.div>
-      )}
+      {heading}
       <div className="mx-auto max-w-5xl px-4 pb-16 sm:pb-24 lg:px-8">
         {children}
       </div>
     </motion.section>
   );
 }
+
+export const Section = memo(SectionInner);

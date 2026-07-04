@@ -4,10 +4,21 @@ import { CursorGlow } from "./CursorGlow";
 import { ThemeProvider } from "../ThemeProvider";
 
 const STORAGE_KEY = "csy20-theme";
+const defaultMatchMediaImpl = (query: string) => ({
+  matches: false,
+  media: query,
+  onchange: null,
+  addListener: vi.fn(),
+  removeListener: vi.fn(),
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  dispatchEvent: vi.fn(),
+});
 
 describe("CursorGlow", () => {
   afterEach(() => {
     localStorage.removeItem(STORAGE_KEY);
+    vi.mocked(window.matchMedia).mockImplementation(defaultMatchMediaImpl);
   });
 
   it("renders nothing when theme is light", () => {
@@ -22,8 +33,7 @@ describe("CursorGlow", () => {
   it("renders the glow element when theme is dark and pointer is fine", () => {
     localStorage.setItem(STORAGE_KEY, "dark");
 
-    const originalMatchMedia = window.matchMedia;
-    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+    vi.mocked(window.matchMedia).mockImplementation((query: string) => ({
       matches: query === "(pointer: fine)",
       media: query,
       onchange: null,
@@ -41,7 +51,5 @@ describe("CursorGlow", () => {
     );
 
     expect(container.firstChild).not.toBeNull();
-
-    window.matchMedia = originalMatchMedia;
   });
 });

@@ -77,9 +77,9 @@ export function HeroSection() {
               <Button
                 variant="primary"
                 onClick={() => {
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("projects")?.scrollIntoView({
+                    behavior: shouldUseSafeMotion ? "auto" : "smooth",
+                  });
                 }}
               >
                 View work

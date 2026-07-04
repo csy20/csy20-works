@@ -23,6 +23,16 @@ function buildGroupedMap() {
 
 const groupedTechStack = buildGroupedMap();
 
+const categoriesGridVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const categorySectionVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export function StackSection() {
   const { theme } = useTheme();
   const shouldUseSafeMotion = useAnimationSafeMode();
@@ -39,10 +49,7 @@ export function StackSection() {
         <motion.div
           className="grid grid-cols-2 gap-3 sm:grid-cols-4"
           {...(!shouldUseSafeMotion && {
-            variants: {
-              hidden: { opacity: 0, y: 16 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-            },
+            variants: categoriesGridVariants,
           })}
         >
           {categories.map((cat) => (
@@ -69,10 +76,7 @@ export function StackSection() {
               <motion.div
                 key={cat.key}
                 {...(!shouldUseSafeMotion && {
-                  variants: {
-                    hidden: { opacity: 0, y: 16 },
-                    visible: { opacity: 1, y: 0 },
-                  },
+                  variants: categorySectionVariants,
                 })}
               >
                 <p className="font-display text-[10px] tracking-[0.2em] uppercase text-[var(--sd-muted)] mb-3 ml-1">

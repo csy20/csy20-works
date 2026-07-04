@@ -9,6 +9,11 @@ import { Navigation } from "./components/Navigation";
 import { useAnimationSafeMode } from "./components/useAnimationSafeMode";
 import { HeroSection } from "./sections/HeroSection";
 import { ProjectsSection } from "./sections/ProjectsSection";
+import {
+  StackSectionSkeleton,
+  ActivitySectionSkeleton,
+  ContactSectionSkeleton,
+} from "./components/SectionSkeleton";
 
 const StackSection = lazy(() =>
   import("./sections/StackSection").then((m) => ({
@@ -46,14 +51,14 @@ export default function App() {
           <Navigation />
           <main id="main-content">
             <HeroSection />
-            <Suspense fallback={null}>
+            <Suspense fallback={<StackSectionSkeleton />}>
               <StackSection />
             </Suspense>
-            <Suspense fallback={null}>
+            <Suspense fallback={<ActivitySectionSkeleton />}>
               <ActivitySection />
             </Suspense>
             <ProjectsSection />
-            <Suspense fallback={null}>
+            <Suspense fallback={<ContactSectionSkeleton />}>
               <ContactSection />
             </Suspense>
           </main>

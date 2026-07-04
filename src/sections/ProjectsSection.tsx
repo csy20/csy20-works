@@ -9,6 +9,16 @@ import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 const featuredApp = projects.find((p) => p.featured);
 const otherProjects = projects.filter((p) => !p.featured);
 
+const projectsHeadingVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+const appCardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export function ProjectsSection() {
   const shouldUseSafeMotion = useAnimationSafeMode();
 
@@ -20,10 +30,7 @@ export function ProjectsSection() {
           <motion.p
             className="font-display text-xs tracking-[0.2em] uppercase text-[var(--text-muted)] mb-5"
             {...(!shouldUseSafeMotion && {
-              variants: {
-                hidden: { opacity: 0, y: 12 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-              },
+              variants: projectsHeadingVariants,
             })}
           >
             Projects
@@ -46,10 +53,7 @@ function AppCard({ app }: { app: Project }) {
     <motion.div
       className="relative overflow-hidden rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] shadow-[var(--card-shadow)]"
       {...(!shouldUseSafeMotion && {
-        variants: {
-          hidden: { opacity: 0, y: 20 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-        },
+        variants: appCardVariants,
       })}
     >
       <div className="p-6 sm:p-8">

@@ -6,6 +6,11 @@ import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import { useMediaQuery } from "../components/hooks/useMediaQuery";
 import { config } from "../config";
 
+const activityCardVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export function ActivitySection() {
   const { theme } = useTheme();
   const shouldUseSafeMotion = useAnimationSafeMode();
@@ -18,10 +23,7 @@ export function ActivitySection() {
       <motion.div
         className="overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-4 sm:p-6"
         {...(!shouldUseSafeMotion && {
-          variants: {
-            hidden: { opacity: 0, y: 16 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-          },
+          variants: activityCardVariants,
         })}
       >
         <p className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)] mb-4">

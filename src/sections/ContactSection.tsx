@@ -6,6 +6,11 @@ import { socialLinks } from "../data/siteContent";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import { config } from "../config";
 
+const contactWrapperVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export function ContactSection() {
   const shouldUseSafeMotion = useAnimationSafeMode();
 
@@ -14,10 +19,7 @@ export function ContactSection() {
       <motion.div
         className="space-y-8"
         {...(!shouldUseSafeMotion && {
-          variants: {
-            hidden: { opacity: 0, y: 16 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-          },
+          variants: contactWrapperVariants,
         })}
       >
         <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 sm:p-8 text-center">

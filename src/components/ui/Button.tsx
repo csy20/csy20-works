@@ -55,11 +55,11 @@ export function Button({
       };
 
   if (href) {
+    const isMailto = href.startsWith("mailto:");
     return (
       <motion.a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(!isMailto ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className={classes}
         {...animationProps}
       >

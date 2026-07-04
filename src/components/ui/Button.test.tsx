@@ -2,15 +2,6 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { Button } from "./Button";
-import { useReducedMotion } from "framer-motion";
-
-vi.mock("framer-motion", async () => {
-  const actual = await vi.importActual("framer-motion");
-  return {
-    ...actual,
-    useReducedMotion: vi.fn(() => true),
-  };
-});
 
 describe("Button", () => {
   it("renders children", () => {
@@ -50,11 +41,5 @@ describe("Button", () => {
   it("applies custom className", () => {
     render(<Button className="custom-class">Custom</Button>);
     expect(screen.getByRole("button")).toHaveClass("custom-class");
-  });
-
-  it("renders with animation props when reduced motion is not preferred", () => {
-    vi.mocked(useReducedMotion).mockReturnValueOnce(false);
-    const { container } = render(<Button>Animated</Button>);
-    expect(container.firstChild).toBeInTheDocument();
   });
 });

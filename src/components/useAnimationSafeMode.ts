@@ -1,5 +1,6 @@
-import { useMediaQuery } from "./hooks/useMediaQuery";
+import { useContext } from "react";
+import { MotionSafeContext } from "./MotionSafeContext";
 
 export function useAnimationSafeMode() {
-  return useMediaQuery("(prefers-reduced-motion: reduce)");
+  return useContext(MotionSafeContext);
 }

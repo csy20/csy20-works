@@ -20,7 +20,8 @@ export function Navigation() {
 
   return (
     <motion.nav
-      className="glass-dock fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-[var(--dock-border)] px-2 py-2 shadow-lg max-w-[95vw]"
+      className="glass-dock fixed left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 sm:gap-1.5 rounded-full border border-[var(--dock-border)] px-2 py-2 shadow-lg max-w-[95vw]"
+      style={{ bottom: "calc(1rem + env(safe-area-inset-bottom, 0px))" }}
       {...(!shouldUseSafeMotion && {
         initial: { y: 20, opacity: 0 },
         animate: { y: 0, opacity: 1 },
@@ -30,15 +31,12 @@ export function Navigation() {
       <button
         type="button"
         onClick={() => {
-          const prefersReduced = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-          ).matches;
           window.scrollTo({
             top: 0,
-            behavior: prefersReduced ? "auto" : "smooth",
+            behavior: shouldUseSafeMotion ? "auto" : "smooth",
           });
         }}
-        className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)]"
+        className="flex min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)] active:scale-90"
         aria-label="Home"
       >
         <Icon name="home" size={18} />
@@ -55,7 +53,7 @@ export function Navigation() {
               {...(isExternal
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)]"
+              className="flex min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)] active:scale-90"
               aria-label={link.label}
             >
               <Icon name={link.icon} size={18} />
@@ -67,7 +65,7 @@ export function Navigation() {
         type="button"
         onClick={toggleTheme}
         aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
-        className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)]"
+        className="flex min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)] active:scale-90"
       >
         <motion.div
           {...(!shouldUseSafeMotion && {

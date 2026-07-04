@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
+import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
 type RevealTextProps = {
   text?: string;
@@ -80,9 +81,7 @@ export function RevealText({
   className = "",
   delay = 0,
 }: RevealTextProps) {
-  const noAnimation =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const noAnimation = useAnimationSafeMode();
 
   if (!text) {
     if (noAnimation) {
