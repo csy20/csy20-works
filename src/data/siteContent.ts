@@ -65,15 +65,8 @@ export const profile = {
   handle: "~csy",
   role: "Building with React, React Native, and Flutter",
   strapline: "React • React Native • Flutter • FastAPI",
-  heroTitle: "I build apps that feel right — fast, smooth, and done properly.",
-  heroSummary:
-    "I work across web and mobile, mostly with React, Next.js, React Native, and Flutter. I care about how things feel to use, not just how they look in a screenshot.",
   heroDescription:
     "Everything here is real work — APIs that actually run, animations that don't stutter, and apps that got finished instead of staying half-built.",
-  aboutPrimary:
-    "I'm a full-stack developer who gets way too into smooth animations, clean data flows, and making things feel native on every device.",
-  aboutSecondary:
-    "I like taking rough ideas and turning them into real systems — REST APIs, proper data models, and features people actually use.",
 };
 
 export const techStack: StackItem[] = [

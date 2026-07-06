@@ -1,8 +1,10 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTheme } from "../useTheme";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useAnimationSafeMode } from "../useAnimationSafeMode";
+
+const CURSOR_SPRING = { stiffness: 120, damping: 20 };
 
 export function CursorGlow() {
   const { theme } = useTheme();
@@ -14,38 +16,38 @@ export function CursorGlow() {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
 
-  const springConfig = { stiffness: 120, damping: 20 };
-  const cursorX = useSpring(x, springConfig);
-  const cursorY = useSpring(y, springConfig);
+  const cursorX = useSpring(x, CURSOR_SPRING);
+  const cursorY = useSpring(y, CURSOR_SPRING);
+
+  const frameRef = useRef(0);
+  const lastRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!showGlow) return;
 
-    let frameId = 0;
-    let lastX = 0;
-    let lastY = 0;
-
     const moveCursor = (e: MouseEvent) => {
-      if (e.clientX === lastX && e.clientY === lastY) return;
-      lastX = e.clientX;
-      lastY = e.clientY;
+      if (e.clientX === lastRef.current.x && e.clientY === lastRef.current.y)
+        return;
+      lastRef.current.x = e.clientX;
+      lastRef.current.y = e.clientY;
 
-      if (frameId) {
-        cancelAnimationFrame(frameId);
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
       }
 
-      frameId = requestAnimationFrame(() => {
+      frameRef.current = requestAnimationFrame(() => {
         x.set(e.clientX - 100);
         y.set(e.clientY - 100);
-        frameId = 0;
+        frameRef.current = 0;
       });
     };
 
     window.addEventListener("mousemove", moveCursor);
 
     return () => {
-      if (frameId) {
-        cancelAnimationFrame(frameId);
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+        frameRef.current = 0;
       }
       window.removeEventListener("mousemove", moveCursor);
     };

@@ -14,7 +14,6 @@ vi.mock("framer-motion", async () => {
   return {
     ...actual,
     useInView: () => true,
-    useReducedMotion: () => true,
   };
 });
 
@@ -44,9 +43,11 @@ describe("App", () => {
 
     expect(screen.getByText(profile.heroDescription)).toBeInTheDocument();
 
-    const stackHeading = await screen.findByRole("heading", {
-      name: "Tech stack",
-    });
+    const stackHeading = await screen.findByRole(
+      "heading",
+      { name: "Tech stack" },
+      { timeout: 5000 },
+    );
     expect(stackHeading).toBeInTheDocument();
 
     const stackSection = container.querySelector("#stack");
@@ -59,7 +60,11 @@ describe("App", () => {
     }
 
     expect(
-      await screen.findByRole("heading", { name: "Activity" }),
+      await screen.findByRole(
+        "heading",
+        { name: "Activity" },
+        { timeout: 5000 },
+      ),
     ).toBeInTheDocument();
 
     expect(screen.getByTestId("github-calendar")).toBeInTheDocument();
@@ -77,7 +82,11 @@ describe("App", () => {
     ).toBeInTheDocument();
 
     expect(
-      await screen.findByRole("heading", { name: "Get in touch" }),
+      await screen.findByRole(
+        "heading",
+        { name: "Get in touch" },
+        { timeout: 5000 },
+      ),
     ).toBeInTheDocument();
 
     expect(

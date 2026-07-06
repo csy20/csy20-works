@@ -13,6 +13,24 @@
   background-color: #f6f3ed;
   color: #181410;
 
+  --mesh-grad-1: radial-gradient(
+    circle at 20% 30%,
+    rgba(24, 20, 16, 0.04),
+    transparent 50%
+  );
+  --mesh-grad-2: radial-gradient(
+    circle at 80% 60%,
+    rgba(24, 20, 16, 0.03),
+    transparent 50%
+  );
+  --mesh-grad-3: radial-gradient(
+    circle at 50% 20%,
+    rgba(24, 20, 16, 0.02),
+    transparent 50%
+  );
+  --selection-bg: rgba(24, 20, 16, 0.14);
+  --selection-bg-dark: rgba(232, 228, 220, 0.18);
+
   --bg-primary: #f6f3ed;
   --bg-secondary: #ece7de;
   --text-primary: #181410;
@@ -45,6 +63,22 @@
   color-scheme: dark;
   background-color: #141414;
   color: #e8e4dc;
+
+  --mesh-grad-1: radial-gradient(
+    circle at 20% 30%,
+    rgba(232, 228, 220, 0.04),
+    transparent 50%
+  );
+  --mesh-grad-2: radial-gradient(
+    circle at 80% 60%,
+    rgba(232, 228, 220, 0.03),
+    transparent 50%
+  );
+  --mesh-grad-3: radial-gradient(
+    circle at 50% 20%,
+    rgba(232, 228, 220, 0.02),
+    transparent 50%
+  );
 
   --bg-primary: #141414;
   --bg-secondary: #1e1e1c;
@@ -85,7 +119,6 @@ body {
   min-height: 100vh;
   background: var(--bg-primary);
   color: var(--text-primary);
-  overscroll-behavior: none;
 }
 
 @layer base {
@@ -103,6 +136,11 @@ body {
 
   #root {
     min-height: 100vh;
+  }
+
+  button,
+  a {
+    touch-action: manipulation;
   }
 
   section {
@@ -125,11 +163,11 @@ body {
 }
 
 ::selection {
-  background: rgba(24, 20, 16, 0.14);
+  background: var(--selection-bg);
 }
 
 [data-theme="dark"] ::selection {
-  background: rgba(232, 228, 220, 0.18);
+  background: var(--selection-bg-dark);
 }
 
 /* ═══ Transitions ═══ */
@@ -137,7 +175,7 @@ body,
 header,
 main {
   transition:
-    background 0.25s ease,
+    background-color 0.25s ease,
     color 0.2s ease;
 }
 
@@ -220,4 +258,19 @@ main {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hover-card:hover {
+    box-shadow: var(--card-shadow-hover);
+  }
+}
+
+.glass-dock {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass-dock::-webkit-scrollbar {
+  display: none;
 }

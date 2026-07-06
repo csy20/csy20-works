@@ -1,6 +1,7 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { useAnimationSafeMode } from "../useAnimationSafeMode";
+import { useSkipExpensiveAnimation } from "../useSkipExpensiveAnimation";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
 
@@ -32,7 +33,7 @@ export function Button({
   className = "",
   compact = false,
 }: ButtonProps) {
-  const shouldUseSafeMotion = useAnimationSafeMode();
+  const skipExpensive = useSkipExpensiveAnimation();
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full font-display text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]";
 
@@ -44,9 +45,12 @@ export function Button({
 
   const sizes = compact ? "px-4 py-2 text-xs" : "px-6 py-3";
 
-  const classes = `${base} ${variants[variant]} ${sizes} ${className}`;
+  const classes = useMemo(
+    () => `${base} ${variants[variant]} ${sizes} ${className}`,
+    [variant, compact, className],
+  );
 
-  const animationProps = shouldUseSafeMotion
+  const animationProps = skipExpensive
     ? {}
     : {
         whileHover: { y: -2, scale: 1.01 },

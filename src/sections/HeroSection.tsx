@@ -22,7 +22,10 @@ export function HeroSection() {
   const shouldUseSafeMotion = useAnimationSafeMode();
 
   return (
-    <section id="hero" className="relative min-h-dvh flex items-center">
+    <section
+      id="hero"
+      className="relative min-h-dvh min-h-screen flex items-center"
+    >
       <div className="mx-auto max-w-5xl px-4 py-16 sm:py-24 lg:px-8 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
           <div className="flex flex-col gap-6">
@@ -93,7 +96,7 @@ export function HeroSection() {
           </div>
 
           <motion.div
-            className="mx-auto w-full max-w-[320px] sm:max-w-[340px] lg:max-w-[360px] shrink-0"
+            className="mx-auto w-full max-w-full sm:max-w-[340px] lg:max-w-[360px] shrink-0"
             {...(!shouldUseSafeMotion && {
               ...fadeInScale,
               transition: { ...fadeInScale.transition, delay: 0.3 },
@@ -106,7 +109,7 @@ export function HeroSection() {
                 width={640}
                 height={640}
                 className="w-full h-auto block"
-                loading="eager"
+                fetchPriority="high"
               />
             </div>
           </motion.div>

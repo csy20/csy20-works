@@ -3,8 +3,8 @@ import { Section } from "../components/ui/Section";
 import { Icon } from "../components/ui/Icon";
 import { techStack } from "../data/siteContent";
 
-import { useTheme } from "../components/useTheme";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
+import { useSkipExpensiveAnimation } from "../components/useSkipExpensiveAnimation";
 
 const categories = [
   { key: "frontend", label: "Frontend" },
@@ -34,15 +34,15 @@ const categorySectionVariants = {
 };
 
 export function StackSection() {
-  const { theme } = useTheme();
   const shouldUseSafeMotion = useAnimationSafeMode();
+  const skipTouchHover = useSkipExpensiveAnimation();
 
   return (
     <Section
       id="stack"
       title="Tech stack"
       subtitle="What I use"
-      dark={theme === "dark"}
+      dark={true}
       className="!pt-0"
     >
       <div className="space-y-8">
@@ -86,7 +86,7 @@ export function StackSection() {
                   {items.map((item) => (
                     <motion.span
                       key={item.name}
-                      {...(!shouldUseSafeMotion && {
+                      {...(!skipTouchHover && {
                         whileHover: { y: -2, scale: 1.02 },
                       })}
                       className="inline-flex items-center gap-2 rounded-full border border-[var(--sd-pill-border)] bg-[var(--sd-pill-bg)] px-4 py-2 text-sm text-[var(--sd-pill-text)] transition-colors duration-200 hover:border-[var(--sd-pill-border-hover)] hover:bg-[var(--sd-pill-bg-hover)]"

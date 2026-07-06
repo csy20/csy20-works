@@ -11,6 +11,26 @@ type RevealTextProps = {
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+const childVariants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: EASE },
+  },
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+};
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0 },
+  },
+};
+
 function RevealTextWords({
   text,
   className,
@@ -30,24 +50,6 @@ function RevealTextWords({
     );
   }
   const words = text.split(" ");
-  const childVariants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: EASE },
-    },
-    hidden: {
-      opacity: 0,
-      y: 40,
-    },
-  };
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: delay ?? 0 },
-    },
-  };
 
   return (
     <motion.div
@@ -56,6 +58,7 @@ function RevealTextWords({
       variants={container}
       initial="hidden"
       animate="visible"
+      {...(delay ? { transition: { delayChildren: delay } as const } : {})}
     >
       {words.map((word, index) => (
         <span

@@ -14,6 +14,8 @@ type MagneticCardProps = {
   style?: MotionStyle;
 };
 
+const MAGNETIC_SPRING = { stiffness: 300, damping: 25 };
+
 export function MagneticCard({
   children,
   className = "",
@@ -25,9 +27,8 @@ export function MagneticCard({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const springConfig = { stiffness: 300, damping: 25 };
-  const smoothX = useSpring(x, springConfig);
-  const smoothY = useSpring(y, springConfig);
+  const smoothX = useSpring(x, MAGNETIC_SPRING);
+  const smoothY = useSpring(y, MAGNETIC_SPRING);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;

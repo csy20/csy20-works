@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useMemo } from "react";
 import { MotionConfig } from "framer-motion";
 import { InkTransition } from "./components/animations/InkTransition";
 import { CursorGlow } from "./components/animations/CursorGlow";
@@ -33,9 +33,13 @@ const ContactSection = lazy(() =>
 
 export default function App() {
   const shouldUseSafeMotion = useAnimationSafeMode();
+  const reducedMotion = useMemo(
+    () => (shouldUseSafeMotion ? ("always" as const) : ("user" as const)),
+    [shouldUseSafeMotion],
+  );
 
   return (
-    <MotionConfig reducedMotion={shouldUseSafeMotion ? "always" : "user"}>
+    <MotionConfig reducedMotion={reducedMotion}>
       <InkTransition>
         <div className="relative min-h-screen overflow-x-hidden">
           <a

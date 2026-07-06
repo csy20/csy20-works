@@ -751,8 +751,11 @@ function RawIcon({ name, size = 18 }: { name: IconName; size?: number }) {
           />
         </svg>
       );
-    default:
+    default: {
+      const _exhaustive: never = name;
+      void _exhaustive;
       return null;
+    }
   }
 }
 

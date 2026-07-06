@@ -11,6 +11,8 @@ type SectionProps = {
   dark?: boolean;
 };
 
+const SECTION_INVIEW_MARGIN = "-80px 0px -40px 0px";
+
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -18,7 +20,6 @@ const containerVariants: Variants = {
     transition: {
       duration: 0.6,
       ease: [0.22, 1, 0.36, 1],
-      staggerChildren: 0.08,
     },
   },
 };
@@ -44,22 +45,13 @@ function SectionInner({
   const shouldUseSafeMotion = useAnimationSafeMode();
   const inView = useInView(ref, {
     once: true,
-    margin: "-80px 0px -40px 0px",
+    margin: SECTION_INVIEW_MARGIN,
   });
 
-  const heading = useMemo(() => {
+  const headingContent = useMemo(() => {
     if (!title && !subtitle) return null;
     return (
-      <motion.div
-        className={`mx-auto max-w-5xl px-4 pb-8 pt-16 sm:pb-12 sm:pt-24 lg:px-8 ${dark ? "text-[var(--sd-text)]" : ""}`}
-        {...(shouldUseSafeMotion
-          ? {}
-          : {
-              variants: headingVariants,
-              initial: "hidden",
-              animate: inView ? "visible" : "hidden",
-            })}
-      >
+      <>
         {subtitle && (
           <p
             className={`font-display text-xs tracking-[0.2em] uppercase mb-3 ${dark ? "text-[var(--sd-muted)]" : "text-[var(--text-muted)]"}`}
@@ -68,13 +60,30 @@ function SectionInner({
           </p>
         )}
         {title && (
-          <h2 className="font-serif-accent text-3xl sm:text-4xl lg:text-5xl tracking-tight">
+          <h2
+            className={`font-serif-accent text-3xl sm:text-4xl lg:text-5xl tracking-tight ${dark ? "text-[var(--sd-text)]" : ""}`}
+          >
             {title}
           </h2>
         )}
-      </motion.div>
+      </>
     );
-  }, [title, subtitle, dark, shouldUseSafeMotion, inView]);
+  }, [title, subtitle, dark]);
+
+  const heading = headingContent ? (
+    <motion.div
+      className={`mx-auto max-w-5xl px-4 pb-8 pt-16 sm:pb-12 sm:pt-24 lg:px-8 ${dark ? "text-[var(--sd-text)]" : ""}`}
+      {...(shouldUseSafeMotion
+        ? {}
+        : {
+            variants: headingVariants,
+            initial: "hidden",
+            animate: inView ? "visible" : "hidden",
+          })}
+    >
+      {headingContent}
+    </motion.div>
+  ) : null;
 
   return (
     <motion.section

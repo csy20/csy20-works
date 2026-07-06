@@ -1,3 +1,4 @@
+import { Component, type ReactNode, type ErrorInfo } from "react";
 import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
 import { Section } from "../components/ui/Section";
@@ -5,6 +6,34 @@ import { useTheme } from "../components/useTheme";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import { useMediaQuery } from "../components/hooks/useMediaQuery";
 import { config } from "../config";
+
+class CalendarErrorBoundary extends Component<{ children: ReactNode }> {
+  override state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  override componentDidCatch(_error: Error, info: ErrorInfo) {
+    if (import.meta.env.DEV) {
+      console.warn(
+        "[ActivitySection] GitHubCalendar failed:",
+        info.componentStack,
+      );
+    }
+  }
+
+  override render() {
+    if (this.state.hasError) {
+      return (
+        <p className="text-sm text-[var(--text-muted)]">
+          GitHub contributions unavailable right now.
+        </p>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 const activityCardVariants = {
   hidden: { opacity: 0, y: 16 },
@@ -30,13 +59,15 @@ export function ActivitySection() {
           GitHub contributions
         </p>
         <div className="overflow-x-auto pb-1 min-h-[110px]">
-          <GitHubCalendar
-            username={config.githubUsername}
-            colorScheme={theme === "dark" ? "dark" : "light"}
-            blockSize={blockSize}
-            blockMargin={blockMargin}
-            fontSize={13}
-          />
+          <CalendarErrorBoundary>
+            <GitHubCalendar
+              username={config.githubUsername}
+              colorScheme={theme === "dark" ? "dark" : "light"}
+              blockSize={blockSize}
+              blockMargin={blockMargin}
+              fontSize={13}
+            />
+          </CalendarErrorBoundary>
         </div>
       </motion.div>
     </Section>

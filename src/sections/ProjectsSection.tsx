@@ -3,6 +3,7 @@ import { Section } from "../components/ui/Section";
 import { Button } from "../components/ui/Button";
 import { MagneticCard } from "../components/animations/MagneticCard";
 import { Icon } from "../components/ui/Icon";
+import { Tag } from "../components/ui/Tag";
 import { projects, type Project } from "../data/siteContent";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 
@@ -103,12 +104,7 @@ function AppCard({ app }: { app: Project }) {
 
         <div className="mt-5 flex flex-wrap gap-1.5">
           {app.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-md border border-[var(--border-soft)] bg-[var(--surface-raised)] px-2.5 py-1 text-[11px] tracking-wide text-[var(--text-secondary)]"
-            >
-              {tag}
-            </span>
+            <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
 
@@ -145,12 +141,9 @@ function ProjectCard({ project }: { project: Project }) {
 
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-md border border-[var(--border-soft)] bg-[var(--surface-raised)] px-2 py-0.5 text-[10px] tracking-wide text-[var(--text-muted)]"
-            >
+            <Tag key={tag} variant="muted">
               {tag}
-            </span>
+            </Tag>
           ))}
         </div>
 
