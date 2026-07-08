@@ -45,54 +45,55 @@ export function HeroSection() {
       id="hero"
       className="relative min-h-dvh min-h-screen flex items-center"
     >
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:py-24 lg:px-8 lg:py-32">
+      <div className="mx-auto w-full max-w-5xl px-4 py-12 sm:py-24 lg:px-8 lg:py-32">
         <motion.div
-          className="grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16"
+          className="grid gap-8 sm:gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16"
           {...(!shouldUseSafeMotion && {
             variants: heroContainer,
             initial: "hidden",
             animate: "visible",
           })}
         >
-          <div className="flex flex-col gap-6">
+          <div className="flex min-w-0 flex-col gap-5 sm:gap-6">
             <motion.div
-              className="flex items-center gap-3"
+              className="flex flex-wrap items-center gap-x-3 gap-y-2"
               {...(!shouldUseSafeMotion && { variants: heroItem })}
             >
-              <Badge>{profile.handle}</Badge>
-              <span className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)]">
+              <Badge className="shrink-0">{profile.handle}</Badge>
+              <span className="min-w-0 font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)]">
                 {profile.role}
               </span>
             </motion.div>
 
-            <h1>
+            <h1 className="min-w-0">
               <RevealText
                 text={profile.name}
-                className="font-serif-accent text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-[0.95] text-[var(--text-primary)]"
+                className="font-serif-accent text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] sm:leading-[0.95] text-[var(--text-primary)]"
                 delay={0.35}
               />
             </h1>
 
             <motion.p
-              className="font-display text-sm tracking-[0.06em] text-[var(--text-muted)]"
+              className="font-display text-xs sm:text-sm tracking-[0.06em] text-[var(--text-muted)]"
               {...(!shouldUseSafeMotion && { variants: heroItem })}
             >
               {profile.strapline}
             </motion.p>
 
             <motion.p
-              className="max-w-xl text-base leading-relaxed text-[var(--text-secondary)] text-balance"
+              className="max-w-xl text-[15px] sm:text-base leading-relaxed text-[var(--text-secondary)] text-balance"
               {...(!shouldUseSafeMotion && { variants: heroItem })}
             >
               {profile.heroDescription}
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap gap-3 pt-2"
+              className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:pt-2"
               {...(!shouldUseSafeMotion && { variants: heroItem })}
             >
               <Button
                 variant="primary"
+                className="w-full sm:w-auto"
                 onClick={() => {
                   document.getElementById("projects")?.scrollIntoView({
                     behavior: shouldUseSafeMotion ? "auto" : "smooth",
@@ -102,7 +103,11 @@ export function HeroSection() {
                 View work
                 <Icon name="arrow-right" size={14} />
               </Button>
-              <Button variant="secondary" href={resumeUrl}>
+              <Button
+                variant="secondary"
+                href={resumeUrl}
+                className="w-full sm:w-auto"
+              >
                 Get resume
                 <Icon name="download" size={14} />
               </Button>
@@ -110,11 +115,11 @@ export function HeroSection() {
           </div>
 
           <motion.div
-            className="mx-auto w-full max-w-full sm:max-w-[340px] lg:max-w-[360px] shrink-0"
+            className="mx-auto w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[360px] shrink-0"
             {...(!shouldUseSafeMotion && { variants: heroImage })}
           >
             <motion.div
-              className="overflow-hidden rounded-3xl border border-[var(--border-soft)] shadow-[var(--card-shadow)]"
+              className="overflow-hidden rounded-2xl sm:rounded-3xl border border-[var(--border-soft)] shadow-[var(--card-shadow)]"
               {...(!shouldUseSafeMotion && {
                 whileHover: { y: -4, transition: springSoft },
               })}

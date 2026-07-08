@@ -69,7 +69,7 @@ function SectionInner({
           </p>
         )}
         {title && (
-          <h2 className="font-serif-accent text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[var(--text-primary)]">
+          <h2 className="font-serif-accent text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[var(--text-primary)]">
             {title}
           </h2>
         )}
@@ -95,14 +95,14 @@ function SectionInner({
     >
       {headingContent && (
         <motion.div
-          className="mx-auto max-w-5xl px-4 pb-8 pt-16 sm:pb-12 sm:pt-24 lg:px-8"
+          className="mx-auto w-full max-w-5xl px-4 pb-6 pt-12 sm:pb-12 sm:pt-24 lg:px-8"
           {...(shouldUseSafeMotion ? {} : { variants: headingVariants })}
         >
           {headingContent}
         </motion.div>
       )}
       <motion.div
-        className="mx-auto max-w-5xl px-4 pb-16 sm:pb-24 lg:px-8"
+        className="mx-auto w-full max-w-5xl px-4 pb-12 sm:pb-24 lg:px-8"
         {...(shouldUseSafeMotion ? {} : { variants: contentVariants })}
       >
         {children}

@@ -16,7 +16,7 @@ const navLinkIcons: SocialIcon[] = [
 ];
 
 const DOCK_BUTTON_CLASS =
-  "flex min-h-9 min-w-9 sm:min-h-10 sm:min-w-10 md:min-h-12 md:min-w-12 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)] active:scale-90 active:bg-[var(--dock-button-hover)]";
+  "flex shrink-0 min-h-11 min-w-11 md:min-h-12 md:min-w-12 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)] active:scale-90 active:bg-[var(--dock-button-hover)]";
 
 export function Navigation() {
   const filteredSocialLinks = useMemo(() => {
@@ -34,10 +34,11 @@ export function Navigation() {
 
   return (
     <motion.nav
-      className="glass-dock fixed left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 sm:gap-1.5 rounded-full border border-[var(--dock-border)] px-2 py-2 shadow-lg max-w-[95vw] overflow-x-auto"
+      className="glass-dock fixed left-1/2 z-50 flex -translate-x-1/2 items-center gap-0.5 sm:gap-1.5 rounded-full border border-[var(--dock-border)] px-1.5 py-1.5 sm:px-2 sm:py-2 shadow-lg max-w-[min(95vw,calc(100vw-1.5rem-env(safe-area-inset-left,0px)-env(safe-area-inset-right,0px)))]"
       style={{
-        bottom: "calc(1rem + env(safe-area-inset-bottom, 0px))",
+        bottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))",
       }}
+      aria-label="Site navigation"
       {...(!shouldUseSafeMotion && {
         initial: { y: 28, opacity: 0, scale: 0.96 },
         animate: { y: 0, opacity: 1, scale: 1 },

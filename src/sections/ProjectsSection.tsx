@@ -52,21 +52,21 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
       className="relative overflow-hidden rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] shadow-[var(--card-shadow)]"
       {...(!shouldUseSafeMotion && { variants: cardVariants })}
     >
-      <div className="p-6 sm:p-8">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-start gap-5">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)]">
+      <div className="p-4 sm:p-8">
+        <div className="flex flex-col gap-4 sm:gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex min-w-0 items-start gap-3 sm:gap-5">
+            <div className="flex h-12 w-12 sm:h-16 sm:w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)]">
               <img
                 src="/bytewise-logo.png"
                 alt=""
                 width={40}
                 height={40}
-                className="h-10 w-10 object-contain"
+                className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
                 loading="lazy"
                 decoding="async"
               />
             </div>
-            <div className="space-y-1.5">
+            <div className="min-w-0 space-y-1.5">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2.5 py-0.5 text-[10px] font-medium tracking-wider uppercase text-green-600 dark:text-green-400">
                   <span
@@ -75,11 +75,11 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
                   />
                   Published
                 </span>
-                <span className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)]">
+                <span className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)]">
                   {app.eyebrow}
                 </span>
               </div>
-              <h3 className="font-serif-accent text-2xl sm:text-3xl tracking-tight text-[var(--text-primary)]">
+              <h3 className="font-serif-accent text-xl sm:text-3xl tracking-tight text-[var(--text-primary)]">
                 {app.title}
               </h3>
               <p className="max-w-2xl text-sm leading-relaxed text-[var(--text-secondary)] text-balance">
@@ -96,22 +96,27 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
         </div>
 
         {app.releaseNote && (
-          <div className="mt-6 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)] p-4 sm:p-5">
+          <div className="mt-5 sm:mt-6 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)] p-3.5 sm:p-5">
             <p className="text-sm leading-relaxed text-[var(--text-secondary)] text-balance">
               {app.releaseNote}
             </p>
           </div>
         )}
 
-        <div className="mt-5 flex flex-wrap gap-1.5">
+        <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5">
           {app.tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-4 sm:mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           {app.links.map((link) => (
-            <Button key={link.label} href={link.href} variant="primary">
+            <Button
+              key={link.label}
+              href={link.href}
+              variant="primary"
+              className="w-full sm:w-auto"
+            >
               <Icon name="play" size={16} />
               {link.label}
             </Button>
@@ -130,13 +135,13 @@ const ProjectCard = memo(function ProjectCard({
   return (
     <motion.div variants={cardVariants}>
       <MagneticCard>
-        <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 shadow-[var(--card-shadow)] transition-shadow duration-300 hover:shadow-[var(--card-shadow-hover)]">
+        <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-4 sm:p-6 shadow-[var(--card-shadow)] transition-shadow duration-300 hover:shadow-[var(--card-shadow-hover)]">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div className="space-y-2">
-              <span className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)]">
+            <div className="min-w-0 space-y-2">
+              <span className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)]">
                 {project.eyebrow}
               </span>
-              <h3 className="font-serif-accent text-xl tracking-tight text-[var(--text-primary)]">
+              <h3 className="font-serif-accent text-lg sm:text-xl tracking-tight text-[var(--text-primary)]">
                 {project.title}
               </h3>
               <p className="text-sm leading-relaxed text-[var(--text-secondary)] text-balance max-w-2xl">
@@ -153,13 +158,14 @@ const ProjectCard = memo(function ProjectCard({
             ))}
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
             {project.links.map((link) => (
               <Button
                 key={link.label}
                 href={link.href}
                 variant={link.tone === "mint" ? "primary" : "secondary"}
                 compact
+                className="w-full sm:w-auto"
               >
                 {link.label}
                 <Icon name="external-link" size={12} />

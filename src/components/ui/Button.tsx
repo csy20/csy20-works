@@ -26,7 +26,7 @@ type ButtonAsButton = {
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-full font-display text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]";
+  "inline-flex items-center justify-center gap-2 rounded-full font-display text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] min-h-11 sm:min-h-0";
 
 const VARIANT_CLASS: Record<ButtonVariant, string> = {
   primary:
@@ -46,7 +46,7 @@ export function Button({
   compact = false,
 }: ButtonProps) {
   const skipExpensive = useSkipExpensiveAnimation();
-  const sizes = compact ? "px-4 py-2 text-xs" : "px-6 py-3";
+  const sizes = compact ? "min-h-10 px-4 py-2 text-xs sm:min-h-0" : "px-6 py-3";
   const classes = `${BASE} ${VARIANT_CLASS[variant]} ${sizes} ${className}`;
 
   const animationProps = skipExpensive

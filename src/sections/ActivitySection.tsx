@@ -46,21 +46,23 @@ export function ActivitySection() {
   return (
     <Section id="activity" title="Activity" subtitle="Open source">
       <motion.div
-        className="overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-4 sm:p-6"
+        className="overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-3 sm:p-6"
         {...(!shouldUseSafeMotion && { variants: cardVariants })}
       >
-        <p className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)] mb-4">
+        <p className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)] mb-3 sm:mb-4">
           GitHub contributions
         </p>
-        <div className="overflow-x-auto pb-1 min-h-[110px]">
+        <div className="overflow-x-auto overscroll-x-contain pb-1 min-h-[100px] sm:min-h-[110px] [scrollbar-width:thin]">
           <CalendarErrorBoundary>
-            <GitHubCalendar
-              username={config.githubUsername}
-              colorScheme={theme === "dark" ? "dark" : "light"}
-              blockSize={blockSize}
-              blockMargin={blockMargin}
-              fontSize={13}
-            />
+            <div className="w-max min-w-full">
+              <GitHubCalendar
+                username={config.githubUsername}
+                colorScheme={theme === "dark" ? "dark" : "light"}
+                blockSize={blockSize}
+                blockMargin={blockMargin}
+                fontSize={isSmallScreen ? 11 : 13}
+              />
+            </div>
           </CalendarErrorBoundary>
         </div>
       </motion.div>

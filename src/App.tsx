@@ -67,7 +67,10 @@ export default function App() {
           <ThemeTransitionOverlay />
           <BackgroundMesh />
           <Navigation />
-          <main id="main-content">
+          <main
+            id="main-content"
+            className="pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))]"
+          >
             <HeroSection />
             <Suspense fallback={<BelowFoldFallback />}>
               <StackSection />
