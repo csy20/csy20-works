@@ -5,17 +5,36 @@ import { Button } from "../components/ui/Button";
 import { Badge } from "../components/ui/Badge";
 import { Icon } from "../components/ui/Icon";
 import { profile, resumeUrl } from "../data/siteContent";
+import { EASE_OUT, springSoft } from "../components/animations/motion";
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 12 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+const heroContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.12,
+    },
+  },
 };
 
-const fadeInScale = {
-  initial: { opacity: 0, scale: 0.95 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.6 },
+const heroItem = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: EASE_OUT },
+  },
+};
+
+const heroImage = {
+  hidden: { opacity: 0, scale: 0.94, y: 12 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: EASE_OUT, delay: 0.15 },
+  },
 };
 
 export function HeroSection() {
@@ -27,14 +46,18 @@ export function HeroSection() {
       className="relative min-h-dvh min-h-screen flex items-center"
     >
       <div className="mx-auto max-w-5xl px-4 py-16 sm:py-24 lg:px-8 lg:py-32">
-        <div className="grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
+        <motion.div
+          className="grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16"
+          {...(!shouldUseSafeMotion && {
+            variants: heroContainer,
+            initial: "hidden",
+            animate: "visible",
+          })}
+        >
           <div className="flex flex-col gap-6">
             <motion.div
               className="flex items-center gap-3"
-              {...(!shouldUseSafeMotion && {
-                ...fadeInUp,
-                transition: { ...fadeInUp.transition, delay: 0.15 },
-              })}
+              {...(!shouldUseSafeMotion && { variants: heroItem })}
             >
               <Badge>{profile.handle}</Badge>
               <span className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)]">
@@ -46,36 +69,27 @@ export function HeroSection() {
               <RevealText
                 text={profile.name}
                 className="font-serif-accent text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-[0.95] text-[var(--text-primary)]"
-                delay={0.4}
+                delay={0.35}
               />
             </h1>
 
             <motion.p
               className="font-display text-sm tracking-[0.06em] text-[var(--text-muted)]"
-              {...(!shouldUseSafeMotion && {
-                ...fadeInUp,
-                transition: { ...fadeInUp.transition, delay: 0.5 },
-              })}
+              {...(!shouldUseSafeMotion && { variants: heroItem })}
             >
               {profile.strapline}
             </motion.p>
 
             <motion.p
               className="max-w-xl text-base leading-relaxed text-[var(--text-secondary)] text-balance"
-              {...(!shouldUseSafeMotion && {
-                ...fadeInUp,
-                transition: { ...fadeInUp.transition, delay: 0.65 },
-              })}
+              {...(!shouldUseSafeMotion && { variants: heroItem })}
             >
               {profile.heroDescription}
             </motion.p>
 
             <motion.div
               className="flex flex-wrap gap-3 pt-2"
-              {...(!shouldUseSafeMotion && {
-                ...fadeInUp,
-                transition: { ...fadeInUp.transition, delay: 0.8 },
-              })}
+              {...(!shouldUseSafeMotion && { variants: heroItem })}
             >
               <Button
                 variant="primary"
@@ -97,12 +111,14 @@ export function HeroSection() {
 
           <motion.div
             className="mx-auto w-full max-w-full sm:max-w-[340px] lg:max-w-[360px] shrink-0"
-            {...(!shouldUseSafeMotion && {
-              ...fadeInScale,
-              transition: { ...fadeInScale.transition, delay: 0.3 },
-            })}
+            {...(!shouldUseSafeMotion && { variants: heroImage })}
           >
-            <div className="overflow-hidden rounded-3xl border border-[var(--border-soft)] shadow-[var(--card-shadow)]">
+            <motion.div
+              className="overflow-hidden rounded-3xl border border-[var(--border-soft)] shadow-[var(--card-shadow)]"
+              {...(!shouldUseSafeMotion && {
+                whileHover: { y: -4, transition: springSoft },
+              })}
+            >
               <img
                 src="/pfp.jpeg"
                 alt={profile.name}
@@ -110,10 +126,11 @@ export function HeroSection() {
                 height={640}
                 className="w-full h-auto block"
                 fetchPriority="high"
+                decoding="async"
               />
-            </div>
+            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

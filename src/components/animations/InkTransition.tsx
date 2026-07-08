@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
 import { useAnimationSafeMode } from "../useAnimationSafeMode";
-
-const EASE = [0.76, 0, 0.24, 1] as const;
+import { EASE_INK } from "./motion";
 
 const slideVariants = {
   initial: { y: 0 },
   enter: {
-    y: "-100vh",
-    transition: { duration: 0.4, ease: EASE },
+    y: "-100%",
+    transition: { duration: 0.55, ease: EASE_INK },
   },
 };
 

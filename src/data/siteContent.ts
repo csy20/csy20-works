@@ -263,10 +263,16 @@ export const socialLinks: SocialLink[] = [
     detail: "Connect with me here.",
   },
   {
-    label: "X",
+    label: "X (the__csy20)",
     href: "https://x.com/the__csy20",
     icon: "x",
     detail: "Random thoughts and stuff I'm working on.",
+  },
+  {
+    label: "X (emt__edits)",
+    href: "https://x.com/emt__edits",
+    icon: "x",
+    detail: "Edits and creative work.",
   },
   {
     label: "YouTube",

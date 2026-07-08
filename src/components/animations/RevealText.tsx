@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
 import { useAnimationSafeMode } from "../useAnimationSafeMode";
+import { EASE_OUT } from "./motion";
 
 type RevealTextProps = {
   text?: string;
@@ -9,17 +10,15 @@ type RevealTextProps = {
   delay?: number;
 };
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
 const childVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: EASE },
+    transition: { duration: 0.65, ease: EASE_OUT },
   },
   hidden: {
     opacity: 0,
-    y: 40,
+    y: 36,
   },
 };
 
@@ -27,7 +26,7 @@ const container = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0 },
+    transition: { staggerChildren: 0.07, delayChildren: 0 },
   },
 };
 
@@ -44,7 +43,7 @@ function RevealTextWords({
 }) {
   if (noAnimation) {
     return (
-      <div aria-label={text} className={`flex flex-wrap ${className}`}>
+      <div aria-label={text} className={`flex flex-wrap ${className ?? ""}`}>
         {text}
       </div>
     );
@@ -54,11 +53,13 @@ function RevealTextWords({
   return (
     <motion.div
       aria-label={text}
-      className={`flex flex-wrap ${className}`}
+      className={`flex flex-wrap ${className ?? ""}`}
       variants={container}
       initial="hidden"
       animate="visible"
-      {...(delay ? { transition: { delayChildren: delay } as const } : {})}
+      {...(delay != null && delay > 0
+        ? { transition: { delayChildren: delay } as const }
+        : {})}
     >
       {words.map((word, index) => (
         <span
@@ -94,9 +95,9 @@ export function RevealText({
     return (
       <motion.div
         className={className}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: EASE, delay }}
+        transition={{ duration: 0.65, ease: EASE_OUT, delay }}
       >
         {children}
       </motion.div>

@@ -4,7 +4,7 @@ import { useTheme } from "../useTheme";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useAnimationSafeMode } from "../useAnimationSafeMode";
 
-const CURSOR_SPRING = { stiffness: 120, damping: 20 };
+const CURSOR_SPRING = { stiffness: 100, damping: 22, mass: 0.4 };
 
 export function CursorGlow() {
   const { theme } = useTheme();
@@ -13,36 +13,34 @@ export function CursorGlow() {
 
   const showGlow = theme === "dark" && !shouldUseSafeMotion && hasFinePointer;
 
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-
+  const x = useMotionValue(-120);
+  const y = useMotionValue(-120);
   const cursorX = useSpring(x, CURSOR_SPRING);
   const cursorY = useSpring(y, CURSOR_SPRING);
 
   const frameRef = useRef(0);
-  const lastRef = useRef({ x: 0, y: 0 });
+  const lastRef = useRef({ x: -1, y: -1 });
 
   useEffect(() => {
     if (!showGlow) return;
 
     const moveCursor = (e: MouseEvent) => {
-      if (e.clientX === lastRef.current.x && e.clientY === lastRef.current.y)
+      if (e.clientX === lastRef.current.x && e.clientY === lastRef.current.y) {
         return;
+      }
       lastRef.current.x = e.clientX;
       lastRef.current.y = e.clientY;
 
-      if (frameRef.current) {
-        cancelAnimationFrame(frameRef.current);
-      }
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
 
       frameRef.current = requestAnimationFrame(() => {
-        x.set(e.clientX - 100);
-        y.set(e.clientY - 100);
+        x.set(e.clientX - 120);
+        y.set(e.clientY - 120);
         frameRef.current = 0;
       });
     };
 
-    window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("mousemove", moveCursor, { passive: true });
 
     return () => {
       if (frameRef.current) {
@@ -51,21 +49,23 @@ export function CursorGlow() {
       }
       window.removeEventListener("mousemove", moveCursor);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- x,y are stable motion values, effect intentionally doesn't depend on them
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- x,y are stable motion values
   }, [showGlow]);
 
   if (!showGlow) return null;
 
   return (
     <motion.div
-      className="pointer-events-none fixed left-0 top-0 z-[9999] h-[200px] w-[200px] rounded-full"
+      aria-hidden="true"
+      className="pointer-events-none fixed left-0 top-0 z-[9998] h-[240px] w-[240px] rounded-full"
       style={{
         x: cursorX,
         y: cursorY,
         background:
-          "radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%)",
+          "radial-gradient(circle, rgba(232,228,220,0.07) 0%, rgba(232,228,220,0) 68%)",
         mixBlendMode: "screen",
-        filter: "blur(20px)",
+        filter: "blur(18px)",
+        willChange: "transform",
       }}
     />
   );

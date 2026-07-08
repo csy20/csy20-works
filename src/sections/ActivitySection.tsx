@@ -6,6 +6,7 @@ import { useTheme } from "../components/useTheme";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import { useMediaQuery } from "../components/hooks/useMediaQuery";
 import { config } from "../config";
+import { cardVariants } from "../components/animations/motion";
 
 class CalendarErrorBoundary extends Component<{ children: ReactNode }> {
   override state = { hasError: false };
@@ -35,11 +36,6 @@ class CalendarErrorBoundary extends Component<{ children: ReactNode }> {
   }
 }
 
-const activityCardVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 export function ActivitySection() {
   const { theme } = useTheme();
   const shouldUseSafeMotion = useAnimationSafeMode();
@@ -51,9 +47,7 @@ export function ActivitySection() {
     <Section id="activity" title="Activity" subtitle="Open source">
       <motion.div
         className="overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-4 sm:p-6"
-        {...(!shouldUseSafeMotion && {
-          variants: activityCardVariants,
-        })}
+        {...(!shouldUseSafeMotion && { variants: cardVariants })}
       >
         <p className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)] mb-4">
           GitHub contributions

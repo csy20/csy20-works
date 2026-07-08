@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Section } from "../components/ui/Section";
 import { Button } from "../components/ui/Button";
@@ -6,19 +7,14 @@ import { Icon } from "../components/ui/Icon";
 import { Tag } from "../components/ui/Tag";
 import { projects, type Project } from "../data/siteContent";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
+import {
+  cardVariants,
+  fadeUpSoft,
+  staggerContainer,
+} from "../components/animations/motion";
 
 const featuredApp = projects.find((p) => p.featured);
 const otherProjects = projects.filter((p) => !p.featured);
-
-const projectsHeadingVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-const appCardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export function ProjectsSection() {
   const shouldUseSafeMotion = useAnimationSafeMode();
@@ -30,32 +26,31 @@ export function ProjectsSection() {
         <div>
           <motion.p
             className="font-display text-xs tracking-[0.2em] uppercase text-[var(--text-muted)] mb-5"
-            {...(!shouldUseSafeMotion && {
-              variants: projectsHeadingVariants,
-            })}
+            {...(!shouldUseSafeMotion && { variants: fadeUpSoft })}
           >
             Projects
           </motion.p>
-          <div className="space-y-4">
+          <motion.div
+            className="space-y-4"
+            {...(!shouldUseSafeMotion && { variants: staggerContainer })}
+          >
             {otherProjects.map((project) => (
               <ProjectCard key={project.title} project={project} />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </Section>
   );
 }
 
-function AppCard({ app }: { app: Project }) {
+const AppCard = memo(function AppCard({ app }: { app: Project }) {
   const shouldUseSafeMotion = useAnimationSafeMode();
 
   return (
     <motion.div
       className="relative overflow-hidden rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] shadow-[var(--card-shadow)]"
-      {...(!shouldUseSafeMotion && {
-        variants: appCardVariants,
-      })}
+      {...(!shouldUseSafeMotion && { variants: cardVariants })}
     >
       <div className="p-6 sm:p-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -63,15 +58,21 @@ function AppCard({ app }: { app: Project }) {
             <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)]">
               <img
                 src="/bytewise-logo.png"
-                alt="Bytewise logo"
+                alt=""
+                width={40}
+                height={40}
                 className="h-10 w-10 object-contain"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="space-y-1.5">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2.5 py-0.5 text-[10px] font-medium tracking-wider uppercase text-green-600 dark:text-green-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"
+                    aria-hidden="true"
+                  />
                   Published
                 </span>
                 <span className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)]">
@@ -108,7 +109,7 @@ function AppCard({ app }: { app: Project }) {
           ))}
         </div>
 
-        <div className="mt-5">
+        <div className="mt-5 flex flex-wrap gap-2">
           {app.links.map((link) => (
             <Button key={link.label} href={link.href} variant="primary">
               <Icon name="play" size={16} />
@@ -119,48 +120,54 @@ function AppCard({ app }: { app: Project }) {
       </div>
     </motion.div>
   );
-}
+});
 
-function ProjectCard({ project }: { project: Project }) {
+const ProjectCard = memo(function ProjectCard({
+  project,
+}: {
+  project: Project;
+}) {
   return (
-    <MagneticCard>
-      <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 shadow-[var(--card-shadow)] transition-shadow duration-300 hover:shadow-[var(--card-shadow-hover)]">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div className="space-y-2">
-            <span className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)]">
-              {project.eyebrow}
-            </span>
-            <h3 className="font-serif-accent text-xl tracking-tight text-[var(--text-primary)]">
-              {project.title}
-            </h3>
-            <p className="text-sm leading-relaxed text-[var(--text-secondary)] text-balance max-w-2xl">
-              {project.description}
-            </p>
+    <motion.div variants={cardVariants}>
+      <MagneticCard>
+        <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-6 shadow-[var(--card-shadow)] transition-shadow duration-300 hover:shadow-[var(--card-shadow-hover)]">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div className="space-y-2">
+              <span className="font-display text-xs tracking-[0.15em] uppercase text-[var(--text-muted)]">
+                {project.eyebrow}
+              </span>
+              <h3 className="font-serif-accent text-xl tracking-tight text-[var(--text-primary)]">
+                {project.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--text-secondary)] text-balance max-w-2xl">
+                {project.description}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {project.tags.map((tag) => (
+              <Tag key={tag} variant="muted">
+                {tag}
+              </Tag>
+            ))}
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.links.map((link) => (
+              <Button
+                key={link.label}
+                href={link.href}
+                variant={link.tone === "mint" ? "primary" : "secondary"}
+                compact
+              >
+                {link.label}
+                <Icon name="external-link" size={12} />
+              </Button>
+            ))}
           </div>
         </div>
-
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {project.tags.map((tag) => (
-            <Tag key={tag} variant="muted">
-              {tag}
-            </Tag>
-          ))}
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.links.map((link) => (
-            <Button
-              key={link.label}
-              href={link.href}
-              variant={link.tone === "mint" ? "primary" : "secondary"}
-              compact
-            >
-              {link.label}
-              <Icon name="external-link" size={12} />
-            </Button>
-          ))}
-        </div>
-      </div>
-    </MagneticCard>
+      </MagneticCard>
+    </motion.div>
   );
-}
+});

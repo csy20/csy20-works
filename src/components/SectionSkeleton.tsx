@@ -23,7 +23,7 @@ function SkeletonSectionHeading({
 
 export function ActivitySectionSkeleton() {
   return (
-    <section className="relative">
+    <section className="relative" aria-hidden="true">
       <div className="mx-auto max-w-5xl px-4 pb-16 pt-16 sm:pb-24 sm:pt-24 lg:px-8">
         <SkeletonSectionHeading />
         <div className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-4 sm:p-6">
@@ -37,17 +37,17 @@ export function ActivitySectionSkeleton() {
 
 export function StackSectionSkeleton() {
   return (
-    <section className="relative section-dark">
+    <section className="relative" aria-hidden="true">
       <div className="mx-auto max-w-5xl px-4 pb-16 pt-16 sm:pb-24 sm:pt-24 lg:px-8">
         <SkeletonSectionHeading />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {Array.from({ length: 4 }).map((_, i) => (
             <div
               key={`stack-skel-${i}`}
-              className="relative rounded-xl border border-[var(--sd-panel-border)] p-4 sm:p-5"
+              className="relative rounded-xl border border-[var(--sd-panel-border)] bg-[var(--sd-panel-bg)] p-4 sm:p-5"
             >
-              <SkeletonBlock className="h-3 w-16 bg-white/10" />
-              <SkeletonBlock className="mt-1 h-7 w-8 bg-white/10" />
+              <SkeletonBlock className="h-3 w-16" />
+              <SkeletonBlock className="mt-1 h-7 w-8" />
             </div>
           ))}
         </div>
@@ -58,7 +58,7 @@ export function StackSectionSkeleton() {
 
 export function ContactSectionSkeleton() {
   return (
-    <section className="relative">
+    <section className="relative" aria-hidden="true">
       <div className="mx-auto max-w-5xl px-4 pb-16 pt-16 sm:pb-24 sm:pt-24 lg:px-8">
         <SkeletonSectionHeading subtitleWidth="w-16" titleWidth="w-36" />
         <div className="space-y-8">

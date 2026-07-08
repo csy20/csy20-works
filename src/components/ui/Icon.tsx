@@ -759,4 +759,12 @@ function RawIcon({ name, size = 18 }: { name: IconName; size?: number }) {
   }
 }
 
-export const Icon = memo(RawIcon);
+function IconInner({ name, size = 18 }: { name: IconName; size?: number }) {
+  return (
+    <span className="inline-flex shrink-0" aria-hidden="true">
+      <RawIcon name={name} size={size} />
+    </span>
+  );
+}
+
+export const Icon = memo(IconInner);

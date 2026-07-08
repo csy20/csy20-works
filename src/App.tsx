@@ -8,7 +8,6 @@ import { BackgroundMesh } from "./components/BackgroundMesh";
 import { Navigation } from "./components/Navigation";
 import { useAnimationSafeMode } from "./components/useAnimationSafeMode";
 import { HeroSection } from "./sections/HeroSection";
-import { ProjectsSection } from "./sections/ProjectsSection";
 import {
   StackSectionSkeleton,
   ActivitySectionSkeleton,
@@ -25,11 +24,26 @@ const ActivitySection = lazy(() =>
     default: m.ActivitySection,
   })),
 );
+const ProjectsSection = lazy(() =>
+  import("./sections/ProjectsSection").then((m) => ({
+    default: m.ProjectsSection,
+  })),
+);
 const ContactSection = lazy(() =>
   import("./sections/ContactSection").then((m) => ({
     default: m.ContactSection,
   })),
 );
+
+function BelowFoldFallback() {
+  return (
+    <>
+      <StackSectionSkeleton />
+      <ActivitySectionSkeleton />
+      <ContactSectionSkeleton />
+    </>
+  );
+}
 
 export default function App() {
   const shouldUseSafeMotion = useAnimationSafeMode();
@@ -55,14 +69,10 @@ export default function App() {
           <Navigation />
           <main id="main-content">
             <HeroSection />
-            <Suspense fallback={<StackSectionSkeleton />}>
+            <Suspense fallback={<BelowFoldFallback />}>
               <StackSection />
-            </Suspense>
-            <Suspense fallback={<ActivitySectionSkeleton />}>
               <ActivitySection />
-            </Suspense>
-            <ProjectsSection />
-            <Suspense fallback={<ContactSectionSkeleton />}>
+              <ProjectsSection />
               <ContactSection />
             </Suspense>
           </main>

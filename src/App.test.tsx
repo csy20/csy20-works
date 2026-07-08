@@ -3,6 +3,7 @@ import { describe, expect, it, vi, beforeAll } from "vitest";
 
 import App from "./App";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { MotionSafeProvider } from "./components/MotionSafeProvider";
 import { profile, techStack } from "./data/siteContent";
 
 vi.mock("react-github-calendar", () => ({
@@ -27,13 +28,19 @@ beforeAll(() => {
   vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
 });
 
+function renderApp() {
+  return render(
+    <ThemeProvider>
+      <MotionSafeProvider>
+        <App />
+      </MotionSafeProvider>
+    </ThemeProvider>,
+  );
+}
+
 describe("App", () => {
   it("renders all sections and content correctly", async () => {
-    const { container } = render(
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>,
-    );
+    const { container } = renderApp();
 
     expect(
       screen.getByRole("heading", { name: profile.name }),
@@ -70,15 +77,19 @@ describe("App", () => {
     expect(screen.getByTestId("github-calendar")).toBeInTheDocument();
 
     expect(
-      screen.getByRole("heading", { name: "Apps & Projects" }),
+      await screen.findByRole(
+        "heading",
+        { name: "Apps & Projects" },
+        { timeout: 5000 },
+      ),
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("heading", { name: "MediaPipe AI" }),
+      await screen.findByRole("heading", { name: "MediaPipe AI" }),
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("heading", { name: "Bytewise" }),
+      await screen.findByRole("heading", { name: "Bytewise" }),
     ).toBeInTheDocument();
 
     expect(

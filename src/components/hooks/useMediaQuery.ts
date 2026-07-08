@@ -9,6 +9,8 @@ export function useMediaQuery(query: string): boolean {
   useEffect(() => {
     const media = window.matchMedia(query);
     const sync = () => setMatches(media.matches);
+    // Re-sync on mount (handles query change or stale state)
+    sync();
     media.addEventListener("change", sync);
     return () => media.removeEventListener("change", sync);
   }, [query]);

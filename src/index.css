@@ -56,6 +56,20 @@
   --card-shadow-hover: 0 16px 30px -10px rgba(24, 20, 16, 0.1);
   --button-shadow: 0 10px 20px -10px rgba(24, 20, 16, 0.12);
   --button-shadow-hover: 0 18px 34px -16px rgba(24, 20, 16, 0.2);
+
+  /* Stack section tokens (light / warm paper) */
+  --sd-text: #181410;
+  --sd-text-soft: #6a6055;
+  --sd-muted: #a8a098;
+  --sd-panel-bg: rgba(24, 20, 16, 0.04);
+  --sd-panel-bg-mobile: rgba(24, 20, 16, 0.06);
+  --sd-panel-border: rgba(24, 20, 16, 0.1);
+  --sd-pill-bg: rgba(24, 20, 16, 0.04);
+  --sd-pill-bg-hover: rgba(24, 20, 16, 0.08);
+  --sd-pill-border: rgba(24, 20, 16, 0.1);
+  --sd-pill-border-hover: rgba(24, 20, 16, 0.22);
+  --sd-pill-text: #181410;
+  --sd-pill-icon-bg: rgba(24, 20, 16, 0.06);
 }
 
 /* ═══ Graphite (dark) ═══ */
@@ -83,10 +97,11 @@
   --bg-primary: #141414;
   --bg-secondary: #1e1e1c;
   --text-primary: #e8e4dc;
-  --text-secondary: #585450;
-  --text-muted: #383632;
-  --border: #222220;
-  --border-soft: rgba(34, 34, 32, 0.55);
+  /* Readable on #141414 (was too dark / low-contrast) */
+  --text-secondary: #a39e96;
+  --text-muted: #6e6963;
+  --border: #2a2a28;
+  --border-soft: rgba(232, 228, 220, 0.1);
   --accent: #e8e4dc;
   --accent-fg: #141414;
   --surface: rgba(20, 20, 20, 0.92);
@@ -105,6 +120,20 @@
   --card-shadow-hover: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
   --button-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.25);
   --button-shadow-hover: 0 8px 16px -4px rgba(0, 0, 0, 0.35);
+
+  /* Stack section tokens (dark / graphite) */
+  --sd-text: #e8e4dc;
+  --sd-text-soft: #c8c4bc;
+  --sd-muted: #8a8680;
+  --sd-panel-bg: rgba(255, 255, 255, 0.04);
+  --sd-panel-bg-mobile: rgba(255, 255, 255, 0.07);
+  --sd-panel-border: rgba(255, 255, 255, 0.1);
+  --sd-pill-bg: rgba(255, 255, 255, 0.06);
+  --sd-pill-bg-hover: rgba(255, 255, 255, 0.12);
+  --sd-pill-border: rgba(255, 255, 255, 0.12);
+  --sd-pill-border-hover: rgba(255, 255, 255, 0.28);
+  --sd-pill-text: #e8e4dc;
+  --sd-pill-icon-bg: rgba(255, 255, 255, 0.1);
 }
 
 /* ═══ Base ═══ */
@@ -226,24 +255,6 @@ main {
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
-}
-
-/* ═══ Section Dark ═══ */
-.section-dark {
-  --sd-text: #ffffff;
-  --sd-text-soft: #e8e4dc;
-  --sd-muted: #c8c4bc;
-  --sd-panel-bg: rgba(255, 255, 255, 0.06);
-  --sd-panel-bg-mobile: rgba(255, 255, 255, 0.1);
-  --sd-panel-border: rgba(255, 255, 255, 0.15);
-  --sd-pill-bg: rgba(255, 255, 255, 0.08);
-  --sd-pill-bg-hover: rgba(255, 255, 255, 0.14);
-  --sd-pill-border: rgba(255, 255, 255, 0.2);
-  --sd-pill-border-hover: rgba(255, 255, 255, 0.4);
-  --sd-pill-text: #ffffff;
-  --sd-pill-icon-bg: rgba(255, 255, 255, 0.12);
-  background: #1a1a1a;
-  color: var(--sd-text);
 }
 
 @media (pointer: coarse) {
