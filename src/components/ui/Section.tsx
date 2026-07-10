@@ -45,6 +45,30 @@ const contentVariants: Variants = {
   },
 };
 
+function SectionHeading({
+  title,
+  subtitle,
+}: {
+  title?: string;
+  subtitle?: string;
+}) {
+  if (!title && !subtitle) return null;
+  return (
+    <>
+      {subtitle && (
+        <p className="font-display text-xs tracking-[0.2em] uppercase mb-3 text-[var(--text-muted)]">
+          {subtitle}
+        </p>
+      )}
+      {title && (
+        <h2 className="font-serif-accent text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[var(--text-primary)]">
+          {title}
+        </h2>
+      )}
+    </>
+  );
+}
+
 function SectionInner({
   id,
   title,
@@ -62,48 +86,49 @@ function SectionInner({
   const headingContent = useMemo(() => {
     if (!title && !subtitle) return null;
     return (
-      <>
-        {subtitle && (
-          <p className="font-display text-xs tracking-[0.2em] uppercase mb-3 text-[var(--text-muted)]">
-            {subtitle}
-          </p>
-        )}
-        {title && (
-          <h2 className="font-serif-accent text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[var(--text-primary)]">
-            {title}
-          </h2>
-        )}
-      </>
+      <SectionHeading
+        {...(title !== undefined ? { title } : {})}
+        {...(subtitle !== undefined ? { subtitle } : {})}
+      />
     );
   }, [title, subtitle]);
 
-  const motionState = shouldUseSafeMotion
-    ? {}
-    : {
-        initial: "hidden" as const,
-        animate: inView ? ("visible" as const) : ("hidden" as const),
-      };
+  /* Mobile / reduced-motion: plain DOM — no opacity/y GPU layers */
+  if (shouldUseSafeMotion) {
+    return (
+      <section ref={ref} id={id} className={`relative ${className}`}>
+        {headingContent && (
+          <div className="mx-auto w-full max-w-5xl px-4 pb-5 pt-14 sm:pb-12 sm:pt-24 lg:px-8">
+            {headingContent}
+          </div>
+        )}
+        <div className="mx-auto w-full max-w-5xl px-4 pb-14 sm:pb-24 lg:px-8">
+          {children}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <motion.section
       ref={ref}
       id={id}
       className={`relative ${className}`}
-      {...(shouldUseSafeMotion
-        ? {}
-        : { variants: containerVariants, ...motionState })}
+      variants={containerVariants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
     >
       {headingContent && (
         <motion.div
           className="mx-auto w-full max-w-5xl px-4 pb-5 pt-14 sm:pb-12 sm:pt-24 lg:px-8"
-          {...(shouldUseSafeMotion ? {} : { variants: headingVariants })}
+          variants={headingVariants}
         >
           {headingContent}
         </motion.div>
       )}
       <motion.div
         className="mx-auto w-full max-w-5xl px-4 pb-14 sm:pb-24 lg:px-8"
-        {...(shouldUseSafeMotion ? {} : { variants: contentVariants })}
+        variants={contentVariants}
       >
         {children}
       </motion.div>

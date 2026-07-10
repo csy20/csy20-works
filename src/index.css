@@ -239,20 +239,21 @@ main {
     text-wrap: balance;
   }
 
-  .glass-panel-dark,
-  .glass-dock {
-    isolation: isolate;
-  }
-
-  /* Prefer clip over hidden to reduce mobile compositing bugs with transforms */
+  /*
+   * IMPORTANT: never set `position` on .glass-dock.
+   * Navigation uses Tailwind `fixed` + bottom; `position: relative` here
+   * overrides fixed and pins the dock to the top of the document.
+   * Fixed elements already form a containing block for absolute ::before.
+   */
   .glass-panel-dark {
     position: relative;
+    isolation: isolate;
     overflow: clip;
     background: transparent;
   }
 
   .glass-dock {
-    position: relative;
+    /* no position — preserve Tailwind fixed from component classes */
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
@@ -287,11 +288,11 @@ main {
     backdrop-filter: blur(12px);
   }
 
-  /* Solid surfaces on touch devices — avoid pseudo + backdrop paint glitches */
+  /* Solid surfaces on touch / narrow — no pseudo or backdrop (mobile GPU trails) */
   @media (pointer: coarse), (hover: none) {
     .glass-panel-dark {
+      isolation: auto;
       background: var(--sd-panel-bg-mobile);
-      /* Avoid extra stacking context from pseudo on mobile GPUs */
     }
 
     .glass-panel-dark::before {
@@ -302,6 +303,7 @@ main {
     }
 
     .glass-dock {
+      isolation: auto;
       background: var(--dock-bg-mobile);
     }
 
@@ -313,9 +315,9 @@ main {
     }
   }
 
-  /* Narrow screens: same solid treatment even with fine pointer (responsive mode) */
   @media (max-width: 639px) {
     .glass-panel-dark {
+      isolation: auto;
       background: var(--sd-panel-bg-mobile);
     }
 
@@ -327,6 +329,7 @@ main {
     }
 
     .glass-dock {
+      isolation: auto;
       background: var(--dock-bg-mobile);
     }
 
@@ -337,7 +340,6 @@ main {
       backdrop-filter: none;
     }
 
-    /* Stronger, non-alpha pills on narrow screens (both themes) */
     .tech-pill {
       background: var(--sd-pill-bg-mobile);
     }

@@ -55,7 +55,11 @@ export default function App() {
   return (
     <MotionConfig reducedMotion={reducedMotion}>
       <InkTransition>
-        <div className="relative min-h-screen overflow-x-hidden">
+        {/*
+          Dock is a sibling of the scroll shell so overflow-x on the shell
+          never creates a containing block that traps position:fixed.
+        */}
+        <div className="relative min-h-screen overflow-x-clip">
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-lg focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-[var(--accent-fg)]"
@@ -66,7 +70,6 @@ export default function App() {
           <CursorGlow />
           <ThemeTransitionOverlay />
           <BackgroundMesh />
-          <Navigation />
           <main
             id="main-content"
             className="pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))]"
@@ -80,6 +83,7 @@ export default function App() {
             </Suspense>
           </main>
         </div>
+        <Navigation />
       </InkTransition>
     </MotionConfig>
   );
