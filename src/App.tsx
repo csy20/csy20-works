@@ -8,17 +8,13 @@ import { BackgroundMesh } from "./components/BackgroundMesh";
 import { Navigation } from "./components/Navigation";
 import { useAnimationSafeMode } from "./components/useAnimationSafeMode";
 import { HeroSection } from "./sections/HeroSection";
+/* Eager: avoids Suspense skeleton ↔ content paint races that glitched on mobile */
+import { StackSection } from "./sections/StackSection";
 import {
-  StackSectionSkeleton,
   ActivitySectionSkeleton,
   ContactSectionSkeleton,
 } from "./components/SectionSkeleton";
 
-const StackSection = lazy(() =>
-  import("./sections/StackSection").then((m) => ({
-    default: m.StackSection,
-  })),
-);
 const ActivitySection = lazy(() =>
   import("./sections/ActivitySection").then((m) => ({
     default: m.ActivitySection,
@@ -38,7 +34,6 @@ const ContactSection = lazy(() =>
 function BelowFoldFallback() {
   return (
     <>
-      <StackSectionSkeleton />
       <ActivitySectionSkeleton />
       <ContactSectionSkeleton />
     </>
@@ -75,8 +70,8 @@ export default function App() {
             className="pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))]"
           >
             <HeroSection />
+            <StackSection />
             <Suspense fallback={<BelowFoldFallback />}>
-              <StackSection />
               <ActivitySection />
               <ProjectsSection />
               <ContactSection />
