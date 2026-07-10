@@ -20,14 +20,15 @@ const grouped = (() => {
 })();
 
 /**
- * Tech stack — intentionally boring DOM.
- * No Framer, no Section wrapper, no SVG icons, no glass, no nested cards.
- * Mobile GPUs were ghost-painting layered pills; this is text + solid bg only.
+ * Tech stack — plain text layout, wrap-safe on narrow screens.
  */
 export function StackSection() {
   return (
-    <section id="stack" className="stack-section relative">
-      <div className="mx-auto w-full max-w-5xl px-4 pb-14 pt-14 sm:pb-24 sm:pt-24 lg:px-8">
+    <section
+      id="stack"
+      className="stack-section relative min-w-0 overflow-x-clip"
+    >
+      <div className="mx-auto w-full min-w-0 max-w-5xl px-4 pb-14 pt-14 sm:pb-24 sm:pt-24 lg:px-8">
         <p className="mb-3 font-display text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
           What I use
         </p>
@@ -35,57 +36,58 @@ export function StackSection() {
           Tech stack
         </h2>
 
-        {/* Counts — single row of plain boxes */}
-        <div className="mb-8 flex flex-wrap gap-2 sm:mb-10 sm:gap-3">
+        {/* Counts */}
+        <div className="mb-8 grid min-w-0 grid-cols-4 gap-2 sm:mb-10 sm:gap-3">
           {categories.map((cat) => (
             <div
               key={cat.key}
-              className="min-w-[4.5rem] flex-1 rounded-lg bg-[var(--surface-raised)] px-3 py-2.5 sm:min-w-0 sm:px-4 sm:py-3"
+              className="min-w-0 rounded-lg bg-[var(--surface-raised)] px-1.5 py-2.5 text-center sm:px-3 sm:py-3"
             >
-              <div className="font-display text-[10px] uppercase tracking-wider text-[var(--text-muted)] sm:text-xs">
+              <div className="truncate font-display text-[9px] uppercase tracking-wider text-[var(--text-muted)] sm:text-xs">
                 {cat.label}
               </div>
-              <div className="font-serif-accent text-xl text-[var(--text-primary)] sm:text-2xl">
+              <div className="font-serif-accent text-lg text-[var(--text-primary)] sm:text-2xl">
                 {grouped[cat.key].length}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Categories — simple stacked blocks, tools as comma-free chips in one flow */}
-        <div className="flex flex-col gap-6 sm:gap-8">
+        {/* Categories — wrap each tool as its own unit so nothing clips mid-word */}
+        <div className="flex min-w-0 flex-col gap-6 sm:gap-8">
           {categories.map((cat) => {
             const names = grouped[cat.key];
             if (!names.length) return null;
             return (
-              <div key={cat.key}>
-                <div className="mb-2 flex items-baseline justify-between gap-3">
-                  <h3 className="font-display text-sm font-semibold text-[var(--text-primary)] sm:text-base">
+              <div key={cat.key} className="min-w-0">
+                <div className="mb-2 flex min-w-0 items-baseline justify-between gap-3">
+                  <h3 className="min-w-0 truncate font-display text-sm font-semibold text-[var(--text-primary)] sm:text-base">
                     {cat.label}
                   </h3>
-                  <span className="font-display text-xs text-[var(--text-muted)]">
+                  <span className="shrink-0 font-display text-xs text-[var(--text-muted)]">
                     {names.length}
                   </span>
                 </div>
-                {/*
-                  Single flat list of text labels — no nested borders, no icons,
-                  no absolute layers. Hardest layout for GPU to “trail”.
-                */}
-                <p className="font-display text-sm leading-8 text-[var(--text-secondary)] sm:text-[15px] sm:leading-9">
+                <ul className="flex min-w-0 list-none flex-wrap items-center gap-x-1 gap-y-1.5 p-0 m-0">
                   {names.map((name, i) => (
-                    <span key={name}>
-                      <span className="text-[var(--text-primary)]">{name}</span>
+                    <li
+                      key={name}
+                      className="inline-flex max-w-full min-w-0 items-center"
+                    >
+                      <span className="max-w-full break-words font-display text-sm text-[var(--text-primary)] sm:text-[15px]">
+                        {name}
+                      </span>
                       {i < names.length - 1 ? (
                         <span
-                          className="mx-2 text-[var(--text-muted)]"
+                          className="mx-1.5 shrink-0 select-none text-[var(--text-muted)]"
                           aria-hidden
                         >
                           ·
                         </span>
                       ) : null}
-                    </span>
+                    </li>
                   ))}
-                </p>
+                </ul>
               </div>
             );
           })}
