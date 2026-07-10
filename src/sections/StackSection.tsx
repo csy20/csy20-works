@@ -49,12 +49,12 @@ const TechPill = memo(function TechPill({
         whileHover: hoverChip,
         whileTap: { scale: 0.98 },
       })}
-      className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--sd-pill-border)] bg-[var(--sd-pill-bg)] px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-[var(--sd-pill-text)] transition-colors duration-200 hover:border-[var(--sd-pill-border-hover)] hover:bg-[var(--sd-pill-bg-hover)]"
+      className="tech-pill inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--sd-pill-border)] bg-[var(--sd-pill-bg)] px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-[var(--sd-pill-text)] transition-colors duration-200 hover:border-[var(--sd-pill-border-hover)] hover:bg-[var(--sd-pill-bg-hover)]"
     >
       <span className="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-[var(--sd-pill-icon-bg)]">
         <Icon name={item.icon} size={14} />
       </span>
-      <span className="font-medium truncate">{item.name}</span>
+      <span className="font-medium whitespace-nowrap">{item.name}</span>
     </motion.span>
   );
 });
@@ -66,7 +66,7 @@ export function StackSection() {
 
   return (
     <Section id="stack" title="Tech stack" subtitle="What I use">
-      <div className="space-y-8">
+      <div className="space-y-7 sm:space-y-8">
         <motion.div
           className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-4"
           {...(!shouldUseSafeMotion && { variants: staggerContainer })}
@@ -74,10 +74,10 @@ export function StackSection() {
           {categories.map((cat) => (
             <motion.div
               key={cat.key}
-              variants={cardVariants}
-              className="glass-panel-dark relative min-w-0 rounded-xl border border-[var(--sd-panel-border)] p-3 sm:p-5"
+              {...(!shouldUseSafeMotion && { variants: cardVariants })}
+              className="glass-panel-dark relative min-w-0 rounded-xl border border-[var(--sd-panel-border)] p-3.5 sm:p-5"
             >
-              <p className="font-display text-[10px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--sd-muted)]">
+              <p className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--sd-muted)]">
                 {cat.label}
               </p>
               <p className="mt-1 font-serif-accent text-xl sm:text-2xl tracking-tight text-[var(--sd-text)] tabular-nums">
@@ -87,7 +87,7 @@ export function StackSection() {
           ))}
         </motion.div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 sm:space-y-7">
           {categories.map((cat) => {
             const items = groupedTechStack[cat.key];
             if (!items.length) return null;
@@ -98,13 +98,13 @@ export function StackSection() {
                 {...(!shouldUseSafeMotion && { variants: staggerFast })}
               >
                 <motion.p
-                  variants={chipVariants}
-                  className="font-display text-[10px] tracking-[0.2em] uppercase text-[var(--sd-muted)] mb-3 ml-1"
+                  {...(!shouldUseSafeMotion && { variants: chipVariants })}
+                  className="font-display text-[11px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.2em] uppercase text-[var(--sd-muted)] mb-2.5 sm:mb-3 ml-0.5"
                 >
                   {cat.label}
                 </motion.p>
                 <motion.div
-                  className="flex flex-wrap gap-2"
+                  className="flex flex-wrap gap-2 sm:gap-2"
                   {...(!shouldUseSafeMotion && { variants: staggerFast })}
                 >
                   {items.map((item) => (

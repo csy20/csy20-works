@@ -95,14 +95,14 @@ function SectionInner({
     >
       {headingContent && (
         <motion.div
-          className="mx-auto w-full max-w-5xl px-4 pb-6 pt-12 sm:pb-12 sm:pt-24 lg:px-8"
+          className="mx-auto w-full max-w-5xl px-4 pb-5 pt-14 sm:pb-12 sm:pt-24 lg:px-8"
           {...(shouldUseSafeMotion ? {} : { variants: headingVariants })}
         >
           {headingContent}
         </motion.div>
       )}
       <motion.div
-        className="mx-auto w-full max-w-5xl px-4 pb-12 sm:pb-24 lg:px-8"
+        className="mx-auto w-full max-w-5xl px-4 pb-14 sm:pb-24 lg:px-8"
         {...(shouldUseSafeMotion ? {} : { variants: contentVariants })}
       >
         {children}

@@ -15,8 +15,9 @@ const navLinkIcons: SocialIcon[] = [
   "email",
 ];
 
+/* Slightly tighter on xs so 7 controls fit ~320–360px without horizontal scroll */
 const DOCK_BUTTON_CLASS =
-  "flex shrink-0 min-h-11 min-w-11 md:min-h-12 md:min-w-12 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)] active:scale-90 active:bg-[var(--dock-button-hover)]";
+  "flex shrink-0 min-h-10 min-w-10 sm:min-h-11 sm:min-w-11 md:min-h-12 md:min-w-12 items-center justify-center rounded-full text-[var(--text-secondary)] transition-colors hover:bg-[var(--dock-button-hover)] hover:text-[var(--text-primary)] active:scale-90 active:bg-[var(--dock-button-hover)] sm:hover:-translate-y-0.5 sm:transition-all";
 
 export function Navigation() {
   const filteredSocialLinks = useMemo(() => {
@@ -34,7 +35,7 @@ export function Navigation() {
 
   return (
     <motion.nav
-      className="glass-dock fixed left-1/2 z-50 flex -translate-x-1/2 items-center gap-0.5 sm:gap-1.5 rounded-full border border-[var(--dock-border)] px-1.5 py-1.5 sm:px-2 sm:py-2 shadow-lg max-w-[min(95vw,calc(100vw-1.5rem-env(safe-area-inset-left,0px)-env(safe-area-inset-right,0px)))]"
+      className="glass-dock fixed left-1/2 z-50 flex -translate-x-1/2 items-center gap-0 sm:gap-1 md:gap-1.5 rounded-full border border-[var(--dock-border)] px-1 py-1 sm:px-1.5 sm:py-1.5 md:px-2 md:py-2 shadow-lg max-w-[min(100vw-1rem,calc(100vw-env(safe-area-inset-left,0px)-env(safe-area-inset-right,0px)-1rem))]"
       style={{
         bottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))",
       }}
@@ -56,7 +57,7 @@ export function Navigation() {
         className={DOCK_BUTTON_CLASS}
         aria-label="Home"
       >
-        <Icon name="home" size={18} />
+        <Icon name="home" size={17} />
       </button>
 
       {filteredSocialLinks.map((link) => {
@@ -71,10 +72,15 @@ export function Navigation() {
             className={DOCK_BUTTON_CLASS}
             aria-label={link.label}
           >
-            <Icon name={link.icon} size={18} />
+            <Icon name={link.icon} size={17} />
           </a>
         );
       })}
+
+      <span
+        className="mx-0.5 h-4 w-px shrink-0 bg-[var(--dock-border)] sm:mx-1"
+        aria-hidden="true"
+      />
 
       <button
         type="button"

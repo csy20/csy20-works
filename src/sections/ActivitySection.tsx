@@ -46,13 +46,14 @@ export function ActivitySection() {
   return (
     <Section id="activity" title="Activity" subtitle="Open source">
       <motion.div
-        className="overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-3 sm:p-6"
+        className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)] sm:bg-[var(--surface)] p-3 sm:p-6"
         {...(!shouldUseSafeMotion && { variants: cardVariants })}
       >
         <p className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)] mb-3 sm:mb-4">
           GitHub contributions
         </p>
-        <div className="overflow-x-auto overscroll-x-contain pb-1 min-h-[100px] sm:min-h-[110px] [scrollbar-width:thin]">
+        {/* Overflow only on scroller — avoid overflow+transform paint bugs on outer card */}
+        <div className="relative overflow-x-auto overscroll-x-contain pb-1 min-h-[100px] sm:min-h-[110px] [scrollbar-width:thin] -mx-0.5 px-0.5">
           <CalendarErrorBoundary>
             <div className="w-max min-w-full">
               <GitHubCalendar

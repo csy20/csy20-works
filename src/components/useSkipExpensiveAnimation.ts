@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { MotionSafeContext } from "./MotionSafeContext";
-import { useMediaQuery } from "./hooks/useMediaQuery";
 
+/**
+ * Skip hover/magnetic/transform-heavy interactions.
+ * Aligns with MotionSafeProvider (reduced-motion, touch, narrow screens).
+ */
 export function useSkipExpensiveAnimation() {
-  const prefersReducedMotion = useContext(MotionSafeContext);
-  const isCoarsePointer = useMediaQuery("(pointer: coarse), (hover: none)");
-  return prefersReducedMotion || isCoarsePointer;
+  return useContext(MotionSafeContext);
 }

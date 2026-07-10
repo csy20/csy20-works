@@ -69,7 +69,7 @@ export default function App() {
           <Navigation />
           <main
             id="main-content"
-            className="pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))]"
+            className="pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))]"
           >
             <HeroSection />
             <Suspense fallback={<BelowFoldFallback />}>

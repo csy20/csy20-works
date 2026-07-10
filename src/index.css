@@ -46,7 +46,7 @@
   --surface-glass: rgba(246, 243, 237, 0.88);
 
   --dock-bg: rgba(246, 243, 237, 0.88);
-  --dock-bg-mobile: rgba(246, 243, 237, 0.96);
+  --dock-bg-mobile: #f6f3ed;
   --dock-border: rgba(24, 20, 16, 0.1);
   --dock-button-hover: #ece7de;
   --dock-button-bg: rgba(246, 243, 237, 0.7);
@@ -62,9 +62,10 @@
   --sd-text-soft: #6a6055;
   --sd-muted: #a8a098;
   --sd-panel-bg: rgba(24, 20, 16, 0.04);
-  --sd-panel-bg-mobile: rgba(24, 20, 16, 0.06);
+  --sd-panel-bg-mobile: #ece7de;
   --sd-panel-border: rgba(24, 20, 16, 0.1);
   --sd-pill-bg: rgba(24, 20, 16, 0.04);
+  --sd-pill-bg-mobile: #ece7de;
   --sd-pill-bg-hover: rgba(24, 20, 16, 0.08);
   --sd-pill-border: rgba(24, 20, 16, 0.1);
   --sd-pill-border-hover: rgba(24, 20, 16, 0.22);
@@ -97,7 +98,6 @@
   --bg-primary: #141414;
   --bg-secondary: #1e1e1c;
   --text-primary: #e8e4dc;
-  /* Readable on #141414 (was too dark / low-contrast) */
   --text-secondary: #a39e96;
   --text-muted: #6e6963;
   --border: #2a2a28;
@@ -110,7 +110,7 @@
   --surface-glass: rgba(14, 14, 14, 0.88);
 
   --dock-bg: rgba(14, 14, 14, 0.9);
-  --dock-bg-mobile: rgba(14, 14, 14, 0.96);
+  --dock-bg-mobile: #141414;
   --dock-border: rgba(232, 228, 220, 0.08);
   --dock-button-hover: rgba(255, 255, 255, 0.04);
   --dock-button-bg: rgba(255, 255, 255, 0.05);
@@ -126,9 +126,10 @@
   --sd-text-soft: #c8c4bc;
   --sd-muted: #8a8680;
   --sd-panel-bg: rgba(255, 255, 255, 0.04);
-  --sd-panel-bg-mobile: rgba(255, 255, 255, 0.07);
+  --sd-panel-bg-mobile: #1e1e1c;
   --sd-panel-border: rgba(255, 255, 255, 0.1);
   --sd-pill-bg: rgba(255, 255, 255, 0.06);
+  --sd-pill-bg-mobile: #1e1e1c;
   --sd-pill-bg-hover: rgba(255, 255, 255, 0.12);
   --sd-pill-border: rgba(255, 255, 255, 0.12);
   --sd-pill-border-hover: rgba(255, 255, 255, 0.28);
@@ -140,7 +141,6 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--bg-primary);
-  /* Prevent iOS rubber-band from revealing off-canvas edges */
   overflow-x: clip;
 }
 
@@ -151,10 +151,10 @@ body {
   min-height: 100dvh;
   background: var(--bg-primary);
   color: var(--text-primary);
-  /* Notch / home-indicator safe areas */
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
   overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 
 @layer base {
@@ -182,7 +182,6 @@ body {
 
   section {
     scroll-margin-top: 1rem;
-    /* Keep section anchors clear of the fixed bottom dock */
     scroll-margin-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
   }
 
@@ -245,12 +244,15 @@ main {
     isolation: isolate;
   }
 
-  /* Panel clips; dock must allow horizontal scroll on narrow screens */
+  /* Prefer clip over hidden to reduce mobile compositing bugs with transforms */
   .glass-panel-dark {
-    overflow: hidden;
+    position: relative;
+    overflow: clip;
+    background: transparent;
   }
 
   .glass-dock {
+    position: relative;
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
@@ -284,19 +286,61 @@ main {
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
-}
 
-@media (pointer: coarse) {
-  .glass-panel-dark::before {
-    background: var(--sd-panel-bg-mobile);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+  /* Solid surfaces on touch devices — avoid pseudo + backdrop paint glitches */
+  @media (pointer: coarse), (hover: none) {
+    .glass-panel-dark {
+      background: var(--sd-panel-bg-mobile);
+      /* Avoid extra stacking context from pseudo on mobile GPUs */
+    }
+
+    .glass-panel-dark::before {
+      content: none;
+      display: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .glass-dock {
+      background: var(--dock-bg-mobile);
+    }
+
+    .glass-dock::before {
+      content: none;
+      display: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
   }
 
-  .glass-dock::before {
-    background: var(--dock-bg-mobile);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+  /* Narrow screens: same solid treatment even with fine pointer (responsive mode) */
+  @media (max-width: 639px) {
+    .glass-panel-dark {
+      background: var(--sd-panel-bg-mobile);
+    }
+
+    .glass-panel-dark::before {
+      content: none;
+      display: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .glass-dock {
+      background: var(--dock-bg-mobile);
+    }
+
+    .glass-dock::before {
+      content: none;
+      display: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    /* Stronger, non-alpha pills on narrow screens (both themes) */
+    .tech-pill {
+      background: var(--sd-pill-bg-mobile);
+    }
   }
 }
 

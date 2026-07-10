@@ -43,9 +43,9 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-dvh min-h-screen flex items-center"
+      className="relative flex items-center min-h-[min(100dvh,100vh)] sm:min-h-dvh"
     >
-      <div className="mx-auto w-full max-w-5xl px-4 py-12 sm:py-24 lg:px-8 lg:py-32">
+      <div className="mx-auto w-full max-w-5xl px-4 py-14 sm:py-24 lg:px-8 lg:py-32">
         <motion.div
           className="grid gap-8 sm:gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16"
           {...(!shouldUseSafeMotion && {
