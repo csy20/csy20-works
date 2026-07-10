@@ -1,16 +1,6 @@
-import { memo, type ReactNode } from "react";
-import { motion } from "framer-motion";
 import { Section } from "../components/ui/Section";
 import { Icon } from "../components/ui/Icon";
 import { techStack, type StackItem } from "../data/siteContent";
-import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
-import {
-  cardVariants,
-  chipVariants,
-  hoverChip,
-  staggerContainer,
-  staggerFast,
-} from "../components/animations/motion";
 
 const categories = [
   { key: "frontend", label: "Frontend" },
@@ -32,157 +22,70 @@ function buildGroupedMap(): Record<CategoryKey, StackItem[]> {
   return map;
 }
 
-const groupedTechStack = buildGroupedMap();
+const grouped = buildGroupedMap();
 
-const pillClassName =
-  "tech-pill inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--sd-pill-border)] bg-[var(--sd-pill-bg)] px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-[var(--sd-pill-text)] transition-colors duration-200 hover:border-[var(--sd-pill-border-hover)] hover:bg-[var(--sd-pill-bg-hover)]";
-
-const cardClassName =
-  "glass-panel-dark relative min-w-0 rounded-xl border border-[var(--sd-panel-border)] p-3.5 sm:p-5";
-
-function TechPillContent({ item }: { item: StackItem }) {
+/**
+ * Tech stack — zero Framer Motion, zero glass/backdrop layers.
+ * Solid surfaces only so mobile GPUs never ghost-paint pills.
+ */
+export function StackSection() {
   return (
-    <>
-      <span className="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-[var(--sd-pill-icon-bg)]">
-        <Icon name={item.icon} size={14} />
-      </span>
-      <span className="font-medium whitespace-nowrap">{item.name}</span>
-    </>
-  );
-}
-
-function CategoryStats() {
-  return (
-    <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-4">
-      {categories.map((cat) => (
-        <div key={cat.key} className={cardClassName}>
-          <p className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--sd-muted)]">
-            {cat.label}
-          </p>
-          <p className="mt-1 font-serif-accent text-xl sm:text-2xl tracking-tight text-[var(--sd-text)] tabular-nums">
-            {groupedTechStack[cat.key].length}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function CategoryPills() {
-  return (
-    <div className="space-y-6 sm:space-y-7">
-      {categories.map((cat) => {
-        const items = groupedTechStack[cat.key];
-        if (!items.length) return null;
-        return (
-          <div key={cat.key}>
-            <p className="font-display text-[11px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.2em] uppercase text-[var(--sd-muted)] mb-2.5 sm:mb-3 ml-0.5">
-              {cat.label}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {items.map((item) => (
-                <span key={item.name} className={pillClassName}>
-                  <TechPillContent item={item} />
-                </span>
-              ))}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-const AnimatedTechPill = memo(function AnimatedTechPill({
-  item,
-}: {
-  item: StackItem;
-}) {
-  return (
-    <motion.span
-      variants={chipVariants}
-      whileHover={hoverChip}
-      whileTap={{ scale: 0.98 }}
-      className={pillClassName}
-    >
-      <TechPillContent item={item} />
-    </motion.span>
-  );
-});
-
-function AnimatedStackBody() {
-  return (
-    <div className="space-y-7 sm:space-y-8">
-      <motion.div
-        className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-4"
-        variants={staggerContainer}
-      >
+    <Section id="stack" title="Tech stack" subtitle="What I use">
+      {/* Summary counts */}
+      <div className="mb-6 grid grid-cols-4 gap-2 sm:mb-8 sm:gap-3">
         {categories.map((cat) => (
-          <motion.div
+          <div
             key={cat.key}
-            variants={cardVariants}
-            className={cardClassName}
+            className="min-w-0 rounded-xl border border-[var(--border-soft)] bg-[var(--surface-raised)] px-2 py-3 text-center sm:px-3 sm:py-4"
           >
-            <p className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--sd-muted)]">
+            <p className="font-display text-[9px] uppercase tracking-[0.12em] text-[var(--text-muted)] sm:text-[11px] sm:tracking-[0.15em]">
               {cat.label}
             </p>
-            <p className="mt-1 font-serif-accent text-xl sm:text-2xl tracking-tight text-[var(--sd-text)] tabular-nums">
-              {groupedTechStack[cat.key].length}
+            <p className="mt-0.5 font-serif-accent text-lg tabular-nums tracking-tight text-[var(--text-primary)] sm:mt-1 sm:text-2xl">
+              {grouped[cat.key].length}
             </p>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
-      <div className="space-y-6 sm:space-y-7">
+      {/* One solid card per category — skills as a simple list/grid */}
+      <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
         {categories.map((cat) => {
-          const items = groupedTechStack[cat.key];
+          const items = grouped[cat.key];
           if (!items.length) return null;
+
           return (
-            <motion.div key={cat.key} variants={staggerFast}>
-              <motion.p
-                variants={chipVariants}
-                className="font-display text-[11px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.2em] uppercase text-[var(--sd-muted)] mb-2.5 sm:mb-3 ml-0.5"
-              >
-                {cat.label}
-              </motion.p>
-              <motion.div
-                className="flex flex-wrap gap-2"
-                variants={staggerFast}
-              >
+            <article
+              key={cat.key}
+              className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)] p-4 sm:p-5"
+            >
+              <header className="mb-3 flex items-baseline justify-between gap-2 border-b border-[var(--border-soft)] pb-2.5 sm:mb-4 sm:pb-3">
+                <h3 className="font-display text-sm font-medium tracking-wide text-[var(--text-primary)] sm:text-base">
+                  {cat.label}
+                </h3>
+                <span className="shrink-0 font-display text-xs tabular-nums text-[var(--text-muted)]">
+                  {items.length} tools
+                </span>
+              </header>
+
+              <ul className="grid grid-cols-2 gap-1.5 sm:gap-2">
                 {items.map((item) => (
-                  <AnimatedTechPill key={item.name} item={item} />
+                  <li key={item.name}>
+                    <div className="flex min-h-10 items-center gap-2 rounded-lg border border-[var(--border-soft)] bg-[var(--bg-primary)] px-2.5 py-2 sm:min-h-11 sm:px-3">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[var(--surface-raised)] text-[var(--text-secondary)]">
+                        <Icon name={item.icon} size={14} />
+                      </span>
+                      <span className="min-w-0 truncate font-display text-xs font-medium text-[var(--text-primary)] sm:text-sm">
+                        {item.name}
+                      </span>
+                    </div>
+                  </li>
                 ))}
-              </motion.div>
-            </motion.div>
+              </ul>
+            </article>
           );
         })}
       </div>
-    </div>
-  );
-}
-
-function StaticStackBody() {
-  return (
-    <div className="space-y-7 sm:space-y-8">
-      <CategoryStats />
-      <CategoryPills />
-    </div>
-  );
-}
-
-export function StackSection() {
-  const shouldUseSafeMotion = useAnimationSafeMode();
-
-  let body: ReactNode;
-  if (shouldUseSafeMotion) {
-    body = <StaticStackBody />;
-  } else {
-    body = <AnimatedStackBody />;
-  }
-
-  return (
-    <Section id="stack" title="Tech stack" subtitle="What I use">
-      {body}
     </Section>
   );
 }

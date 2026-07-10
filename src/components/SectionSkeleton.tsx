@@ -40,14 +40,30 @@ export function StackSectionSkeleton() {
     <section className="relative" aria-hidden="true">
       <div className="mx-auto w-full max-w-5xl px-4 pb-12 pt-12 sm:pb-24 sm:pt-24 lg:px-8">
         <SkeletonSectionHeading />
-        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-4">
+        <div className="mb-6 grid grid-cols-4 gap-2">
           {Array.from({ length: 4 }).map((_, i) => (
             <div
-              key={`stack-skel-${i}`}
-              className="relative min-w-0 rounded-xl border border-[var(--sd-panel-border)] bg-[var(--sd-panel-bg)] p-3 sm:p-5"
+              key={`stack-stat-${i}`}
+              className="rounded-xl border border-[var(--border-soft)] bg-[var(--surface-raised)] p-3"
             >
-              <SkeletonBlock className="h-3 w-16" />
-              <SkeletonBlock className="mt-1 h-7 w-8" />
+              <SkeletonBlock className="mx-auto h-2.5 w-12" />
+              <SkeletonBlock className="mx-auto mt-2 h-6 w-6" />
+            </div>
+          ))}
+        </div>
+        <div className="grid gap-3 md:grid-cols-2">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div
+              key={`stack-card-${i}`}
+              className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)] p-4"
+            >
+              <SkeletonBlock className="mb-3 h-4 w-24" />
+              <div className="grid grid-cols-2 gap-2">
+                <SkeletonBlock className="h-10 w-full" />
+                <SkeletonBlock className="h-10 w-full" />
+                <SkeletonBlock className="h-10 w-full" />
+                <SkeletonBlock className="h-10 w-full" />
+              </div>
             </div>
           ))}
         </div>
