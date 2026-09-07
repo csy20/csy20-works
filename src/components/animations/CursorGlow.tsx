@@ -11,7 +11,7 @@ export function CursorGlow() {
   const shouldUseSafeMotion = useAnimationSafeMode();
   const hasFinePointer = useMediaQuery("(pointer: fine)");
 
-  const showGlow = theme === "dark" && !shouldUseSafeMotion && hasFinePointer;
+  const showGlow = !shouldUseSafeMotion && hasFinePointer;
 
   const x = useMotionValue(-120);
   const y = useMotionValue(-120);
@@ -62,8 +62,10 @@ export function CursorGlow() {
         x: cursorX,
         y: cursorY,
         background:
-          "radial-gradient(circle, rgba(232,228,220,0.07) 0%, rgba(232,228,220,0) 68%)",
-        mixBlendMode: "screen",
+          theme === "dark"
+            ? "radial-gradient(circle, rgba(232,228,220,0.08) 0%, rgba(232,228,220,0) 68%)"
+            : "radial-gradient(circle, rgba(214,122,62,0.12) 0%, rgba(214,122,62,0) 70%)",
+        mixBlendMode: theme === "dark" ? "screen" : "multiply",
         filter: "blur(18px)",
         willChange: "transform",
       }}

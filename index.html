@@ -57,22 +57,27 @@
     <meta name="twitter:image" content="https://csy20.works/og-image.png" />
     <meta name="twitter:creator" content="@the__csy20" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://api.github.com" />
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
-      media="print"
-      onload="this.media = 'all'"
+      rel="preload"
+      href="/fonts/instrument-serif.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
-      />
-    </noscript>
+    <link
+      rel="preload"
+      href="/fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/portrait-twitter.webp"
+      as="image"
+      type="image/webp"
+    />
 
     <!-- Additional SEO -->
     <meta name="application-name" content="csy20.works" />
@@ -83,7 +88,7 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#f6f3ed" />
+    <meta name="theme-color" content="#f4ebe0" />
 
     <script>
       (() => {
@@ -108,7 +113,7 @@
         meta.content =
           document.documentElement.getAttribute("data-theme") === "dark"
             ? "#141414"
-            : "#f6f3ed";
+            : "#f4ebe0";
       }
     </script>
 
@@ -120,7 +125,7 @@
         "name": "Chitresh Yadav",
         "alternateName": "csy20",
         "url": "https://csy20.works",
-        "image": "https://csy20.works/pfp.jpeg",
+        "image": "https://csy20.works/portrait-twitter.jpg",
         "jobTitle": "MERN + Flutter Developer",
         "description": "Full-stack developer specializing in MERN stack, Flutter mobile development, FastAPI backends, and machine learning pipelines.",
         "knowsAbout": [
@@ -138,8 +143,7 @@
         "sameAs": [
           "https://github.com/csy20",
           "https://www.linkedin.com/in/csy20/",
-          "https://www.youtube.com/@emt__edits20",
-          "https://www.instagram.com/emt__edits/",
+          "https://www.youtube.com/@chitresh-y3q",
           "https://www.instagram.com/the__csy20/"
         ]
       }

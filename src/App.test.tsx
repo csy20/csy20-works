@@ -85,11 +85,15 @@ describe("App", () => {
     ).toBeInTheDocument();
 
     expect(
-      await screen.findByRole("heading", { name: "MediaPipe AI" }),
+      await screen.findByRole("heading", { name: "Nen" }),
     ).toBeInTheDocument();
 
     expect(
       await screen.findByRole("heading", { name: "Bytewise" }),
+    ).toBeInTheDocument();
+
+    expect(
+      await screen.findByRole("heading", { name: "MediaPipe AI" }),
     ).toBeInTheDocument();
 
     expect(

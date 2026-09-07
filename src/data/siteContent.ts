@@ -15,8 +15,18 @@ export type Project = {
   tags: string[];
   links: ProjectLink[];
   featured?: boolean;
+  logo?: string;
   spotlight?: string;
   releaseNote?: string;
+};
+
+export type PortraitId = "twitter";
+
+export type Portrait = {
+  id: PortraitId;
+  src: string;
+  label: string;
+  alt: string;
 };
 
 export type StackItem = {
@@ -67,6 +77,15 @@ export const profile = {
   strapline: "React • React Native • Flutter • FastAPI",
   heroDescription:
     "Everything here is real work — APIs that actually run, animations that don't stutter, and apps that got finished instead of staying half-built.",
+};
+
+export const portraits: Record<PortraitId, Portrait> = {
+  twitter: {
+    id: "twitter",
+    src: "/portrait-twitter.jpg",
+    label: "X",
+    alt: "Illustrated portrait of Chitresh Yadav",
+  },
 };
 
 export const techStack: StackItem[] = [
@@ -174,15 +193,25 @@ export const techStack: StackItem[] = [
 
 export const projects: Project[] = [
   {
-    title: "MediaPipe AI",
-    eyebrow: "AI Pipeline",
+    title: "Nen",
+    eyebrow: "Published on Play Store",
     description:
-      "A production-grade AI Media Processing Pipeline with React frontend, Express API gateway, Python AI worker, and PostgreSQL database, all orchestrated via Docker Compose.",
-    tags: ["React", "Express", "Python", "PostgreSQL", "Docker", "AI"],
+      "Offline music player for the files already on your phone. Local playback only — no streaming, no ads, no account. ExoPlayer decode, lock-screen controls, and a now-playing meter from the track envelope.",
+    tags: ["Flutter", "Dart", "ExoPlayer", "Play Store"],
+    featured: true,
+    logo: "/nen-logo.png",
+    spotlight: "Live on Google Play",
+    releaseNote:
+      "Public on Play, MIT licensed. The listing is live — not early access.",
     links: [
       {
+        label: "Play Store",
+        href: "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+        tone: "mint",
+      },
+      {
         label: "GitHub",
-        href: "https://github.com/csy20/mediapipe-ai",
+        href: "https://github.com/csy20/nen",
         tone: "clay",
       },
     ],
@@ -194,9 +223,10 @@ export const projects: Project[] = [
       "A Flutter app I actually shipped to the Play Store — not just a demo, but a real release with proper versioning, store listing, and all that.",
     tags: ["Flutter", "Dart", "Android", "Play Store"],
     featured: true,
+    logo: "/bytewise-logo.png",
     spotlight: "Live on Google Play",
     releaseNote:
-      "This one matters to me because it's not sitting in a repo somewhere. People can install it. That forced me to deal with things like release signing, store guidelines, and writing a proper listing.",
+      "This one matters because people can install it. That forced release signing, store guidelines, and a proper listing.",
     links: [
       {
         label: "Play Store",
@@ -206,43 +236,71 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Forge",
-    eyebrow: "CLI Tool",
+    title: "Speech Relay",
+    eyebrow: "Realtime speech",
     description:
-      "A production-grade CLI tool for scaffolding opinionated project templates with Docker, linting, testing, and CI/CD pre-configured.",
-    tags: ["CLI", "Docker", "CI/CD", "Templates", "Node.js"],
+      "Streaming speech-to-speech translation over WebRTC: ASR → MT → TTS with Silero VAD, fan-out, ONNX, and an eval harness.",
+    tags: ["Python", "WebRTC", "Whisper", "ONNX", "ASR"],
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/csy20/forge",
+        href: "https://github.com/csy20/speech-relay",
         tone: "clay",
       },
     ],
   },
   {
-    title: "Rem LLM",
-    eyebrow: "ML Training Pipeline",
+    title: "Speech Relay Rust",
+    eyebrow: "Indic ASR",
     description:
-      "Trains a coding assistant model named rem-coder using a 7-phase workflow: data prep, baseline eval, QLoRA training, adapter merge, GGUF export, and Ollama packaging.",
-    tags: ["Python", "LLM", "QLoRA", "Unsloth", "Ollama", "ML"],
+      "Fine-tuned Hindi–English code-mixed Whisper (LoRA) with a Rust ONNX inference runtime.",
+    tags: ["Python", "Rust", "Whisper", "LoRA", "ONNX"],
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/csy20/rem-llm",
+        href: "https://github.com/csy20/speech-relay-rust",
         tone: "clay",
       },
     ],
   },
   {
-    title: "Nen",
-    eyebrow: "Music App",
+    title: "MediaPipe AI",
+    eyebrow: "AI pipeline",
     description:
-      "A music app written in Flutter with a custom audio engine written in C++ for native performance and low-latency playback.",
-    tags: ["Flutter", "Dart", "C++", "Audio Engine"],
+      "Distributed media pipeline: Whisper transcription and BART summarization behind a Redis queue, React UI, Express, PostgreSQL, MinIO — all on Docker Compose.",
+    tags: ["React", "Express", "Python", "PostgreSQL", "Docker"],
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/csy20/nen",
+        href: "https://github.com/csy20/mediapipe-ai",
+        tone: "clay",
+      },
+    ],
+  },
+  {
+    title: "02 OS",
+    eyebrow: "Custom distro",
+    description:
+      "A custom Arch Linux ISO with its own branding, installer profile, and live image pipeline.",
+    tags: ["Arch", "Shell", "ISO", "Linux"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/csy20/02_OS",
+        tone: "clay",
+      },
+    ],
+  },
+  {
+    title: "Warrant",
+    eyebrow: "MCP agent",
+    description:
+      "TrueForge change-control agent: real MCP tools, sandboxed analysis, and human approval before irreversible production changes.",
+    tags: ["MCP", "Hackathon", "Agents"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/csy20/warrant",
         tone: "clay",
       },
     ],
@@ -269,22 +327,10 @@ export const socialLinks: SocialLink[] = [
     detail: "Random thoughts and stuff I'm working on.",
   },
   {
-    label: "X (emt__edits)",
-    href: "https://x.com/emt__edits",
-    icon: "x",
-    detail: "Edits and creative work.",
-  },
-  {
     label: "YouTube",
-    href: "https://www.youtube.com/@emt__edits20",
+    href: "https://www.youtube.com/@chitresh-y3q",
     icon: "youtube",
-    detail: "Editing work and creative projects.",
-  },
-  {
-    label: "Instagram (emt__edits)",
-    href: "https://www.instagram.com/emt__edits/",
-    icon: "instagram",
-    detail: "Edits and creative content.",
+    detail: "Videos and other stuff I'm posting.",
   },
   {
     label: "Instagram (csy20)",

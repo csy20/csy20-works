@@ -96,7 +96,7 @@ function SectionInner({
   /* Mobile / reduced-motion: plain DOM — no opacity/y GPU layers */
   if (shouldUseSafeMotion) {
     return (
-      <section ref={ref} id={id} className={`relative ${className}`}>
+      <section ref={ref} id={id} className={`cv-section relative ${className}`}>
         {headingContent && (
           <div className="mx-auto w-full max-w-5xl px-4 pb-5 pt-14 sm:pb-12 sm:pt-24 lg:px-8">
             {headingContent}
@@ -113,7 +113,7 @@ function SectionInner({
     <motion.section
       ref={ref}
       id={id}
-      className={`relative ${className}`}
+      className={`cv-section relative ${className}`}
       variants={containerVariants}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}

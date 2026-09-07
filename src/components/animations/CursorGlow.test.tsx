@@ -21,7 +21,7 @@ describe("CursorGlow", () => {
     vi.mocked(window.matchMedia).mockImplementation(defaultMatchMediaImpl);
   });
 
-  it("renders nothing when theme is light", () => {
+  it("renders nothing when the pointer is coarse", () => {
     const { container } = render(
       <ThemeProvider>
         <CursorGlow />
@@ -30,7 +30,7 @@ describe("CursorGlow", () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it("renders the glow element when theme is dark and pointer is fine", () => {
+  it("renders the glow element when the pointer is fine", () => {
     localStorage.setItem(STORAGE_KEY, "dark");
 
     vi.mocked(window.matchMedia).mockImplementation((query: string) => ({

@@ -4,8 +4,10 @@ import { RevealText } from "../components/animations/RevealText";
 import { Button } from "../components/ui/Button";
 import { Badge } from "../components/ui/Badge";
 import { Icon } from "../components/ui/Icon";
+import { HeroBanner } from "../components/HeroBanner";
+import { PortraitCard } from "../components/PortraitCard";
 import { profile, resumeUrl } from "../data/siteContent";
-import { EASE_OUT, springSoft } from "../components/animations/motion";
+import { EASE_OUT } from "../components/animations/motion";
 
 const heroContainer = {
   hidden: { opacity: 0 },
@@ -43,18 +45,19 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex items-center min-h-[min(100dvh,100vh)] sm:min-h-dvh"
+      className="relative flex items-center min-h-[min(100dvh,100vh)] sm:min-h-dvh overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-5xl px-4 py-14 sm:py-24 lg:px-8 lg:py-32">
+      <HeroBanner />
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-14 sm:py-24 lg:px-8 lg:py-32">
         <motion.div
-          className="grid gap-8 sm:gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16"
+          className="grid gap-10 sm:gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16"
           {...(!shouldUseSafeMotion && {
             variants: heroContainer,
             initial: "hidden",
             animate: "visible",
           })}
         >
-          <div className="flex min-w-0 flex-col gap-5 sm:gap-6">
+          <div className="order-2 flex min-w-0 flex-col gap-5 sm:gap-6 lg:order-1">
             <motion.div
               className="flex flex-wrap items-center gap-x-3 gap-y-2"
               {...(!shouldUseSafeMotion && { variants: heroItem })}
@@ -69,7 +72,7 @@ export function HeroSection() {
               <RevealText
                 text={profile.name}
                 className="font-serif-accent text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] sm:leading-[0.95] text-[var(--text-primary)]"
-                delay={0.35}
+                delay={0.12}
               />
             </h1>
 
@@ -115,25 +118,10 @@ export function HeroSection() {
           </div>
 
           <motion.div
-            className="mx-auto w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[360px] shrink-0"
+            className="order-1 lg:order-2"
             {...(!shouldUseSafeMotion && { variants: heroImage })}
           >
-            <motion.div
-              className="overflow-hidden rounded-2xl sm:rounded-3xl border border-[var(--border-soft)] shadow-[var(--card-shadow)]"
-              {...(!shouldUseSafeMotion && {
-                whileHover: { y: -4, transition: springSoft },
-              })}
-            >
-              <img
-                src="/pfp.jpeg"
-                alt={profile.name}
-                width={640}
-                height={640}
-                className="w-full h-auto block"
-                fetchPriority="high"
-                decoding="async"
-              />
-            </motion.div>
+            <PortraitCard />
           </motion.div>
         </motion.div>
       </div>

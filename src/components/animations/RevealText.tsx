@@ -14,11 +14,13 @@ const childVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: EASE_OUT },
+    rotate: 0,
+    transition: { duration: 0.55, ease: EASE_OUT },
   },
   hidden: {
     opacity: 0,
-    y: 36,
+    y: "110%",
+    rotate: 6,
   },
 };
 
@@ -26,7 +28,7 @@ const container = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.07, delayChildren: 0 },
+    transition: { staggerChildren: 0.028, delayChildren: 0 },
   },
 };
 
@@ -64,15 +66,21 @@ function RevealTextWords({
       {words.map((word, index) => (
         <span
           key={`${word}-${index}`}
-          className="overflow-hidden"
+          className="inline-flex overflow-hidden"
           aria-hidden="true"
           style={
-            index < words.length - 1 ? { marginRight: "0.25em" } : undefined
+            index < words.length - 1 ? { marginRight: "0.28em" } : undefined
           }
         >
-          <motion.span variants={childVariants} className="inline-block">
-            {word}
-          </motion.span>
+          {word.split("").map((char, charIndex) => (
+            <motion.span
+              key={`${word}-${charIndex}`}
+              variants={childVariants}
+              className="inline-block will-change-transform"
+            >
+              {char}
+            </motion.span>
+          ))}
         </span>
       ))}
     </motion.div>

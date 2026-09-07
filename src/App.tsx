@@ -2,6 +2,7 @@ import { lazy, Suspense, useMemo } from "react";
 import { MotionConfig } from "framer-motion";
 import { InkTransition } from "./components/animations/InkTransition";
 import { CursorGlow } from "./components/animations/CursorGlow";
+import { RunningCat } from "./components/animations/RunningCat";
 import { ScrollProgressBar } from "./components/animations/ScrollProgressBar";
 import { ThemeTransitionOverlay } from "./components/animations/ThemeTransitionOverlay";
 import { BackgroundMesh } from "./components/BackgroundMesh";
@@ -63,6 +64,7 @@ export default function App() {
           </a>
           <ScrollProgressBar />
           <CursorGlow />
+          <RunningCat />
           <ThemeTransitionOverlay />
           <BackgroundMesh />
           <main
