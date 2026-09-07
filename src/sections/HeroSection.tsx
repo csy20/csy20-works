@@ -2,40 +2,18 @@ import { motion } from "framer-motion";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import { RevealText } from "../components/animations/RevealText";
 import { Button } from "../components/ui/Button";
-import { Badge } from "../components/ui/Badge";
 import { Icon } from "../components/ui/Icon";
 import { HeroBanner } from "../components/HeroBanner";
 import { PortraitCard } from "../components/PortraitCard";
 import { profile, resumeUrl } from "../data/siteContent";
 import { EASE_OUT } from "../components/animations/motion";
 
-const heroContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.12,
-    },
-  },
-};
-
 const heroItem = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: EASE_OUT },
-  },
-};
-
-const heroImage = {
-  hidden: { opacity: 0, scale: 0.94, y: 12 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: EASE_OUT, delay: 0.15 },
   },
 };
 
@@ -45,54 +23,44 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex items-center min-h-[min(100dvh,100vh)] sm:min-h-dvh overflow-hidden"
+      className="relative flex min-h-[min(100dvh,100vh)] items-center overflow-hidden sm:min-h-dvh"
     >
       <HeroBanner />
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-14 sm:py-24 lg:px-8 lg:py-32">
-        <motion.div
-          className="grid gap-10 sm:gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16"
-          {...(!shouldUseSafeMotion && {
-            variants: heroContainer,
-            initial: "hidden",
-            animate: "visible",
-          })}
-        >
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
           <div className="order-2 flex min-w-0 flex-col gap-5 sm:gap-6 lg:order-1">
-            <motion.div
-              className="flex flex-wrap items-center gap-x-3 gap-y-2"
-              {...(!shouldUseSafeMotion && { variants: heroItem })}
-            >
-              <Badge className="shrink-0">{profile.handle}</Badge>
-              <span className="min-w-0 font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)]">
-                {profile.role}
-              </span>
-            </motion.div>
+            <p className="font-display text-[11px] tracking-[0.18em] uppercase text-[var(--text-muted)]">
+              {profile.handle}
+              <span className="mx-2 text-[var(--border)]">/</span>
+              {profile.role}
+            </p>
 
             <h1 className="min-w-0">
               <RevealText
                 text={profile.name}
                 className="font-serif-accent text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] sm:leading-[0.95] text-[var(--text-primary)]"
-                delay={0.12}
+                delay={0.08}
               />
             </h1>
 
             <motion.p
-              className="font-display text-xs sm:text-sm tracking-[0.06em] text-[var(--text-muted)]"
-              {...(!shouldUseSafeMotion && { variants: heroItem })}
-            >
-              {profile.strapline}
-            </motion.p>
-
-            <motion.p
               className="max-w-xl text-[15px] sm:text-base leading-relaxed text-[var(--text-secondary)] text-balance"
-              {...(!shouldUseSafeMotion && { variants: heroItem })}
+              {...(!shouldUseSafeMotion && {
+                initial: "hidden",
+                animate: "visible",
+                variants: heroItem,
+              })}
             >
               {profile.heroDescription}
             </motion.p>
 
             <motion.div
               className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:pt-2"
-              {...(!shouldUseSafeMotion && { variants: heroItem })}
+              {...(!shouldUseSafeMotion && {
+                initial: "hidden",
+                animate: "visible",
+                variants: heroItem,
+              })}
             >
               <Button
                 variant="primary"
@@ -103,7 +71,7 @@ export function HeroSection() {
                   });
                 }}
               >
-                View work
+                Selected work
                 <Icon name="arrow-right" size={14} />
               </Button>
               <Button
@@ -111,19 +79,16 @@ export function HeroSection() {
                 href={resumeUrl}
                 className="w-full sm:w-auto"
               >
-                Get resume
+                CV
                 <Icon name="download" size={14} />
               </Button>
             </motion.div>
           </div>
 
-          <motion.div
-            className="order-1 lg:order-2"
-            {...(!shouldUseSafeMotion && { variants: heroImage })}
-          >
+          <div className="order-1 lg:order-2">
             <PortraitCard />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -21,7 +21,7 @@ const containerVariants: Variants = {
       duration: 0.45,
       ease: EASE_OUT,
       when: "beforeChildren",
-      staggerChildren: 0.1,
+      staggerChildren: 0.04,
     },
   },
 };
@@ -39,8 +39,8 @@ const contentVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05,
+      staggerChildren: 0.04,
+      delayChildren: 0,
     },
   },
 };

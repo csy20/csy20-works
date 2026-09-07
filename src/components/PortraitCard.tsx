@@ -11,7 +11,7 @@ export function PortraitCard() {
   return (
     <div className="portrait-frame relative mx-auto w-56 sm:w-72 lg:w-80">
       <motion.div
-        className="relative aspect-square w-full overflow-hidden rounded-[1.6rem] sm:rounded-[1.85rem] border border-[var(--border-soft)] shadow-[var(--card-shadow)] bg-[var(--surface-raised)]"
+        className="portrait-plate relative aspect-square w-full overflow-hidden rounded-[1.35rem] bg-[var(--surface-raised)]"
         {...(!shouldUseSafeMotion && {
           whileHover: { y: -6, scale: 1.02, transition: springSoft },
         })}

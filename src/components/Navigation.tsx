@@ -5,6 +5,7 @@ import { Icon } from "./ui/Icon";
 import { SunIcon, MoonIcon } from "./ui/ThemeIcons";
 import { socialLinks, type SocialIcon } from "../data/siteContent";
 import { useAnimationSafeMode } from "./useAnimationSafeMode";
+import { useSound } from "./useSound";
 import { springSnappy } from "./animations/motion";
 
 const navLinkIcons: SocialIcon[] = [
@@ -48,6 +49,7 @@ export function Navigation() {
     });
   }, []);
   const { theme, toggleTheme } = useTheme();
+  const { playDockTick } = useSound();
   const isDark = theme === "dark";
   const shouldUseSafeMotion = useAnimationSafeMode();
   const [hovered, setHovered] = useState<number | null>(null);
@@ -84,7 +86,7 @@ export function Navigation() {
     return [home, ...socials, themeToggle];
   }, [filteredSocialLinks, isDark, shouldUseSafeMotion, toggleTheme]);
 
-  const themeIndex = items.length - 1;
+  const controlsStart = items.length - 1;
 
   return (
     <nav
@@ -94,7 +96,7 @@ export function Navigation() {
     >
       {items.map((item, index) => (
         <span key={item.key} className="contents">
-          {index === themeIndex && (
+          {index === controlsStart && (
             <span
               className="mx-0.5 self-center h-4 w-px shrink-0 bg-[var(--dock-border)] sm:mx-1"
               aria-hidden="true"
@@ -108,7 +110,10 @@ export function Navigation() {
                 : { scale: 1, y: 0 }
             }
             showLabel={canMagnify && hovered === index}
-            onHover={() => setHovered(index)}
+            onHover={() => {
+              setHovered(index);
+              playDockTick();
+            }}
             animate={canMagnify}
           />
         </span>

@@ -4,11 +4,8 @@ import { describe, expect, it, vi, beforeAll } from "vitest";
 import App from "./App";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { MotionSafeProvider } from "./components/MotionSafeProvider";
+import { SoundProvider } from "./components/SoundProvider";
 import { profile, techStack } from "./data/siteContent";
-
-vi.mock("react-github-calendar", () => ({
-  GitHubCalendar: () => <div data-testid="github-calendar" />,
-}));
 
 vi.mock("framer-motion", async () => {
   const actual = await vi.importActual("framer-motion");
@@ -32,7 +29,9 @@ function renderApp() {
   return render(
     <ThemeProvider>
       <MotionSafeProvider>
-        <App />
+        <SoundProvider>
+          <App />
+        </SoundProvider>
       </MotionSafeProvider>
     </ThemeProvider>,
   );
@@ -46,13 +45,11 @@ describe("App", () => {
       screen.getByRole("heading", { name: profile.name }),
     ).toBeInTheDocument();
 
-    expect(screen.getByText(profile.handle)).toBeInTheDocument();
-
     expect(screen.getByText(profile.heroDescription)).toBeInTheDocument();
 
     const stackHeading = await screen.findByRole(
       "heading",
-      { name: "Tech stack" },
+      { name: "I ship in" },
       { timeout: 5000 },
     );
     expect(stackHeading).toBeInTheDocument();
@@ -69,12 +66,10 @@ describe("App", () => {
     expect(
       await screen.findByRole(
         "heading",
-        { name: "Activity" },
+        { name: "At a glance" },
         { timeout: 5000 },
       ),
     ).toBeInTheDocument();
-
-    expect(screen.getByTestId("github-calendar")).toBeInTheDocument();
 
     expect(
       await screen.findByRole(
@@ -97,15 +92,11 @@ describe("App", () => {
     ).toBeInTheDocument();
 
     expect(
-      await screen.findByRole(
-        "heading",
-        { name: "Get in touch" },
-        { timeout: 5000 },
-      ),
+      await screen.findByRole("heading", { name: "Studio" }, { timeout: 5000 }),
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("link", { name: /Send email/i }),
-    ).toBeInTheDocument();
+      screen.getAllByRole("link", { name: /^Email$/i }).length,
+    ).toBeGreaterThan(0);
   });
 });

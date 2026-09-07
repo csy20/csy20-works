@@ -1,11 +1,12 @@
 import { lazy, Suspense, useMemo } from "react";
 import { MotionConfig } from "framer-motion";
 import { InkTransition } from "./components/animations/InkTransition";
-import { CursorGlow } from "./components/animations/CursorGlow";
 import { RunningCat } from "./components/animations/RunningCat";
 import { ScrollProgressBar } from "./components/animations/ScrollProgressBar";
 import { ThemeTransitionOverlay } from "./components/animations/ThemeTransitionOverlay";
 import { BackgroundMesh } from "./components/BackgroundMesh";
+import { BootScreen } from "./components/BootScreen";
+import { NotFound } from "./components/NotFound";
 import { Navigation } from "./components/Navigation";
 import { useAnimationSafeMode } from "./components/useAnimationSafeMode";
 import { HeroSection } from "./sections/HeroSection";
@@ -41,6 +42,12 @@ function BelowFoldFallback() {
   );
 }
 
+function isHomePath() {
+  if (typeof window === "undefined") return true;
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  return path === "/" || path === "/index.html";
+}
+
 export default function App() {
   const shouldUseSafeMotion = useAnimationSafeMode();
   const reducedMotion = useMemo(
@@ -48,9 +55,14 @@ export default function App() {
     [shouldUseSafeMotion],
   );
 
+  if (!isHomePath()) {
+    return <NotFound />;
+  }
+
   return (
     <MotionConfig reducedMotion={reducedMotion}>
       <InkTransition>
+        <BootScreen />
         {/*
           Dock is a sibling of the scroll shell so overflow-x on the shell
           never creates a containing block that traps position:fixed.
@@ -63,7 +75,6 @@ export default function App() {
             Skip to content
           </a>
           <ScrollProgressBar />
-          <CursorGlow />
           <RunningCat />
           <ThemeTransitionOverlay />
           <BackgroundMesh />

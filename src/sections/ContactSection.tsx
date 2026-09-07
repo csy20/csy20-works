@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Section } from "../components/ui/Section";
 import { Button } from "../components/ui/Button";
 import { Icon } from "../components/ui/Icon";
-import { socialLinks } from "../data/siteContent";
+import { colophon, profile, resumeUrl, socialLinks } from "../data/siteContent";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import { useSkipExpensiveAnimation } from "../components/useSkipExpensiveAnimation";
 import { config } from "../config";
@@ -20,28 +20,40 @@ export function ContactSection() {
   const skipTouchHover = useSkipExpensiveAnimation();
 
   return (
-    <Section id="contact" title="Get in touch" subtitle="Connect">
-      <div className="space-y-6 sm:space-y-8">
+    <Section id="contact" title="Studio" subtitle="Work">
+      <div className="space-y-8 sm:space-y-10">
         <motion.div
           {...(!shouldUseSafeMotion && { variants: fadeUp })}
-          className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-5 sm:p-8 text-center"
+          className="border border-[var(--border)] bg-[var(--surface)] px-5 py-8 sm:px-10 sm:py-12"
         >
-          <p className="text-sm leading-relaxed text-[var(--text-secondary)] text-balance max-w-md mx-auto mb-5">
-            I&rsquo;m always open to new opportunities and collaborations. The
-            best way to reach me is via email.
+          <p className="font-display text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+            {profile.availability}
           </p>
-          <Button
-            variant="primary"
-            href={`mailto:${config.email}`}
-            className="w-full sm:w-auto"
-          >
-            Send email
-            <Icon name="arrow-right" size={14} />
-          </Button>
+          <p className="mt-4 max-w-md font-serif-accent text-2xl tracking-tight text-[var(--text-primary)] sm:text-3xl">
+            Write about the problem, not the stack.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button
+              variant="primary"
+              href={`mailto:${config.email}`}
+              className="w-full sm:w-auto"
+            >
+              Email
+              <Icon name="arrow-right" size={14} />
+            </Button>
+            <Button
+              variant="secondary"
+              href={resumeUrl}
+              className="w-full sm:w-auto"
+            >
+              CV
+              <Icon name="download" size={14} />
+            </Button>
+          </div>
         </motion.div>
 
         <motion.div
-          className="grid gap-2.5 sm:gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-px overflow-hidden border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-5"
           {...(!shouldUseSafeMotion && { variants: staggerContainer })}
         >
           {publicSocials.map((link) => (
@@ -55,22 +67,26 @@ export function ContactSection() {
                 whileHover: hoverLift,
                 whileTap: { scale: 0.98 },
               })}
-              className="flex min-h-14 items-center gap-3 sm:gap-4 rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-3.5 sm:p-4 transition-shadow duration-300 hover:border-[var(--border)] hover:shadow-[var(--card-shadow-hover)] active:scale-[0.99]"
+              className="flex min-h-14 items-center gap-3 bg-[var(--surface)] p-4 sm:gap-4 max-lg:last:col-span-2"
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--border-soft)] bg-[var(--surface-raised)] text-[var(--text-secondary)]">
+              <span className="text-[var(--text-secondary)]">
                 <Icon name={link.icon} size={18} />
               </span>
               <div className="min-w-0">
                 <p className="font-display text-sm font-medium text-[var(--text-primary)]">
                   {link.label}
                 </p>
-                <p className="text-xs text-[var(--text-muted)] truncate">
+                <p className="truncate text-xs text-[var(--text-muted)]">
                   {link.detail}
                 </p>
               </div>
             </motion.a>
           ))}
         </motion.div>
+
+        <p className="font-display text-[11px] tracking-[0.12em] uppercase text-[var(--text-muted)]">
+          {colophon}
+        </p>
       </div>
     </Section>
   );

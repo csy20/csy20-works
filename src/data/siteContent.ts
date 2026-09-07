@@ -72,12 +72,31 @@ export type SocialLink = {
 
 export const profile = {
   name: "Chitresh Yadav",
-  handle: "~csy",
-  role: "Building with React, React Native, and Flutter",
-  strapline: "React • React Native • Flutter • FastAPI",
+  handle: "csy20",
+  role: "Play Store · speech · Linux",
+  strapline: "Flutter · React · Python · Go",
   heroDescription:
-    "Everything here is real work — APIs that actually run, animations that don't stutter, and apps that got finished instead of staying half-built.",
+    "Play Store apps, realtime speech systems, and a custom Linux ISO.",
+  availability: "Taking work from October.",
 };
+
+export const proof = [
+  {
+    label: "Play Store",
+    value: "2 apps",
+    detail: "Nen and Bytewise. Live listings, not demos.",
+  },
+  {
+    label: "Speech",
+    value: "Realtime",
+    detail: "ASR → MT → TTS over WebRTC and ONNX.",
+  },
+  {
+    label: "Systems",
+    value: "02 OS",
+    detail: "A custom Arch Linux ISO and installer.",
+  },
+] as const;
 
 export const portraits: Record<PortraitId, Portrait> = {
   twitter: {
@@ -89,106 +108,16 @@ export const portraits: Record<PortraitId, Portrait> = {
 };
 
 export const techStack: StackItem[] = [
-  {
-    name: "HTML",
-    icon: "html",
-    category: "frontend",
-  },
-  {
-    name: "CSS",
-    icon: "css",
-    category: "frontend",
-  },
-  {
-    name: "JavaScript",
-    icon: "javascript",
-    category: "frontend",
-  },
-  {
-    name: "TypeScript",
-    icon: "typescript",
-    category: "frontend",
-  },
-  {
-    name: "JSX",
-    icon: "jsx",
-    category: "frontend",
-  },
-  {
-    name: "TSX",
-    icon: "tsx",
-    category: "frontend",
-  },
-  {
-    name: "Next.js",
-    icon: "nextjs",
-    category: "frontend",
-  },
-  {
-    name: "React",
-    icon: "react",
-    category: "frontend",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "tailwindcss",
-    category: "frontend",
-  },
-  {
-    name: "Express",
-    icon: "express",
-    category: "backend",
-  },
-  {
-    name: "MongoDB",
-    icon: "mongodb",
-    category: "backend",
-  },
-  {
-    name: "Firebase",
-    icon: "firebase",
-    category: "backend",
-  },
-  {
-    name: "Supabase",
-    icon: "supabase",
-    category: "backend",
-  },
-  {
-    name: "Go",
-    icon: "go",
-    category: "backend",
-  },
-  {
-    name: "Python",
-    icon: "python",
-    category: "backend",
-  },
-  {
-    name: "React Native",
-    icon: "reactnative",
-    category: "mobile",
-  },
-  {
-    name: "Flutter",
-    icon: "flutter",
-    category: "mobile",
-  },
-  {
-    name: "Dart",
-    icon: "dart",
-    category: "mobile",
-  },
-  {
-    name: "Ubuntu",
-    icon: "ubuntu",
-    category: "platform",
-  },
-  {
-    name: "Docker",
-    icon: "docker",
-    category: "platform",
-  },
+  { name: "TypeScript", icon: "typescript", category: "frontend" },
+  { name: "React", icon: "react", category: "frontend" },
+  { name: "Next.js", icon: "nextjs", category: "frontend" },
+  { name: "Tailwind CSS", icon: "tailwindcss", category: "frontend" },
+  { name: "Python", icon: "python", category: "backend" },
+  { name: "Go", icon: "go", category: "backend" },
+  { name: "Flutter", icon: "flutter", category: "mobile" },
+  { name: "Dart", icon: "dart", category: "mobile" },
+  { name: "React Native", icon: "reactnative", category: "mobile" },
+  { name: "Docker", icon: "docker", category: "platform" },
 ];
 
 export const projects: Project[] = [
@@ -324,13 +253,13 @@ export const socialLinks: SocialLink[] = [
     label: "X (the__csy20)",
     href: "https://x.com/the__csy20",
     icon: "x",
-    detail: "Random thoughts and stuff I'm working on.",
+    detail: "Notes and work in public.",
   },
   {
     label: "YouTube",
     href: "https://www.youtube.com/@chitresh-y3q",
     icon: "youtube",
-    detail: "Videos and other stuff I'm posting.",
+    detail: "Talks and recordings.",
   },
   {
     label: "Instagram (csy20)",
@@ -347,3 +276,5 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const resumeUrl = config.resumeUrl;
+
+export const colophon = "Instrument Serif · Space Grotesk · 2026";

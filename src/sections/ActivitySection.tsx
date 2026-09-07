@@ -1,72 +1,33 @@
-import { Component, type ReactNode, type ErrorInfo } from "react";
 import { motion } from "framer-motion";
-import { GitHubCalendar } from "react-github-calendar";
 import { Section } from "../components/ui/Section";
-import { useTheme } from "../components/useTheme";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
-import { useMediaQuery } from "../components/hooks/useMediaQuery";
-import { config } from "../config";
+import { proof } from "../data/siteContent";
 import { cardVariants } from "../components/animations/motion";
 
-class CalendarErrorBoundary extends Component<{ children: ReactNode }> {
-  override state = { hasError: false };
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  override componentDidCatch(_error: Error, info: ErrorInfo) {
-    if (import.meta.env.DEV) {
-      console.warn(
-        "[ActivitySection] GitHubCalendar failed:",
-        info.componentStack,
-      );
-    }
-  }
-
-  override render() {
-    if (this.state.hasError) {
-      return (
-        <p className="text-sm text-[var(--text-muted)]">
-          GitHub contributions unavailable right now.
-        </p>
-      );
-    }
-    return this.props.children;
-  }
-}
-
 export function ActivitySection() {
-  const { theme } = useTheme();
   const shouldUseSafeMotion = useAnimationSafeMode();
-  const isSmallScreen = useMediaQuery("(max-width: 640px)");
-  const blockSize = isSmallScreen ? 10 : 13;
-  const blockMargin = isSmallScreen ? 2 : 4;
 
   return (
-    <Section id="activity" title="Activity" subtitle="Open source">
-      <motion.div
-        className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)] sm:bg-[var(--surface)] p-3 sm:p-6"
-        {...(!shouldUseSafeMotion && { variants: cardVariants })}
-      >
-        <p className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)] mb-3 sm:mb-4">
-          GitHub contributions
-        </p>
-        {/* Overflow only on scroller — avoid overflow+transform paint bugs on outer card */}
-        <div className="relative overflow-x-auto overscroll-x-contain pb-1 min-h-[100px] sm:min-h-[110px] [scrollbar-width:thin] -mx-0.5 px-0.5">
-          <CalendarErrorBoundary>
-            <div className="w-max min-w-full">
-              <GitHubCalendar
-                username={config.githubUsername}
-                colorScheme={theme === "dark" ? "dark" : "light"}
-                blockSize={blockSize}
-                blockMargin={blockMargin}
-                fontSize={isSmallScreen ? 11 : 13}
-              />
-            </div>
-          </CalendarErrorBoundary>
-        </div>
-      </motion.div>
+    <Section id="activity" title="At a glance" subtitle="Proof">
+      <div className="grid gap-px overflow-hidden rounded-none border border-[var(--border)] bg-[var(--border)] sm:grid-cols-3">
+        {proof.map((item) => (
+          <motion.div
+            key={item.label}
+            className="bg-[var(--surface)] px-5 py-6 sm:px-6 sm:py-8"
+            {...(!shouldUseSafeMotion && { variants: cardVariants })}
+          >
+            <p className="font-display text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+              {item.label}
+            </p>
+            <p className="mt-3 font-serif-accent text-3xl tracking-tight text-[var(--text-primary)] sm:text-4xl">
+              {item.value}
+            </p>
+            <p className="mt-3 max-w-[16rem] text-sm leading-relaxed text-[var(--text-secondary)]">
+              {item.detail}
+            </p>
+          </motion.div>
+        ))}
+      </div>
     </Section>
   );
 }

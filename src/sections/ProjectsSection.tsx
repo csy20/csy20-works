@@ -53,7 +53,7 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
 
   return (
     <motion.div
-      className="shine-card relative overflow-hidden rounded-3xl border border-[var(--border-soft)] bg-[var(--surface)] shadow-[var(--card-shadow)] h-full"
+      className="relative h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)]"
       {...(!shouldUseSafeMotion && { variants: cardVariants })}
     >
       <div className="flex h-full flex-col p-4 sm:p-7">
@@ -73,12 +73,8 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
           </div>
           <div className="min-w-0 space-y-1.5">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2.5 py-0.5 text-[10px] font-medium tracking-wider uppercase text-green-600 dark:text-green-400">
-                <span
-                  className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"
-                  aria-hidden="true"
-                />
-                Published
+              <span className="font-display text-[10px] font-medium tracking-[0.16em] uppercase text-[var(--text-muted)]">
+                On Play
               </span>
               <span className="font-display text-[11px] sm:text-xs tracking-[0.12em] uppercase text-[var(--text-muted)]">
                 {app.eyebrow}
@@ -136,7 +132,7 @@ const ProjectCard = memo(function ProjectCard({
   return (
     <motion.div variants={cardVariants}>
       <MagneticCard>
-        <div className="shine-card relative rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-4 sm:p-6 shadow-[var(--card-shadow)] transition-shadow duration-300 hover:shadow-[var(--card-shadow-hover)]">
+        <div className="relative border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0 space-y-2">
               <span className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)]">
