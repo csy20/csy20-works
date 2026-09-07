@@ -1,91 +1,36 @@
 import { useEffect, useRef } from "react";
+import { useCatBoot } from "../useCatBoot";
+import {
+  ONEKO_SIZE,
+  onekoBackgroundPosition,
+  onekoDirection,
+} from "../onekoSprite";
 import { useAnimationSafeMode } from "../useAnimationSafeMode";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { OnekoSprite } from "./OnekoSprite";
 
 /**
  * Pixel cat that runs toward the cursor.
  * Sprite and motion adapted from oneko.js (MIT, adryd325/oneko.js).
  */
-const SIZE = 48;
 const SPEED = 14;
-const SPRITE: Record<string, [number, number][]> = {
-  idle: [[-3, -3]],
-  alert: [[-7, -3]],
-  scratchSelf: [
-    [-5, 0],
-    [-6, 0],
-    [-7, 0],
-  ],
-  scratchWallN: [
-    [0, 0],
-    [0, -1],
-  ],
-  scratchWallS: [
-    [-7, -1],
-    [-6, -2],
-  ],
-  scratchWallE: [
-    [-2, -2],
-    [-2, -3],
-  ],
-  scratchWallW: [
-    [-4, 0],
-    [-4, -1],
-  ],
-  tired: [[-3, -2]],
-  sleeping: [
-    [-2, 0],
-    [-2, -1],
-  ],
-  N: [
-    [-1, -2],
-    [-1, -3],
-  ],
-  NE: [
-    [0, -2],
-    [0, -3],
-  ],
-  E: [
-    [-3, 0],
-    [-3, -1],
-  ],
-  SE: [
-    [-5, -1],
-    [-5, -2],
-  ],
-  S: [
-    [-6, -3],
-    [-7, -2],
-  ],
-  SW: [
-    [-5, -3],
-    [-6, -1],
-  ],
-  W: [
-    [-4, -2],
-    [-4, -3],
-  ],
-  NW: [
-    [-1, 0],
-    [-1, -1],
-  ],
-};
 
 export function RunningCat() {
   const shouldUseSafeMotion = useAnimationSafeMode();
   const hasFinePointer = useMediaQuery("(hover: hover) and (pointer: fine)");
+  const { catReady, origin } = useCatBoot();
   const elRef = useRef<HTMLDivElement>(null);
-  const enabled = !shouldUseSafeMotion && hasFinePointer;
+  const enabled = !shouldUseSafeMotion && hasFinePointer && catReady;
 
   useEffect(() => {
     if (!enabled) return;
     const el = elRef.current;
     if (!el) return;
 
-    let nekoX = 48;
-    let nekoY = window.innerHeight - 96;
-    let mouseX = nekoX;
-    let mouseY = nekoY;
+    let nekoX = origin?.x ?? 48;
+    let nekoY = origin?.y ?? window.innerHeight - 96;
+    let mouseX = origin?.mouseX ?? nekoX;
+    let mouseY = origin?.mouseY ?? nekoY;
     let frameCount = 0;
     let idleTime = 0;
     let idleAnimation: string | null = null;
@@ -94,11 +39,8 @@ export function RunningCat() {
     let raf = 0;
 
     const setSprite = (name: string, frame: number) => {
-      const frames = SPRITE[name];
-      if (!frames?.length) return;
-      const sprite = frames[frame % frames.length];
-      if (!sprite) return;
-      el.style.backgroundPosition = `${sprite[0] * SIZE}px ${sprite[1] * SIZE}px`;
+      const pos = onekoBackgroundPosition(name, frame);
+      if (pos) el.style.backgroundPosition = pos;
     };
 
     const resetIdle = () => {
@@ -145,9 +87,7 @@ export function RunningCat() {
 
     const tick = () => {
       frameCount += 1;
-      const diffX = nekoX - mouseX;
-      const diffY = nekoY - mouseY;
-      const distance = Math.hypot(diffX, diffY);
+      const distance = Math.hypot(nekoX - mouseX, nekoY - mouseY);
 
       if (distance < SPEED || distance < 56) {
         idle();
@@ -163,22 +103,21 @@ export function RunningCat() {
         return;
       }
 
-      let direction = "";
-      direction += diffY / distance > 0.5 ? "N" : "";
-      direction += diffY / distance < -0.5 ? "S" : "";
-      direction += diffX / distance > 0.5 ? "W" : "";
-      direction += diffX / distance < -0.5 ? "E" : "";
-      setSprite(direction || "idle", frameCount);
+      const direction = onekoDirection(nekoX, nekoY, mouseX, mouseY);
+      setSprite(direction, frameCount);
 
-      nekoX -= (diffX / distance) * SPEED;
-      nekoY -= (diffY / distance) * SPEED;
-      nekoX = Math.min(Math.max(SIZE / 2, nekoX), window.innerWidth - SIZE / 2);
-      nekoY = Math.min(
-        Math.max(SIZE / 2, nekoY),
-        window.innerHeight - SIZE / 2,
+      nekoX -= ((nekoX - mouseX) / distance) * SPEED;
+      nekoY -= ((nekoY - mouseY) / distance) * SPEED;
+      nekoX = Math.min(
+        Math.max(ONEKO_SIZE / 2, nekoX),
+        window.innerWidth - ONEKO_SIZE / 2,
       );
-      el.style.left = `${nekoX - SIZE / 2}px`;
-      el.style.top = `${nekoY - SIZE / 2}px`;
+      nekoY = Math.min(
+        Math.max(ONEKO_SIZE / 2, nekoY),
+        window.innerHeight - ONEKO_SIZE / 2,
+      );
+      el.style.left = `${nekoX - ONEKO_SIZE / 2}px`;
+      el.style.top = `${nekoY - ONEKO_SIZE / 2}px`;
     };
 
     const onFrame = (ts: number) => {
@@ -197,8 +136,8 @@ export function RunningCat() {
     };
 
     setSprite("idle", 0);
-    el.style.left = `${nekoX - SIZE / 2}px`;
-    el.style.top = `${nekoY - SIZE / 2}px`;
+    el.style.left = `${nekoX - ONEKO_SIZE / 2}px`;
+    el.style.top = `${nekoY - ONEKO_SIZE / 2}px`;
     window.addEventListener("mousemove", onMove, { passive: true });
     raf = window.requestAnimationFrame(onFrame);
 
@@ -206,22 +145,12 @@ export function RunningCat() {
       window.cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
     };
-  }, [enabled]);
+  }, [enabled, origin]);
 
   if (!enabled) return null;
 
-  return (
-    <div
-      ref={elRef}
-      aria-hidden="true"
-      className="pointer-events-none fixed z-40"
-      style={{
-        width: SIZE,
-        height: SIZE,
-        backgroundImage: "url(/oneko.gif)",
-        backgroundSize: `${256 * (SIZE / 32)}px ${128 * (SIZE / 32)}px`,
-        imageRendering: "pixelated",
-      }}
-    />
-  );
+  const startX = (origin?.x ?? 48) - ONEKO_SIZE / 2;
+  const startY = (origin?.y ?? window.innerHeight - 96) - ONEKO_SIZE / 2;
+
+  return <OnekoSprite spriteRef={elRef} x={startX} y={startY} />;
 }

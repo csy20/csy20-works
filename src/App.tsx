@@ -6,6 +6,7 @@ import { ScrollProgressBar } from "./components/animations/ScrollProgressBar";
 import { ThemeTransitionOverlay } from "./components/animations/ThemeTransitionOverlay";
 import { BackgroundMesh } from "./components/BackgroundMesh";
 import { BootScreen } from "./components/BootScreen";
+import { CatBootProvider } from "./components/CatBootProvider";
 import { NotFound } from "./components/NotFound";
 import { Navigation } from "./components/Navigation";
 import { useAnimationSafeMode } from "./components/useAnimationSafeMode";
@@ -61,38 +62,40 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion={reducedMotion}>
-      <InkTransition>
-        <BootScreen />
-        {/*
-          Dock is a sibling of the scroll shell so overflow-x on the shell
-          never creates a containing block that traps position:fixed.
-        */}
-        <div className="relative min-h-screen overflow-x-clip">
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-lg focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-[var(--accent-fg)]"
-          >
-            Skip to content
-          </a>
-          <ScrollProgressBar />
-          <RunningCat />
-          <ThemeTransitionOverlay />
-          <BackgroundMesh />
-          <main
-            id="main-content"
-            className="pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))]"
-          >
-            <HeroSection />
-            <StackSection />
-            <Suspense fallback={<BelowFoldFallback />}>
-              <ActivitySection />
-              <ProjectsSection />
-              <ContactSection />
-            </Suspense>
-          </main>
-        </div>
-        <Navigation />
-      </InkTransition>
+      <CatBootProvider>
+        <InkTransition>
+          <BootScreen />
+          {/*
+            Dock is a sibling of the scroll shell so overflow-x on the shell
+            never creates a containing block that traps position:fixed.
+          */}
+          <div className="relative min-h-screen overflow-x-clip">
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-lg focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-[var(--accent-fg)]"
+            >
+              Skip to content
+            </a>
+            <ScrollProgressBar />
+            <RunningCat />
+            <ThemeTransitionOverlay />
+            <BackgroundMesh />
+            <main
+              id="main-content"
+              className="pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))]"
+            >
+              <HeroSection />
+              <StackSection />
+              <Suspense fallback={<BelowFoldFallback />}>
+                <ActivitySection />
+                <ProjectsSection />
+                <ContactSection />
+              </Suspense>
+            </main>
+          </div>
+          <Navigation />
+        </InkTransition>
+      </CatBootProvider>
     </MotionConfig>
   );
 }
