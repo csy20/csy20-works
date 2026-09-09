@@ -32,7 +32,7 @@ export class ErrorBoundary extends Component<
         <div className="flex min-h-screen items-center justify-center bg-[var(--bg-primary)] px-4">
           <div className="max-w-lg rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] p-8 text-center space-y-4 shadow-[var(--card-shadow)]">
             <p className="font-serif-accent text-3xl italic text-[var(--accent)]">
-              csy20.works
+              csy20.me
             </p>
             <h1 className="font-display text-2xl font-semibold text-[var(--text-primary)]">
               Something went wrong
