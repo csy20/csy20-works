@@ -430,6 +430,30 @@ body::before {
   }
 }
 
+.hero-kicker {
+  width: max-content;
+  max-width: 100%;
+  margin-inline: -0.45rem;
+  padding: 0.18rem 0.45rem;
+  border-radius: 0.4rem;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--bg-primary) 74%, transparent);
+  box-shadow: 0 0 22px 10px
+    color-mix(in srgb, var(--bg-primary) 42%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-kicker-sep {
+  margin-inline: 0.5rem;
+  opacity: 0.45;
+}
+
 .hero-banner-wash {
   position: absolute;
   inset: 0;

@@ -29,9 +29,9 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-14 sm:py-24 lg:px-8 lg:py-32">
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
           <div className="order-2 flex min-w-0 flex-col gap-5 sm:gap-6 lg:order-1">
-            <p className="font-display text-[11px] tracking-[0.18em] uppercase text-[var(--text-muted)]">
+            <p className="hero-kicker">
               {profile.handle}
-              <span className="mx-2 text-[var(--border)]">/</span>
+              <span className="hero-kicker-sep">/</span>
               {profile.role}
             </p>
 
