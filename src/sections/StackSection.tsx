@@ -1,10 +1,10 @@
 import { techStack } from "../data/siteContent";
 
 const categories = [
-  { key: "frontend", label: "Interface" },
-  { key: "backend", label: "Systems" },
-  { key: "mobile", label: "Mobile" },
-  { key: "platform", label: "Platform" },
+  { key: "languages", label: "Languages" },
+  { key: "backend", label: "Backend" },
+  { key: "ml", label: "ML / AI" },
+  { key: "platform", label: "Infra" },
 ] as const;
 
 type CategoryKey = (typeof categories)[number]["key"];

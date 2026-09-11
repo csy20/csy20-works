@@ -74,21 +74,25 @@ describe("App", () => {
     expect(
       await screen.findByRole(
         "heading",
-        { name: "Apps & Projects" },
+        { name: "Selected work" },
         { timeout: 5000 },
       ),
     ).toBeInTheDocument();
 
     expect(
-      await screen.findByRole("heading", { name: "Nen" }),
+      await screen.findByRole("heading", { name: /^Speech Relay$/ }),
     ).toBeInTheDocument();
 
     expect(
-      await screen.findByRole("heading", { name: "Bytewise" }),
+      await screen.findByRole("heading", { name: /^Bytewise$/ }),
     ).toBeInTheDocument();
 
     expect(
-      await screen.findByRole("heading", { name: "MediaPipe AI" }),
+      await screen.findByRole("heading", { name: /^Router Agent$/ }),
+    ).toBeInTheDocument();
+
+    expect(
+      await screen.findByRole("heading", { name: /^MediaPipe AI$/ }),
     ).toBeInTheDocument();
 
     expect(

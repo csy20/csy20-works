@@ -20,7 +20,7 @@ export function ProjectsSection() {
   const shouldUseSafeMotion = useAnimationSafeMode();
 
   return (
-    <Section id="projects" title="Apps & Projects" subtitle="Real work">
+    <Section id="projects" title="Selected work" subtitle="Projects">
       <div className="space-y-12">
         <div className="grid gap-4 lg:grid-cols-2">
           {featuredApps.map((app) => (
@@ -32,7 +32,7 @@ export function ProjectsSection() {
             className="font-display text-xs tracking-[0.2em] uppercase text-[var(--text-muted)] mb-5"
             {...(!shouldUseSafeMotion && { variants: fadeUpSoft })}
           >
-            Projects
+            Also
           </motion.p>
           <motion.div
             className="space-y-4"
@@ -69,13 +69,19 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
                 loading="lazy"
                 decoding="async"
               />
-            ) : null}
+            ) : (
+              <span className="font-serif-accent text-lg text-[var(--text-primary)]">
+                {app.title.slice(0, 1)}
+              </span>
+            )}
           </div>
           <div className="min-w-0 space-y-1.5">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-display text-[10px] font-medium tracking-[0.16em] uppercase text-[var(--text-muted)]">
-                On Play
-              </span>
+              {app.spotlight ? (
+                <span className="font-display text-[10px] font-medium tracking-[0.16em] uppercase text-[var(--text-muted)]">
+                  {app.spotlight}
+                </span>
+              ) : null}
               <span className="font-display text-[11px] sm:text-xs tracking-[0.12em] uppercase text-[var(--text-muted)]">
                 {app.eyebrow}
               </span>
