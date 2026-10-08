@@ -71,7 +71,7 @@ export function HeroSection() {
                   });
                 }}
               >
-                Selected work
+                Work
                 <Icon name="arrow-right" size={14} />
               </Button>
               <Button

@@ -5,44 +5,74 @@ import { Button } from "../components/ui/Button";
 import { MagneticCard } from "../components/animations/MagneticCard";
 import { Icon } from "../components/ui/Icon";
 import { Tag } from "../components/ui/Tag";
-import { projects, type Project } from "../data/siteContent";
+import { projects, type Project, type ProjectGroup } from "../data/siteContent";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import {
   cardVariants,
-  fadeUpSoft,
   staggerContainer,
 } from "../components/animations/motion";
 
-const featuredApps = projects.filter((p) => p.featured);
-const otherProjects = projects.filter((p) => !p.featured);
+const workGroups: { id: ProjectGroup; title: string }[] = [
+  { id: "product", title: "Product" },
+  { id: "selected", title: "Selected work" },
+  { id: "other", title: "Other projects" },
+];
+
+function linkIcon(label: string) {
+  if (label === "Play Store") return "play" as const;
+  if (label === "GitHub") return "github" as const;
+  return "external-link" as const;
+}
 
 export function ProjectsSection() {
   const shouldUseSafeMotion = useAnimationSafeMode();
 
   return (
-    <Section id="projects" title="Selected work" subtitle="Projects">
-      <div className="space-y-12">
-        <div className="grid gap-4 lg:grid-cols-2">
-          {featuredApps.map((app) => (
-            <AppCard key={app.title} app={app} />
-          ))}
-        </div>
-        <div>
-          <motion.p
-            className="font-display text-xs tracking-[0.2em] uppercase text-[var(--text-muted)] mb-5"
-            {...(!shouldUseSafeMotion && { variants: fadeUpSoft })}
-          >
-            Also
-          </motion.p>
-          <motion.div
-            className="space-y-4"
-            {...(!shouldUseSafeMotion && { variants: staggerContainer })}
-          >
-            {otherProjects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
-            ))}
-          </motion.div>
-        </div>
+    <Section id="projects" title="Work" subtitle="Projects">
+      <div className="space-y-16">
+        {workGroups.map((group) => {
+          const items = projects.filter(
+            (project) => project.group === group.id,
+          );
+          const showcase = items.filter((project) => project.spotlight);
+          const rest = items.filter((project) => !project.spotlight);
+
+          return (
+            <div key={group.id} className="space-y-5">
+              <h3 className="font-serif-accent text-2xl tracking-tight text-[var(--text-primary)] sm:text-3xl">
+                {group.title}
+              </h3>
+
+              {showcase.length > 0 && (
+                <div className="grid gap-4 lg:grid-cols-2">
+                  {showcase.map((app) => (
+                    <div
+                      key={app.title}
+                      className={
+                        app.wide || showcase.length === 1
+                          ? "lg:col-span-2"
+                          : undefined
+                      }
+                    >
+                      <AppCard app={app} />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {rest.length > 0 && (
+                <motion.div
+                  className="space-y-4"
+                  {...(!shouldUseSafeMotion && { variants: staggerContainer })}
+                >
+                  {rest.map((project) => (
+                    <ProjectCard key={project.title} project={project} />
+                  ))}
+                </motion.div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </Section>
   );
@@ -58,14 +88,24 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
     >
       <div className="flex h-full flex-col p-4 sm:p-7">
         <div className="flex min-w-0 items-start gap-3 sm:gap-4">
-          <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-raised)]">
+          <div
+            className={`flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[1.25rem] border border-[var(--border-soft)] sm:h-14 sm:w-14 ${
+              app.logo === "/02-logo.png"
+                ? "bg-white"
+                : "bg-[var(--surface-raised)]"
+            }`}
+          >
             {app.logo ? (
               <img
                 src={app.logo}
                 alt=""
                 width={40}
                 height={40}
-                className="h-8 w-8 sm:h-9 sm:w-9 object-contain"
+                className={
+                  app.logo === "/02-logo.png"
+                    ? "h-9 w-9 object-contain sm:h-10 sm:w-10"
+                    : "h-full w-full object-cover"
+                }
                 loading="lazy"
                 decoding="async"
               />
@@ -86,9 +126,9 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
                 {app.eyebrow}
               </span>
             </div>
-            <h3 className="font-serif-accent text-xl sm:text-2xl tracking-tight text-[var(--text-primary)]">
+            <h4 className="font-serif-accent text-xl sm:text-2xl tracking-tight text-[var(--text-primary)]">
               {app.title}
-            </h3>
+            </h4>
           </div>
         </div>
 
@@ -117,10 +157,7 @@ const AppCard = memo(function AppCard({ app }: { app: Project }) {
               compact
               className="w-full sm:w-auto"
             >
-              <Icon
-                name={link.label === "Play Store" ? "play" : "github"}
-                size={14}
-              />
+              <Icon name={linkIcon(link.label)} size={14} />
               {link.label}
             </Button>
           ))}
@@ -144,9 +181,9 @@ const ProjectCard = memo(function ProjectCard({
               <span className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)]">
                 {project.eyebrow}
               </span>
-              <h3 className="font-serif-accent text-lg sm:text-xl tracking-tight text-[var(--text-primary)]">
+              <h4 className="font-serif-accent text-lg sm:text-xl tracking-tight text-[var(--text-primary)]">
                 {project.title}
-              </h3>
+              </h4>
               <p className="text-sm leading-relaxed text-[var(--text-secondary)] text-balance max-w-2xl">
                 {project.description}
               </p>

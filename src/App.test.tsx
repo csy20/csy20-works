@@ -72,12 +72,20 @@ describe("App", () => {
     ).toBeInTheDocument();
 
     expect(
-      await screen.findByRole(
-        "heading",
-        { name: "Selected work" },
-        { timeout: 5000 },
-      ),
+      await screen.findByRole("heading", { name: "Work" }, { timeout: 5000 }),
     ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("heading", { name: "Product" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Selected work" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Other projects" }),
+    ).toBeInTheDocument();
+
+    expect(screen.getByRole("heading", { name: "02_OS" })).toBeInTheDocument();
 
     expect(
       await screen.findByRole("heading", { name: /^Speech Relay$/ }),

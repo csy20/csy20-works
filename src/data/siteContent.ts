@@ -8,13 +8,16 @@ export type ProjectLink = {
   tone: ProjectLinkTone;
 };
 
+export type ProjectGroup = "product" | "selected" | "other";
+
 export type Project = {
   title: string;
   eyebrow: string;
   description: string;
   tags: string[];
   links: ProjectLink[];
-  featured?: boolean;
+  group: ProjectGroup;
+  wide?: boolean;
   logo?: string;
   spotlight?: string;
   releaseNote?: string;
@@ -134,6 +137,31 @@ export const techStack: StackItem[] = [
 
 export const projects: Project[] = [
   {
+    title: "02_OS",
+    eyebrow: "Agent-native desktop",
+    description:
+      "GNOME desktop with the 02 agent runtime on the machine: tree-sitter symbols, git-aware staleness, and an MCP server for coding agents. Public alpha live image.",
+    tags: ["Rust", "GNOME", "MCP", "Linux"],
+    group: "product",
+    wide: true,
+    logo: "/02-logo.png",
+    spotlight: "Public alpha",
+    releaseNote:
+      "v2026.10.01 live image. Local-first — no account and no required model API.",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/csy20/02_OS",
+        tone: "clay",
+      },
+      {
+        label: "Release",
+        href: "https://github.com/csy20/02_OS/releases/tag/v2026.10.01",
+        tone: "ink",
+      },
+    ],
+  },
+  {
     title: "Speech Relay",
     eyebrow: "Realtime speech-to-speech",
     description:
@@ -146,7 +174,7 @@ export const projects: Project[] = [
       "ONNX",
       "asyncio",
     ],
-    featured: true,
+    group: "selected",
     spotlight: "2505 ms mean E2E",
     releaseNote:
       "Silero-VAD replaced fixed-window flushing. Quantized models ran up to 11.25% faster.",
@@ -164,7 +192,7 @@ export const projects: Project[] = [
     description:
       "Production Flutter app on Google Play: 788+ DSA / system-design lessons with an offline-first in-memory + SQLite cache (Riverpod, Drift).",
     tags: ["Flutter", "Dart", "Riverpod", "Drift / SQLite", "Play Store"],
-    featured: true,
+    group: "product",
     logo: "/bytewise-logo.png",
     spotlight: "Live on Google Play",
     releaseNote:
@@ -183,6 +211,7 @@ export const projects: Project[] = [
     description:
       "Data pipeline over MUCS Hindi–English speech (16 kHz, Devanagari + Latin filter, train/val/test). Fine-tuned Whisper with LoRA on decoder attention so it handles mid-utterance language switches. Serving path: merge LoRA, export encoder/decoder to ONNX, int8 quantize, infer from a Rust ort service outside Python.",
     tags: ["Python", "Whisper", "LoRA / PEFT", "ONNX", "Rust"],
+    group: "selected",
     links: [
       {
         label: "GitHub",
@@ -204,6 +233,7 @@ export const projects: Project[] = [
       "MinIO",
       "Docker Compose",
     ],
+    group: "selected",
     links: [
       {
         label: "GitHub",
@@ -218,6 +248,7 @@ export const projects: Project[] = [
     description:
       "AMD Developer Hackathon ACT II: classifies tasks (math, NER, summarization, code, QA) with zero-token heuristics, then escalates to a local 1.5B LLM or at most one paid API call. OpenTelemetry traces into SigNoz; shipped as a Docker service with schema validation.",
     tags: ["Python", "Ollama", "OpenTelemetry", "Docker", "Hackathon"],
+    group: "other",
     links: [
       {
         label: "GitHub",
@@ -232,6 +263,7 @@ export const projects: Project[] = [
     description:
       "Offline music player for the files already on your phone. Local playback only — no streaming, no ads, no account. ExoPlayer decode, lock-screen controls, and a now-playing meter from the track envelope.",
     tags: ["Flutter", "Dart", "ExoPlayer", "Play Store"],
+    group: "product",
     logo: "/nen-logo.png",
     spotlight: "Live on Google Play",
     releaseNote:
@@ -250,25 +282,12 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "02 OS",
-    eyebrow: "Custom distro",
-    description:
-      "A custom Arch Linux ISO with its own branding, installer profile, and live image pipeline.",
-    tags: ["Arch", "Shell", "ISO", "Linux"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/csy20/02_OS",
-        tone: "clay",
-      },
-    ],
-  },
-  {
     title: "Warrant",
     eyebrow: "MCP agent",
     description:
       "TrueForge change-control agent: real MCP tools, sandboxed analysis, and human approval before irreversible production changes.",
     tags: ["MCP", "Hackathon", "Agents"],
+    group: "other",
     links: [
       {
         label: "GitHub",
