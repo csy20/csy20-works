@@ -1,10 +1,10 @@
-import { memo, useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { EASE_OUT } from "../components/animations/motion";
 import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
-import { Button } from "../components/ui/Button";
 import { Icon } from "../components/ui/Icon";
 import { Section } from "../components/ui/Section";
+import { config } from "../config";
 import {
   contributionGroups,
   contributionStats,
@@ -12,499 +12,289 @@ import {
   type ContributionGroup,
 } from "../data/contributions";
 
-type ContributionWithRepo = Contribution & { repo: string };
-
-type DomainId = "all" | "ai" | "systems" | "language" | "other";
-
-const REPO_DOMAIN: Record<string, Exclude<DomainId, "all">> = {
-  "semantica-agi/semantica": "ai",
-  "topoteretes/cognee": "ai",
-  "google/gvisor": "systems",
-  "dart-lang/sdk": "language",
-  "internetarchive/openlibrary": "other",
-  "agent-of-empires/agent-of-empires": "other",
-  "redhat-et/ripwire": "other",
+const REPO_DOMAIN: Record<string, string> = {
+  "semantica-agi/semantica": "AI & memory",
+  "topoteretes/cognee": "AI & memory",
+  "google/gvisor": "Systems & infrastructure",
+  "dart-lang/sdk": "Language tooling",
+  "internetarchive/openlibrary": "Open knowledge",
+  "agent-of-empires/agent-of-empires": "Developer tools",
+  "redhat-et/ripwire": "Developer tools",
+  "xevrion/breakscale": "Systems & infrastructure",
 };
 
-const DOMAIN_META: Record<
-  Exclude<DomainId, "all">,
-  { label: string; order: number }
-> = {
-  ai: { label: "AI & memory", order: 0 },
-  systems: { label: "Systems", order: 1 },
-  language: { label: "Language", order: 2 },
-  other: { label: "Apps & community", order: 3 },
-};
-
-const DOMAIN_FILTERS: { id: DomainId; label: string }[] = [
-  { id: "all", label: "All signals" },
-  { id: "ai", label: "AI & memory" },
-  { id: "systems", label: "Systems" },
-  { id: "language", label: "Language" },
-  { id: "other", label: "Apps & more" },
-];
-
-function parseRepo(full: string) {
-  const slash = full.indexOf("/");
-  if (slash === -1) return { owner: full, name: "" };
-  return { owner: full.slice(0, slash), name: full.slice(slash + 1) };
+function parseRepo(repo: string) {
+  const slash = repo.indexOf("/");
+  return slash === -1
+    ? { owner: "", name: repo }
+    : { owner: repo.slice(0, slash), name: repo.slice(slash + 1) };
 }
 
 function formatStars(stars: number) {
-  if (stars >= 10_000) {
-    return `${(stars / 1000).toFixed(1).replace(/\.0$/, "")}k`;
-  }
-  return stars.toLocaleString("en-US");
+  return stars >= 1000
+    ? `${(stars / 1000).toFixed(1).replace(/\.0$/, "")}k`
+    : stars.toLocaleString("en-US");
 }
 
-function formatWhen(iso: string | null) {
-  if (!iso) return null;
-  return new Date(iso).toLocaleDateString("en-IN", {
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",
+    timeZone: "UTC",
   });
 }
 
-function prSortKey(pr: Contribution) {
-  return pr.mergedAt ?? pr.createdAt;
-}
-
-function repoDomain(repo: string): Exclude<DomainId, "all"> {
-  return REPO_DOMAIN[repo] ?? "other";
-}
-
-function nodeLayout(index: number, total: number) {
-  const angle = (index / total) * Math.PI * 2 - Math.PI / 2;
-  const radius = 38;
-  return {
-    x: 50 + radius * Math.cos(angle),
-    y: 50 + radius * Math.sin(angle),
-  };
-}
-
-const fadeSlide = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -12 },
-  transition: { duration: 0.4, ease: EASE_OUT },
-};
-
-function Constellation({
-  groups,
-  activeRepo,
-  domain,
-  onSelect,
-}: {
-  groups: ContributionGroup[];
-  activeRepo: string;
-  domain: DomainId;
-  onSelect: (repo: string) => void;
-}) {
-  const maxMerged = Math.max(1, ...groups.map((g) => g.merged));
-
+function MergeIcon({ size = 18 }: { size?: number }) {
   return (
     <svg
-      className="oss-constellation"
-      viewBox="0 0 100 100"
-      role="img"
-      aria-label="Repository constellation map"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
     >
-      <circle className="oss-orbit-ring" cx="50" cy="50" r="38" />
-      <circle className="oss-orbit-ring" cx="50" cy="50" r="24" />
-
-      {groups.map((group, index) => {
-        const { x, y } = nodeLayout(index, groups.length);
-        const active = group.repo === activeRepo;
-
-        return (
-          <g key={group.repo}>
-            <line
-              className="oss-orbit-link"
-              data-active={active}
-              x1="50"
-              y1="50"
-              x2={x}
-              y2={y}
-            />
-          </g>
-        );
-      })}
-
-      <circle
-        cx="50"
-        cy="50"
-        r="4.2"
-        fill="var(--accent)"
-        stroke="var(--surface-soft)"
-        strokeWidth="0.6"
-      />
-      <text
-        x="50"
-        y="57.5"
-        textAnchor="middle"
-        className="fill-[var(--text-muted)] font-display text-[3px] uppercase tracking-[0.2em]"
-      >
-        merged
-      </text>
-
-      {groups.map((group, index) => {
-        const { x, y } = nodeLayout(index, groups.length);
-        const { name } = parseRepo(group.repo);
-        const dimmed = domain !== "all" && repoDomain(group.repo) !== domain;
-        const active = group.repo === activeRepo;
-        const r = 2.2 + (group.merged / maxMerged) * 2.4;
-        const label = name.length > 11 ? `${name.slice(0, 10)}…` : name;
-
-        return (
-          <g
-            key={`node-${group.repo}`}
-            className="oss-orbit-node"
-            data-dimmed={dimmed}
-            data-active={active}
-            onClick={() => onSelect(group.repo)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onSelect(group.repo);
-              }
-            }}
-            role="button"
-            tabIndex={dimmed ? -1 : 0}
-            aria-label={`${group.repo}, ${group.merged} merged pull requests`}
-            aria-pressed={active}
-          >
-            <circle className="oss-node-core" cx={x} cy={y} r={r} />
-            <text
-              x={x}
-              y={y + r + 3.8}
-              textAnchor="middle"
-              className="fill-[var(--text-secondary)] font-display text-[2.8px] uppercase tracking-[0.08em]"
-            >
-              {label}
-            </text>
-          </g>
-        );
-      })}
+      <circle cx="7" cy="5" r="2.5" />
+      <circle cx="7" cy="19" r="2.5" />
+      <circle cx="17" cy="5" r="2.5" />
+      <path d="M7 7.5v9M17 7.5v1a5 5 0 0 1-5 5H7" />
     </svg>
   );
 }
 
-const MergeBroadcast = memo(function MergeBroadcast({
-  pr,
-  paused,
-  onTogglePause,
-  onPrev,
-  onNext,
-  index,
-  total,
+function PatchLink({
+  patch,
+  latest = false,
 }: {
-  pr: ContributionWithRepo;
-  paused: boolean;
-  onTogglePause: () => void;
-  onPrev: () => void;
-  onNext: () => void;
-  index: number;
-  total: number;
+  patch: Contribution;
+  latest?: boolean;
 }) {
-  const { name } = parseRepo(pr.repo);
-  const when = formatWhen(pr.mergedAt ?? pr.createdAt);
-  const shouldUseSafeMotion = useAnimationSafeMode();
-
-  const content = (
-    <div className="relative z-[1] space-y-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <span className="inline-flex items-center gap-2 font-display text-[10px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
-          <span className="oss-live-dot" aria-hidden />
-          Live merge feed
-        </span>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="min-h-9 min-w-9 border border-[var(--border)] bg-[var(--surface)] font-display text-[10px] uppercase tracking-[0.12em] text-[var(--text-secondary)] hover:border-[var(--text-muted)]"
-            onClick={onPrev}
-            aria-label="Previous merge"
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            className="min-h-9 min-w-9 border border-[var(--border)] bg-[var(--surface)] font-display text-[10px] uppercase tracking-[0.12em] text-[var(--text-secondary)] hover:border-[var(--text-muted)]"
-            onClick={onNext}
-            aria-label="Next merge"
-          >
-            →
-          </button>
-          <button
-            type="button"
-            className="min-h-9 border border-[var(--border)] bg-[var(--surface)] px-3 font-display text-[10px] uppercase tracking-[0.12em] text-[var(--text-secondary)] hover:border-[var(--text-muted)]"
-            onClick={onTogglePause}
-            aria-pressed={paused}
-          >
-            {paused ? "Resume" : "Pause"}
-          </button>
-        </div>
-      </div>
-
-      <p className="font-serif-accent text-2xl leading-tight tracking-tight text-[var(--text-primary)] sm:text-4xl text-balance">
-        {pr.title}
-      </p>
-
-      <p className="font-display text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
-        {name} · #{pr.number}
-        {when ? ` · ${when}` : ""}
-      </p>
-
-      <div className="flex flex-wrap items-center gap-3">
-        <Button href={pr.url} variant="primary" compact>
-          Read patch
-          <Icon name="external-link" size={12} />
-        </Button>
-        <span className="font-display text-[10px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
-          {index + 1} / {total}
-        </span>
-      </div>
-    </div>
-  );
-
-  if (shouldUseSafeMotion) {
-    return content;
-  }
+  const date = patch.mergedAt ?? patch.createdAt;
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div key={pr.url} {...fadeSlide}>
-        {content}
-      </motion.div>
-    </AnimatePresence>
+    <li>
+      <a
+        href={patch.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`oss-patch ${latest ? "oss-patch--latest" : ""}`}
+      >
+        <span className="oss-patch-icon">
+          <MergeIcon size={latest ? 21 : 17} />
+        </span>
+        <span className="oss-patch-content">
+          <span className="oss-patch-meta">
+            <span>#{patch.number}</span>
+            <span aria-hidden="true">·</span>
+            <time dateTime={date}>{formatDate(date)}</time>
+            {latest && <span className="oss-latest-label">Latest merge</span>}
+          </span>
+          <span className="oss-patch-title">{patch.title}</span>
+        </span>
+        <span className="oss-patch-arrow">
+          <Icon name="external-link" size={16} />
+        </span>
+      </a>
+    </li>
   );
-});
+}
+
+function RepositoryPanel({ group }: { group: ContributionGroup }) {
+  const shouldUseSafeMotion = useAnimationSafeMode();
+  const [expanded, setExpanded] = useState(false);
+  const { owner, name } = parseRepo(group.repo);
+  const patches = useMemo(
+    () =>
+      [...group.items].sort((a, b) =>
+        (b.mergedAt ?? b.createdAt).localeCompare(a.mergedAt ?? a.createdAt),
+      ),
+    [group.items],
+  );
+  const visiblePatches = expanded ? patches : patches.slice(0, 4);
+  const remaining = patches.length - 4;
+
+  return (
+    <motion.article
+      id="oss-repository-panel"
+      className="oss-repository-panel"
+      aria-labelledby="oss-repository-name"
+      {...(!shouldUseSafeMotion && {
+        initial: { opacity: 0, y: 8 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.25, ease: EASE_OUT },
+      })}
+    >
+      <header className="oss-repository-header">
+        <div className="oss-repository-eyebrow">
+          <span className="oss-label">
+            {REPO_DOMAIN[group.repo] ?? "Apps & community"}
+          </span>
+          <span className="oss-merged-badge">
+            <MergeIcon size={14} />
+            {group.merged} merged
+          </span>
+        </div>
+        <h3 id="oss-repository-name" className="oss-repository-name">
+          {name}
+        </h3>
+        <div className="oss-repository-meta">
+          <span>{owner}</span>
+          <span className="oss-repository-stars">
+            <Icon name="star" size={13} />
+            {formatStars(group.stars)} stars
+          </span>
+        </div>
+        <p className="oss-repository-description">{group.summary}</p>
+        <a
+          href={`https://github.com/${group.repo}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="oss-repository-link"
+        >
+          <Icon name="github" size={15} />
+          Explore repository
+          <Icon name="external-link" size={12} />
+        </a>
+      </header>
+
+      <div className="oss-patches-heading">
+        <h4 className="oss-label">Merged contributions</h4>
+        <span>Latest first</span>
+      </div>
+      <ul id="oss-patch-list" className="oss-patch-list">
+        {visiblePatches.map((patch, index) => (
+          <PatchLink key={patch.url} patch={patch} latest={index === 0} />
+        ))}
+      </ul>
+      {remaining > 0 && (
+        <div className="oss-patches-footer">
+          <button
+            type="button"
+            className="oss-expand-button"
+            aria-expanded={expanded}
+            aria-controls="oss-patch-list"
+            onClick={() => setExpanded((value) => !value)}
+          >
+            {expanded
+              ? "Show fewer contributions"
+              : `Show ${remaining} more contribution${remaining === 1 ? "" : "s"}`}
+            <span aria-hidden="true">{expanded ? "−" : "+"}</span>
+          </button>
+          <span className="oss-patch-count">
+            {visiblePatches.length} of {patches.length}
+          </span>
+        </div>
+      )}
+    </motion.article>
+  );
+}
 
 export function ExperienceSection() {
-  const shouldUseSafeMotion = useAnimationSafeMode();
-  const [domain, setDomain] = useState<DomainId>("all");
   const [selectedRepo, setSelectedRepo] = useState(
-    () => contributionGroups[0]?.repo ?? "",
-  );
-  const [spotlightIndex, setSpotlightIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const [activePatchUrl, setActivePatchUrl] = useState<string | null>(null);
-
-  const spotlightPRs = useMemo(() => {
-    const rows: ContributionWithRepo[] = contributionGroups.flatMap((g) =>
-      g.items.map((pr) => ({ ...pr, repo: g.repo })),
-    );
-    return rows.sort((a, b) => prSortKey(b).localeCompare(prSortKey(a)));
-  }, []);
-
-  const visibleGroups = useMemo(() => {
-    if (domain === "all") return contributionGroups;
-    return contributionGroups.filter((g) => repoDomain(g.repo) === domain);
-  }, [domain]);
-
-  const displayRepo = useMemo(() => {
-    if (visibleGroups.some((g) => g.repo === selectedRepo)) return selectedRepo;
-    return visibleGroups[0]?.repo ?? selectedRepo;
-  }, [visibleGroups, selectedRepo]);
-
-  const selectedGroup = useMemo(
     () =>
-      contributionGroups.find((g) => g.repo === displayRepo) ??
-      contributionGroups[0],
-    [displayRepo],
+      contributionGroups.find((group) => group.featured)?.repo ??
+      contributionGroups[0]?.repo ??
+      "",
   );
+  const selectedGroup =
+    contributionGroups.find((group) => group.repo === selectedRepo) ??
+    contributionGroups[0];
 
-  const domainSpectrum = useMemo(() => {
-    const counts = new Map<Exclude<DomainId, "all">, number>();
-    for (const group of contributionGroups) {
-      const id = repoDomain(group.repo);
-      counts.set(id, (counts.get(id) ?? 0) + group.merged);
-    }
-    const max = Math.max(1, ...counts.values());
-    return (Object.keys(DOMAIN_META) as Exclude<DomainId, "all">[])
-      .sort((a, b) => DOMAIN_META[a].order - DOMAIN_META[b].order)
-      .map((id) => ({
-        id,
-        label: DOMAIN_META[id].label,
-        count: counts.get(id) ?? 0,
-        width: Math.round(((counts.get(id) ?? 0) / max) * 100),
-      }))
-      .filter((row) => row.count > 0);
-  }, []);
-
-  const spotlightPR = spotlightPRs[spotlightIndex] ?? spotlightPRs[0] ?? null;
-
-  const highlightedPatchUrl = activePatchUrl ?? spotlightPR?.url ?? null;
-
-  const goSpotlight = (index: number) => {
-    const pr = spotlightPRs[index];
-    if (!pr) return;
-    setSpotlightIndex(index);
-    setSelectedRepo(pr.repo);
-    setActivePatchUrl(pr.url);
-  };
-
-  useEffect(() => {
-    if (shouldUseSafeMotion || paused || spotlightPRs.length === 0) return;
-    const timer = window.setInterval(() => {
-      setSpotlightIndex((i) => {
-        const next = (i + 1) % spotlightPRs.length;
-        const pr = spotlightPRs[next];
-        if (pr) {
-          setSelectedRepo(pr.repo);
-          setActivePatchUrl(pr.url);
-        }
-        return next;
-      });
-    }, 5500);
-    return () => window.clearInterval(timer);
-  }, [paused, shouldUseSafeMotion, spotlightPRs]);
-
-  if (!selectedGroup || !spotlightPR) return null;
+  if (!selectedGroup) return null;
 
   return (
-    <Section id="experience" title="Open source" subtitle="Patch frequency">
-      <div className="oss-shell">
-        <div className="flex flex-col gap-3 border-b border-[var(--border)] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="max-w-xl text-sm leading-relaxed text-[var(--text-secondary)] sm:text-[15px]">
-            Upstream work visualized as signal: tune the band, follow the live
-            merge feed, then inspect patches in each codebase.
+    <Section
+      id="experience"
+      title="Open source"
+      subtitle="Upstream contributions"
+    >
+      <div className="oss-showcase">
+        <div className="oss-intro">
+          <p className="oss-intro-copy">
+            Making the tools I use a little better.
+            <span>
+              Fixes, features, and thoughtful improvements — contributed back to
+              the projects that make my work possible.
+            </span>
           </p>
-          <p className="font-display text-[10px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            {contributionStats.merged} merges · {contributionStats.projects}{" "}
-            repos
-          </p>
+          <dl className="oss-stats">
+            <div>
+              <dt>Patches merged</dt>
+              <dd>{contributionStats.merged}</dd>
+            </div>
+            <div>
+              <dt>Codebases</dt>
+              <dd>{contributionStats.projects}</dd>
+            </div>
+          </dl>
         </div>
 
-        <div className="flex gap-2 overflow-x-auto border-b border-[var(--border)] px-4 py-3 sm:px-6">
-          {DOMAIN_FILTERS.map((chip) => (
-            <button
-              key={chip.id}
-              type="button"
-              className="oss-domain-chip shrink-0"
-              data-active={domain === chip.id}
-              onClick={() => setDomain(chip.id)}
+        <div className="oss-workspace">
+          <div className="oss-repositories">
+            <div className="oss-repositories-heading">
+              <p className="oss-label">The codebases</p>
+              <span>{String(contributionGroups.length).padStart(2, "0")}</span>
+            </div>
+            <nav
+              className="oss-repository-nav"
+              aria-label="Contribution repositories"
             >
-              {chip.label}
-            </button>
-          ))}
-        </div>
+              {contributionGroups.map((group, index) => {
+                const { owner, name } = parseRepo(group.repo);
+                const active = group.repo === selectedGroup.repo;
 
-        <div className="oss-broadcast border-b border-[var(--border)] px-4 py-6 sm:px-6 sm:py-8">
-          <MergeBroadcast
-            pr={spotlightPR}
-            paused={paused}
-            onTogglePause={() => setPaused((p) => !p)}
-            onPrev={() => {
-              setPaused(true);
-              goSpotlight(
-                (spotlightIndex - 1 + spotlightPRs.length) %
-                  spotlightPRs.length,
-              );
-            }}
-            onNext={() => {
-              setPaused(true);
-              goSpotlight((spotlightIndex + 1) % spotlightPRs.length);
-            }}
-            index={spotlightIndex}
-            total={spotlightPRs.length}
-          />
-        </div>
-
-        <div className="grid gap-px bg-[var(--border)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
-          <div className="flex items-center justify-center bg-[var(--surface)] p-4 sm:p-6">
-            <Constellation
-              groups={contributionGroups}
-              activeRepo={displayRepo}
-              domain={domain}
-              onSelect={(repo) => {
-                setPaused(true);
-                setSelectedRepo(repo);
-                const first = contributionGroups.find((g) => g.repo === repo)
-                  ?.items[0];
-                if (first) setActivePatchUrl(first.url);
-              }}
-            />
-          </div>
-
-          <div className="bg-[var(--surface-soft)] p-5 sm:p-7">
-            <p className="font-display text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
-              Codebase intel
-            </p>
-            <h3 className="mt-2 font-serif-accent text-2xl tracking-tight text-[var(--text-primary)] sm:text-3xl">
-              {parseRepo(selectedGroup.repo).name}
-            </h3>
-            <p className="mt-1 font-display text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
-              {selectedGroup.repo} · ★ {formatStars(selectedGroup.stars)} ·{" "}
-              {selectedGroup.merged} merged
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-[var(--text-secondary)] sm:text-[15px]">
-              {selectedGroup.summary}
-            </p>
-
-            <p className="mt-6 mb-3 font-display text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
-              Patch stack
-            </p>
-            <div className="oss-patch-grid">
-              {selectedGroup.items.map((pr) => (
-                <a
-                  key={pr.url}
-                  href={pr.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="oss-patch-chip"
-                  data-active={highlightedPatchUrl === pr.url}
-                  onMouseEnter={() => setActivePatchUrl(pr.url)}
-                  onFocus={() => setActivePatchUrl(pr.url)}
-                >
-                  <span className="shrink-0 font-display text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
-                    #{pr.number}
-                  </span>
-                  <span className="truncate">{pr.title}</span>
-                </a>
-              ))}
-            </div>
-
-            <div className="mt-6">
-              <Button
-                href={`https://github.com/${selectedGroup.repo}`}
-                variant="secondary"
-                compact
-              >
-                <Icon name="github" size={14} />
-                Open on GitHub
-              </Button>
+                return (
+                  <button
+                    key={group.repo}
+                    type="button"
+                    className="oss-repository-button"
+                    data-active={active}
+                    aria-pressed={active}
+                    aria-controls="oss-repository-panel"
+                    aria-label={`${name}, ${group.merged} merged contribution${group.merged === 1 ? "" : "s"}`}
+                    onClick={() => setSelectedRepo(group.repo)}
+                  >
+                    <span className="oss-repository-index" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="oss-repository-button-copy">
+                      <span className="oss-repository-button-name">{name}</span>
+                      <span className="oss-repository-owner">{owner}</span>
+                    </span>
+                    <span className="oss-repository-count" aria-hidden="true">
+                      {group.merged}
+                    </span>
+                  </button>
+                );
+              })}
+            </nav>
+            <div className="oss-repositories-note" aria-hidden="true">
+              <MergeIcon size={19} />
+              <p>
+                Small patches.
+                <br />
+                Shared progress.
+              </p>
             </div>
           </div>
+
+          <RepositoryPanel key={selectedGroup.repo} group={selectedGroup} />
         </div>
 
-        <div className="border-t border-[var(--border)] bg-[var(--surface)] px-4 py-5 sm:px-6">
-          <p className="font-display text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            Impact spectrum
-          </p>
-          <p className="mt-1 font-serif-accent text-xl tracking-tight text-[var(--text-primary)]">
-            Where merges cluster
-          </p>
-          <div className="oss-spectrum-row mt-4">
-            {domainSpectrum.map((row) => (
-              <div key={row.id}>
-                <div className="mb-1.5 flex items-center justify-between gap-3">
-                  <span className="font-display text-[10px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
-                    {row.label}
-                  </span>
-                  <span className="font-display text-[10px] uppercase tracking-[0.14em] text-[var(--text-secondary)]">
-                    {row.count} merge{row.count === 1 ? "" : "s"}
-                  </span>
-                </div>
-                <div className="oss-spectrum-track">
-                  <div
-                    className="oss-spectrum-fill"
-                    style={{ width: `${row.width}%` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="oss-footer">
+          <p>Every patch, part of something bigger.</p>
+          <a
+            href={`https://github.com/${config.githubUsername}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Follow along on GitHub
+            <Icon name="external-link" size={12} />
+          </a>
         </div>
       </div>
     </Section>
