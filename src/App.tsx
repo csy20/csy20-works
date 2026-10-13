@@ -23,6 +23,11 @@ const ActivitySection = lazy(() =>
     default: m.ActivitySection,
   })),
 );
+const ExperienceSection = lazy(() =>
+  import("./sections/ExperienceSection").then((m) => ({
+    default: m.ExperienceSection,
+  })),
+);
 const ProjectsSection = lazy(() =>
   import("./sections/ProjectsSection").then((m) => ({
     default: m.ProjectsSection,
@@ -89,6 +94,7 @@ export default function App() {
               <Suspense fallback={<BelowFoldFallback />}>
                 <ActivitySection />
                 <ProjectsSection />
+                <ExperienceSection />
                 <ContactSection />
               </Suspense>
             </main>

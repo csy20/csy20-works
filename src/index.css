@@ -576,6 +576,190 @@ body::before {
   display: none;
 }
 
+/* Open source — patch frequency */
+.oss-shell {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.oss-broadcast {
+  position: relative;
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      color-mix(in srgb, var(--accent) 8%, transparent),
+      transparent 42%
+    ),
+    var(--surface-soft);
+}
+
+.oss-broadcast::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    color-mix(in srgb, var(--border) 35%, transparent) 3px,
+    color-mix(in srgb, var(--border) 35%, transparent) 4px
+  );
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.oss-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e25555;
+  box-shadow: 0 0 0 0 color-mix(in srgb, #e25555 55%, transparent);
+  animation: oss-pulse 2.2s ease infinite;
+}
+
+@keyframes oss-pulse {
+  70% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.oss-domain-chip {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-family: var(--font-display, system-ui, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.75rem;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.oss-domain-chip[data-active="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+
+.oss-constellation {
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 22rem;
+}
+
+.oss-orbit-ring {
+  fill: none;
+  stroke: color-mix(in srgb, var(--border) 85%, transparent);
+  stroke-width: 0.35;
+  stroke-dasharray: 1.2 1.8;
+}
+
+.oss-orbit-link {
+  stroke: color-mix(in srgb, var(--border) 70%, transparent);
+  stroke-width: 0.25;
+  transition: stroke 0.25s ease;
+}
+
+.oss-orbit-link[data-active="true"] {
+  stroke: color-mix(in srgb, var(--accent) 65%, var(--border));
+  stroke-width: 0.45;
+}
+
+.oss-orbit-node {
+  cursor: pointer;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.oss-orbit-node[data-dimmed="true"] {
+  opacity: 0.22;
+}
+
+.oss-orbit-node[data-active="true"] .oss-node-core {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+.oss-node-core {
+  fill: var(--surface-raised);
+  stroke: var(--border);
+  stroke-width: 0.35;
+  transition:
+    fill 0.25s ease,
+    stroke 0.25s ease;
+}
+
+.oss-patch-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.oss-patch-chip {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: baseline;
+  gap: 0.35rem;
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  padding: 0.4rem 0.65rem;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.oss-patch-chip:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  color: var(--text-primary);
+}
+
+.oss-patch-chip[data-active="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-raised));
+  color: var(--text-primary);
+}
+
+.oss-spectrum-row {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.oss-spectrum-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border-soft);
+  overflow: hidden;
+}
+
+.oss-spectrum-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 85%, transparent),
+    var(--accent)
+  );
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oss-live-dot {
+    animation: none;
+  }
+}
+
 /*
  * Tech stack paint isolation — kill any inherited motion/filter/backdrop
  * that Android Chrome was turning into scroll ghost trails.
