@@ -1,21 +1,21 @@
 {
   "name": "csy20.me",
   "short_name": "csy20",
-  "description": "Chitresh Yadav — Backend & Applied ML Engineer",
+  "description": "Chitresh Yadav \u2014 Backend & Applied ML Engineer",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f6f3ed",
-  "theme_color": "#141414",
+  "background_color": "#F6F5F1",
+  "theme_color": "#F6F5F1",
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/og-image.png",
-      "sizes": "1200x630",
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     }

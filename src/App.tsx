@@ -1,101 +1,54 @@
-import { lazy, Suspense, useMemo } from "react";
 import { MotionConfig } from "framer-motion";
-import { InkTransition } from "./components/animations/InkTransition";
-import { RunningCat } from "./components/animations/RunningCat";
-import { ScrollProgressBar } from "./components/animations/ScrollProgressBar";
-import { ThemeTransitionOverlay } from "./components/animations/ThemeTransitionOverlay";
-import { BackgroundMesh } from "./components/BackgroundMesh";
-import { BootScreen } from "./components/BootScreen";
-import { CatBootProvider } from "./components/CatBootProvider";
-import { NotFound } from "./components/NotFound";
 import { Navigation } from "./components/Navigation";
-import { useAnimationSafeMode } from "./components/useAnimationSafeMode";
+import { NotFound } from "./components/NotFound";
 import { HeroSection } from "./sections/HeroSection";
-/* Eager: avoids Suspense skeleton ↔ content paint races that glitched on mobile */
+import { ProjectsSection } from "./sections/ProjectsSection";
+import { ActivitySection } from "./sections/ActivitySection";
 import { StackSection } from "./sections/StackSection";
-import {
-  ActivitySectionSkeleton,
-  ContactSectionSkeleton,
-} from "./components/SectionSkeleton";
-
-const ActivitySection = lazy(() =>
-  import("./sections/ActivitySection").then((m) => ({
-    default: m.ActivitySection,
-  })),
-);
-const ProjectsSection = lazy(() =>
-  import("./sections/ProjectsSection").then((m) => ({
-    default: m.ProjectsSection,
-  })),
-);
-const ContactSection = lazy(() =>
-  import("./sections/ContactSection").then((m) => ({
-    default: m.ContactSection,
-  })),
-);
-
-function BelowFoldFallback() {
-  return (
-    <>
-      <ActivitySectionSkeleton />
-      <ContactSectionSkeleton />
-    </>
-  );
-}
-
-function isHomePath() {
-  if (typeof window === "undefined") return true;
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
-  return path === "/" || path === "/index.html";
-}
+import { ContactSection } from "./sections/ContactSection";
+import { profile, resumeUrl } from "./data/siteContent";
+import { Icon } from "./components/ui/Icon";
 
 export default function App() {
-  const shouldUseSafeMotion = useAnimationSafeMode();
-  const reducedMotion = useMemo(
-    () => (shouldUseSafeMotion ? ("always" as const) : ("user" as const)),
-    [shouldUseSafeMotion],
-  );
-
-  if (!isHomePath()) {
-    return <NotFound />;
-  }
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  if (path !== "/" && path !== "/index.html") return <NotFound />;
 
   return (
-    <MotionConfig reducedMotion={reducedMotion}>
-      <CatBootProvider>
-        <InkTransition>
-          <BootScreen />
-          {/*
-            Dock is a sibling of the scroll shell so overflow-x on the shell
-            never creates a containing block that traps position:fixed.
-          */}
-          <div className="relative min-h-screen overflow-x-clip">
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-lg focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-[var(--accent-fg)]"
-            >
-              Skip to content
-            </a>
-            <ScrollProgressBar />
-            <RunningCat />
-            <ThemeTransitionOverlay />
-            <BackgroundMesh />
-            <main
-              id="main-content"
-              className="pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))]"
-            >
-              <HeroSection />
-              <StackSection />
-              <Suspense fallback={<BelowFoldFallback />}>
-                <ActivitySection />
-                <ProjectsSection />
-                <ContactSection />
-              </Suspense>
-            </main>
-          </div>
-          <Navigation />
-        </InkTransition>
-      </CatBootProvider>
+    <MotionConfig reducedMotion="user">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+      <header className="masthead container">
+        <a
+          href="#hero"
+          className="wordmark"
+          aria-label={`${profile.name} — home`}
+        >
+          <span className="brand-mark" aria-hidden="true">
+            c.
+          </span>
+          <span>
+            {profile.handle}
+            <span className="wordmark-domain"> / independent engineer</span>
+          </span>
+        </a>
+        <a
+          href={resumeUrl}
+          className="masthead-resume"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Resume <Icon name="external-link" size={14} />
+        </a>
+      </header>
+      <main id="main-content" tabIndex={-1}>
+        <HeroSection />
+        <ProjectsSection />
+        <ActivitySection />
+        <StackSection />
+        <ContactSection />
+      </main>
+      <Navigation />
     </MotionConfig>
   );
 }

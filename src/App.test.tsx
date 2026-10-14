@@ -1,114 +1,99 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it, vi, beforeAll } from "vitest";
-
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, beforeEach } from "vitest";
 import App from "./App";
 import { ThemeProvider } from "./components/ThemeProvider";
-import { MotionSafeProvider } from "./components/MotionSafeProvider";
-import { SoundProvider } from "./components/SoundProvider";
-import { profile, techStack } from "./data/siteContent";
+import {
+  profile,
+  projects,
+  resumeUrl,
+  socialLinks,
+  techStack,
+} from "./data/siteContent";
 
-vi.mock("framer-motion", async () => {
-  const actual = await vi.importActual("framer-motion");
-  return {
-    ...actual,
-    useInView: () => true,
-  };
+beforeEach(() => {
+  window.localStorage.clear();
+  window.history.replaceState({}, "", "/");
 });
-
-beforeAll(() => {
-  class MockIntersectionObserver {
-    observe = vi.fn();
-    unobserve = vi.fn();
-    disconnect = vi.fn();
-  }
-
-  vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
-});
-
-function renderApp() {
-  return render(
+const renderApp = () =>
+  render(
     <ThemeProvider>
-      <MotionSafeProvider>
-        <SoundProvider>
-          <App />
-        </SoundProvider>
-      </MotionSafeProvider>
+      <App />
     </ThemeProvider>,
   );
-}
 
-describe("App", () => {
-  it("renders all sections and content correctly", async () => {
+describe("portfolio", () => {
+  it("renders the complete evidence-first portfolio and preserves every project destination", () => {
     const { container } = renderApp();
-
-    expect(
-      screen.getByRole("heading", { name: profile.name }),
-    ).toBeInTheDocument();
-
-    expect(screen.getByText(profile.heroDescription)).toBeInTheDocument();
-
-    const stackHeading = await screen.findByRole(
-      "heading",
-      { name: "I ship in" },
-      { timeout: 5000 },
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Building useful software, from model to product.",
     );
-    expect(stackHeading).toBeInTheDocument();
-
-    const stackSection = container.querySelector("#stack");
-    expect(stackSection).not.toBeNull();
-
-    for (const item of techStack) {
-      expect(
-        within(stackSection as HTMLElement).getByText(item.name),
-      ).toBeInTheDocument();
+    expect(screen.getByText(profile.heroDescription)).toBeVisible();
+    for (const id of ["hero", "projects", "open-source", "stack", "contact"])
+      expect(container.querySelector(`#${id}`)).toBeInTheDocument();
+    for (const project of projects) {
+      const article =
+        project.title === "02_OS" ||
+        project.title === "Speech Relay" ||
+        project.title === "Bytewise"
+          ? screen
+              .getByRole("heading", {
+                name: new RegExp(
+                  `^${project.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`,
+                ),
+              })
+              .closest("article")!
+          : screen
+              .getByText(project.title, { exact: true })
+              .closest("details")!;
+      for (const link of project.links)
+        expect(
+          article.querySelector(`a[href="${link.href}"]`),
+        ).toBeInTheDocument();
     }
-
+    for (const link of socialLinks)
+      expect(
+        container.querySelector(`a[href="${link.href}"]`),
+      ).toBeInTheDocument();
     expect(
-      await screen.findByRole(
-        "heading",
-        { name: "At a glance" },
-        { timeout: 5000 },
-      ),
+      container.querySelector(`a[href="${resumeUrl}"]`),
     ).toBeInTheDocument();
+    for (const item of techStack)
+      expect(
+        within(container.querySelector("#stack") as HTMLElement).getByText(
+          item.name,
+        ),
+      ).toBeVisible();
+    expect(screen.getByText("Public alpha", { exact: true })).toBeVisible();
+    expect(screen.getByText("Shipped · Google Play")).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: "Skip to content" }),
+    ).toHaveAttribute("href", "#main-content");
+  });
 
-    expect(
-      await screen.findByRole("heading", { name: "Work" }, { timeout: 5000 }),
-    ).toBeInTheDocument();
+  it("preserves expanded project content when switching themes", async () => {
+    const user = userEvent.setup();
+    const { container } = renderApp();
+    await user.click(screen.getAllByText("Engineering notes")[0]!);
+    const detail = container.querySelector("#speech-relay details")!;
+    expect(detail).toHaveAttribute("open");
+    await user.click(
+      screen.getByRole("button", { name: "Switch to dark theme" }),
+    );
+    expect(detail).toHaveAttribute("open");
+    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
+    expect(localStorage.getItem("csy20-theme")).toBe("dark");
+  });
 
+  it("renders a home destination for unknown routes", () => {
+    window.history.replaceState({}, "", "/missing");
+    renderApp();
     expect(
-      screen.getByRole("heading", { name: "Product" }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { name: "Selected work" }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { name: "Other projects" }),
-    ).toBeInTheDocument();
-
-    expect(screen.getByRole("heading", { name: "02_OS" })).toBeInTheDocument();
-
-    expect(
-      await screen.findByRole("heading", { name: /^Speech Relay$/ }),
-    ).toBeInTheDocument();
-
-    expect(
-      await screen.findByRole("heading", { name: /^Bytewise$/ }),
-    ).toBeInTheDocument();
-
-    expect(
-      await screen.findByRole("heading", { name: /^Router Agent$/ }),
-    ).toBeInTheDocument();
-
-    expect(
-      await screen.findByRole("heading", { name: /^MediaPipe AI$/ }),
-    ).toBeInTheDocument();
-
-    expect(
-      await screen.findByRole("heading", { name: "Studio" }, { timeout: 5000 }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getAllByRole("link", { name: /^Email$/i }).length,
-    ).toBeGreaterThan(0);
+      screen.getByRole("heading", { name: "This page is not here." }),
+    ).toBeVisible();
+    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
+      "href",
+      "/",
+    );
   });
 });

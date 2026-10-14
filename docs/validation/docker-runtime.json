@@ -1,0 +1,102 @@
+[
+  {
+    "theme": "light",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "cache-control": "no-cache\nno-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+      "connection": "keep-alive",
+      "content-length": "5995",
+      "content-type": "text/html",
+      "date": "Wed, 14 Oct 2026 13:46:31 GMT",
+      "etag": "\"6acf86be-176b\"",
+      "expires": "Wed, 14 Oct 2026 13:46:30 GMT",
+      "last-modified": "Wed, 14 Oct 2026 13:42:22 GMT",
+      "server": "nginx/1.30.5"
+    },
+    "initial": "light",
+    "toggled": "dark",
+    "active": "location",
+    "resources": [
+      {
+        "path": "/csy20_resume.pdf",
+        "status": 200,
+        "type": "application/pdf"
+      },
+      {
+        "path": "/portrait-twitter.jpg",
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "path": "/portrait-twitter.webp",
+        "status": 200,
+        "type": "image/webp"
+      },
+      {
+        "path": "/manifest.json",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "path": "/CNAME",
+        "status": 200,
+        "type": "application/octet-stream"
+      }
+    ],
+    "fallbackStatus": 200,
+    "fallbackHeading": "This page is not here.",
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "theme": "dark",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "cache-control": "no-cache\nno-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+      "connection": "keep-alive",
+      "content-length": "5995",
+      "content-type": "text/html",
+      "date": "Wed, 14 Oct 2026 13:46:33 GMT",
+      "etag": "\"6acf86be-176b\"",
+      "expires": "Wed, 14 Oct 2026 13:46:32 GMT",
+      "last-modified": "Wed, 14 Oct 2026 13:42:22 GMT",
+      "server": "nginx/1.30.5"
+    },
+    "initial": "dark",
+    "toggled": "light",
+    "active": "location",
+    "resources": [
+      {
+        "path": "/csy20_resume.pdf",
+        "status": 200,
+        "type": "application/pdf"
+      },
+      {
+        "path": "/portrait-twitter.jpg",
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "path": "/portrait-twitter.webp",
+        "status": 200,
+        "type": "image/webp"
+      },
+      {
+        "path": "/manifest.json",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "path": "/CNAME",
+        "status": 200,
+        "type": "application/octet-stream"
+      }
+    ],
+    "fallbackStatus": 200,
+    "fallbackHeading": "This page is not here.",
+    "errors": [],
+    "apiRequests": []
+  }
+]

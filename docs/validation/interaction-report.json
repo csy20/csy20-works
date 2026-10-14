@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Fresh system preference and changes until explicit choice",
+    "passed": true
+  },
+  {
+    "name": "Stored preference overrides system before app mount",
+    "passed": true
+  },
+  {
+    "name": "Blocked storage still renders and toggles complete theme",
+    "passed": true
+  },
+  {
+    "name": "Keyboard skip navigation and section links update active state",
+    "passed": true
+  },
+  {
+    "name": "Repository selection, expand/collapse, theme preserve scroll/content",
+    "passed": true,
+    "detail": {
+      "repositoriesChecked": 14,
+      "preview": 5,
+      "all": 21,
+      "scrollBefore": 3659,
+      "scrollAfter": 3659
+    }
+  },
+  {
+    "name": "Additional projects expand and collapse by keyboard with real links",
+    "passed": true,
+    "detail": {
+      "titles": [
+        "Speech Relay Rust",
+        "MediaPipe AI",
+        "Router Agent",
+        "Nen\nShipped · Google Play",
+        "Warrant"
+      ]
+    }
+  },
+  {
+    "name": "Dock tooltip keyboard focus, fine-pointer hover, stable shell",
+    "passed": true
+  }
+]

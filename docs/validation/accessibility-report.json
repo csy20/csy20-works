@@ -1,0 +1,40 @@
+[
+  {
+    "theme": "light",
+    "w": 320,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 27
+      }
+    ],
+    "focusOverlaps": []
+  },
+  {
+    "theme": "light",
+    "w": 1440,
+    "violations": [],
+    "incomplete": [],
+    "focusOverlaps": []
+  },
+  {
+    "theme": "dark",
+    "w": 320,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 27
+      }
+    ],
+    "focusOverlaps": []
+  },
+  {
+    "theme": "dark",
+    "w": 1440,
+    "violations": [],
+    "incomplete": [],
+    "focusOverlaps": []
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "url": "https://play.google.com/store/apps/details?id=com.csy20.bytewise",
+    "status": 200,
+    "final": "https://play.google.com/store/apps/details?id=com.csy20.bytewise",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/csy20/02_OS",
+    "status": 200,
+    "final": "https://github.com/csy20/02_OS",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01",
+    "status": 200,
+    "final": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/csy20/speech-relay",
+    "status": 200,
+    "final": "https://github.com/csy20/speech-relay",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+    "status": 200,
+    "final": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/csy20/router-agent",
+    "status": 200,
+    "final": "https://github.com/csy20/router-agent",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/csy20/mediapipe-ai",
+    "status": 200,
+    "final": "https://github.com/csy20/mediapipe-ai",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/csy20/speech-relay-rust",
+    "status": 200,
+    "final": "https://github.com/csy20/speech-relay-rust",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.linkedin.com/in/csy20/",
+    "status": 429,
+    "final": "https://www.linkedin.com/in/csy20/",
+    "type": null
+  },
+  {
+    "url": "https://github.com/csy20",
+    "status": 200,
+    "final": "https://github.com/csy20",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/csy20/nen",
+    "status": 200,
+    "final": "https://github.com/csy20/nen",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/csy20/warrant",
+    "status": 200,
+    "final": "https://github.com/csy20/warrant",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.youtube.com/@chitresh-y3q",
+    "status": 404,
+    "final": "https://www.youtube.com/@chitresh-y3q",
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.instagram.com/the__csy20/",
+    "status": 200,
+    "final": "https://www.instagram.com/the__csy20/",
+    "type": "text/html; charset=\"utf-8\""
+  },
+  {
+    "url": "https://csy20.me/csy20_resume.pdf",
+    "status": 200,
+    "final": "https://csy20.me/csy20_resume.pdf",
+    "type": "application/pdf"
+  },
+  {
+    "url": "https://x.com/the__csy20",
+    "status": 200,
+    "final": "https://x.com/the__csy20",
+    "type": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://csy20.me/portrait-twitter.webp",
+    "status": 200,
+    "final": "https://csy20.me/portrait-twitter.webp",
+    "type": "image/webp"
+  },
+  {
+    "url": "https://csy20.me/portrait-twitter.jpg",
+    "status": 200,
+    "final": "https://csy20.me/portrait-twitter.jpg",
+    "type": "image/jpeg"
+  }
+]

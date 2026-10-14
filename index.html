@@ -58,10 +58,9 @@
     <meta name="twitter:image" content="https://csy20.me/og-image.jpg" />
     <meta name="twitter:creator" content="@the__csy20" />
 
-    <link rel="preconnect" href="https://api.github.com" />
     <link
       rel="preload"
-      href="/fonts/instrument-serif.woff2"
+      href="/fonts/instrument-serif-italic.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -89,33 +88,32 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#f4ebe0" />
+    <meta name="theme-color" content="#F6F5F1" />
 
     <script>
       (() => {
+        const key = "__THEME_STORAGE_KEY__";
+        let theme;
         try {
-          const key = "csy20-theme";
           const stored = localStorage.getItem(key);
           if (stored === "light" || stored === "dark") {
-            document.documentElement.setAttribute("data-theme", stored);
-            return;
+            theme = stored;
           }
         } catch {}
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        document.documentElement.setAttribute(
-          "data-theme",
-          prefersDark ? "dark" : "light",
-        );
+        if (!theme) {
+          try {
+            theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          } catch {
+            theme = "light";
+          }
+        }
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.content = theme === "dark" ? "#111214" : "#F6F5F1";
       })();
-      const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) {
-        meta.content =
-          document.documentElement.getAttribute("data-theme") === "dark"
-            ? "#141414"
-            : "#f4ebe0";
-      }
     </script>
 
     <!-- Structured Data (JSON-LD) -->

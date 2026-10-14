@@ -1,0 +1,98 @@
+{
+  "image": "sha256:1ea242f32e011087026d38f931a7858394bf1bef63f5fbf47e96b0a8a11da858",
+  "tag": "csy20-works:editorial-qa",
+  "architecture": "amd64",
+  "os": "linux",
+  "builderBase": "node:20-alpine",
+  "builderNpm": "10.8.2",
+  "cleanInstallPassed": true,
+  "typeScriptAndViteBuildPassed": true,
+  "nginxConfigTestPassed": true,
+  "serveBase": "nginx:stable-alpine",
+  "portTested": 4175,
+  "sourceDigests": {
+    "Dockerfile": "a250f35b1952e4388fccd1be073e6a9d26c9438067d89b31092886c1a8f87bb2",
+    "docker-compose.yml": "c53cf58bb43d19fe2c3a4b4fe0f9159d7ab8924fdbeee03af17d349e9afa8c25",
+    "nginx.conf": "529255fe0f1648bf51e12b29896d9a73e2833550eb9725d850eb9b7a588e507e",
+    "package-lock.json": "9494b9bb9e5dcf1e6dfd0a1bef047dd42555ef7a6a9b62b4e2f5ffa5efcc807f",
+    "dist/index.html": "1ec7c13c30cae0a5f9b19075b376d3212cc3fbb5be9c387bb23a8f7cd489dc69"
+  },
+  "lockRepair": {
+    "added": [
+      {
+        "key": "node_modules/@rolldown/binding-android-arm-eabi",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@oxc-project/types",
+        "version": "0.154.0"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-android-arm64",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-darwin-arm64",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-darwin-x64",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-freebsd-x64",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-linux-arm-gnueabihf",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-linux-arm64-gnu",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-linux-arm64-musl",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-linux-ppc64-gnu",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-linux-s390x-gnu",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-linux-x64-gnu",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-linux-x64-musl",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-openharmony-arm64",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-win32-arm64-msvc",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/binding-win32-x64-msvc",
+        "version": "1.2.14"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/@rolldown/pluginutils",
+        "version": "1.0.1"
+      },
+      {
+        "key": "node_modules/vite-bundle-visualizer/node_modules/rolldown",
+        "version": "1.2.14"
+      }
+    ],
+    "removed": [],
+    "changed": []
+  }
+}
