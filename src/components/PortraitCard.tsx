@@ -18,7 +18,7 @@ export function PortraitCard() {
       </div>
       <figcaption>
         <span>{profile.name}</span>
-        <span className="portrait-handle">@{profile.handle}</span>
+        <span className="portrait-handle">@{profile.socialHandle}</span>
       </figcaption>
       <p className="portrait-note">
         A little curiosity.

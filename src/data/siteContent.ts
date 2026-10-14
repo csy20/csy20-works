@@ -77,6 +77,7 @@ export type SocialLink = {
 export const profile = {
   name: "Chitresh Yadav",
   handle: "csy20",
+  socialHandle: "the__csy20",
   role: "Backend · Applied ML",
   strapline: "Python · Rust · TypeScript",
   heroDescription:
@@ -303,7 +304,7 @@ export const socialLinks: SocialLink[] = [
     detail: "Talks and recordings.",
   },
   {
-    label: "Instagram (csy20)",
+    label: "Instagram (the__csy20)",
     href: "https://www.instagram.com/the__csy20/",
     icon: "instagram",
     detail: "Personal feed and updates.",
