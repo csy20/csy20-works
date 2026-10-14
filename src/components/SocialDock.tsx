@@ -1,9 +1,10 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type PointerEvent, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { socialLinks } from "../data/siteContent";
 import { useTheme } from "./useTheme";
 import { Icon } from "./ui/Icon";
 import { MoonIcon, SunIcon } from "./ui/ThemeIcons";
+import { useSound } from "./useSound";
 
 const dockLinks = socialLinks.filter((link) => link.icon !== "instagram");
 
@@ -14,7 +15,7 @@ function useDockMagnification() {
     let media: MediaQueryList;
     try {
       media = window.matchMedia(
-        "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+        "(min-width: 640px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
       );
     } catch {
       return;
@@ -30,30 +31,39 @@ function useDockMagnification() {
 
 export function SocialDock() {
   const { theme, toggleTheme } = useTheme();
+  const { playDockTick } = useSound();
   const canMagnify = useDockMagnification();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const icon = (node: ReactNode, index: number) => {
+  const controlMotion = (index: number) => {
     const distance =
       hoveredIndex === null ? Infinity : Math.abs(hoveredIndex - index);
-    return (
-      <motion.span
-        className="dock-icon"
-        aria-hidden="true"
-        animate={
-          canMagnify && distance < 2
-            ? {
-                scale: distance === 0 ? 1.14 : 1.05,
-                y: distance === 0 ? -2 : -1,
-              }
-            : { scale: 1, y: 0 }
-        }
-        transition={{ duration: canMagnify ? 0.16 : 0 }}
-      >
-        {node}
-      </motion.span>
-    );
+    return {
+      animate:
+        canMagnify && distance < 2
+          ? {
+              scale: distance === 0 ? 1.18 : 1.08,
+              y: distance === 0 ? -8 : -4,
+            }
+          : { scale: 1, y: 0 },
+      transition: canMagnify
+        ? { type: "spring" as const, stiffness: 400, damping: 28 }
+        : { duration: 0 },
+      ...(canMagnify ? { whileTap: { scale: 0.92 } } : {}),
+      style: { transformOrigin: "bottom center" },
+      onPointerEnter: (event: PointerEvent<HTMLElement>) => {
+        if (!canMagnify || event.pointerType === "touch") return;
+        setHoveredIndex(index);
+        playDockTick();
+      },
+    };
   };
+
+  const icon = (node: ReactNode) => (
+    <span className="dock-icon" aria-hidden="true">
+      {node}
+    </span>
+  );
 
   return (
     <nav
@@ -61,51 +71,53 @@ export function SocialDock() {
       aria-label="Social shortcuts"
       onPointerLeave={() => setHoveredIndex(null)}
     >
-      <a
+      <motion.a
         className="dock-item"
         href="#hero"
         aria-label="Home"
-        onPointerEnter={() => setHoveredIndex(0)}
+        {...controlMotion(0)}
+        onClick={playDockTick}
       >
-        {icon(<Icon name="home" size={20} />, 0)}
+        {icon(<Icon name="home" size={20} />)}
         <span className="dock-tooltip" aria-hidden="true">
           Home
         </span>
-      </a>
+      </motion.a>
       {dockLinks.map((link, index) => {
         const external = !link.href.startsWith("mailto:");
         return (
-          <a
+          <motion.a
             key={link.icon}
             className="dock-item"
             href={link.href}
             target={external ? "_blank" : undefined}
             rel={external ? "noopener noreferrer" : undefined}
             aria-label={`${link.label}${external ? " (opens in a new tab)" : ""}`}
-            onPointerEnter={() => setHoveredIndex(index + 1)}
+            {...controlMotion(index + 1)}
+            onClick={playDockTick}
           >
-            {icon(<Icon name={link.icon} size={20} />, index + 1)}
+            {icon(<Icon name={link.icon} size={20} />)}
             <span className="dock-tooltip" aria-hidden="true">
               {link.icon === "x" ? "X" : link.label}
             </span>
-          </a>
+          </motion.a>
         );
       })}
-      <button
+      <motion.button
         className="dock-item"
         type="button"
         aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-        onClick={toggleTheme}
-        onPointerEnter={() => setHoveredIndex(dockLinks.length + 1)}
+        {...controlMotion(dockLinks.length + 1)}
+        onClick={() => {
+          playDockTick();
+          toggleTheme();
+        }}
       >
-        {icon(
-          theme === "dark" ? <SunIcon /> : <MoonIcon />,
-          dockLinks.length + 1,
-        )}
+        {icon(theme === "dark" ? <SunIcon /> : <MoonIcon />)}
         <span className="dock-tooltip" aria-hidden="true">
           {theme === "dark" ? "Light theme" : "Dark theme"}
         </span>
-      </button>
+      </motion.button>
     </nav>
   );
 }

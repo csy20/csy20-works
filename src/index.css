@@ -1168,6 +1168,21 @@ summary::-webkit-details-marker {
 .footer-name span {
   color: var(--text-secondary);
 }
+.dock-sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.dock-sound-toggle:hover {
+  background: var(--surface-soft);
+  color: var(--text-primary);
+}
 .dock-shell {
   position: fixed;
   z-index: 50;
@@ -1204,6 +1219,10 @@ summary::-webkit-details-marker {
   transition:
     background-color 0.15s,
     color 0.15s;
+}
+.dock-item:active {
+  background: var(--dock-hover);
+  color: var(--text-primary);
 }
 .section-nav-item[aria-current="location"] {
   color: var(--accent);
@@ -1274,6 +1293,19 @@ summary::-webkit-details-marker {
   .dock-item:first-child:hover .dock-tooltip,
   .dock-item:last-child:hover .dock-tooltip {
     transform: translateY(0);
+  }
+}
+@media (min-width: 640px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .dock-shell {
+    animation: dock-appear 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+@keyframes dock-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 @media (min-width: 1440px) {
@@ -1748,6 +1780,7 @@ summary::-webkit-details-marker {
 }
 @media print {
   .dock-shell,
+  .dock-sound-toggle,
   .masthead-actions,
   .skip-link {
     display: none;

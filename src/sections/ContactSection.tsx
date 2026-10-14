@@ -2,6 +2,7 @@ import { profile, resumeUrl, socialLinks } from "../data/siteContent";
 import { config } from "../config";
 import { ActionLink } from "../components/ui/ActionLink";
 import { Icon } from "../components/ui/Icon";
+import { SoundToggle } from "../components/SoundToggle";
 
 export function ContactSection() {
   return (
@@ -59,6 +60,7 @@ export function ContactSection() {
             Chitresh Yadav <span>/ csy20</span>
           </a>
           <span>Built with care. Kept in the open.</span>
+          <SoundToggle />
           <span>© {new Date().getFullYear()}</span>
         </footer>
       </div>

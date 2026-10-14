@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, beforeEach } from "vitest";
 import App from "./App";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { SoundProvider } from "./components/SoundProvider";
 import {
   profile,
   projects,
@@ -18,7 +19,9 @@ beforeEach(() => {
 const renderApp = () =>
   render(
     <ThemeProvider>
-      <App />
+      <SoundProvider>
+        <App />
+      </SoundProvider>
     </ThemeProvider>,
   );
 
