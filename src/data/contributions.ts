@@ -65,18 +65,33 @@ export const contributions: readonly Contribution[] = snapshot.records
 
 export const contributionSummary = summarizeContributions(contributions);
 
-export const contributionRepositories = [
-  ...new Set(contributions.map((record) => record.repository)),
-]
-  .map((repository) => ({
-    repository,
-    ...summarizeContributions(
-      contributions.filter((record) => record.repository === repository),
-    ),
-  }))
-  .sort(
-    (a, b) => b.total - a.total || a.repository.localeCompare(b.repository),
-  );
+function groupContributionRepositories(records: readonly Contribution[]) {
+  return [...new Set(records.map((record) => record.repository))]
+    .map((repository) => ({
+      repository,
+      ...summarizeContributions(
+        records.filter((record) => record.repository === repository),
+      ),
+    }))
+    .sort(
+      (a, b) => b.total - a.total || a.repository.localeCompare(b.repository),
+    );
+}
+
+export const contributionRepositories =
+  groupContributionRepositories(contributions);
+
+// The portfolio presents completed review outcomes. Preserve pending work in
+// the curated dataset and generated snapshot without including it in this view.
+export const completedContributions = contributions.filter(
+  (record) => record.status !== "open",
+);
+export const completedContributionSummary = summarizeContributions(
+  completedContributions,
+);
+export const completedContributionRepositories = groupContributionRepositories(
+  completedContributions,
+);
 
 export function getContributionDate(record: Contribution): string {
   return record.mergedAt ?? record.closedAt ?? record.createdAt;

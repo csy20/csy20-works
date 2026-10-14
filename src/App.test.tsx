@@ -35,7 +35,8 @@ describe("portfolio", () => {
       const article =
         project.title === "02_OS" ||
         project.title === "Speech Relay" ||
-        project.title === "Bytewise"
+        project.title === "Bytewise" ||
+        project.title === "Nen"
           ? screen
               .getByRole("heading", {
                 name: new RegExp(
@@ -65,7 +66,18 @@ describe("portfolio", () => {
         ),
       ).toBeVisible();
     expect(screen.getByText("Public alpha", { exact: true })).toBeVisible();
-    expect(screen.getByText("Shipped · Google Play")).toBeVisible();
+    const nen = container.querySelector("article#nen") as HTMLElement;
+    expect(nen).toBeInTheDocument();
+    expect(within(nen).getByText("Published on Google Play")).toBeVisible();
+    expect(
+      within(nen).getByRole("link", { name: "Get it on Google Play" }),
+    ).toHaveAttribute(
+      "href",
+      "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+    );
+    expect(
+      container.querySelector(".project-index-list")?.textContent,
+    ).not.toContain("Nen");
     expect(
       screen.getByRole("link", { name: "Skip to content" }),
     ).toHaveAttribute("href", "#main-content");

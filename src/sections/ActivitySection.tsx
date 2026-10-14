@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {
-  contributionRepositories,
+  completedContributionRepositories,
+  completedContributionSummary,
+  completedContributions,
   contributionSnapshot,
-  contributionSummary,
-  contributions,
   formatContributionDate,
   getContributionDate,
 } from "../data/contributions";
@@ -15,8 +15,8 @@ export function ActivitySection() {
   const [showAll, setShowAll] = useState(false);
   const selectedContributions =
     selectedRepository === "all"
-      ? contributions
-      : contributions.filter(
+      ? completedContributions
+      : completedContributions.filter(
           (record) => record.repository === selectedRepository,
         );
   const visibleContributions = showAll
@@ -52,19 +52,15 @@ export function ActivitySection() {
         >
           <div>
             <dt>Merged</dt>
-            <dd>{contributionSummary.merged}</dd>
-          </div>
-          <div>
-            <dt>Open</dt>
-            <dd>{contributionSummary.open}</dd>
+            <dd>{completedContributionSummary.merged}</dd>
           </div>
           <div>
             <dt>Closed</dt>
-            <dd>{contributionSummary.closed}</dd>
+            <dd>{completedContributionSummary.closed}</dd>
           </div>
           <div>
             <dt>Repositories</dt>
-            <dd>{contributionSummary.repositories}</dd>
+            <dd>{completedContributionSummary.repositories}</dd>
           </div>
         </dl>
 
@@ -90,10 +86,10 @@ export function ActivitySection() {
               >
                 <span>All repositories</span>
                 <span className="repository-count">
-                  {contributionSummary.total}
+                  {completedContributionSummary.total}
                 </span>
               </button>
-              {contributionRepositories.map((item) => (
+              {completedContributionRepositories.map((item) => (
                 <button
                   key={item.repository}
                   type="button"
@@ -155,11 +151,7 @@ export function ActivitySection() {
                         className={`contribution-status status-${record.status}`}
                       >
                         <span className="status-dot" aria-hidden="true" />
-                        {record.status === "merged"
-                          ? "Merged"
-                          : record.status === "open"
-                            ? "Open"
-                            : "Closed"}
+                        {record.status === "merged" ? "Merged" : "Closed"}
                       </span>
                       <time dateTime={date}>
                         {formatContributionDate(date)}
@@ -188,7 +180,7 @@ export function ActivitySection() {
 
         <div className="contribution-footnote">
           <p>
-            Selected technical evidence · Snapshot{" "}
+            Merged and closed technical contributions · Snapshot{" "}
             <time dateTime={contributionSnapshot.generatedAt}>
               {formatContributionDate(contributionSnapshot.generatedAt)}
             </time>

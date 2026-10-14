@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import snapshot from "./contributions.generated.json";
 import {
+  completedContributionRepositories,
+  completedContributionSummary,
+  completedContributions,
   contributionRepositories,
   contributionSummary,
   contributions,
@@ -63,6 +66,47 @@ describe("local contribution evidence", () => {
       expect(record.repository.split("/")[0]).not.toBe("csy20");
       expect(record.status === "merged").toBe(Boolean(record.mergedAt));
       expect(Number.isNaN(Date.parse(getContributionDate(record)))).toBe(false);
+    }
+  });
+
+  it("keeps pending work in the dataset but excludes it from every completed-view total", () => {
+    expect(contributions.some((record) => record.status === "open")).toBe(true);
+    expect(completedContributions).toEqual(
+      contributions.filter((record) => record.status !== "open"),
+    );
+    expect(completedContributionSummary).toEqual(
+      summarizeContributions(completedContributions),
+    );
+    expect(completedContributionSummary.open).toBe(0);
+    expect(completedContributionSummary.merged).toBe(
+      contributionSummary.merged,
+    );
+    expect(completedContributionSummary.closed).toBe(
+      contributionSummary.closed,
+    );
+    expect(completedContributionSummary.total).toBe(
+      contributionSummary.total - contributionSummary.open,
+    );
+    expect(completedContributionSummary.repositories).toBe(
+      completedContributionRepositories.length,
+    );
+    expect(
+      completedContributionRepositories.reduce(
+        (total, repository) => total + repository.total,
+        0,
+      ),
+    ).toBe(completedContributions.length);
+
+    for (const repository of completedContributionRepositories) {
+      expect(repository.open).toBe(0);
+      expect(repository).toEqual({
+        repository: repository.repository,
+        ...summarizeContributions(
+          completedContributions.filter(
+            (record) => record.repository === repository.repository,
+          ),
+        ),
+      });
     }
   });
 

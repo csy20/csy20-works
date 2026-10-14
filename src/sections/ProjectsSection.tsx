@@ -1,26 +1,107 @@
 import {
   projects,
   caseStudies,
+  productSpotlights,
   type Project,
   type CaseStudy,
+  type ProductSpotlight,
 } from "../data/siteContent";
 import { ActionLink } from "../components/ui/ActionLink";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { SpeechPipeline } from "../components/SpeechPipeline";
 
-function ProjectLinks({ project }: { project: Project }) {
+function ProjectLinks({
+  project,
+  promoteStore = false,
+}: {
+  project: Project;
+  promoteStore?: boolean;
+}) {
   return (
     <div className="project-links">
       {project.links.map((link) => (
-        <ActionLink key={link.href} href={link.href}>
+        <ActionLink
+          key={link.href}
+          href={link.href}
+          className={
+            promoteStore && link.label === "Play Store"
+              ? "button button-primary"
+              : "text-link"
+          }
+        >
           {link.label === "GitHub"
             ? "Source code"
             : link.label === "Release"
               ? "Alpha release"
-              : link.label}
+              : promoteStore && link.label === "Play Store"
+                ? "Get it on Google Play"
+                : link.label}
         </ActionLink>
       ))}
     </div>
+  );
+}
+
+function PublishedProduct({
+  project,
+  spotlight,
+}: {
+  project: Project;
+  spotlight: ProductSpotlight;
+}) {
+  return (
+    <article
+      id={spotlight.id}
+      className="product-spotlight"
+      aria-labelledby={`${spotlight.id}-heading`}
+    >
+      <div className="product-spotlight-cover">
+        <p className="eyebrow">Published product / Android</p>
+        <img
+          src={project.logo}
+          alt={`${project.title} app icon`}
+          width={512}
+          height={512}
+          loading="lazy"
+        />
+        <p className="product-cover-line">{spotlight.coverLine}</p>
+        <span className="product-cover-platform">
+          Flutter + Dart · Local audio
+        </span>
+      </div>
+      <div className="project-copy product-spotlight-copy">
+        <p className="eyebrow">
+          <span className="project-index">04</span>
+          Published on Google Play
+        </p>
+        <h3 id={`${spotlight.id}-heading`}>{project.title}</h3>
+        <p className="project-overview">{spotlight.overview}</p>
+        <ul className="product-features">
+          {spotlight.features.map((feature) => (
+            <li key={feature}>{feature}</li>
+          ))}
+        </ul>
+        <ProjectLinks project={project} promoteStore />
+        <details className="engineering-detail">
+          <summary>
+            Inside the product <span aria-hidden="true">+</span>
+          </summary>
+          <div className="detail-content">
+            <p>{project.description}</p>
+            {project.releaseNote && <p>{project.releaseNote}</p>}
+            <div
+              className="project-tags"
+              role="group"
+              aria-label="Technologies"
+            >
+              {project.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        </details>
+      </div>
+    </article>
   );
 }
 
@@ -44,7 +125,9 @@ function EngineeringDetail({ study }: { study: CaseStudy }) {
 
 export function ProjectsSection() {
   const more = projects.filter(
-    (project) => !caseStudies.some((study) => study.title === project.title),
+    (project) =>
+      !caseStudies.some((study) => study.title === project.title) &&
+      !productSpotlights.some((spotlight) => spotlight.title === project.title),
   );
   return (
     <section
@@ -154,6 +237,15 @@ export function ProjectsSection() {
             );
           })}
         </div>
+        {productSpotlights.map((spotlight) => (
+          <PublishedProduct
+            key={spotlight.id}
+            spotlight={spotlight}
+            project={
+              projects.find((project) => project.title === spotlight.title)!
+            }
+          />
+        ))}
         <div className="more-work">
           <div className="more-work-heading">
             <h3>More from the workbench</h3>
@@ -163,7 +255,9 @@ export function ProjectsSection() {
             {more.map((project, index) => (
               <details className="other-project" key={project.title}>
                 <summary>
-                  <span className="other-project-number">0{index + 4}</span>
+                  <span className="other-project-number">
+                    0{index + caseStudies.length + productSpotlights.length + 1}
+                  </span>
                   <span className="other-project-name">
                     {project.logo && (
                       <img
@@ -174,12 +268,7 @@ export function ProjectsSection() {
                         loading="lazy"
                       />
                     )}
-                    <span>
-                      {project.title}
-                      {project.title === "Nen" && (
-                        <small>Shipped · Google Play</small>
-                      )}
-                    </span>
+                    <span>{project.title}</span>
                   </span>
                   <span className="other-project-category">
                     {project.eyebrow}

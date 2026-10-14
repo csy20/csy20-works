@@ -2,8 +2,10 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import {
+  completedContributionRepositories,
+  completedContributionSummary,
+  completedContributions,
   contributionSnapshot,
-  contributionSummary,
   contributions,
   formatContributionDate,
 } from "../data/contributions";
@@ -28,12 +30,12 @@ describe("Open source evidence", () => {
     );
     expect(
       within(screen.getByRole("list")).getAllByRole("listitem"),
-    ).toHaveLength(contributionSummary.total);
+    ).toHaveLength(completedContributionSummary.total);
     expect(
       screen.getByRole("button", { name: /Show fewer contributions/ }),
     ).toHaveAttribute("aria-expanded", "true");
 
-    for (const record of contributions) {
+    for (const record of completedContributions) {
       expect(screen.getByRole("link", { name: record.title })).toHaveAttribute(
         "href",
         record.url,
@@ -41,13 +43,62 @@ describe("Open source evidence", () => {
     }
     expect(
       container.querySelectorAll("a[href^='https:']").length,
-    ).toBeGreaterThan(contributionSummary.total);
+    ).toBeGreaterThan(completedContributionSummary.total);
   });
 
-  it("filters by keyboard and describes open work honestly", async () => {
+  it("excludes pending pull requests and repositories with only pending work", async () => {
     const user = userEvent.setup();
     const { container } = render(<ActivitySection />);
-    const repository = screen.getByRole("button", { name: /google\/gvisor/ });
+    await user.click(
+      screen.getByRole("button", { name: /Show \d+ more contributions/ }),
+    );
+
+    expect(screen.queryByText("Open", { exact: true })).not.toBeInTheDocument();
+    expect(container.querySelector(".status-open")).not.toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      `${completedContributionSummary.total} pull requests`,
+    );
+    const repositoryOptions = screen.getByRole("group", {
+      name: "Repositories",
+    });
+    expect(within(repositoryOptions).getAllByRole("button")).toHaveLength(
+      completedContributionRepositories.length + 1,
+    );
+    for (const record of contributions.filter(
+      (record) => record.status === "open",
+    )) {
+      expect(
+        screen.queryByRole("link", { name: record.title }),
+      ).not.toBeInTheDocument();
+      if (
+        !completedContributions.some(
+          (item) => item.repository === record.repository,
+        )
+      ) {
+        expect(
+          within(repositoryOptions).queryByRole("button", {
+            name: new RegExp(record.repository),
+          }),
+        ).not.toBeInTheDocument();
+      }
+    }
+    for (const repository of completedContributionRepositories) {
+      expect(
+        within(repositoryOptions).getByRole("button", {
+          name: (name) =>
+            name.replace(/\s/g, "") ===
+            `${repository.repository}${repository.total}`,
+        }),
+      ).toBeInTheDocument();
+    }
+  });
+
+  it("filters completed evidence by keyboard and preserves actual merge labels", async () => {
+    const user = userEvent.setup();
+    const { container } = render(<ActivitySection />);
+    const repository = screen.getByRole("button", {
+      name: /redhat-et\/ripwire/,
+    });
     repository.focus();
     await user.keyboard("{Enter}");
 
@@ -62,16 +113,16 @@ describe("Open source evidence", () => {
     const results = container.querySelector("#contribution-results");
     if (!results) throw new Error("Contribution result region is missing.");
     expect(
-      within(results as HTMLElement).getByText("Open", { exact: true }),
+      within(results as HTMLElement).getByText("Merged", { exact: true }),
     ).toBeInTheDocument();
     expect(
-      within(results as HTMLElement).queryByText("Merged", { exact: true }),
+      within(results as HTMLElement).queryByText("Closed", { exact: true }),
     ).not.toBeInTheDocument();
     expect(
       screen.getByRole("link", {
-        name: "tcp: handle receive-buffer exhaustion with small segments",
+        name: "fix(ts): literal receivers no longer pin unrelated same-named functions",
       }),
-    ).toHaveAttribute("href", "https://github.com/google/gvisor/pull/15325");
+    ).toHaveAttribute("href", "https://github.com/redhat-et/ripwire/pull/244");
   });
 
   it("separates closed work from merged work and resets expansion when the repository changes", async () => {
@@ -107,7 +158,7 @@ describe("Open source evidence", () => {
     rerender(<ActivitySection />);
     expect(
       within(screen.getByRole("list")).getAllByRole("listitem"),
-    ).toHaveLength(contributionSummary.total);
+    ).toHaveLength(completedContributionSummary.total);
     expect(screen.getByText(/Snapshot/)).toHaveTextContent(
       formatContributionDate(contributionSnapshot.generatedAt),
     );

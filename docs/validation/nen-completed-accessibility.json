@@ -1,0 +1,1153 @@
+{
+  "date": "2026-10-14T18:40:04.331Z",
+  "preview": "http://127.0.0.1:4174/",
+  "engine": "Chromium + axe-core",
+  "scope": ["#nen", "#open-source"],
+  "profiles": [
+    {
+      "theme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "scopes": {
+        "nenCollapsed": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 14
+        },
+        "nenExpanded": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 17
+        },
+        "openSourceCollapsed": {
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 17,
+              "causes": [
+                "Fix any of the following:\n  Element content is too short to determine if it is actual text content",
+                "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              ],
+              "exampleTargets": [
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(2) > .repository-count"
+                ],
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-name"
+                ],
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-count"
+                ]
+              ]
+            }
+          ],
+          "passedRules": 19
+        },
+        "openSourceExpanded": {
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 18,
+              "causes": [
+                "Fix any of the following:\n  Element content is too short to determine if it is actual text content",
+                "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element",
+                "Fix any of the following:\n  Element content contains only non-text characters"
+              ],
+              "exampleTargets": [
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(2) > .repository-count"
+                ],
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-name"
+                ],
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-count"
+                ]
+              ]
+            }
+          ],
+          "passedRules": 19
+        }
+      },
+      "nenFocus": [
+        {
+          "nativeFocus": {
+            "label": "Get it on Google Play",
+            "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+            "focused": true,
+            "rect": {
+              "top": 473.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 214.640625,
+              "width": 176.640625,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Get it on Google Play",
+            "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+            "focused": true,
+            "rect": {
+              "top": 473.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 214.640625,
+              "width": 176.640625,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        },
+        {
+          "nativeFocus": {
+            "label": "Source code",
+            "href": "https://github.com/csy20/nen",
+            "focused": true,
+            "rect": {
+              "top": 475.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 133.84375,
+              "width": 95.84375,
+              "height": 44
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Source code",
+            "href": "https://github.com/csy20/nen",
+            "focused": true,
+            "rect": {
+              "top": 475.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 133.84375,
+              "width": 95.84375,
+              "height": 44
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        },
+        {
+          "nativeFocus": {
+            "label": "Inside the product\n+",
+            "href": null,
+            "focused": true,
+            "rect": {
+              "top": 473.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 282,
+              "width": 244,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Inside the product\n+",
+            "href": null,
+            "focused": true,
+            "rect": {
+              "top": 473.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 282,
+              "width": 244,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        }
+      ],
+      "repositoryChecks": [
+        {
+          "label": "All repositories 14",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": true,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "semantica-agi/semantica 6",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "agent-of-empires/agent-of-empires 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "cli/cli 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "dart-lang/sdk 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "google-gemini/gemini-cli 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "internetarchive/openlibrary 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "redhat-et/ripwire 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "topoteretes/cognee 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "xevrion/breakscale 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        }
+      ],
+      "detailsExpanded": true,
+      "decorativeExpansionGlyphContrast": {
+        "foreground": [184, 70, 42],
+        "background": [255, 255, 255],
+        "ratio": 5.32,
+        "ariaHidden": "true",
+        "note": "Decorative aria-hidden minus glyph; accessible button name provides the action."
+      },
+      "contributionState": {
+        "totalRows": 14,
+        "openRows": 0,
+        "mergedRows": 11,
+        "closedRows": 3,
+        "repositoryOptions": 10,
+        "summary": "Merged\n11\nClosed\n3\nRepositories\n9"
+      }
+    },
+    {
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scopes": {
+        "nenCollapsed": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 14
+        },
+        "nenExpanded": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 17
+        },
+        "openSourceCollapsed": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 18
+        },
+        "openSourceExpanded": {
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 1,
+              "causes": [
+                "Fix any of the following:\n  Element content contains only non-text characters"
+              ],
+              "exampleTargets": [[".text-button > span[aria-hidden=\"true\"]"]]
+            }
+          ],
+          "passedRules": 18
+        }
+      },
+      "nenFocus": [
+        {
+          "nativeFocus": {
+            "label": "Get it on Google Play",
+            "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+            "focused": true,
+            "rect": {
+              "top": 585.703125,
+              "bottom": 633.703125,
+              "left": 641.859375,
+              "right": 842.546875,
+              "width": 200.6875,
+              "height": 48
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Get it on Google Play",
+            "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+            "focused": true,
+            "rect": {
+              "top": 585.703125,
+              "bottom": 633.703125,
+              "left": 641.859375,
+              "right": 842.546875,
+              "width": 200.6875,
+              "height": 48
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        },
+        {
+          "nativeFocus": {
+            "label": "Source code",
+            "href": "https://github.com/csy20/nen",
+            "focused": true,
+            "rect": {
+              "top": 587.703125,
+              "bottom": 631.703125,
+              "left": 860.546875,
+              "right": 956.390625,
+              "width": 95.84375,
+              "height": 44
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Source code",
+            "href": "https://github.com/csy20/nen",
+            "focused": true,
+            "rect": {
+              "top": 587.703125,
+              "bottom": 631.703125,
+              "left": 860.546875,
+              "right": 956.390625,
+              "width": 95.84375,
+              "height": 44
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        },
+        {
+          "nativeFocus": {
+            "label": "Inside the product\n+",
+            "href": null,
+            "focused": true,
+            "rect": {
+              "top": 650.703125,
+              "bottom": 696.703125,
+              "left": 641.859375,
+              "right": 1308.984375,
+              "width": 667.125,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Inside the product\n+",
+            "href": null,
+            "focused": true,
+            "rect": {
+              "top": 650.703125,
+              "bottom": 696.703125,
+              "left": 641.859375,
+              "right": 1308.984375,
+              "width": 667.125,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        }
+      ],
+      "repositoryChecks": [
+        {
+          "label": "All repositories 14",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": true,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "semantica-agi/semantica 6",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "agent-of-empires/agent-of-empires 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "cli/cli 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "dart-lang/sdk 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "google-gemini/gemini-cli 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "internetarchive/openlibrary 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "redhat-et/ripwire 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "topoteretes/cognee 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "xevrion/breakscale 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        }
+      ],
+      "detailsExpanded": true,
+      "decorativeExpansionGlyphContrast": {
+        "foreground": [184, 70, 42],
+        "background": [255, 255, 255],
+        "ratio": 5.32,
+        "ariaHidden": "true",
+        "note": "Decorative aria-hidden minus glyph; accessible button name provides the action."
+      },
+      "contributionState": {
+        "totalRows": 14,
+        "openRows": 0,
+        "mergedRows": 11,
+        "closedRows": 3,
+        "repositoryOptions": 10,
+        "summary": "Merged\n11\nClosed\n3\nRepositories\n9"
+      }
+    },
+    {
+      "theme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "scopes": {
+        "nenCollapsed": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 14
+        },
+        "nenExpanded": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 17
+        },
+        "openSourceCollapsed": {
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 17,
+              "causes": [
+                "Fix any of the following:\n  Element content is too short to determine if it is actual text content",
+                "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              ],
+              "exampleTargets": [
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(2) > .repository-count"
+                ],
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-name"
+                ],
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-count"
+                ]
+              ]
+            }
+          ],
+          "passedRules": 19
+        },
+        "openSourceExpanded": {
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 18,
+              "causes": [
+                "Fix any of the following:\n  Element content is too short to determine if it is actual text content",
+                "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element",
+                "Fix any of the following:\n  Element content contains only non-text characters"
+              ],
+              "exampleTargets": [
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(2) > .repository-count"
+                ],
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-name"
+                ],
+                [
+                  ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-count"
+                ]
+              ]
+            }
+          ],
+          "passedRules": 19
+        }
+      },
+      "nenFocus": [
+        {
+          "nativeFocus": {
+            "label": "Get it on Google Play",
+            "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+            "focused": true,
+            "rect": {
+              "top": 473.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 214.640625,
+              "width": 176.640625,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Get it on Google Play",
+            "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+            "focused": true,
+            "rect": {
+              "top": 473.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 214.640625,
+              "width": 176.640625,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        },
+        {
+          "nativeFocus": {
+            "label": "Source code",
+            "href": "https://github.com/csy20/nen",
+            "focused": true,
+            "rect": {
+              "top": 475.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 133.84375,
+              "width": 95.84375,
+              "height": 44
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Source code",
+            "href": "https://github.com/csy20/nen",
+            "focused": true,
+            "rect": {
+              "top": 475.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 133.84375,
+              "width": 95.84375,
+              "height": 44
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        },
+        {
+          "nativeFocus": {
+            "label": "Inside the product\n+",
+            "href": null,
+            "focused": true,
+            "rect": {
+              "top": 473.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 282,
+              "width": 244,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Inside the product\n+",
+            "href": null,
+            "focused": true,
+            "rect": {
+              "top": 473.90625,
+              "bottom": 519.90625,
+              "left": 38,
+              "right": 282,
+              "width": 244,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        }
+      ],
+      "repositoryChecks": [
+        {
+          "label": "All repositories 14",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": true,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "semantica-agi/semantica 6",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "agent-of-empires/agent-of-empires 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "cli/cli 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "dart-lang/sdk 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "google-gemini/gemini-cli 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "internetarchive/openlibrary 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "redhat-et/ripwire 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "topoteretes/cognee 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "xevrion/breakscale 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        }
+      ],
+      "detailsExpanded": true,
+      "decorativeExpansionGlyphContrast": {
+        "foreground": [255, 157, 122],
+        "background": [27, 29, 32],
+        "ratio": 8.33,
+        "ariaHidden": "true",
+        "note": "Decorative aria-hidden minus glyph; accessible button name provides the action."
+      },
+      "contributionState": {
+        "totalRows": 14,
+        "openRows": 0,
+        "mergedRows": 11,
+        "closedRows": 3,
+        "repositoryOptions": 10,
+        "summary": "Merged\n11\nClosed\n3\nRepositories\n9"
+      }
+    },
+    {
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scopes": {
+        "nenCollapsed": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 14
+        },
+        "nenExpanded": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 17
+        },
+        "openSourceCollapsed": {
+          "violations": [],
+          "incomplete": [],
+          "passedRules": 18
+        },
+        "openSourceExpanded": {
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 1,
+              "causes": [
+                "Fix any of the following:\n  Element content contains only non-text characters"
+              ],
+              "exampleTargets": [[".text-button > span[aria-hidden=\"true\"]"]]
+            }
+          ],
+          "passedRules": 18
+        }
+      },
+      "nenFocus": [
+        {
+          "nativeFocus": {
+            "label": "Get it on Google Play",
+            "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+            "focused": true,
+            "rect": {
+              "top": 585.703125,
+              "bottom": 633.703125,
+              "left": 641.859375,
+              "right": 842.546875,
+              "width": 200.6875,
+              "height": 48
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Get it on Google Play",
+            "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+            "focused": true,
+            "rect": {
+              "top": 585.703125,
+              "bottom": 633.703125,
+              "left": 641.859375,
+              "right": 842.546875,
+              "width": 200.6875,
+              "height": 48
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        },
+        {
+          "nativeFocus": {
+            "label": "Source code",
+            "href": "https://github.com/csy20/nen",
+            "focused": true,
+            "rect": {
+              "top": 587.703125,
+              "bottom": 631.703125,
+              "left": 860.546875,
+              "right": 956.390625,
+              "width": 95.84375,
+              "height": 44
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Source code",
+            "href": "https://github.com/csy20/nen",
+            "focused": true,
+            "rect": {
+              "top": 587.703125,
+              "bottom": 631.703125,
+              "left": 860.546875,
+              "right": 956.390625,
+              "width": 95.84375,
+              "height": 44
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        },
+        {
+          "nativeFocus": {
+            "label": "Inside the product\n+",
+            "href": null,
+            "focused": true,
+            "rect": {
+              "top": 650.703125,
+              "bottom": 696.703125,
+              "left": 641.859375,
+              "right": 1308.984375,
+              "width": 667.125,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          },
+          "afterScroll": {
+            "label": "Inside the product\n+",
+            "href": null,
+            "focused": true,
+            "rect": {
+              "top": 650.703125,
+              "bottom": 696.703125,
+              "left": 641.859375,
+              "right": 1308.984375,
+              "width": 667.125,
+              "height": 46
+            },
+            "visible": true,
+            "overlaps": []
+          }
+        }
+      ],
+      "repositoryChecks": [
+        {
+          "label": "All repositories 14",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": true,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "semantica-agi/semantica 6",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "agent-of-empires/agent-of-empires 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "cli/cli 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "dart-lang/sdk 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "google-gemini/gemini-cli 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "internetarchive/openlibrary 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "redhat-et/ripwire 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "topoteretes/cognee 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "label": "xevrion/breakscale 1",
+          "selected": true,
+          "violations": [],
+          "incomplete": [],
+          "beforeSelection": {
+            "selected": false,
+            "violations": [],
+            "incomplete": []
+          }
+        }
+      ],
+      "detailsExpanded": true,
+      "decorativeExpansionGlyphContrast": {
+        "foreground": [255, 157, 122],
+        "background": [27, 29, 32],
+        "ratio": 8.33,
+        "ariaHidden": "true",
+        "note": "Decorative aria-hidden minus glyph; accessible button name provides the action."
+      },
+      "contributionState": {
+        "totalRows": 14,
+        "openRows": 0,
+        "mergedRows": 11,
+        "closedRows": 3,
+        "repositoryOptions": 10,
+        "summary": "Merged\n11\nClosed\n3\nRepositories\n9"
+      }
+    }
+  ],
+  "limitations": [
+    "Automated Chromium checks do not replace physical-device or assistive-technology testing.",
+    "Horizontally clipped mobile repository controls receive individual scroll-into-view and contrast checks."
+  ],
+  "summary": {
+    "profiles": 4,
+    "scopedAxeScans": 16,
+    "violations": 0,
+    "nenNativeFocusControlsChecked": 12,
+    "nenFocusOverlapOrVisibilityProblems": 0,
+    "repositoryContrastChecks": 80,
+    "repositoryContrastViolations": 0,
+    "repositoryContrastIncomplete": 0,
+    "decorativeGlyphContrast": {
+      "light": 5.32,
+      "dark": 8.33
+    },
+    "visibleContributions": {
+      "total": 14,
+      "merged": 11,
+      "closed": 3,
+      "open": 0,
+      "repositories": 9
+    }
+  }
+}

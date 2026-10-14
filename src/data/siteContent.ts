@@ -371,6 +371,29 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
+export type ProductSpotlight = {
+  title: string;
+  id: string;
+  coverLine: string;
+  overview: string;
+  features: string[];
+};
+
+export const productSpotlights: ProductSpotlight[] = [
+  {
+    title: "Nen",
+    id: "nen",
+    coverLine: "Your music.\nOn your phone.",
+    overview:
+      "An offline music player for the files already on your phone. Published on Google Play, with no ads, no account, and no streaming dependency.",
+    features: [
+      "Offline local playback",
+      "No ads or account",
+      "Lock-screen controls",
+    ],
+  },
+];
+
 export const about = {
   introduction:
     "I'm Chitresh, an engineer focused on backend systems and applied machine learning. I like the whole path: understanding a problem, building the system, measuring it, and getting it into someone's hands.",
