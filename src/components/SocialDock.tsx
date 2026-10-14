@@ -52,8 +52,8 @@ export function SocialDock() {
       ...(canMagnify ? { whileTap: { scale: 0.92 } } : {}),
       style: { transformOrigin: "bottom center" },
       onPointerEnter: (event: PointerEvent<HTMLElement>) => {
-        if (!canMagnify || event.pointerType === "touch") return;
-        setHoveredIndex(index);
+        if (event.pointerType === "touch") return;
+        if (canMagnify) setHoveredIndex(index);
         playDockTick();
       },
     };

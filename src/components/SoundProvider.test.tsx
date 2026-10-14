@@ -53,24 +53,10 @@ class FakeAudioContext {
   }
 }
 
-let listenerSpy: { mock: { calls: unknown[][] } };
-
 function firstContext() {
   const context = contexts[0];
   if (!context) throw new Error("Expected an audio context");
   return context;
-}
-
-// jsdom events are untrusted. Call the registered capture listener with a
-// trusted native-event equivalent to exercise the browser's unlock boundary.
-function trustedGesture(type: "pointerdown" | "keydown" = "pointerdown") {
-  const call = listenerSpy.mock.calls
-    .slice()
-    .reverse()
-    .find(([eventType]) => eventType === type);
-  expect(call).toBeDefined();
-  const listener = call?.[1] as EventListener;
-  act(() => listener({ isTrusted: true } as Event));
 }
 
 beforeEach(() => {
@@ -83,7 +69,6 @@ beforeEach(() => {
   };
   vi.stubGlobal("AudioContext", FakeAudioContext);
   vi.stubGlobal("webkitAudioContext", undefined);
-  listenerSpy = vi.spyOn(window, "addEventListener");
 });
 
 afterEach(() => {
@@ -93,21 +78,21 @@ afterEach(() => {
 });
 
 describe("SoundProvider", () => {
-  it("does not create audio on load, hover, or untrusted gestures", () => {
+  it("creates audio lazily for a requested tick, never on page load", () => {
     const { result } = renderHook(useSound, { wrapper: SoundProvider });
     expect(result.current.soundEnabled).toBe(true);
-    act(() => result.current.playDockTick());
     fireEvent.pointerDown(window);
     fireEvent.keyDown(window, { key: "Tab" });
-    act(() => result.current.playDockTick());
     expect(contexts).toHaveLength(0);
+    act(() => result.current.playDockTick());
+    expect(contexts).toHaveLength(1);
+    expect(firstContext().createOscillator).toHaveBeenCalledOnce();
   });
 
   it("reuses one context and reproduces the production tick with cleanup", () => {
     const { result, unmount } = renderHook(useSound, {
       wrapper: SoundProvider,
     });
-    trustedGesture();
     act(() => result.current.playDockTick());
     expect(contexts).toHaveLength(1);
     const context = firstContext();
@@ -128,13 +113,13 @@ describe("SoundProvider", () => {
     oscillator.onended?.();
     expect(oscillator.disconnect).toHaveBeenCalledOnce();
     expect(gain.disconnect).toHaveBeenCalledOnce();
-    trustedGesture("keydown");
+    act(() => result.current.playDockTick());
     expect(contexts).toHaveLength(1);
     unmount();
     expect(context.close).toHaveBeenCalledOnce();
   });
 
-  it("persists mute across mounts and unlocks when sound is re-enabled", async () => {
+  it("persists mute across mounts and plays a preview when sound is enabled", async () => {
     const first = renderHook(useSound, { wrapper: SoundProvider });
     act(() => first.result.current.toggleSound());
     expect(first.result.current.soundEnabled).toBe(false);
@@ -144,56 +129,75 @@ describe("SoundProvider", () => {
     initialAudioState = "suspended";
     const { result } = renderHook(useSound, { wrapper: SoundProvider });
     expect(result.current.soundEnabled).toBe(false);
-    trustedGesture();
     act(() => result.current.playDockTick());
     expect(contexts).toHaveLength(0);
     await act(async () => result.current.toggleSound());
     expect(result.current.soundEnabled).toBe(true);
     expect(window.localStorage.getItem("csy20-dock-sound")).toBe("on");
     expect(firstContext().resume).toHaveBeenCalledOnce();
-    act(() => result.current.playDockTick());
     expect(firstContext().createOscillator).toHaveBeenCalledOnce();
-  });
-
-  it("drops suspended ticks rather than replaying them after resume", async () => {
-    initialAudioState = "suspended";
-    let completeResume = () => {};
-    resumeBehavior = (context) =>
-      new Promise<void>((resolve) => {
-        completeResume = () => {
-          context.state = "running";
-          resolve();
-        };
-      });
-    const { result } = renderHook(useSound, { wrapper: SoundProvider });
-    trustedGesture("keydown");
-    act(() => {
-      result.current.playDockTick();
-      result.current.playDockTick();
-      result.current.playDockTick();
-    });
-    expect(firstContext().resume).toHaveBeenCalledOnce();
-    expect(firstContext().createOscillator).not.toHaveBeenCalled();
-    await act(async () => completeResume());
-    expect(firstContext().createOscillator).not.toHaveBeenCalled();
-    act(() => result.current.playDockTick());
-    expect(firstContext().createOscillator).toHaveBeenCalledOnce();
-  });
-
-  it("limits rapid ticks without suppressing later deliberate actions", () => {
-    const clock = vi.spyOn(performance, "now").mockReturnValue(100);
-    const { result } = renderHook(useSound, { wrapper: SoundProvider });
-    trustedGesture();
-    act(() => {
-      result.current.playDockTick();
-      result.current.playDockTick();
-    });
-    clock.mockReturnValue(159);
-    act(() => result.current.playDockTick());
-    expect(firstContext().createOscillator).toHaveBeenCalledOnce();
-    clock.mockReturnValue(160);
     act(() => result.current.playDockTick());
     expect(firstContext().createOscillator).toHaveBeenCalledTimes(2);
+  });
+
+  it("plays one first tick after resume and coalesces suspended hover requests", async () => {
+    initialAudioState = "suspended";
+    const completeResumes: (() => void)[] = [];
+    resumeBehavior = (context) =>
+      new Promise<void>((resolve) => {
+        completeResumes.push(() => {
+          context.state = "running";
+          resolve();
+        });
+      });
+    const { result } = renderHook(useSound, { wrapper: SoundProvider });
+    act(() => {
+      result.current.playDockTick();
+      result.current.playDockTick();
+      result.current.playDockTick();
+    });
+    expect(firstContext().resume).toHaveBeenCalled();
+    expect(firstContext().createOscillator).not.toHaveBeenCalled();
+    await act(async () => completeResumes.forEach((complete) => complete()));
+    expect(firstContext().createOscillator).toHaveBeenCalledOnce();
+    act(() => result.current.playDockTick());
+    expect(firstContext().createOscillator).toHaveBeenCalledTimes(2);
+  });
+
+  it.each(["mute", "unmount"] as const)(
+    "cancels a pending tick on %s before an asynchronous resume completes",
+    async (cancel) => {
+      initialAudioState = "suspended";
+      let completeResume = () => {};
+      resumeBehavior = (context) =>
+        new Promise<void>((resolve) => {
+          completeResume = () => {
+            context.state = "running";
+            resolve();
+          };
+        });
+      const { result, unmount } = renderHook(useSound, {
+        wrapper: SoundProvider,
+      });
+      act(() => result.current.playDockTick());
+      const context = firstContext();
+      if (cancel === "mute") act(() => result.current.toggleSound());
+      else unmount();
+      await act(async () => completeResume());
+      expect(context.createOscillator).not.toHaveBeenCalled();
+      if (cancel === "unmount") expect(context.close).toHaveBeenCalledOnce();
+    },
+  );
+
+  it("keeps short successive interactions audible without an artificial throttle", () => {
+    vi.spyOn(performance, "now").mockReturnValue(100);
+    const { result } = renderHook(useSound, { wrapper: SoundProvider });
+    act(() => {
+      result.current.playDockTick();
+      result.current.playDockTick();
+      result.current.playDockTick();
+    });
+    expect(firstContext().createOscillator).toHaveBeenCalledTimes(3);
   });
 
   it("handles blocked storage and missing audio APIs without failing actions", () => {
@@ -205,7 +209,6 @@ describe("SoundProvider", () => {
     });
     vi.stubGlobal("AudioContext", undefined);
     const { result } = renderHook(useSound, { wrapper: SoundProvider });
-    trustedGesture();
     expect(() => act(() => result.current.playDockTick())).not.toThrow();
     act(() => result.current.toggleSound());
     expect(result.current.soundEnabled).toBe(false);
@@ -220,15 +223,14 @@ describe("SoundProvider", () => {
     initialAudioState = "suspended";
     resumeBehavior = () => Promise.reject(new Error("Autoplay blocked"));
     const { result } = renderHook(useSound, { wrapper: SoundProvider });
-    await act(async () => trustedGesture());
+    await act(async () => result.current.playDockTick());
     expect(firstContext().resume).toHaveBeenCalledOnce();
     expect(firstContext().createOscillator).not.toHaveBeenCalled();
     resumeBehavior = (context) => {
       context.state = "running";
       return Promise.resolve();
     };
-    await act(async () => trustedGesture());
-    act(() => result.current.playDockTick());
+    await act(async () => result.current.playDockTick());
     expect(firstContext().resume).toHaveBeenCalledTimes(2);
     expect(firstContext().createOscillator).toHaveBeenCalledOnce();
   });
@@ -247,7 +249,6 @@ describe("SoundProvider", () => {
       ),
     );
     expect(result.current.soundEnabled).toBe(false);
-    trustedGesture();
     act(() => result.current.playDockTick());
     expect(contexts).toHaveLength(0);
   });

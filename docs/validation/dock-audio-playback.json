@@ -1,0 +1,714 @@
+{
+  "checkedAt": "2026-10-14T19:46:21.019Z",
+  "method": "Native WebAudio with AnalyserNode taps and CDP Runtime.evaluate(userGesture:false), standard Chromium autoplay; no listening performed",
+  "cases": [
+    {
+      "name": "Fresh hover requests native resume under blocked autoplay without scheduling silent oscillators",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "suspended",
+            "time": 0
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          }
+        ],
+        "gains": [],
+        "ramps": [],
+        "starts": [],
+        "stops": [],
+        "disconnects": [],
+        "maxRms": 0,
+        "activation": {
+          "active": false,
+          "ever": false
+        },
+        "renderedSamples": 0,
+        "maxPeak": 0
+      }
+    },
+    {
+      "name": "Trusted unrelated click retries blocked resume and renders exactly one pending production tick with nonzero waveform",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "running",
+            "time": 0.17066666666666666
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": true
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "statechange",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "time": 0.010666666666666666,
+            "currentTime": 0.010666666666666666
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "time": 0.05566666666666666,
+            "currentTime": 0.010666666666666666
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.010666666666666666,
+            "state": "running"
+          }
+        ],
+        "stops": [
+          {
+            "time": 0.06066666666666667,
+            "currentTime": 0.010666666666666666
+          }
+        ],
+        "disconnects": ["oscillator", "gain"],
+        "maxRms": 0.011257621793622828,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 40,
+        "maxPeak": 0.02958102524280548
+      }
+    },
+    {
+      "name": "Fine pointer subsequent hover renders another tick",
+      "pass": true,
+      "maxRms": 0.011257621793622828
+    },
+    {
+      "name": "Mute persists through reload, fresh hover and trusted click remain quiet",
+      "pass": true,
+      "audio": {
+        "states": [],
+        "records": [],
+        "gains": [],
+        "ramps": [],
+        "starts": [],
+        "stops": [],
+        "disconnects": [],
+        "maxRms": 0,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 0,
+        "maxPeak": 0
+      }
+    },
+    {
+      "name": "Keyboard reenable immediately previews a nonzero tick",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "running",
+            "time": 0.18133333333333335
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "running",
+            "activated": true
+          },
+          {
+            "type": "statechange",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "time": 0,
+            "currentTime": 0
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "time": 0.045,
+            "currentTime": 0
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0,
+            "state": "running"
+          }
+        ],
+        "stops": [
+          {
+            "time": 0.05,
+            "currentTime": 0
+          }
+        ],
+        "disconnects": ["oscillator", "gain"],
+        "maxRms": 0.011257621793622828,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 40,
+        "maxPeak": 0.02958102524280548
+      }
+    },
+    {
+      "name": "narrow-fine hover audio works while magnification stays off",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "running",
+            "time": 0.2986666666666667
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": true
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "statechange",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "time": 0.010666666666666666,
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "value": 0.03,
+            "time": 0.16,
+            "currentTime": 0.16
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "time": 0.05566666666666666,
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "value": 0.0008,
+            "time": 0.20500000000000002,
+            "currentTime": 0.16
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.010666666666666666,
+            "state": "running"
+          },
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.16,
+            "state": "running"
+          }
+        ],
+        "stops": [
+          {
+            "time": 0.06066666666666667,
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "time": 0.21000000000000002,
+            "currentTime": 0.16
+          }
+        ],
+        "disconnects": ["oscillator", "gain", "oscillator", "gain"],
+        "maxRms": 0.011257621793622828,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 75,
+        "maxPeak": 0.02958102524280548
+      }
+    },
+    {
+      "name": "reduced-motion hover audio works while magnification stays off",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "running",
+            "time": 0.288
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": true
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "statechange",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "time": 0.010666666666666666,
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "value": 0.03,
+            "time": 0.14933333333333335,
+            "currentTime": 0.14933333333333335
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "time": 0.05566666666666666,
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "value": 0.0008,
+            "time": 0.19433333333333336,
+            "currentTime": 0.14933333333333335
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.010666666666666666,
+            "state": "running"
+          },
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.14933333333333335,
+            "state": "running"
+          }
+        ],
+        "stops": [
+          {
+            "time": 0.06066666666666667,
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "time": 0.19933333333333336,
+            "currentTime": 0.14933333333333335
+          }
+        ],
+        "disconnects": ["oscillator", "gain", "oscillator", "gain"],
+        "maxRms": 0.011257621793622828,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 75,
+        "maxPeak": 0.02958102524280548
+      }
+    },
+    {
+      "name": "First touch theme action renders one tick without hover sound",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "running",
+            "time": 0.18133333333333335
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "running",
+            "activated": true
+          },
+          {
+            "type": "statechange",
+            "state": "running",
+            "currentTime": 0.032
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "time": 0,
+            "currentTime": 0
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "time": 0.045,
+            "currentTime": 0
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.010666666666666666,
+            "state": "running"
+          }
+        ],
+        "stops": [
+          {
+            "time": 0.06066666666666667,
+            "currentTime": 0.010666666666666666
+          }
+        ],
+        "disconnects": ["oscillator", "gain"],
+        "maxRms": 0.009939636742196233,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 37,
+        "maxPeak": 0.029473278671503067
+      }
+    },
+    {
+      "name": "Fresh keyboard theme action renders one tick",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "running",
+            "time": 0.17066666666666666
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "running",
+            "activated": true
+          },
+          {
+            "type": "statechange",
+            "state": "running",
+            "currentTime": 0.021333333333333333
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "time": 0,
+            "currentTime": 0
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "time": 0.045,
+            "currentTime": 0
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0,
+            "state": "running"
+          }
+        ],
+        "stops": [
+          {
+            "time": 0.05,
+            "currentTime": 0
+          }
+        ],
+        "disconnects": ["oscillator", "gain"],
+        "maxRms": 0.011257621793622828,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 31,
+        "maxPeak": 0.02958102524280548
+      }
+    },
+    {
+      "name": "Mute cancels queued blocked hover before resume completes",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "running",
+            "time": 0.16
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": false
+          },
+          {
+            "type": "resume",
+            "state": "suspended",
+            "activated": true
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "resumed",
+            "state": "running",
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "type": "statechange",
+            "state": "running",
+            "currentTime": 0.021333333333333333
+          }
+        ],
+        "gains": [],
+        "ramps": [],
+        "starts": [],
+        "stops": [],
+        "disconnects": [],
+        "maxRms": 0,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 0,
+        "maxPeak": 0
+      }
+    },
+    {
+      "name": "Dark theme hover renders matching audible waveform after theme action",
+      "pass": true,
+      "audio": {
+        "states": [
+          {
+            "state": "running",
+            "time": 0.3626666666666667
+          }
+        ],
+        "records": [
+          {
+            "type": "construct",
+            "state": "running",
+            "activated": true
+          },
+          {
+            "type": "statechange",
+            "state": "running",
+            "currentTime": 0.032
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "time": 0,
+            "currentTime": 0
+          },
+          {
+            "value": 0.03,
+            "time": 0.20266666666666666,
+            "currentTime": 0.20266666666666666
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "time": 0.045,
+            "currentTime": 0
+          },
+          {
+            "value": 0.0008,
+            "time": 0.24766666666666665,
+            "currentTime": 0.20266666666666666
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.010666666666666666,
+            "state": "running"
+          },
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.20266666666666666,
+            "state": "running"
+          }
+        ],
+        "stops": [
+          {
+            "time": 0.06066666666666667,
+            "currentTime": 0.010666666666666666
+          },
+          {
+            "time": 0.25266666666666665,
+            "currentTime": 0.20266666666666666
+          }
+        ],
+        "disconnects": ["oscillator", "gain", "oscillator", "gain"],
+        "maxRms": 0.011257621793622828,
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "renderedSamples": 79,
+        "maxPeak": 0.02958102524280548
+      }
+    }
+  ],
+  "issues": []
+}

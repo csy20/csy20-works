@@ -9,7 +9,6 @@ import {
 import { SoundContext } from "./useSound";
 
 const SOUND_STORAGE_KEY = "csy20-dock-sound";
-const TICK_INTERVAL_MS = 60;
 
 function getInitialSoundPreference() {
   try {
@@ -22,10 +21,8 @@ function getInitialSoundPreference() {
 export function SoundProvider({ children }: { children: ReactNode }) {
   const [soundEnabled, setSoundEnabled] = useState(getInitialSoundPreference);
   const enabledRef = useRef(soundEnabled);
-  const gestureRef = useRef(false);
   const contextRef = useRef<AudioContext | null>(null);
-  const resumingRef = useRef<AudioContext | null>(null);
-  const lastTickRef = useRef(-Infinity);
+  const pendingTickRef = useRef<AudioContext | null>(null);
 
   const getContext = useCallback(() => {
     if (contextRef.current) return contextRef.current;
@@ -43,94 +40,13 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     return contextRef.current;
   }, []);
 
-  const resumeContext = useCallback((context: AudioContext) => {
-    if (context.state !== "suspended" || resumingRef.current === context)
+  const emitTick = useCallback((context: AudioContext) => {
+    if (
+      !enabledRef.current ||
+      contextRef.current !== context ||
+      context.state !== "running"
+    )
       return;
-
-    resumingRef.current = context;
-    try {
-      void Promise.resolve(context.resume())
-        .catch(() => {
-          // A later deliberate gesture can retry a browser-blocked resume.
-        })
-        .finally(() => {
-          if (resumingRef.current === context) resumingRef.current = null;
-        });
-    } catch {
-      resumingRef.current = null;
-    }
-  }, []);
-
-  useEffect(() => {
-    const unlockAudio = (event: Event) => {
-      if (!event.isTrusted) return;
-      gestureRef.current = true;
-      if (!enabledRef.current) return;
-
-      const context = getContext();
-      if (context) resumeContext(context);
-    };
-
-    const syncPreference = (event: StorageEvent) => {
-      if (event.key !== SOUND_STORAGE_KEY && event.key !== null) return;
-      const enabled = event.newValue !== "off";
-      enabledRef.current = enabled;
-      setSoundEnabled(enabled);
-    };
-
-    window.addEventListener("pointerdown", unlockAudio, { capture: true });
-    window.addEventListener("keydown", unlockAudio, { capture: true });
-    window.addEventListener("storage", syncPreference);
-
-    return () => {
-      window.removeEventListener("pointerdown", unlockAudio, { capture: true });
-      window.removeEventListener("keydown", unlockAudio, { capture: true });
-      window.removeEventListener("storage", syncPreference);
-      const context = contextRef.current;
-      contextRef.current = null;
-      resumingRef.current = null;
-      gestureRef.current = false;
-      if (context) {
-        try {
-          void context.close().catch(() => {});
-        } catch {
-          // Closing an already unavailable context is harmless.
-        }
-      }
-    };
-  }, [getContext, resumeContext]);
-
-  const toggleSound = useCallback(() => {
-    const enabled = !enabledRef.current;
-    enabledRef.current = enabled;
-    setSoundEnabled(enabled);
-
-    try {
-      window.localStorage.setItem(SOUND_STORAGE_KEY, enabled ? "on" : "off");
-    } catch {
-      // Muting still works for this visit when storage is restricted.
-    }
-
-    if (enabled && gestureRef.current) {
-      const context = getContext();
-      if (context) resumeContext(context);
-    }
-  }, [getContext, resumeContext]);
-
-  const playDockTick = useCallback(() => {
-    if (!enabledRef.current || !gestureRef.current) return;
-
-    const context = getContext();
-    if (!context) return;
-    if (context.state !== "running") {
-      resumeContext(context);
-      // Never schedule ticks in a suspended context or replay a hover burst.
-      return;
-    }
-
-    const now = performance.now();
-    if (now - lastTickRef.current < TICK_INTERVAL_MS) return;
-    lastTickRef.current = now;
 
     try {
       const oscillator = context.createOscillator();
@@ -153,7 +69,99 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     } catch {
       // Audio failures must never interrupt a dock action.
     }
-  }, [getContext, resumeContext]);
+  }, []);
+
+  const resumeContext = useCallback(
+    (context: AudioContext) => {
+      if (context.state === "closed") return;
+
+      try {
+        // Retry inside a trusted gesture even when an earlier hover's resume
+        // is still waiting for the browser's autoplay permission.
+        void context
+          .resume()
+          .then(() => {
+            if (pendingTickRef.current !== context) return;
+            pendingTickRef.current = null;
+            emitTick(context);
+          })
+          .catch(() => {
+            // Keep at most one pending tick for a later gesture to retry.
+          });
+      } catch {
+        // A missing or blocked audio device must not affect navigation.
+      }
+    },
+    [emitTick],
+  );
+
+  const playDockTick = useCallback(() => {
+    if (!enabledRef.current) return;
+
+    const context = getContext();
+    if (!context) return;
+    if (context.state === "running") {
+      pendingTickRef.current = null;
+      emitTick(context);
+    } else if (context.state !== "closed") {
+      // The first request survives initialization, without accumulating a
+      // burst of sounds while the browser waits for a user interaction.
+      pendingTickRef.current = context;
+      resumeContext(context);
+    }
+  }, [emitTick, getContext, resumeContext]);
+
+  useEffect(() => {
+    const unlockAudio = (event: Event) => {
+      if (!event.isTrusted || !enabledRef.current) return;
+
+      const context = contextRef.current;
+      if (context && context.state !== "running") resumeContext(context);
+    };
+
+    const syncPreference = (event: StorageEvent) => {
+      if (event.key !== SOUND_STORAGE_KEY && event.key !== null) return;
+      const enabled = event.newValue !== "off";
+      enabledRef.current = enabled;
+      if (!enabled) pendingTickRef.current = null;
+      setSoundEnabled(enabled);
+    };
+
+    window.addEventListener("pointerdown", unlockAudio, { capture: true });
+    window.addEventListener("keydown", unlockAudio, { capture: true });
+    window.addEventListener("storage", syncPreference);
+
+    return () => {
+      window.removeEventListener("pointerdown", unlockAudio, { capture: true });
+      window.removeEventListener("keydown", unlockAudio, { capture: true });
+      window.removeEventListener("storage", syncPreference);
+      const context = contextRef.current;
+      contextRef.current = null;
+      pendingTickRef.current = null;
+      if (context) {
+        try {
+          void context.close().catch(() => {});
+        } catch {
+          // Closing an already unavailable context is harmless.
+        }
+      }
+    };
+  }, [resumeContext]);
+
+  const toggleSound = useCallback(() => {
+    const enabled = !enabledRef.current;
+    enabledRef.current = enabled;
+    setSoundEnabled(enabled);
+
+    try {
+      window.localStorage.setItem(SOUND_STORAGE_KEY, enabled ? "on" : "off");
+    } catch {
+      // Muting still works for this visit when storage is restricted.
+    }
+
+    if (enabled) playDockTick();
+    else pendingTickRef.current = null;
+  }, [playDockTick]);
 
   const value = useMemo(
     () => ({ soundEnabled, toggleSound, playDockTick }),
