@@ -1,9 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "./useTheme";
 import { Icon } from "./ui/Icon";
-import { SunIcon, MoonIcon } from "./ui/ThemeIcons";
-import { socialLinks } from "../data/siteContent";
 
 const sectionLinks = [
   { id: "hero", label: "Home", icon: "home" },
@@ -98,12 +95,9 @@ function useDockMagnification() {
 }
 
 export function Navigation() {
-  const { theme, toggleTheme } = useTheme();
   const activeSection = useActiveSection();
   const canMagnify = useDockMagnification();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const github = socialLinks.find((link) => link.icon === "github");
-  const themeLabel = `Switch to ${theme === "dark" ? "light" : "dark"} theme`;
 
   const icon = (node: ReactNode, index: number) => {
     const distance =
@@ -149,34 +143,6 @@ export function Navigation() {
           </span>
         </a>
       ))}
-      {github && (
-        <a
-          className="dock-item dock-github"
-          href={github.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub profile (opens in a new tab)"
-          onPointerEnter={() => setHoveredIndex(4)}
-        >
-          {icon(<Icon name="github" size={20} />, 4)}
-          <span className="dock-tooltip" aria-hidden="true">
-            GitHub
-          </span>
-        </a>
-      )}
-      <span className="dock-divider" aria-hidden="true" />
-      <button
-        className="dock-item"
-        type="button"
-        aria-label={themeLabel}
-        onClick={toggleTheme}
-        onPointerEnter={() => setHoveredIndex(5)}
-      >
-        {icon(theme === "dark" ? <SunIcon /> : <MoonIcon />, 5)}
-        <span className="dock-tooltip" aria-hidden="true">
-          {theme === "dark" ? "Light theme" : "Dark theme"}
-        </span>
-      </button>
     </nav>
   );
 }

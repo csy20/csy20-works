@@ -1,5 +1,6 @@
 import { MotionConfig } from "framer-motion";
 import { Navigation } from "./components/Navigation";
+import { HeaderControls } from "./components/HeaderControls";
 import { NotFound } from "./components/NotFound";
 import { HeroSection } from "./sections/HeroSection";
 import { ProjectsSection } from "./sections/ProjectsSection";
@@ -32,14 +33,17 @@ export default function App() {
             <span className="wordmark-domain"> / independent engineer</span>
           </span>
         </a>
-        <a
-          href={resumeUrl}
-          className="masthead-resume"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Resume <Icon name="external-link" size={14} />
-        </a>
+        <div className="masthead-actions">
+          <a
+            href={resumeUrl}
+            className="masthead-resume"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume <Icon name="external-link" size={14} />
+          </a>
+          <HeaderControls />
+        </div>
       </header>
       <main id="main-content" tabIndex={-1}>
         <HeroSection />

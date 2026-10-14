@@ -69,6 +69,21 @@ describe("portfolio", () => {
     expect(
       screen.getByRole("link", { name: "Skip to content" }),
     ).toHaveAttribute("href", "#main-content");
+    const header = within(container.querySelector(".masthead") as HTMLElement);
+    expect(
+      header.getByRole("link", { name: /GitHub profile/ }),
+    ).toHaveAttribute(
+      "href",
+      socialLinks.find((link) => link.icon === "github")?.href,
+    );
+    expect(
+      header.getByRole("button", { name: "Switch to dark theme" }),
+    ).toHaveAttribute("type", "button");
+    const dock = within(
+      screen.getByRole("navigation", { name: "Main navigation" }),
+    );
+    expect(dock.getAllByRole("link")).toHaveLength(4);
+    expect(dock.queryByRole("button")).not.toBeInTheDocument();
   });
 
   it("preserves expanded project content when switching themes", async () => {
@@ -77,9 +92,11 @@ describe("portfolio", () => {
     await user.click(screen.getAllByText("Engineering notes")[0]!);
     const detail = container.querySelector("#speech-relay details")!;
     expect(detail).toHaveAttribute("open");
-    await user.click(
-      screen.getByRole("button", { name: "Switch to dark theme" }),
-    );
+    screen.getByRole("button", { name: "Switch to dark theme" }).focus();
+    await user.keyboard("{Enter}");
+    expect(
+      screen.getByRole("button", { name: "Switch to light theme" }),
+    ).toHaveFocus();
     expect(detail).toHaveAttribute("open");
     expect(document.documentElement).toHaveAttribute("data-theme", "dark");
     expect(localStorage.getItem("csy20-theme")).toBe("dark");

@@ -2,27 +2,24 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Navigation } from "./Navigation";
-import { ThemeProvider } from "./ThemeProvider";
-import { config } from "../config";
-import { socialLinks } from "../data/siteContent";
 
 beforeEach(() => window.localStorage.clear());
 afterEach(() => vi.restoreAllMocks());
 
 function renderNavigation() {
   render(
-    <ThemeProvider>
+    <>
       <section id="hero" />
       <section id="projects" />
       <section id="open-source" />
       <section id="contact" />
       <Navigation />
-    </ThemeProvider>,
+    </>,
   );
 }
 
 describe("Navigation", () => {
-  it("provides semantic section links, a real GitHub destination, and a theme button", () => {
+  it("provides four semantic section links without header controls", () => {
     vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(
       function (this: HTMLElement) {
         return { top: this.id === "hero" ? 0 : 1000 } as DOMRect;
@@ -45,15 +42,8 @@ describe("Navigation", () => {
       "aria-current",
       "location",
     );
-    expect(
-      screen.getByRole("link", { name: /GitHub profile/ }),
-    ).toHaveAttribute(
-      "href",
-      socialLinks.find((link) => link.icon === "github")?.href,
-    );
-    expect(
-      screen.getByRole("button", { name: "Switch to dark theme" }),
-    ).toHaveAttribute("type", "button");
+    expect(screen.getAllByRole("link")).toHaveLength(4);
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
   it("updates the active section as the reading position changes", async () => {
@@ -92,20 +82,12 @@ describe("Navigation", () => {
     );
   });
 
-  it("lets keyboard users focus the dock and switch persistent themes", async () => {
+  it("lets keyboard users reach every dock destination", async () => {
     renderNavigation();
     const user = userEvent.setup();
-    await user.tab();
-    expect(screen.getByRole("link", { name: "Home" })).toHaveFocus();
-
-    const themeButton = screen.getByRole("button", {
-      name: "Switch to dark theme",
-    });
-    themeButton.focus();
-    await user.keyboard("{Enter}");
-    expect(
-      screen.getByRole("button", { name: "Switch to light theme" }),
-    ).toHaveFocus();
-    expect(window.localStorage.getItem(config.themeStorageKey)).toBe("dark");
+    for (const name of ["Home", "Work", "Open source", "Contact"]) {
+      await user.tab();
+      expect(screen.getByRole("link", { name })).toHaveFocus();
+    }
   });
 });
