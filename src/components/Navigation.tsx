@@ -18,9 +18,13 @@ function useActiveSection(): SectionId {
 
     const update = () => {
       frame = 0;
-      const readingLine = Math.min(
-        220,
-        Math.max(72, window.innerHeight * 0.28),
+      const navigationBottom =
+        document.querySelector(".section-nav")?.getBoundingClientRect()
+          .bottom ?? 72;
+      // Include anchored headings below the fixed navigation on short screens.
+      const readingLine = Math.max(
+        navigationBottom + 72,
+        Math.min(220, Math.max(144, window.innerHeight * 0.28)),
       );
       let current: SectionId = "hero";
 

@@ -42,7 +42,9 @@ export default function App() {
           >
             Resume <Icon name="external-link" size={14} />
           </a>
-          <Navigation placement="header" />
+          <div className="section-nav-slot">
+            <Navigation placement="header" />
+          </div>
         </div>
       </header>
       <main id="main-content" tabIndex={-1}>

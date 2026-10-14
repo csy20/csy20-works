@@ -56,6 +56,7 @@
   --type-heading: clamp(32px, 3.5vw, 48px);
   --bg-secondary: var(--surface-soft);
   --card-shadow: none;
+  --page-gutter: 56px;
   font-family: var(--font-display);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -94,7 +95,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 24px;
+  scroll-padding-top: calc(100px + env(safe-area-inset-top, 0px));
   scroll-padding-bottom: 110px;
 }
 body {
@@ -278,6 +279,19 @@ main:focus {
   border-radius: 18px;
   background: var(--surface);
   box-shadow: 0 4px 14px -10px #0003;
+}
+.section-nav-slot {
+  width: 207px;
+  height: 60px;
+}
+.section-nav-header {
+  position: fixed;
+  z-index: 60;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  right: max(
+    calc(var(--page-gutter) + env(safe-area-inset-right, 0px)),
+    calc((100% - 1248px) / 2)
+  );
 }
 .section-nav-item {
   position: relative;
@@ -1103,7 +1117,7 @@ summary::-webkit-details-marker {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 22px;
+  padding: 9px 16px;
   border: 1px solid var(--dock-border);
   border-radius: 999px;
   background: var(--dock-bg);
@@ -1112,8 +1126,8 @@ summary::-webkit-details-marker {
   box-shadow:
     0 12px 36px -16px #0005,
     inset 0 1px 0 #ffffff08;
-  width: min(504px, calc(100% - 24px));
-  height: 78px;
+  width: min(432px, calc(100% - 24px));
+  height: 64px;
 }
 .dock-item {
   position: relative;
@@ -1121,8 +1135,8 @@ summary::-webkit-details-marker {
   align-items: center;
   justify-content: center;
   min-width: 44px;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   border-radius: 50%;
   background: transparent;
@@ -1214,6 +1228,9 @@ summary::-webkit-details-marker {
   }
 }
 @media (max-width: 1100px) {
+  :root {
+    --page-gutter: 40px;
+  }
   .container {
     width: calc(100% - 80px);
   }
@@ -1262,6 +1279,9 @@ summary::-webkit-details-marker {
   }
 }
 @media (max-width: 767px) {
+  :root {
+    --page-gutter: 20px;
+  }
   .container {
     width: calc(100% - 40px);
   }
@@ -1278,6 +1298,13 @@ summary::-webkit-details-marker {
     gap: 2px;
     padding: 4px;
     border-radius: 15px;
+  }
+  .section-nav-slot {
+    width: 192px;
+    height: 54px;
+  }
+  .section-nav-header {
+    top: calc(9px + env(safe-area-inset-top, 0px));
   }
   .wordmark-domain {
     display: none;
@@ -1563,6 +1590,9 @@ summary::-webkit-details-marker {
   }
 }
 @media (max-width: 360px) {
+  :root {
+    --page-gutter: 16px;
+  }
   .dock-shell {
     width: calc(100% - 4px);
     padding-inline: 3px;
