@@ -12,29 +12,21 @@ import { SpeechPipeline } from "../components/SpeechPipeline";
 
 function ProjectLinks({
   project,
-  promoteStore = false,
+  storeLabel,
 }: {
   project: Project;
-  promoteStore?: boolean;
+  storeLabel?: string;
 }) {
   return (
     <div className="project-links">
       {project.links.map((link) => (
-        <ActionLink
-          key={link.href}
-          href={link.href}
-          className={
-            promoteStore && link.label === "Play Store"
-              ? "button button-primary"
-              : "text-link"
-          }
-        >
+        <ActionLink key={link.href} href={link.href}>
           {link.label === "GitHub"
             ? "Source code"
             : link.label === "Release"
               ? "Alpha release"
-              : promoteStore && link.label === "Play Store"
-                ? "Get it on Google Play"
+              : storeLabel && link.label === "Play Store"
+                ? storeLabel
                 : link.label}
         </ActionLink>
       ))}
@@ -57,14 +49,16 @@ function PublishedProduct({
     >
       <div className="product-spotlight-cover">
         <p className="eyebrow">Published product / Android</p>
-        <img
-          src={project.logo}
-          alt={`${project.title} app icon`}
-          width={512}
-          height={512}
-          loading="lazy"
-        />
-        <p className="product-cover-line">{spotlight.coverLine}</p>
+        <div className="product-cover-lockup">
+          <img
+            src={project.logo}
+            alt={`${project.title} app icon`}
+            width={512}
+            height={512}
+            loading="lazy"
+          />
+          <p className="product-cover-line">{spotlight.coverLine}</p>
+        </div>
         <span className="product-cover-platform">
           Flutter + Dart · Local audio
         </span>
@@ -81,7 +75,7 @@ function PublishedProduct({
             <li key={feature}>{feature}</li>
           ))}
         </ul>
-        <ProjectLinks project={project} promoteStore />
+        <ProjectLinks project={project} storeLabel="Get it on Google Play" />
         <details className="engineering-detail">
           <summary>
             Inside the product <span aria-hidden="true">+</span>

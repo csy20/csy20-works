@@ -1,0 +1,274 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "theme": "light",
+    "expanded": false,
+    "violations": [],
+    "incomplete": [],
+    "passes": 18,
+    "geometry": {
+      "theme": "light",
+      "detailsOpen": false,
+      "pageWidth": 320,
+      "viewport": 320,
+      "headingSize": "30px",
+      "links": [
+        {
+          "label": "Get it on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+          "height": 44,
+          "className": "text-link"
+        },
+        {
+          "label": "Source code",
+          "href": "https://github.com/csy20/nen",
+          "height": 44,
+          "className": "text-link"
+        }
+      ],
+      "logo": {
+        "width": 64,
+        "height": 64
+      }
+    }
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "theme": "light",
+    "expanded": true,
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "geometry": {
+      "theme": "light",
+      "detailsOpen": true,
+      "pageWidth": 320,
+      "viewport": 320,
+      "headingSize": "30px",
+      "links": [
+        {
+          "label": "Get it on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+          "height": 44,
+          "className": "text-link"
+        },
+        {
+          "label": "Source code",
+          "href": "https://github.com/csy20/nen",
+          "height": 44,
+          "className": "text-link"
+        }
+      ],
+      "logo": {
+        "width": 64,
+        "height": 64
+      }
+    }
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "theme": "dark",
+    "expanded": false,
+    "violations": [],
+    "incomplete": [],
+    "passes": 18,
+    "geometry": {
+      "theme": "dark",
+      "detailsOpen": false,
+      "pageWidth": 320,
+      "viewport": 320,
+      "headingSize": "30px",
+      "links": [
+        {
+          "label": "Get it on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+          "height": 44,
+          "className": "text-link"
+        },
+        {
+          "label": "Source code",
+          "href": "https://github.com/csy20/nen",
+          "height": 44,
+          "className": "text-link"
+        }
+      ],
+      "logo": {
+        "width": 64,
+        "height": 64
+      }
+    }
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "theme": "dark",
+    "expanded": true,
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "geometry": {
+      "theme": "dark",
+      "detailsOpen": true,
+      "pageWidth": 320,
+      "viewport": 320,
+      "headingSize": "30px",
+      "links": [
+        {
+          "label": "Get it on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+          "height": 44,
+          "className": "text-link"
+        },
+        {
+          "label": "Source code",
+          "href": "https://github.com/csy20/nen",
+          "height": 44,
+          "className": "text-link"
+        }
+      ],
+      "logo": {
+        "width": 64,
+        "height": 64
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "theme": "light",
+    "expanded": false,
+    "violations": [],
+    "incomplete": [],
+    "passes": 18,
+    "geometry": {
+      "theme": "light",
+      "detailsOpen": false,
+      "pageWidth": 1440,
+      "viewport": 1440,
+      "headingSize": "35px",
+      "links": [
+        {
+          "label": "Get it on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+          "height": 44,
+          "className": "text-link"
+        },
+        {
+          "label": "Source code",
+          "href": "https://github.com/csy20/nen",
+          "height": 44,
+          "className": "text-link"
+        }
+      ],
+      "logo": {
+        "width": 72,
+        "height": 72
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "theme": "light",
+    "expanded": true,
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "geometry": {
+      "theme": "light",
+      "detailsOpen": true,
+      "pageWidth": 1440,
+      "viewport": 1440,
+      "headingSize": "35px",
+      "links": [
+        {
+          "label": "Get it on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+          "height": 44,
+          "className": "text-link"
+        },
+        {
+          "label": "Source code",
+          "href": "https://github.com/csy20/nen",
+          "height": 44,
+          "className": "text-link"
+        }
+      ],
+      "logo": {
+        "width": 72,
+        "height": 72
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "theme": "dark",
+    "expanded": false,
+    "violations": [],
+    "incomplete": [],
+    "passes": 18,
+    "geometry": {
+      "theme": "dark",
+      "detailsOpen": false,
+      "pageWidth": 1440,
+      "viewport": 1440,
+      "headingSize": "35px",
+      "links": [
+        {
+          "label": "Get it on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+          "height": 44,
+          "className": "text-link"
+        },
+        {
+          "label": "Source code",
+          "href": "https://github.com/csy20/nen",
+          "height": 44,
+          "className": "text-link"
+        }
+      ],
+      "logo": {
+        "width": 72,
+        "height": 72
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "theme": "dark",
+    "expanded": true,
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "geometry": {
+      "theme": "dark",
+      "detailsOpen": true,
+      "pageWidth": 1440,
+      "viewport": 1440,
+      "headingSize": "35px",
+      "links": [
+        {
+          "label": "Get it on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen",
+          "height": 44,
+          "className": "text-link"
+        },
+        {
+          "label": "Source code",
+          "href": "https://github.com/csy20/nen",
+          "height": 44,
+          "className": "text-link"
+        }
+      ],
+      "logo": {
+        "width": 72,
+        "height": 72
+      }
+    }
+  }
+]

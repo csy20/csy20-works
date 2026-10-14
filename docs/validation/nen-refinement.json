@@ -1,0 +1,122 @@
+[
+  {
+    "theme": "light",
+    "width": 320,
+    "height": 740,
+    "headingSize": "30px",
+    "logoWidth": 64,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "headingSize": "30px",
+    "logoWidth": 64,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "height": 1024,
+    "headingSize": "35px",
+    "logoWidth": 72,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "height": 1000,
+    "headingSize": "35px",
+    "logoWidth": 72,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 320,
+    "height": 480,
+    "headingSize": "30px",
+    "logoWidth": 64,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 640,
+    "height": 450,
+    "headingSize": "30px",
+    "logoWidth": 64,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 320,
+    "height": 740,
+    "headingSize": "30px",
+    "logoWidth": 64,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "headingSize": "30px",
+    "logoWidth": 64,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 768,
+    "height": 1024,
+    "headingSize": "35px",
+    "logoWidth": 72,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "height": 1000,
+    "headingSize": "35px",
+    "logoWidth": 72,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 320,
+    "height": 480,
+    "headingSize": "30px",
+    "logoWidth": 64,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 640,
+    "height": 450,
+    "headingSize": "30px",
+    "logoWidth": 64,
+    "coverTextSize": "24px",
+    "sharedLinks": true,
+    "passed": true
+  }
+]
