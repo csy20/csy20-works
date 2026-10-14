@@ -44,10 +44,6 @@
   --dock-hover: #eae9e2;
   --success: #366243;
   --success-bg: #e7eee6;
-  --open: #80541b;
-  --open-bg: #f5ecdb;
-  --closed: #665778;
-  --closed-bg: #ece7f0;
   --font-display: "Space Grotesk", sans-serif;
   --font-editorial: "Instrument Serif", Georgia, serif;
   --type-body: 15px;
@@ -85,10 +81,6 @@
   --dock-hover: #353638;
   --success: #a4c9a7;
   --success-bg: #223328;
-  --open: #e0be83;
-  --open-bg: #352e21;
-  --closed: #c2afd9;
-  --closed-bg: #302839;
 }
 * {
   box-sizing: border-box;
@@ -1973,14 +1965,6 @@ summary::-webkit-details-marker {
   color: var(--success);
   background: var(--success-bg);
 }
-.status-open {
-  color: var(--open);
-  background: var(--open-bg);
-}
-.status-closed {
-  color: var(--closed);
-  background: var(--closed-bg);
-}
 .contribution-status .status-dot {
   background: currentColor;
   width: 4px;
@@ -2042,7 +2026,7 @@ summary::-webkit-details-marker {
   }
   .contribution-summary {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     margin-bottom: 24px;
     padding-block: 15px;

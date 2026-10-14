@@ -1,8 +1,8 @@
 import { useState } from "react";
 import {
-  completedContributionRepositories,
-  completedContributionSummary,
-  completedContributions,
+  mergedContributionRepositories,
+  mergedContributionSummary,
+  mergedContributions,
   contributionSnapshot,
   formatContributionDate,
   getContributionDate,
@@ -15,8 +15,8 @@ export function ActivitySection() {
   const [showAll, setShowAll] = useState(false);
   const selectedContributions =
     selectedRepository === "all"
-      ? completedContributions
-      : completedContributions.filter(
+      ? mergedContributions
+      : mergedContributions.filter(
           (record) => record.repository === selectedRepository,
         );
   const visibleContributions = showAll
@@ -52,15 +52,11 @@ export function ActivitySection() {
         >
           <div>
             <dt>Merged</dt>
-            <dd>{completedContributionSummary.merged}</dd>
-          </div>
-          <div>
-            <dt>Closed</dt>
-            <dd>{completedContributionSummary.closed}</dd>
+            <dd>{mergedContributionSummary.merged}</dd>
           </div>
           <div>
             <dt>Repositories</dt>
-            <dd>{completedContributionSummary.repositories}</dd>
+            <dd>{mergedContributionSummary.repositories}</dd>
           </div>
         </dl>
 
@@ -86,10 +82,10 @@ export function ActivitySection() {
               >
                 <span>All repositories</span>
                 <span className="repository-count">
-                  {completedContributionSummary.total}
+                  {mergedContributionSummary.total}
                 </span>
               </button>
-              {completedContributionRepositories.map((item) => (
+              {mergedContributionRepositories.map((item) => (
                 <button
                   key={item.repository}
                   type="button"
@@ -109,7 +105,7 @@ export function ActivitySection() {
             <div className="contribution-results-heading">
               <h3>
                 {selectedRepository === "all"
-                  ? "Selected upstream pull requests"
+                  ? "Merged upstream pull requests"
                   : selectedRepository}
               </h3>
               <p role="status" aria-live="polite">
@@ -147,11 +143,9 @@ export function ActivitySection() {
                       </span>
                     </a>
                     <div className="contribution-state">
-                      <span
-                        className={`contribution-status status-${record.status}`}
-                      >
+                      <span className="contribution-status status-merged">
                         <span className="status-dot" aria-hidden="true" />
-                        {record.status === "merged" ? "Merged" : "Closed"}
+                        Merged
                       </span>
                       <time dateTime={date}>
                         {formatContributionDate(date)}
@@ -180,11 +174,11 @@ export function ActivitySection() {
 
         <div className="contribution-footnote">
           <p>
-            Merged and closed technical contributions · Snapshot{" "}
+            Merged technical contributions · Snapshot{" "}
             <time dateTime={contributionSnapshot.generatedAt}>
               {formatContributionDate(contributionSnapshot.generatedAt)}
             </time>
-            . Closed means closed without merge.
+            .
           </p>
           <a
             className="inline-link"

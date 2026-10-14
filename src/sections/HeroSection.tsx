@@ -1,7 +1,7 @@
 import { PortraitCard } from "../components/PortraitCard";
 import { Icon } from "../components/ui/Icon";
 import { profile, resumeUrl } from "../data/siteContent";
-import { completedContributionSummary } from "../data/contributions";
+import { mergedContributionSummary } from "../data/contributions";
 
 export function HeroSection() {
   return (
@@ -58,12 +58,11 @@ export function HeroSection() {
         </a>
         <a href="#open-source">
           <strong>
-            {completedContributionSummary.merged}{" "}
-            <span>merged upstream PRs</span>
+            {mergedContributionSummary.merged} <span>merged upstream PRs</span>
           </strong>
           <span>
-            {completedContributionSummary.total} technical PRs ·{" "}
-            {completedContributionSummary.repositories} repositories
+            {mergedContributionSummary.total} technical PRs ·{" "}
+            {mergedContributionSummary.repositories} repositories
           </span>
         </a>
         <a href="#nen">

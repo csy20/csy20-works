@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 import snapshot from "./contributions.generated.json";
 import {
-  completedContributionRepositories,
-  completedContributionSummary,
-  completedContributions,
+  mergedContributionRepositories,
+  mergedContributionSummary,
+  mergedContributions,
   contributionRepositories,
   contributionSummary,
   contributions,
@@ -69,40 +69,39 @@ describe("local contribution evidence", () => {
     }
   });
 
-  it("keeps pending work in the dataset but excludes it from every completed-view total", () => {
+  it("retains unmerged evidence in the dataset while deriving a merged-only portfolio view", () => {
     expect(contributions.some((record) => record.status === "open")).toBe(true);
-    expect(completedContributions).toEqual(
-      contributions.filter((record) => record.status !== "open"),
+    expect(contributions.some((record) => record.status === "closed")).toBe(
+      true,
     );
-    expect(completedContributionSummary).toEqual(
-      summarizeContributions(completedContributions),
+    expect(mergedContributions).toEqual(
+      contributions.filter((record) => record.status === "merged"),
     );
-    expect(completedContributionSummary.open).toBe(0);
-    expect(completedContributionSummary.merged).toBe(
-      contributionSummary.merged,
+    expect(mergedContributionSummary).toEqual(
+      summarizeContributions(mergedContributions),
     );
-    expect(completedContributionSummary.closed).toBe(
-      contributionSummary.closed,
-    );
-    expect(completedContributionSummary.total).toBe(
-      contributionSummary.total - contributionSummary.open,
-    );
-    expect(completedContributionSummary.repositories).toBe(
-      completedContributionRepositories.length,
+    expect(mergedContributionSummary.open).toBe(0);
+    expect(mergedContributionSummary.merged).toBe(contributionSummary.merged);
+    expect(mergedContributionSummary.closed).toBe(0);
+    expect(mergedContributionSummary.total).toBe(contributionSummary.merged);
+    expect(mergedContributionSummary.repositories).toBe(
+      mergedContributionRepositories.length,
     );
     expect(
-      completedContributionRepositories.reduce(
+      mergedContributionRepositories.reduce(
         (total, repository) => total + repository.total,
         0,
       ),
-    ).toBe(completedContributions.length);
+    ).toBe(mergedContributions.length);
 
-    for (const repository of completedContributionRepositories) {
+    for (const repository of mergedContributionRepositories) {
       expect(repository.open).toBe(0);
+      expect(repository.closed).toBe(0);
+      expect(repository.total).toBe(repository.merged);
       expect(repository).toEqual({
         repository: repository.repository,
         ...summarizeContributions(
-          completedContributions.filter(
+          mergedContributions.filter(
             (record) => record.repository === repository.repository,
           ),
         ),

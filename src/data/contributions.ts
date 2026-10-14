@@ -81,17 +81,14 @@ function groupContributionRepositories(records: readonly Contribution[]) {
 export const contributionRepositories =
   groupContributionRepositories(contributions);
 
-// The portfolio presents completed review outcomes. Preserve pending work in
-// the curated dataset and generated snapshot without including it in this view.
-export const completedContributions = contributions.filter(
-  (record) => record.status !== "open",
+// Present merged evidence while preserving all statuses in the source dataset.
+export const mergedContributions = contributions.filter(
+  (record) => record.status === "merged",
 );
-export const completedContributionSummary = summarizeContributions(
-  completedContributions,
-);
-export const completedContributionRepositories = groupContributionRepositories(
-  completedContributions,
-);
+export const mergedContributionSummary =
+  summarizeContributions(mergedContributions);
+export const mergedContributionRepositories =
+  groupContributionRepositories(mergedContributions);
 
 export function getContributionDate(record: Contribution): string {
   return record.mergedAt ?? record.closedAt ?? record.createdAt;

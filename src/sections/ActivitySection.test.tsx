@@ -2,9 +2,9 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import {
-  completedContributionRepositories,
-  completedContributionSummary,
-  completedContributions,
+  mergedContributionRepositories,
+  mergedContributionSummary,
+  mergedContributions,
   contributionSnapshot,
   contributions,
   formatContributionDate,
@@ -19,6 +19,9 @@ describe("Open source evidence", () => {
       screen.getByRole("heading", { name: "Better software, together." }),
     ).toBeInTheDocument();
     expect(
+      screen.getByRole("heading", { name: "Merged upstream pull requests" }),
+    ).toBeInTheDocument();
+    expect(
       screen.getByRole("button", { name: /All repositories/ }),
     ).toHaveAttribute("aria-pressed", "true");
     expect(
@@ -30,12 +33,12 @@ describe("Open source evidence", () => {
     );
     expect(
       within(screen.getByRole("list")).getAllByRole("listitem"),
-    ).toHaveLength(completedContributionSummary.total);
+    ).toHaveLength(mergedContributionSummary.total);
     expect(
       screen.getByRole("button", { name: /Show fewer contributions/ }),
     ).toHaveAttribute("aria-expanded", "true");
 
-    for (const record of completedContributions) {
+    for (const record of mergedContributions) {
       expect(screen.getByRole("link", { name: record.title })).toHaveAttribute(
         "href",
         record.url,
@@ -43,10 +46,10 @@ describe("Open source evidence", () => {
     }
     expect(
       container.querySelectorAll("a[href^='https:']").length,
-    ).toBeGreaterThan(completedContributionSummary.total);
+    ).toBeGreaterThan(mergedContributionSummary.total);
   });
 
-  it("excludes pending pull requests and repositories with only pending work", async () => {
+  it("excludes open and closed pull requests and repositories without merged work", async () => {
     const user = userEvent.setup();
     const { container } = render(<ActivitySection />);
     await user.click(
@@ -54,24 +57,28 @@ describe("Open source evidence", () => {
     );
 
     expect(screen.queryByText("Open", { exact: true })).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Closed", { exact: true }),
+    ).not.toBeInTheDocument();
     expect(container.querySelector(".status-open")).not.toBeInTheDocument();
+    expect(container.querySelector(".status-closed")).not.toBeInTheDocument();
     expect(screen.getByRole("status")).toHaveTextContent(
-      `${completedContributionSummary.total} pull requests`,
+      `${mergedContributionSummary.total} pull requests`,
     );
     const repositoryOptions = screen.getByRole("group", {
       name: "Repositories",
     });
     expect(within(repositoryOptions).getAllByRole("button")).toHaveLength(
-      completedContributionRepositories.length + 1,
+      mergedContributionRepositories.length + 1,
     );
     for (const record of contributions.filter(
-      (record) => record.status === "open",
+      (record) => record.status !== "merged",
     )) {
       expect(
         screen.queryByRole("link", { name: record.title }),
       ).not.toBeInTheDocument();
       if (
-        !completedContributions.some(
+        !mergedContributions.some(
           (item) => item.repository === record.repository,
         )
       ) {
@@ -82,7 +89,7 @@ describe("Open source evidence", () => {
         ).not.toBeInTheDocument();
       }
     }
-    for (const repository of completedContributionRepositories) {
+    for (const repository of mergedContributionRepositories) {
       expect(
         within(repositoryOptions).getByRole("button", {
           name: (name) =>
@@ -93,7 +100,7 @@ describe("Open source evidence", () => {
     }
   });
 
-  it("filters completed evidence by keyboard and preserves actual merge labels", async () => {
+  it("filters merged evidence by keyboard and preserves direct evidence links", async () => {
     const user = userEvent.setup();
     const { container } = render(<ActivitySection />);
     const repository = screen.getByRole("button", {
@@ -125,20 +132,29 @@ describe("Open source evidence", () => {
     ).toHaveAttribute("href", "https://github.com/redhat-et/ripwire/pull/244");
   });
 
-  it("separates closed work from merged work and resets expansion when the repository changes", async () => {
+  it("resets expansion when the selected merged repository changes", async () => {
     const user = userEvent.setup();
     const { container } = render(<ActivitySection />);
     await user.click(
       screen.getByRole("button", { name: /Show \d+ more contributions/ }),
     );
-    await user.click(screen.getByRole("button", { name: /dart-lang\/sdk/ }));
+    await user.click(
+      screen.getByRole("button", { name: /topoteretes\/cognee/ }),
+    );
     const results = container.querySelector("#contribution-results");
     if (!results) throw new Error("Contribution result region is missing.");
     expect(
-      within(results as HTMLElement).getByText("Closed", { exact: true }),
+      within(results as HTMLElement).getByText("Merged", { exact: true }),
     ).toBeInTheDocument();
     expect(
-      within(results as HTMLElement).queryByText("Merged", { exact: true }),
+      within(results as HTMLElement).queryByText("Closed", { exact: true }),
+    ).not.toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent("1 pull request");
+    expect(
+      within(results as HTMLElement).getAllByRole("listitem"),
+    ).toHaveLength(1);
+    expect(
+      screen.queryByRole("button", { name: /Show fewer contributions/ }),
     ).not.toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: /All repositories/ }));
     expect(
@@ -158,7 +174,7 @@ describe("Open source evidence", () => {
     rerender(<ActivitySection />);
     expect(
       within(screen.getByRole("list")).getAllByRole("listitem"),
-    ).toHaveLength(completedContributionSummary.total);
+    ).toHaveLength(mergedContributionSummary.total);
     expect(screen.getByText(/Snapshot/)).toHaveTextContent(
       formatContributionDate(contributionSnapshot.generatedAt),
     );
