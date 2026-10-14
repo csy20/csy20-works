@@ -1,6 +1,6 @@
 import { MotionConfig } from "framer-motion";
 import { Navigation } from "./components/Navigation";
-import { HeaderControls } from "./components/HeaderControls";
+import { SocialDock } from "./components/SocialDock";
 import { NotFound } from "./components/NotFound";
 import { HeroSection } from "./sections/HeroSection";
 import { ProjectsSection } from "./sections/ProjectsSection";
@@ -42,7 +42,7 @@ export default function App() {
           >
             Resume <Icon name="external-link" size={14} />
           </a>
-          <HeaderControls />
+          <Navigation placement="header" />
         </div>
       </header>
       <main id="main-content" tabIndex={-1}>
@@ -52,7 +52,7 @@ export default function App() {
         <StackSection />
         <ContactSection />
       </main>
-      <Navigation />
+      <SocialDock />
     </MotionConfig>
   );
 }

@@ -13,13 +13,13 @@ function renderNavigation() {
       <section id="projects" />
       <section id="open-source" />
       <section id="contact" />
-      <Navigation />
+      <Navigation placement="header" />
     </>,
   );
 }
 
 describe("Navigation", () => {
-  it("provides four semantic section links without header controls", () => {
+  it("provides four semantic header links without social or theme controls", () => {
     vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(
       function (this: HTMLElement) {
         return { top: this.id === "hero" ? 0 : 1000 } as DOMRect;
@@ -82,7 +82,7 @@ describe("Navigation", () => {
     );
   });
 
-  it("lets keyboard users reach every dock destination", async () => {
+  it("lets keyboard users reach every header destination", async () => {
     renderNavigation();
     const user = userEvent.setup();
     for (const name of ["Home", "Work", "Open source", "Contact"]) {

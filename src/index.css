@@ -39,7 +39,7 @@
   --border: #d8d8d0;
   --border-soft: #e3e2db;
   --focus-ring: #b8462a;
-  --dock-bg: rgba(255, 255, 252, 0.88);
+  --dock-bg: rgba(255, 255, 252, 0.96);
   --dock-border: rgba(25, 26, 27, 0.17);
   --dock-hover: #eae9e2;
   --success: #366243;
@@ -79,8 +79,8 @@
   --border: #393b3c;
   --border-soft: #2e3032;
   --focus-ring: #ff9d7a;
-  --dock-bg: rgba(32, 34, 37, 0.9);
-  --dock-border: rgba(244, 242, 237, 0.2);
+  --dock-bg: rgba(17, 18, 20, 0.96);
+  --dock-border: rgba(244, 242, 237, 0.14);
   --dock-hover: #353638;
   --success: #a4c9a7;
   --success-bg: #223328;
@@ -269,35 +269,28 @@ main:focus {
   gap: 16px;
   flex-shrink: 0;
 }
-.header-controls {
+.section-nav {
   display: flex;
   align-items: center;
-  gap: 2px;
-  padding: 2px;
+  gap: 5px;
+  padding: 7px;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 18px;
   background: var(--surface);
+  box-shadow: 0 4px 14px -10px #0003;
 }
-.header-control {
+.section-nav-item {
   position: relative;
   display: grid;
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: 9px;
+  border-radius: 11px;
   color: var(--text-secondary);
   background: transparent;
   transition:
     background-color 0.15s,
     color 0.15s;
-}
-.header-control + .header-control:before {
-  content: "";
-  position: absolute;
-  left: -2px;
-  height: 18px;
-  width: 1px;
-  background: var(--border);
 }
 .header-tooltip {
   position: absolute;
@@ -317,16 +310,16 @@ main:focus {
     opacity 0.15s,
     transform 0.15s;
 }
-.header-control:focus-visible .header-tooltip {
+.section-nav-item:focus-visible .header-tooltip {
   opacity: 1;
   transform: translateY(0);
 }
 @media (hover: hover) and (pointer: fine) {
-  .header-control:hover {
+  .section-nav-item:hover {
     color: var(--text-primary);
     background: var(--dock-hover);
   }
-  .header-control:hover .header-tooltip {
+  .section-nav-item:hover .header-tooltip {
     opacity: 1;
     transform: translateY(0);
   }
@@ -1109,16 +1102,18 @@ summary::-webkit-details-marker {
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 8px;
+  justify-content: space-between;
+  padding: 14px 22px;
   border: 1px solid var(--dock-border);
-  border-radius: 18px;
+  border-radius: 999px;
   background: var(--dock-bg);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 6px 24px -9px #0003;
-  max-width: calc(100% - 24px);
-  height: 64px;
+  box-shadow:
+    0 12px 36px -16px #0005,
+    inset 0 1px 0 #ffffff08;
+  width: min(504px, calc(100% - 24px));
+  height: 78px;
 }
 .dock-item {
   position: relative;
@@ -1126,21 +1121,21 @@ summary::-webkit-details-marker {
   align-items: center;
   justify-content: center;
   min-width: 44px;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 50%;
   background: transparent;
   color: var(--text-secondary);
   transition:
     background-color 0.15s,
     color 0.15s;
 }
-.dock-item[aria-current="location"] {
+.section-nav-item[aria-current="location"] {
   color: var(--accent);
   background: var(--accent-soft);
 }
-.dock-item[aria-current="location"]:after {
+.section-nav-item[aria-current="location"]:after {
   content: "";
   position: absolute;
   bottom: 4px;
@@ -1166,16 +1161,32 @@ summary::-webkit-details-marker {
   border-radius: 5px;
   color: var(--bg-primary);
   background: var(--text-primary);
-  font-size: 10px;
+  font-size: 12px;
   pointer-events: none;
   opacity: 0;
   transition:
     opacity 0.15s,
     transform 0.15s;
 }
+.dock-item:focus-visible {
+  outline-offset: -3px;
+}
+.dock-item:first-child .dock-tooltip {
+  left: 0;
+  transform: translateY(3px);
+}
+.dock-item:last-child .dock-tooltip {
+  left: auto;
+  right: 0;
+  transform: translateY(3px);
+}
 .dock-item:focus-visible .dock-tooltip {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+.dock-item:first-child:focus-visible .dock-tooltip,
+.dock-item:last-child:focus-visible .dock-tooltip {
+  transform: translateY(0);
 }
 @media (hover: hover) and (pointer: fine) {
   .dock-item:hover {
@@ -1185,6 +1196,10 @@ summary::-webkit-details-marker {
   .dock-item:hover .dock-tooltip {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+  }
+  .dock-item:first-child:hover .dock-tooltip,
+  .dock-item:last-child:hover .dock-tooltip {
+    transform: translateY(0);
   }
 }
 @media (min-width: 1440px) {
@@ -1252,6 +1267,17 @@ summary::-webkit-details-marker {
   }
   .masthead {
     height: 72px;
+  }
+  .masthead-resume {
+    display: none;
+  }
+  .masthead-actions {
+    gap: 0;
+  }
+  .section-nav {
+    gap: 2px;
+    padding: 4px;
+    border-radius: 15px;
   }
   .wordmark-domain {
     display: none;
@@ -1528,13 +1554,19 @@ summary::-webkit-details-marker {
     font-size: 9px;
   }
   .dock-shell {
-    height: 62px;
-    gap: 4px;
-    padding: 8px;
-    border-radius: 17px;
+    height: 64px;
+    padding: 9px 10px;
+  }
+  .dock-item {
+    width: 44px;
+    height: 44px;
   }
 }
 @media (max-width: 360px) {
+  .dock-shell {
+    width: calc(100% - 4px);
+    padding-inline: 3px;
+  }
   .container {
     width: calc(100% - 32px);
   }

@@ -70,20 +70,48 @@ describe("portfolio", () => {
       screen.getByRole("link", { name: "Skip to content" }),
     ).toHaveAttribute("href", "#main-content");
     const header = within(container.querySelector(".masthead") as HTMLElement);
-    expect(
-      header.getByRole("link", { name: /GitHub profile/ }),
-    ).toHaveAttribute(
-      "href",
-      socialLinks.find((link) => link.icon === "github")?.href,
+    const navigation = within(
+      header.getByRole("navigation", { name: "Main navigation" }),
     );
+    for (const [name, href] of [
+      ["Home", "#hero"],
+      ["Work", "#projects"],
+      ["Open source", "#open-source"],
+      ["Contact", "#contact"],
+    ] as const) {
+      expect(navigation.getByRole("link", { name })).toHaveAttribute(
+        "href",
+        href,
+      );
+    }
+    expect(navigation.getAllByRole("link")).toHaveLength(4);
+    expect(header.queryByRole("button")).not.toBeInTheDocument();
     expect(
-      header.getByRole("button", { name: "Switch to dark theme" }),
-    ).toHaveAttribute("type", "button");
+      header.queryByRole("link", { name: /GitHub/ }),
+    ).not.toBeInTheDocument();
+
     const dock = within(
-      screen.getByRole("navigation", { name: "Main navigation" }),
+      screen.getByRole("navigation", { name: "Social shortcuts" }),
     );
-    expect(dock.getAllByRole("link")).toHaveLength(4);
-    expect(dock.queryByRole("button")).not.toBeInTheDocument();
+    const dockDestinations = [
+      { label: "Home", href: "#hero" },
+      ...socialLinks.filter((link) => link.icon !== "instagram"),
+    ];
+    const dockLinks = dock.getAllByRole("link");
+    expect(dockLinks).toHaveLength(dockDestinations.length);
+    for (const [index, destination] of dockDestinations.entries()) {
+      const escapedLabel = destination.label.replace(
+        /[.*+?^${}()|[\]\\]/g,
+        "\\$&",
+      );
+      expect(dockLinks[index]).toHaveAccessibleName(
+        new RegExp(`^${escapedLabel}(?: \\(opens in a new tab\\))?$`),
+      );
+      expect(dockLinks[index]).toHaveAttribute("href", destination.href);
+    }
+    expect(
+      dock.getByRole("button", { name: "Switch to dark theme" }),
+    ).toHaveAttribute("type", "button");
   });
 
   it("preserves expanded project content when switching themes", async () => {

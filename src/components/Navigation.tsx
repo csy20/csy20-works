@@ -1,5 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Icon } from "./ui/Icon";
 
 const sectionLinks = [
@@ -72,73 +71,26 @@ function useActiveSection(): SectionId {
   return activeSection;
 }
 
-function useDockMagnification() {
-  const [allowed, setAllowed] = useState(false);
-
-  useEffect(() => {
-    let media: MediaQueryList;
-    try {
-      media = window.matchMedia(
-        "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
-      );
-    } catch {
-      return;
-    }
-
-    const update = () => setAllowed(media.matches);
-    update();
-    media.addEventListener?.("change", update);
-    return () => media.removeEventListener?.("change", update);
-  }, []);
-
-  return allowed;
-}
-
-export function Navigation() {
+export function Navigation({ placement = "header" }: { placement?: "header" }) {
   const activeSection = useActiveSection();
-  const canMagnify = useDockMagnification();
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const icon = (node: ReactNode, index: number) => {
-    const distance =
-      hoveredIndex === null ? Infinity : Math.abs(hoveredIndex - index);
-
-    return (
-      <motion.span
-        className="dock-icon"
-        aria-hidden="true"
-        animate={
-          canMagnify && distance < 2
-            ? {
-                scale: distance === 0 ? 1.14 : 1.05,
-                y: distance === 0 ? -2 : -1,
-              }
-            : { scale: 1, y: 0 }
-        }
-        transition={{ duration: canMagnify ? 0.16 : 0 }}
-      >
-        {node}
-      </motion.span>
-    );
-  };
 
   return (
     <nav
-      className="dock-shell"
+      className={`section-nav section-nav-${placement}`}
       aria-label="Main navigation"
-      onPointerLeave={() => setHoveredIndex(null)}
     >
-      {sectionLinks.map((section, index) => (
+      {sectionLinks.map((section) => (
         <a
           key={section.id}
-          className="dock-item"
+          className="section-nav-item"
           href={`#${section.id}`}
           aria-label={section.label}
           aria-current={activeSection === section.id ? "location" : undefined}
-          onPointerEnter={() => setHoveredIndex(index)}
         >
-          {icon(<SectionIcon name={section.icon} />, index)}
-          <span className="dock-tooltip" aria-hidden="true">
+          <span aria-hidden="true">
+            <SectionIcon name={section.icon} />
+          </span>
+          <span className="header-tooltip" aria-hidden="true">
             {section.label}
           </span>
         </a>
