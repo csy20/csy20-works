@@ -1,219 +1,291 @@
-import { memo } from "react";
-import { motion } from "framer-motion";
-import { Section } from "../components/ui/Section";
-import { Button } from "../components/ui/Button";
-import { MagneticCard } from "../components/animations/MagneticCard";
-import { Icon } from "../components/ui/Icon";
-import { Tag } from "../components/ui/Tag";
-import { projects, type Project, type ProjectGroup } from "../data/siteContent";
-import { useAnimationSafeMode } from "../components/useAnimationSafeMode";
 import {
-  cardVariants,
-  staggerContainer,
-} from "../components/animations/motion";
+  projects,
+  caseStudies,
+  productSpotlights,
+  type Project,
+  type CaseStudy,
+  type ProductSpotlight,
+} from "../data/siteContent";
+import { ActionLink } from "../components/ui/ActionLink";
+import { SectionHeading } from "../components/ui/SectionHeading";
+import { SpeechPipeline } from "../components/SpeechPipeline";
 
-const workGroups: { id: ProjectGroup; title: string }[] = [
-  { id: "product", title: "Product" },
-  { id: "selected", title: "Selected work" },
-  { id: "other", title: "Other projects" },
-];
+function ProjectLinks({
+  project,
+  storeLabel,
+}: {
+  project: Project;
+  storeLabel?: string;
+}) {
+  return (
+    <div className="project-links">
+      {project.links.map((link) => (
+        <ActionLink key={link.href} href={link.href}>
+          {link.label === "GitHub"
+            ? "Source code"
+            : link.label === "Release"
+              ? "Alpha release"
+              : storeLabel && link.label === "Play Store"
+                ? storeLabel
+                : link.label}
+        </ActionLink>
+      ))}
+    </div>
+  );
+}
 
-function linkIcon(label: string) {
-  if (label === "Play Store") return "play" as const;
-  if (label === "GitHub") return "github" as const;
-  return "external-link" as const;
+function PublishedProduct({
+  project,
+  spotlight,
+}: {
+  project: Project;
+  spotlight: ProductSpotlight;
+}) {
+  return (
+    <article
+      id={spotlight.id}
+      className="product-spotlight"
+      aria-labelledby={`${spotlight.id}-heading`}
+    >
+      <div className="product-spotlight-cover">
+        <p className="eyebrow">Published product / Android</p>
+        <div className="product-cover-lockup">
+          <img
+            src={project.logo}
+            alt={`${project.title} app icon`}
+            width={512}
+            height={512}
+            loading="lazy"
+          />
+          <p className="product-cover-line">{spotlight.coverLine}</p>
+        </div>
+        <span className="product-cover-platform">
+          Flutter + Dart · Local audio
+        </span>
+      </div>
+      <div className="project-copy product-spotlight-copy">
+        <p className="eyebrow">
+          <span className="project-index">04</span>
+          Published on Google Play
+        </p>
+        <h3 id={`${spotlight.id}-heading`}>{project.title}</h3>
+        <p className="project-overview">{spotlight.overview}</p>
+        <ul className="product-features">
+          {spotlight.features.map((feature) => (
+            <li key={feature}>{feature}</li>
+          ))}
+        </ul>
+        <ProjectLinks project={project} storeLabel="Get it on Google Play" />
+        <details className="engineering-detail">
+          <summary>
+            Inside the product <span aria-hidden="true">+</span>
+          </summary>
+          <div className="detail-content">
+            <p>{project.description}</p>
+            {project.releaseNote && <p>{project.releaseNote}</p>}
+            <div
+              className="project-tags"
+              role="group"
+              aria-label="Technologies"
+            >
+              {project.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        </details>
+      </div>
+    </article>
+  );
+}
+
+function EngineeringDetail({ study }: { study: CaseStudy }) {
+  return (
+    <details className="engineering-detail">
+      <summary>
+        Engineering notes <span aria-hidden="true">+</span>
+      </summary>
+      <div className="detail-content">
+        <p>{study.detail}</p>
+        {study.id === "speech-relay" && (
+          <ActionLink href="https://github.com/csy20/speech-relay/blob/main/eval/results.md">
+            Benchmark methodology & results
+          </ActionLink>
+        )}
+      </div>
+    </details>
+  );
 }
 
 export function ProjectsSection() {
-  const shouldUseSafeMotion = useAnimationSafeMode();
-
+  const more = projects.filter(
+    (project) =>
+      !caseStudies.some((study) => study.title === project.title) &&
+      !productSpotlights.some((spotlight) => spotlight.title === project.title),
+  );
   return (
-    <Section id="projects" title="Work" subtitle="Projects">
-      <div className="space-y-16">
-        {workGroups.map((group) => {
-          const items = projects.filter(
-            (project) => project.group === group.id,
-          );
-          const showcase = items.filter((project) => project.spotlight);
-          const rest = items.filter((project) => !project.spotlight);
-
-          return (
-            <div key={group.id} className="space-y-5">
-              <h3 className="font-serif-accent text-2xl tracking-tight text-[var(--text-primary)] sm:text-3xl">
-                {group.title}
-              </h3>
-
-              {showcase.length > 0 && (
-                <div className="grid gap-4 lg:grid-cols-2">
-                  {showcase.map((app) => (
-                    <div
-                      key={app.title}
-                      className={
-                        app.wide || showcase.length === 1
-                          ? "lg:col-span-2"
-                          : undefined
-                      }
-                    >
-                      <AppCard app={app} />
+    <section
+      id="projects"
+      className="section work-section"
+      aria-labelledby="work-heading"
+    >
+      <div className="container">
+        <SectionHeading
+          id="work-heading"
+          number="01"
+          label="Selected work"
+          title="Ideas, made real."
+        >
+          A few things I've built — from the first model call to a product you
+          can use.
+        </SectionHeading>
+        <div className="featured-projects">
+          {caseStudies.map((study, index) => {
+            const project = projects.find(
+              (item) => item.title === study.title,
+            )!;
+            return (
+              <article
+                key={study.id}
+                id={study.id}
+                className={`featured-project project-${study.id}`}
+                aria-labelledby={`${study.id}-heading`}
+              >
+                {study.id === "speech-relay" ? (
+                  <SpeechPipeline />
+                ) : study.id === "02-os" ? (
+                  <div className="os-visual">
+                    <div className="visual-meta">
+                      <span>02 / Agent-native desktop</span>
+                      <span className="alpha-label">Public alpha</span>
                     </div>
-                  ))}
+                    <img
+                      src={project.logo}
+                      alt="02_OS logo"
+                      width={701}
+                      height={624}
+                      loading="lazy"
+                    />
+                    <p>
+                      Local context.
+                      <br />
+                      <em>Useful agents.</em>
+                    </p>
+                    <span className="visual-footnote">Rust + GNOME + MCP</span>
+                  </div>
+                ) : (
+                  <div className="bytewise-visual">
+                    <div className="visual-meta">
+                      <span>Bytewise / Learning, anywhere</span>
+                      <span>Google Play ↗</span>
+                    </div>
+                    <div className="bytewise-lockup">
+                      <img
+                        src={project.logo}
+                        alt="Bytewise logo"
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                      />
+                      <strong>
+                        bytewise<span>Make room for learning.</span>
+                      </strong>
+                    </div>
+                    <div className="learning-topics">
+                      <span>Algorithms</span>
+                      <span>System design</span>
+                      <span>Offline-first</span>
+                    </div>
+                  </div>
+                )}
+                <div className="project-copy">
+                  <p className="eyebrow">
+                    <span className="project-index">0{index + 1}</span>
+                    {study.category}
+                  </p>
+                  <h3 id={`${study.id}-heading`}>
+                    {study.title}
+                    <span className="project-title-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </h3>
+                  <p className="project-overview">{study.overview}</p>
+                  <p className="project-decision">
+                    <span>The decision</span>
+                    {study.decision}
+                  </p>
+                  <p className="project-outcome">{study.outcome}</p>
+                  <div
+                    className="project-tags"
+                    role="group"
+                    aria-label="Technologies"
+                  >
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <ProjectLinks project={project} />
+                  <EngineeringDetail study={study} />
                 </div>
-              )}
-
-              {rest.length > 0 && (
-                <motion.div
-                  className="space-y-4"
-                  {...(!shouldUseSafeMotion && { variants: staggerContainer })}
-                >
-                  {rest.map((project) => (
-                    <ProjectCard key={project.title} project={project} />
-                  ))}
-                </motion.div>
-              )}
-            </div>
-          );
-        })}
+              </article>
+            );
+          })}
+        </div>
+        {productSpotlights.map((spotlight) => (
+          <PublishedProduct
+            key={spotlight.id}
+            spotlight={spotlight}
+            project={
+              projects.find((project) => project.title === spotlight.title)!
+            }
+          />
+        ))}
+        <div className="more-work">
+          <div className="more-work-heading">
+            <h3>More from the workbench</h3>
+            <span>{more.length} more projects</span>
+          </div>
+          <div className="project-index-list">
+            {more.map((project, index) => (
+              <details className="other-project" key={project.title}>
+                <summary>
+                  <span className="other-project-number">
+                    0{index + caseStudies.length + productSpotlights.length + 1}
+                  </span>
+                  <span className="other-project-name">
+                    {project.logo && (
+                      <img
+                        src={project.logo}
+                        alt=""
+                        width={28}
+                        height={28}
+                        loading="lazy"
+                      />
+                    )}
+                    <span>{project.title}</span>
+                  </span>
+                  <span className="other-project-category">
+                    {project.eyebrow}
+                  </span>
+                  <span className="expand-icon" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <div className="other-project-content">
+                  <p>{project.description}</p>
+                  {project.releaseNote && <p>{project.releaseNote}</p>}
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <ProjectLinks project={project} />
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
-
-const AppCard = memo(function AppCard({ app }: { app: Project }) {
-  const shouldUseSafeMotion = useAnimationSafeMode();
-
-  return (
-    <motion.div
-      className="relative h-full overflow-hidden border border-[var(--border)] bg-[var(--surface)]"
-      {...(!shouldUseSafeMotion && { variants: cardVariants })}
-    >
-      <div className="flex h-full flex-col p-4 sm:p-7">
-        <div className="flex min-w-0 items-start gap-3 sm:gap-4">
-          <div
-            className={`flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[1.25rem] border border-[var(--border-soft)] sm:h-14 sm:w-14 ${
-              app.logo === "/02-logo.png"
-                ? "bg-white"
-                : "bg-[var(--surface-raised)]"
-            }`}
-          >
-            {app.logo ? (
-              <img
-                src={app.logo}
-                alt=""
-                width={40}
-                height={40}
-                className={
-                  app.logo === "/02-logo.png"
-                    ? "h-9 w-9 object-contain sm:h-10 sm:w-10"
-                    : "h-full w-full object-cover"
-                }
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <span className="font-serif-accent text-lg text-[var(--text-primary)]">
-                {app.title.slice(0, 1)}
-              </span>
-            )}
-          </div>
-          <div className="min-w-0 space-y-1.5">
-            <div className="flex flex-wrap items-center gap-2">
-              {app.spotlight ? (
-                <span className="font-display text-[10px] font-medium tracking-[0.16em] uppercase text-[var(--text-muted)]">
-                  {app.spotlight}
-                </span>
-              ) : null}
-              <span className="font-display text-[11px] sm:text-xs tracking-[0.12em] uppercase text-[var(--text-muted)]">
-                {app.eyebrow}
-              </span>
-            </div>
-            <h4 className="font-serif-accent text-xl sm:text-2xl tracking-tight text-[var(--text-primary)]">
-              {app.title}
-            </h4>
-          </div>
-        </div>
-
-        <p className="mt-4 text-sm leading-relaxed text-[var(--text-secondary)] text-balance">
-          {app.description}
-        </p>
-
-        {app.releaseNote && (
-          <p className="mt-4 text-sm leading-relaxed text-[var(--text-muted)] text-balance">
-            {app.releaseNote}
-          </p>
-        )}
-
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {app.tags.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
-          ))}
-        </div>
-
-        <div className="mt-auto flex flex-col gap-2 pt-5 sm:flex-row sm:flex-wrap">
-          {app.links.map((link) => (
-            <Button
-              key={link.label}
-              href={link.href}
-              variant={link.tone === "mint" ? "primary" : "secondary"}
-              compact
-              className="w-full sm:w-auto"
-            >
-              <Icon name={linkIcon(link.label)} size={14} />
-              {link.label}
-            </Button>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-});
-
-const ProjectCard = memo(function ProjectCard({
-  project,
-}: {
-  project: Project;
-}) {
-  return (
-    <motion.div variants={cardVariants}>
-      <MagneticCard>
-        <div className="relative border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-6">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div className="min-w-0 space-y-2">
-              <span className="font-display text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.15em] uppercase text-[var(--text-muted)]">
-                {project.eyebrow}
-              </span>
-              <h4 className="font-serif-accent text-lg sm:text-xl tracking-tight text-[var(--text-primary)]">
-                {project.title}
-              </h4>
-              <p className="text-sm leading-relaxed text-[var(--text-secondary)] text-balance max-w-2xl">
-                {project.description}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-4 flex flex-wrap gap-1.5">
-            {project.tags.map((tag) => (
-              <Tag key={tag} variant="muted">
-                {tag}
-              </Tag>
-            ))}
-          </div>
-
-          <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-            {project.links.map((link) => (
-              <Button
-                key={link.label}
-                href={link.href}
-                variant={link.tone === "mint" ? "primary" : "secondary"}
-                compact
-                className="w-full sm:w-auto"
-              >
-                {link.label}
-                <Icon name="external-link" size={12} />
-              </Button>
-            ))}
-          </div>
-        </div>
-      </MagneticCard>
-    </motion.div>
-  );
-});

@@ -1,0 +1,6634 @@
+[
+  {
+    "name": "320x740-light",
+    "width": 320,
+    "docWidth": 320,
+    "horizontalOverflow": false,
+    "theme": "light",
+    "meta": "#F6F5F1",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 37.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 81.5,
+        "bottom": 715
+      },
+      {
+        "name": "Work",
+        "x": 85.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 129.5,
+        "bottom": 715
+      },
+      {
+        "name": "Open source",
+        "x": 133.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 177.5,
+        "bottom": 715
+      },
+      {
+        "name": "Contact",
+        "x": 181.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 225.5,
+        "bottom": 715
+      },
+      {
+        "name": "Switch to dark theme",
+        "x": 238.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 282.5,
+        "bottom": 715
+      }
+    ],
+    "nav": {
+      "x": 28.5,
+      "y": 662,
+      "width": 263,
+      "height": 62,
+      "right": 291.5,
+      "bottom": 724
+    },
+    "overflows": [
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "semantica-agi/semantica7",
+        "x": 162.375,
+        "y": 4438.984375,
+        "width": 167.4375,
+        "height": 44,
+        "right": 329.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "topoteretes/cognee2",
+        "x": 336.8125,
+        "y": 4438.984375,
+        "width": 142.53125,
+        "height": 44,
+        "right": 479.34375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "topoteretes/cognee",
+        "x": 349.8125,
+        "y": 4453.484375,
+        "width": 98.328125,
+        "height": 15,
+        "right": 448.140625,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "2",
+        "x": 460.140625,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 466.34375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "agent-of-empires/agent-of-empires1",
+        "x": 486.34375,
+        "y": 4438.984375,
+        "width": 219.46875,
+        "height": 44,
+        "right": 705.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "agent-of-empires/agent-of-empires",
+        "x": 499.34375,
+        "y": 4453.484375,
+        "width": 175.265625,
+        "height": 15,
+        "right": 674.609375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 686.609375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 692.8125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "bolna-ai/bolna1",
+        "x": 712.8125,
+        "y": 4438.984375,
+        "width": 114.46875,
+        "height": 44,
+        "right": 827.28125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "bolna-ai/bolna",
+        "x": 725.8125,
+        "y": 4453.484375,
+        "width": 70.265625,
+        "height": 15,
+        "right": 796.078125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 808.078125,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 814.28125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cli/cli1",
+        "x": 834.28125,
+        "y": 4438.984375,
+        "width": 69.5,
+        "height": 44,
+        "right": 903.78125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cli/cli",
+        "x": 847.28125,
+        "y": 4453.484375,
+        "width": 25.296875,
+        "height": 15,
+        "right": 872.578125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 884.578125,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 890.78125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cloudflare/security-audit-skill1",
+        "x": 910.78125,
+        "y": 4438.984375,
+        "width": 189.15625,
+        "height": 44,
+        "right": 1099.9375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cloudflare/security-audit-skill",
+        "x": 923.78125,
+        "y": 4453.484375,
+        "width": 144.953125,
+        "height": 15,
+        "right": 1068.734375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1080.734375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1086.9375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "dart-lang/sdk1",
+        "x": 1106.9375,
+        "y": 4438.984375,
+        "width": 110.65625,
+        "height": 44,
+        "right": 1217.59375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "dart-lang/sdk",
+        "x": 1119.9375,
+        "y": 4453.484375,
+        "width": 66.453125,
+        "height": 15,
+        "right": 1186.390625,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1198.390625,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1204.59375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google-gemini/gemini-cli1",
+        "x": 1224.59375,
+        "y": 4438.984375,
+        "width": 165.21875,
+        "height": 44,
+        "right": 1389.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google-gemini/gemini-cli",
+        "x": 1237.59375,
+        "y": 4453.484375,
+        "width": 121.015625,
+        "height": 15,
+        "right": 1358.609375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1370.609375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1376.8125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google/gvisor1",
+        "x": 1396.8125,
+        "y": 4438.984375,
+        "width": 110.609375,
+        "height": 44,
+        "right": 1507.421875,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google/gvisor",
+        "x": 1409.8125,
+        "y": 4453.484375,
+        "width": 66.40625,
+        "height": 15,
+        "right": 1476.21875,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1488.21875,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1494.421875,
+        "bottom": 4468.484375
+      }
+    ],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 6640,
+      "footer": {
+        "top": 541.515625,
+        "bottom": 622.015625
+      },
+      "nav": {
+        "top": 662,
+        "bottom": 724
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "390x844-light",
+    "width": 390,
+    "docWidth": 390,
+    "horizontalOverflow": false,
+    "theme": "light",
+    "meta": "#F6F5F1",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 72.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 116.5,
+        "bottom": 819
+      },
+      {
+        "name": "Work",
+        "x": 120.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 164.5,
+        "bottom": 819
+      },
+      {
+        "name": "Open source",
+        "x": 168.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 212.5,
+        "bottom": 819
+      },
+      {
+        "name": "Contact",
+        "x": 216.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 260.5,
+        "bottom": 819
+      },
+      {
+        "name": "Switch to dark theme",
+        "x": 273.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 317.5,
+        "bottom": 819
+      }
+    ],
+    "nav": {
+      "x": 63.5,
+      "y": 766,
+      "width": 263,
+      "height": 62,
+      "right": 326.5,
+      "bottom": 828
+    },
+    "overflows": [
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "topoteretes/cognee2",
+        "x": 340.8125,
+        "y": 4195.46875,
+        "width": 142.53125,
+        "height": 44,
+        "right": 483.34375,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "topoteretes/cognee",
+        "x": 353.8125,
+        "y": 4209.96875,
+        "width": 98.328125,
+        "height": 15,
+        "right": 452.140625,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "2",
+        "x": 464.140625,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 470.34375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "agent-of-empires/agent-of-empires1",
+        "x": 490.34375,
+        "y": 4195.46875,
+        "width": 219.46875,
+        "height": 44,
+        "right": 709.8125,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "agent-of-empires/agent-of-empires",
+        "x": 503.34375,
+        "y": 4209.96875,
+        "width": 175.265625,
+        "height": 15,
+        "right": 678.609375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 690.609375,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 696.8125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "bolna-ai/bolna1",
+        "x": 716.8125,
+        "y": 4195.46875,
+        "width": 114.46875,
+        "height": 44,
+        "right": 831.28125,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "bolna-ai/bolna",
+        "x": 729.8125,
+        "y": 4209.96875,
+        "width": 70.265625,
+        "height": 15,
+        "right": 800.078125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 812.078125,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 818.28125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cli/cli1",
+        "x": 838.28125,
+        "y": 4195.46875,
+        "width": 69.5,
+        "height": 44,
+        "right": 907.78125,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cli/cli",
+        "x": 851.28125,
+        "y": 4209.96875,
+        "width": 25.296875,
+        "height": 15,
+        "right": 876.578125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 888.578125,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 894.78125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cloudflare/security-audit-skill1",
+        "x": 914.78125,
+        "y": 4195.46875,
+        "width": 189.15625,
+        "height": 44,
+        "right": 1103.9375,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cloudflare/security-audit-skill",
+        "x": 927.78125,
+        "y": 4209.96875,
+        "width": 144.953125,
+        "height": 15,
+        "right": 1072.734375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1084.734375,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1090.9375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "dart-lang/sdk1",
+        "x": 1110.9375,
+        "y": 4195.46875,
+        "width": 110.65625,
+        "height": 44,
+        "right": 1221.59375,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "dart-lang/sdk",
+        "x": 1123.9375,
+        "y": 4209.96875,
+        "width": 66.453125,
+        "height": 15,
+        "right": 1190.390625,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1202.390625,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1208.59375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google-gemini/gemini-cli1",
+        "x": 1228.59375,
+        "y": 4195.46875,
+        "width": 165.21875,
+        "height": 44,
+        "right": 1393.8125,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google-gemini/gemini-cli",
+        "x": 1241.59375,
+        "y": 4209.96875,
+        "width": 121.015625,
+        "height": 15,
+        "right": 1362.609375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1374.609375,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1380.8125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google/gvisor1",
+        "x": 1400.8125,
+        "y": 4195.46875,
+        "width": 110.609375,
+        "height": 44,
+        "right": 1511.421875,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google/gvisor",
+        "x": 1413.8125,
+        "y": 4209.96875,
+        "width": 66.40625,
+        "height": 15,
+        "right": 1480.21875,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1492.21875,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1498.421875,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "gyroflow/gyroflow1",
+        "x": 1518.421875,
+        "y": 4195.46875,
+        "width": 133.28125,
+        "height": 44,
+        "right": 1651.703125,
+        "bottom": 4239.46875
+      }
+    ],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 6086,
+      "footer": {
+        "top": 645.125,
+        "bottom": 725.625
+      },
+      "nav": {
+        "top": 766,
+        "bottom": 828
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "768x1024-light",
+    "width": 768,
+    "docWidth": 768,
+    "horizontalOverflow": false,
+    "theme": "light",
+    "meta": "#F6F5F1",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 233.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 277.5,
+        "bottom": 998
+      },
+      {
+        "name": "Work",
+        "x": 282.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 326.5,
+        "bottom": 998
+      },
+      {
+        "name": "Open source",
+        "x": 331.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 375.5,
+        "bottom": 998
+      },
+      {
+        "name": "Contact",
+        "x": 380.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 424.5,
+        "bottom": 998
+      },
+      {
+        "name": "GitHub profile (opens in a new tab)",
+        "x": 429.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 473.5,
+        "bottom": 998
+      },
+      {
+        "name": "Switch to dark theme",
+        "x": 490.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 534.5,
+        "bottom": 998
+      }
+    ],
+    "nav": {
+      "x": 224.5,
+      "y": 944,
+      "width": 319,
+      "height": 64,
+      "right": 543.5,
+      "bottom": 1008
+    },
+    "overflows": [],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 4603,
+      "footer": {
+        "top": 837.03125,
+        "bottom": 906.03125
+      },
+      "nav": {
+        "top": 944,
+        "bottom": 1008
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "1280x900-light",
+    "width": 1280,
+    "docWidth": 1280,
+    "horizontalOverflow": false,
+    "theme": "light",
+    "meta": "#F6F5F1",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 489.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 533.5,
+        "bottom": 874
+      },
+      {
+        "name": "Work",
+        "x": 538.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 582.5,
+        "bottom": 874
+      },
+      {
+        "name": "Open source",
+        "x": 587.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 631.5,
+        "bottom": 874
+      },
+      {
+        "name": "Contact",
+        "x": 636.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 680.5,
+        "bottom": 874
+      },
+      {
+        "name": "GitHub profile (opens in a new tab)",
+        "x": 685.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 729.5,
+        "bottom": 874
+      },
+      {
+        "name": "Switch to dark theme",
+        "x": 746.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 790.5,
+        "bottom": 874
+      }
+    ],
+    "nav": {
+      "x": 480.5,
+      "y": 820,
+      "width": 319,
+      "height": 64,
+      "right": 799.5,
+      "bottom": 884
+    },
+    "overflows": [],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 4483,
+      "footer": {
+        "top": 713.1875,
+        "bottom": 782.1875
+      },
+      "nav": {
+        "top": 820,
+        "bottom": 884
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "1440x1000-light",
+    "width": 1440,
+    "docWidth": 1440,
+    "horizontalOverflow": false,
+    "theme": "light",
+    "meta": "#F6F5F1",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 569.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 613.5,
+        "bottom": 974
+      },
+      {
+        "name": "Work",
+        "x": 618.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 662.5,
+        "bottom": 974
+      },
+      {
+        "name": "Open source",
+        "x": 667.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 711.5,
+        "bottom": 974
+      },
+      {
+        "name": "Contact",
+        "x": 716.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 760.5,
+        "bottom": 974
+      },
+      {
+        "name": "GitHub profile (opens in a new tab)",
+        "x": 765.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 809.5,
+        "bottom": 974
+      },
+      {
+        "name": "Switch to dark theme",
+        "x": 826.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 870.5,
+        "bottom": 974
+      }
+    ],
+    "nav": {
+      "x": 560.5,
+      "y": 920,
+      "width": 319,
+      "height": 64,
+      "right": 879.5,
+      "bottom": 984
+    },
+    "overflows": [],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 4428,
+      "footer": {
+        "top": 812.78125,
+        "bottom": 881.78125
+      },
+      "nav": {
+        "top": 920,
+        "bottom": 984
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "short-mobile-light",
+    "width": 320,
+    "docWidth": 320,
+    "horizontalOverflow": false,
+    "theme": "light",
+    "meta": "#F6F5F1",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 37.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 81.5,
+        "bottom": 455
+      },
+      {
+        "name": "Work",
+        "x": 85.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 129.5,
+        "bottom": 455
+      },
+      {
+        "name": "Open source",
+        "x": 133.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 177.5,
+        "bottom": 455
+      },
+      {
+        "name": "Contact",
+        "x": 181.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 225.5,
+        "bottom": 455
+      },
+      {
+        "name": "Switch to dark theme",
+        "x": 238.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 282.5,
+        "bottom": 455
+      }
+    ],
+    "nav": {
+      "x": 28.5,
+      "y": 402,
+      "width": 263,
+      "height": 62,
+      "right": 291.5,
+      "bottom": 464
+    },
+    "overflows": [
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "semantica-agi/semantica7",
+        "x": 162.375,
+        "y": 4438.984375,
+        "width": 167.4375,
+        "height": 44,
+        "right": 329.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "topoteretes/cognee2",
+        "x": 336.8125,
+        "y": 4438.984375,
+        "width": 142.53125,
+        "height": 44,
+        "right": 479.34375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "topoteretes/cognee",
+        "x": 349.8125,
+        "y": 4453.484375,
+        "width": 98.328125,
+        "height": 15,
+        "right": 448.140625,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "2",
+        "x": 460.140625,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 466.34375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "agent-of-empires/agent-of-empires1",
+        "x": 486.34375,
+        "y": 4438.984375,
+        "width": 219.46875,
+        "height": 44,
+        "right": 705.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "agent-of-empires/agent-of-empires",
+        "x": 499.34375,
+        "y": 4453.484375,
+        "width": 175.265625,
+        "height": 15,
+        "right": 674.609375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 686.609375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 692.8125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "bolna-ai/bolna1",
+        "x": 712.8125,
+        "y": 4438.984375,
+        "width": 114.46875,
+        "height": 44,
+        "right": 827.28125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "bolna-ai/bolna",
+        "x": 725.8125,
+        "y": 4453.484375,
+        "width": 70.265625,
+        "height": 15,
+        "right": 796.078125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 808.078125,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 814.28125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cli/cli1",
+        "x": 834.28125,
+        "y": 4438.984375,
+        "width": 69.5,
+        "height": 44,
+        "right": 903.78125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cli/cli",
+        "x": 847.28125,
+        "y": 4453.484375,
+        "width": 25.296875,
+        "height": 15,
+        "right": 872.578125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 884.578125,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 890.78125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cloudflare/security-audit-skill1",
+        "x": 910.78125,
+        "y": 4438.984375,
+        "width": 189.15625,
+        "height": 44,
+        "right": 1099.9375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cloudflare/security-audit-skill",
+        "x": 923.78125,
+        "y": 4453.484375,
+        "width": 144.953125,
+        "height": 15,
+        "right": 1068.734375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1080.734375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1086.9375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "dart-lang/sdk1",
+        "x": 1106.9375,
+        "y": 4438.984375,
+        "width": 110.65625,
+        "height": 44,
+        "right": 1217.59375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "dart-lang/sdk",
+        "x": 1119.9375,
+        "y": 4453.484375,
+        "width": 66.453125,
+        "height": 15,
+        "right": 1186.390625,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1198.390625,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1204.59375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google-gemini/gemini-cli1",
+        "x": 1224.59375,
+        "y": 4438.984375,
+        "width": 165.21875,
+        "height": 44,
+        "right": 1389.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google-gemini/gemini-cli",
+        "x": 1237.59375,
+        "y": 4453.484375,
+        "width": 121.015625,
+        "height": 15,
+        "right": 1358.609375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1370.609375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1376.8125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google/gvisor1",
+        "x": 1396.8125,
+        "y": 4438.984375,
+        "width": 110.609375,
+        "height": 44,
+        "right": 1507.421875,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google/gvisor",
+        "x": 1409.8125,
+        "y": 4453.484375,
+        "width": 66.40625,
+        "height": 15,
+        "right": 1476.21875,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1488.21875,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1494.421875,
+        "bottom": 4468.484375
+      }
+    ],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 6900,
+      "footer": {
+        "top": 281.515625,
+        "bottom": 362.015625
+      },
+      "nav": {
+        "top": 402,
+        "bottom": 464
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "short-desktop-light",
+    "width": 1280,
+    "docWidth": 1280,
+    "horizontalOverflow": false,
+    "theme": "light",
+    "meta": "#F6F5F1",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 489.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 533.5,
+        "bottom": 574
+      },
+      {
+        "name": "Work",
+        "x": 538.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 582.5,
+        "bottom": 574
+      },
+      {
+        "name": "Open source",
+        "x": 587.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 631.5,
+        "bottom": 574
+      },
+      {
+        "name": "Contact",
+        "x": 636.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 680.5,
+        "bottom": 574
+      },
+      {
+        "name": "GitHub profile (opens in a new tab)",
+        "x": 685.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 729.5,
+        "bottom": 574
+      },
+      {
+        "name": "Switch to dark theme",
+        "x": 746.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 790.5,
+        "bottom": 574
+      }
+    ],
+    "nav": {
+      "x": 480.5,
+      "y": 520,
+      "width": 319,
+      "height": 64,
+      "right": 799.5,
+      "bottom": 584
+    },
+    "overflows": [],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 4783,
+      "footer": {
+        "top": 413.1875,
+        "bottom": 482.1875
+      },
+      "nav": {
+        "top": 520,
+        "bottom": 584
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "zoom-200-light",
+    "width": 640,
+    "docWidth": 640,
+    "horizontalOverflow": false,
+    "theme": "light",
+    "meta": "#F6F5F1",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 197.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 241.5,
+        "bottom": 425
+      },
+      {
+        "name": "Work",
+        "x": 245.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 289.5,
+        "bottom": 425
+      },
+      {
+        "name": "Open source",
+        "x": 293.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 337.5,
+        "bottom": 425
+      },
+      {
+        "name": "Contact",
+        "x": 341.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 385.5,
+        "bottom": 425
+      },
+      {
+        "name": "Switch to dark theme",
+        "x": 398.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 442.5,
+        "bottom": 425
+      }
+    ],
+    "nav": {
+      "x": 188.5,
+      "y": 372,
+      "width": 263,
+      "height": 62,
+      "right": 451.5,
+      "bottom": 434
+    },
+    "overflows": [
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "agent-of-empires/agent-of-empires1",
+        "x": 490.34375,
+        "y": 3911.359375,
+        "width": 219.46875,
+        "height": 44,
+        "right": 709.8125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "agent-of-empires/agent-of-empires",
+        "x": 503.34375,
+        "y": 3925.859375,
+        "width": 175.265625,
+        "height": 15,
+        "right": 678.609375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 690.609375,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 696.8125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "bolna-ai/bolna1",
+        "x": 716.8125,
+        "y": 3911.359375,
+        "width": 114.46875,
+        "height": 44,
+        "right": 831.28125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "bolna-ai/bolna",
+        "x": 729.8125,
+        "y": 3925.859375,
+        "width": 70.265625,
+        "height": 15,
+        "right": 800.078125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 812.078125,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 818.28125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cli/cli1",
+        "x": 838.28125,
+        "y": 3911.359375,
+        "width": 69.5,
+        "height": 44,
+        "right": 907.78125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cli/cli",
+        "x": 851.28125,
+        "y": 3925.859375,
+        "width": 25.296875,
+        "height": 15,
+        "right": 876.578125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 888.578125,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 894.78125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cloudflare/security-audit-skill1",
+        "x": 914.78125,
+        "y": 3911.359375,
+        "width": 189.15625,
+        "height": 44,
+        "right": 1103.9375,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cloudflare/security-audit-skill",
+        "x": 927.78125,
+        "y": 3925.859375,
+        "width": 144.953125,
+        "height": 15,
+        "right": 1072.734375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1084.734375,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1090.9375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "dart-lang/sdk1",
+        "x": 1110.9375,
+        "y": 3911.359375,
+        "width": 110.65625,
+        "height": 44,
+        "right": 1221.59375,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "dart-lang/sdk",
+        "x": 1123.9375,
+        "y": 3925.859375,
+        "width": 66.453125,
+        "height": 15,
+        "right": 1190.390625,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1202.390625,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1208.59375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google-gemini/gemini-cli1",
+        "x": 1228.59375,
+        "y": 3911.359375,
+        "width": 165.21875,
+        "height": 44,
+        "right": 1393.8125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google-gemini/gemini-cli",
+        "x": 1241.59375,
+        "y": 3925.859375,
+        "width": 121.015625,
+        "height": 15,
+        "right": 1362.609375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1374.609375,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1380.8125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google/gvisor1",
+        "x": 1400.8125,
+        "y": 3911.359375,
+        "width": 110.609375,
+        "height": 44,
+        "right": 1511.421875,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google/gvisor",
+        "x": 1413.8125,
+        "y": 3925.859375,
+        "width": 66.40625,
+        "height": 15,
+        "right": 1480.21875,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1492.21875,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1498.421875,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "gyroflow/gyroflow1",
+        "x": 1518.421875,
+        "y": 3911.359375,
+        "width": 133.28125,
+        "height": 44,
+        "right": 1651.703125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "gyroflow/gyroflow",
+        "x": 1531.421875,
+        "y": 3925.859375,
+        "width": 89.078125,
+        "height": 15,
+        "right": 1620.5,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1632.5,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1638.703125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "internetarchive/openlibrary1",
+        "x": 1658.703125,
+        "y": 3911.359375,
+        "width": 176.796875,
+        "height": 44,
+        "right": 1835.5,
+        "bottom": 3955.359375
+      }
+    ],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 6026,
+      "footer": {
+        "top": 251,
+        "bottom": 331.5
+      },
+      "nav": {
+        "top": 372,
+        "bottom": 434
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "320x740-dark",
+    "width": 320,
+    "docWidth": 320,
+    "horizontalOverflow": false,
+    "theme": "dark",
+    "meta": "#111214",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 37.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 81.5,
+        "bottom": 715
+      },
+      {
+        "name": "Work",
+        "x": 85.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 129.5,
+        "bottom": 715
+      },
+      {
+        "name": "Open source",
+        "x": 133.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 177.5,
+        "bottom": 715
+      },
+      {
+        "name": "Contact",
+        "x": 181.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 225.5,
+        "bottom": 715
+      },
+      {
+        "name": "Switch to light theme",
+        "x": 238.5,
+        "y": 671,
+        "width": 44,
+        "height": 44,
+        "right": 282.5,
+        "bottom": 715
+      }
+    ],
+    "nav": {
+      "x": 28.5,
+      "y": 662,
+      "width": 263,
+      "height": 62,
+      "right": 291.5,
+      "bottom": 724
+    },
+    "overflows": [
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "semantica-agi/semantica7",
+        "x": 162.375,
+        "y": 4438.984375,
+        "width": 167.4375,
+        "height": 44,
+        "right": 329.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "topoteretes/cognee2",
+        "x": 336.8125,
+        "y": 4438.984375,
+        "width": 142.53125,
+        "height": 44,
+        "right": 479.34375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "topoteretes/cognee",
+        "x": 349.8125,
+        "y": 4453.484375,
+        "width": 98.328125,
+        "height": 15,
+        "right": 448.140625,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "2",
+        "x": 460.140625,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 466.34375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "agent-of-empires/agent-of-empires1",
+        "x": 486.34375,
+        "y": 4438.984375,
+        "width": 219.46875,
+        "height": 44,
+        "right": 705.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "agent-of-empires/agent-of-empires",
+        "x": 499.34375,
+        "y": 4453.484375,
+        "width": 175.265625,
+        "height": 15,
+        "right": 674.609375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 686.609375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 692.8125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "bolna-ai/bolna1",
+        "x": 712.8125,
+        "y": 4438.984375,
+        "width": 114.46875,
+        "height": 44,
+        "right": 827.28125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "bolna-ai/bolna",
+        "x": 725.8125,
+        "y": 4453.484375,
+        "width": 70.265625,
+        "height": 15,
+        "right": 796.078125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 808.078125,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 814.28125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cli/cli1",
+        "x": 834.28125,
+        "y": 4438.984375,
+        "width": 69.5,
+        "height": 44,
+        "right": 903.78125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cli/cli",
+        "x": 847.28125,
+        "y": 4453.484375,
+        "width": 25.296875,
+        "height": 15,
+        "right": 872.578125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 884.578125,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 890.78125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cloudflare/security-audit-skill1",
+        "x": 910.78125,
+        "y": 4438.984375,
+        "width": 189.15625,
+        "height": 44,
+        "right": 1099.9375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cloudflare/security-audit-skill",
+        "x": 923.78125,
+        "y": 4453.484375,
+        "width": 144.953125,
+        "height": 15,
+        "right": 1068.734375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1080.734375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1086.9375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "dart-lang/sdk1",
+        "x": 1106.9375,
+        "y": 4438.984375,
+        "width": 110.65625,
+        "height": 44,
+        "right": 1217.59375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "dart-lang/sdk",
+        "x": 1119.9375,
+        "y": 4453.484375,
+        "width": 66.453125,
+        "height": 15,
+        "right": 1186.390625,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1198.390625,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1204.59375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google-gemini/gemini-cli1",
+        "x": 1224.59375,
+        "y": 4438.984375,
+        "width": 165.21875,
+        "height": 44,
+        "right": 1389.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google-gemini/gemini-cli",
+        "x": 1237.59375,
+        "y": 4453.484375,
+        "width": 121.015625,
+        "height": 15,
+        "right": 1358.609375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1370.609375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1376.8125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google/gvisor1",
+        "x": 1396.8125,
+        "y": 4438.984375,
+        "width": 110.609375,
+        "height": 44,
+        "right": 1507.421875,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google/gvisor",
+        "x": 1409.8125,
+        "y": 4453.484375,
+        "width": 66.40625,
+        "height": 15,
+        "right": 1476.21875,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1488.21875,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1494.421875,
+        "bottom": 4468.484375
+      }
+    ],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 6640,
+      "footer": {
+        "top": 541.515625,
+        "bottom": 622.015625
+      },
+      "nav": {
+        "top": 662,
+        "bottom": 724
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "390x844-dark",
+    "width": 390,
+    "docWidth": 390,
+    "horizontalOverflow": false,
+    "theme": "dark",
+    "meta": "#111214",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 72.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 116.5,
+        "bottom": 819
+      },
+      {
+        "name": "Work",
+        "x": 120.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 164.5,
+        "bottom": 819
+      },
+      {
+        "name": "Open source",
+        "x": 168.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 212.5,
+        "bottom": 819
+      },
+      {
+        "name": "Contact",
+        "x": 216.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 260.5,
+        "bottom": 819
+      },
+      {
+        "name": "Switch to light theme",
+        "x": 273.5,
+        "y": 775,
+        "width": 44,
+        "height": 44,
+        "right": 317.5,
+        "bottom": 819
+      }
+    ],
+    "nav": {
+      "x": 63.5,
+      "y": 766,
+      "width": 263,
+      "height": 62,
+      "right": 326.5,
+      "bottom": 828
+    },
+    "overflows": [
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "topoteretes/cognee2",
+        "x": 340.8125,
+        "y": 4195.46875,
+        "width": 142.53125,
+        "height": 44,
+        "right": 483.34375,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "topoteretes/cognee",
+        "x": 353.8125,
+        "y": 4209.96875,
+        "width": 98.328125,
+        "height": 15,
+        "right": 452.140625,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "2",
+        "x": 464.140625,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 470.34375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "agent-of-empires/agent-of-empires1",
+        "x": 490.34375,
+        "y": 4195.46875,
+        "width": 219.46875,
+        "height": 44,
+        "right": 709.8125,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "agent-of-empires/agent-of-empires",
+        "x": 503.34375,
+        "y": 4209.96875,
+        "width": 175.265625,
+        "height": 15,
+        "right": 678.609375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 690.609375,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 696.8125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "bolna-ai/bolna1",
+        "x": 716.8125,
+        "y": 4195.46875,
+        "width": 114.46875,
+        "height": 44,
+        "right": 831.28125,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "bolna-ai/bolna",
+        "x": 729.8125,
+        "y": 4209.96875,
+        "width": 70.265625,
+        "height": 15,
+        "right": 800.078125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 812.078125,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 818.28125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cli/cli1",
+        "x": 838.28125,
+        "y": 4195.46875,
+        "width": 69.5,
+        "height": 44,
+        "right": 907.78125,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cli/cli",
+        "x": 851.28125,
+        "y": 4209.96875,
+        "width": 25.296875,
+        "height": 15,
+        "right": 876.578125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 888.578125,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 894.78125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cloudflare/security-audit-skill1",
+        "x": 914.78125,
+        "y": 4195.46875,
+        "width": 189.15625,
+        "height": 44,
+        "right": 1103.9375,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cloudflare/security-audit-skill",
+        "x": 927.78125,
+        "y": 4209.96875,
+        "width": 144.953125,
+        "height": 15,
+        "right": 1072.734375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1084.734375,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1090.9375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "dart-lang/sdk1",
+        "x": 1110.9375,
+        "y": 4195.46875,
+        "width": 110.65625,
+        "height": 44,
+        "right": 1221.59375,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "dart-lang/sdk",
+        "x": 1123.9375,
+        "y": 4209.96875,
+        "width": 66.453125,
+        "height": 15,
+        "right": 1190.390625,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1202.390625,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1208.59375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google-gemini/gemini-cli1",
+        "x": 1228.59375,
+        "y": 4195.46875,
+        "width": 165.21875,
+        "height": 44,
+        "right": 1393.8125,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google-gemini/gemini-cli",
+        "x": 1241.59375,
+        "y": 4209.96875,
+        "width": 121.015625,
+        "height": 15,
+        "right": 1362.609375,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1374.609375,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1380.8125,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google/gvisor1",
+        "x": 1400.8125,
+        "y": 4195.46875,
+        "width": 110.609375,
+        "height": 44,
+        "right": 1511.421875,
+        "bottom": 4239.46875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google/gvisor",
+        "x": 1413.8125,
+        "y": 4209.96875,
+        "width": 66.40625,
+        "height": 15,
+        "right": 1480.21875,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1492.21875,
+        "y": 4209.96875,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1498.421875,
+        "bottom": 4224.96875
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "gyroflow/gyroflow1",
+        "x": 1518.421875,
+        "y": 4195.46875,
+        "width": 133.28125,
+        "height": 44,
+        "right": 1651.703125,
+        "bottom": 4239.46875
+      }
+    ],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 6086,
+      "footer": {
+        "top": 645.125,
+        "bottom": 725.625
+      },
+      "nav": {
+        "top": 766,
+        "bottom": 828
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "768x1024-dark",
+    "width": 768,
+    "docWidth": 768,
+    "horizontalOverflow": false,
+    "theme": "dark",
+    "meta": "#111214",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 233.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 277.5,
+        "bottom": 998
+      },
+      {
+        "name": "Work",
+        "x": 282.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 326.5,
+        "bottom": 998
+      },
+      {
+        "name": "Open source",
+        "x": 331.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 375.5,
+        "bottom": 998
+      },
+      {
+        "name": "Contact",
+        "x": 380.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 424.5,
+        "bottom": 998
+      },
+      {
+        "name": "GitHub profile (opens in a new tab)",
+        "x": 429.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 473.5,
+        "bottom": 998
+      },
+      {
+        "name": "Switch to light theme",
+        "x": 490.5,
+        "y": 954,
+        "width": 44,
+        "height": 44,
+        "right": 534.5,
+        "bottom": 998
+      }
+    ],
+    "nav": {
+      "x": 224.5,
+      "y": 944,
+      "width": 319,
+      "height": 64,
+      "right": 543.5,
+      "bottom": 1008
+    },
+    "overflows": [],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 4603,
+      "footer": {
+        "top": 837.03125,
+        "bottom": 906.03125
+      },
+      "nav": {
+        "top": 944,
+        "bottom": 1008
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "1280x900-dark",
+    "width": 1280,
+    "docWidth": 1280,
+    "horizontalOverflow": false,
+    "theme": "dark",
+    "meta": "#111214",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 489.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 533.5,
+        "bottom": 874
+      },
+      {
+        "name": "Work",
+        "x": 538.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 582.5,
+        "bottom": 874
+      },
+      {
+        "name": "Open source",
+        "x": 587.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 631.5,
+        "bottom": 874
+      },
+      {
+        "name": "Contact",
+        "x": 636.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 680.5,
+        "bottom": 874
+      },
+      {
+        "name": "GitHub profile (opens in a new tab)",
+        "x": 685.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 729.5,
+        "bottom": 874
+      },
+      {
+        "name": "Switch to light theme",
+        "x": 746.5,
+        "y": 830,
+        "width": 44,
+        "height": 44,
+        "right": 790.5,
+        "bottom": 874
+      }
+    ],
+    "nav": {
+      "x": 480.5,
+      "y": 820,
+      "width": 319,
+      "height": 64,
+      "right": 799.5,
+      "bottom": 884
+    },
+    "overflows": [],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 4483,
+      "footer": {
+        "top": 713.1875,
+        "bottom": 782.1875
+      },
+      "nav": {
+        "top": 820,
+        "bottom": 884
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "1440x1000-dark",
+    "width": 1440,
+    "docWidth": 1440,
+    "horizontalOverflow": false,
+    "theme": "dark",
+    "meta": "#111214",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 569.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 613.5,
+        "bottom": 974
+      },
+      {
+        "name": "Work",
+        "x": 618.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 662.5,
+        "bottom": 974
+      },
+      {
+        "name": "Open source",
+        "x": 667.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 711.5,
+        "bottom": 974
+      },
+      {
+        "name": "Contact",
+        "x": 716.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 760.5,
+        "bottom": 974
+      },
+      {
+        "name": "GitHub profile (opens in a new tab)",
+        "x": 765.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 809.5,
+        "bottom": 974
+      },
+      {
+        "name": "Switch to light theme",
+        "x": 826.5,
+        "y": 930,
+        "width": 44,
+        "height": 44,
+        "right": 870.5,
+        "bottom": 974
+      }
+    ],
+    "nav": {
+      "x": 560.5,
+      "y": 920,
+      "width": 319,
+      "height": 64,
+      "right": 879.5,
+      "bottom": 984
+    },
+    "overflows": [],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 4428,
+      "footer": {
+        "top": 812.78125,
+        "bottom": 881.78125
+      },
+      "nav": {
+        "top": 920,
+        "bottom": 984
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "short-mobile-dark",
+    "width": 320,
+    "docWidth": 320,
+    "horizontalOverflow": false,
+    "theme": "dark",
+    "meta": "#111214",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 37.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 81.5,
+        "bottom": 455
+      },
+      {
+        "name": "Work",
+        "x": 85.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 129.5,
+        "bottom": 455
+      },
+      {
+        "name": "Open source",
+        "x": 133.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 177.5,
+        "bottom": 455
+      },
+      {
+        "name": "Contact",
+        "x": 181.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 225.5,
+        "bottom": 455
+      },
+      {
+        "name": "Switch to light theme",
+        "x": 238.5,
+        "y": 411,
+        "width": 44,
+        "height": 44,
+        "right": 282.5,
+        "bottom": 455
+      }
+    ],
+    "nav": {
+      "x": 28.5,
+      "y": 402,
+      "width": 263,
+      "height": 62,
+      "right": 291.5,
+      "bottom": 464
+    },
+    "overflows": [
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "semantica-agi/semantica7",
+        "x": 162.375,
+        "y": 4438.984375,
+        "width": 167.4375,
+        "height": 44,
+        "right": 329.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "topoteretes/cognee2",
+        "x": 336.8125,
+        "y": 4438.984375,
+        "width": 142.53125,
+        "height": 44,
+        "right": 479.34375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "topoteretes/cognee",
+        "x": 349.8125,
+        "y": 4453.484375,
+        "width": 98.328125,
+        "height": 15,
+        "right": 448.140625,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "2",
+        "x": 460.140625,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 466.34375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "agent-of-empires/agent-of-empires1",
+        "x": 486.34375,
+        "y": 4438.984375,
+        "width": 219.46875,
+        "height": 44,
+        "right": 705.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "agent-of-empires/agent-of-empires",
+        "x": 499.34375,
+        "y": 4453.484375,
+        "width": 175.265625,
+        "height": 15,
+        "right": 674.609375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 686.609375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 692.8125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "bolna-ai/bolna1",
+        "x": 712.8125,
+        "y": 4438.984375,
+        "width": 114.46875,
+        "height": 44,
+        "right": 827.28125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "bolna-ai/bolna",
+        "x": 725.8125,
+        "y": 4453.484375,
+        "width": 70.265625,
+        "height": 15,
+        "right": 796.078125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 808.078125,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 814.28125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cli/cli1",
+        "x": 834.28125,
+        "y": 4438.984375,
+        "width": 69.5,
+        "height": 44,
+        "right": 903.78125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cli/cli",
+        "x": 847.28125,
+        "y": 4453.484375,
+        "width": 25.296875,
+        "height": 15,
+        "right": 872.578125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 884.578125,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 890.78125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cloudflare/security-audit-skill1",
+        "x": 910.78125,
+        "y": 4438.984375,
+        "width": 189.15625,
+        "height": 44,
+        "right": 1099.9375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cloudflare/security-audit-skill",
+        "x": 923.78125,
+        "y": 4453.484375,
+        "width": 144.953125,
+        "height": 15,
+        "right": 1068.734375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1080.734375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1086.9375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "dart-lang/sdk1",
+        "x": 1106.9375,
+        "y": 4438.984375,
+        "width": 110.65625,
+        "height": 44,
+        "right": 1217.59375,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "dart-lang/sdk",
+        "x": 1119.9375,
+        "y": 4453.484375,
+        "width": 66.453125,
+        "height": 15,
+        "right": 1186.390625,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1198.390625,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1204.59375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google-gemini/gemini-cli1",
+        "x": 1224.59375,
+        "y": 4438.984375,
+        "width": 165.21875,
+        "height": 44,
+        "right": 1389.8125,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google-gemini/gemini-cli",
+        "x": 1237.59375,
+        "y": 4453.484375,
+        "width": 121.015625,
+        "height": 15,
+        "right": 1358.609375,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1370.609375,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1376.8125,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google/gvisor1",
+        "x": 1396.8125,
+        "y": 4438.984375,
+        "width": 110.609375,
+        "height": 44,
+        "right": 1507.421875,
+        "bottom": 4482.984375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google/gvisor",
+        "x": 1409.8125,
+        "y": 4453.484375,
+        "width": 66.40625,
+        "height": 15,
+        "right": 1476.21875,
+        "bottom": 4468.484375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1488.21875,
+        "y": 4453.484375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1494.421875,
+        "bottom": 4468.484375
+      }
+    ],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 6900,
+      "footer": {
+        "top": 281.515625,
+        "bottom": 362.015625
+      },
+      "nav": {
+        "top": 402,
+        "bottom": 464
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "short-desktop-dark",
+    "width": 1280,
+    "docWidth": 1280,
+    "horizontalOverflow": false,
+    "theme": "dark",
+    "meta": "#111214",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 489.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 533.5,
+        "bottom": 574
+      },
+      {
+        "name": "Work",
+        "x": 538.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 582.5,
+        "bottom": 574
+      },
+      {
+        "name": "Open source",
+        "x": 587.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 631.5,
+        "bottom": 574
+      },
+      {
+        "name": "Contact",
+        "x": 636.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 680.5,
+        "bottom": 574
+      },
+      {
+        "name": "GitHub profile (opens in a new tab)",
+        "x": 685.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 729.5,
+        "bottom": 574
+      },
+      {
+        "name": "Switch to light theme",
+        "x": 746.5,
+        "y": 530,
+        "width": 44,
+        "height": 44,
+        "right": 790.5,
+        "bottom": 574
+      }
+    ],
+    "nav": {
+      "x": 480.5,
+      "y": 520,
+      "width": 319,
+      "height": 64,
+      "right": 799.5,
+      "bottom": 584
+    },
+    "overflows": [],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 4783,
+      "footer": {
+        "top": 413.1875,
+        "bottom": 482.1875
+      },
+      "nav": {
+        "top": 520,
+        "bottom": 584
+      }
+    },
+    "errors": []
+  },
+  {
+    "name": "zoom-200-dark",
+    "width": 640,
+    "docWidth": 640,
+    "horizontalOverflow": false,
+    "theme": "dark",
+    "meta": "#111214",
+    "targets": [
+      {
+        "name": "Home",
+        "x": 197.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 241.5,
+        "bottom": 425
+      },
+      {
+        "name": "Work",
+        "x": 245.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 289.5,
+        "bottom": 425
+      },
+      {
+        "name": "Open source",
+        "x": 293.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 337.5,
+        "bottom": 425
+      },
+      {
+        "name": "Contact",
+        "x": 341.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 385.5,
+        "bottom": 425
+      },
+      {
+        "name": "Switch to light theme",
+        "x": 398.5,
+        "y": 381,
+        "width": 44,
+        "height": 44,
+        "right": 442.5,
+        "bottom": 425
+      }
+    ],
+    "nav": {
+      "x": 188.5,
+      "y": 372,
+      "width": 263,
+      "height": 62,
+      "right": 451.5,
+      "bottom": 434
+    },
+    "overflows": [
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "agent-of-empires/agent-of-empires1",
+        "x": 490.34375,
+        "y": 3911.359375,
+        "width": 219.46875,
+        "height": 44,
+        "right": 709.8125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "agent-of-empires/agent-of-empires",
+        "x": 503.34375,
+        "y": 3925.859375,
+        "width": 175.265625,
+        "height": 15,
+        "right": 678.609375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 690.609375,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 696.8125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "bolna-ai/bolna1",
+        "x": 716.8125,
+        "y": 3911.359375,
+        "width": 114.46875,
+        "height": 44,
+        "right": 831.28125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "bolna-ai/bolna",
+        "x": 729.8125,
+        "y": 3925.859375,
+        "width": 70.265625,
+        "height": 15,
+        "right": 800.078125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 812.078125,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 818.28125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cli/cli1",
+        "x": 838.28125,
+        "y": 3911.359375,
+        "width": 69.5,
+        "height": 44,
+        "right": 907.78125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cli/cli",
+        "x": 851.28125,
+        "y": 3925.859375,
+        "width": 25.296875,
+        "height": 15,
+        "right": 876.578125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 888.578125,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 894.78125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "cloudflare/security-audit-skill1",
+        "x": 914.78125,
+        "y": 3911.359375,
+        "width": 189.15625,
+        "height": 44,
+        "right": 1103.9375,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "cloudflare/security-audit-skill",
+        "x": 927.78125,
+        "y": 3925.859375,
+        "width": 144.953125,
+        "height": 15,
+        "right": 1072.734375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1084.734375,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1090.9375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "dart-lang/sdk1",
+        "x": 1110.9375,
+        "y": 3911.359375,
+        "width": 110.65625,
+        "height": 44,
+        "right": 1221.59375,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "dart-lang/sdk",
+        "x": 1123.9375,
+        "y": 3925.859375,
+        "width": 66.453125,
+        "height": 15,
+        "right": 1190.390625,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1202.390625,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1208.59375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google-gemini/gemini-cli1",
+        "x": 1228.59375,
+        "y": 3911.359375,
+        "width": 165.21875,
+        "height": 44,
+        "right": 1393.8125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google-gemini/gemini-cli",
+        "x": 1241.59375,
+        "y": 3925.859375,
+        "width": 121.015625,
+        "height": 15,
+        "right": 1362.609375,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1374.609375,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1380.8125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "google/gvisor1",
+        "x": 1400.8125,
+        "y": 3911.359375,
+        "width": 110.609375,
+        "height": 44,
+        "right": 1511.421875,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "google/gvisor",
+        "x": 1413.8125,
+        "y": 3925.859375,
+        "width": 66.40625,
+        "height": 15,
+        "right": 1480.21875,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1492.21875,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1498.421875,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "gyroflow/gyroflow1",
+        "x": 1518.421875,
+        "y": 3911.359375,
+        "width": 133.28125,
+        "height": 44,
+        "right": 1651.703125,
+        "bottom": 3955.359375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-name",
+        "text": "gyroflow/gyroflow",
+        "x": 1531.421875,
+        "y": 3925.859375,
+        "width": 89.078125,
+        "height": 15,
+        "right": 1620.5,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "SPAN",
+        "class": "repository-count",
+        "text": "1",
+        "x": 1632.5,
+        "y": 3925.859375,
+        "width": 6.203125,
+        "height": 15,
+        "right": 1638.703125,
+        "bottom": 3940.859375
+      },
+      {
+        "tag": "BUTTON",
+        "class": "repository-option",
+        "text": "internetarchive/openlibrary1",
+        "x": 1658.703125,
+        "y": 3911.359375,
+        "width": 176.796875,
+        "height": 44,
+        "right": 1835.5,
+        "bottom": 3955.359375
+      }
+    ],
+    "images": [
+      {
+        "src": "/portrait-twitter.jpg",
+        "ok": true
+      },
+      {
+        "src": "/02-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/bytewise-logo.png",
+        "ok": true
+      },
+      {
+        "src": "/nen-logo.png",
+        "ok": true
+      }
+    ],
+    "links": [
+      {
+        "label": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "label": "c.csy20 / independent engineer",
+        "href": "#hero"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "Selected work ↘",
+        "href": "#projects"
+      },
+      {
+        "label": "Resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "23.6% less latencySpeech Relay · VAD vs. fixed windows",
+        "href": "#speech-relay"
+      },
+      {
+        "label": "11 merged upstream PRs21 technical PRs · 14 repositories",
+        "href": "#open-source"
+      },
+      {
+        "label": "Shipped on Google PlayBytewise + Nen · installable products",
+        "href": "#bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay"
+      },
+      {
+        "label": "Benchmark methodology & results",
+        "href": "https://github.com/csy20/speech-relay/blob/main/eval/results.md"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/02_OS"
+      },
+      {
+        "label": "Alpha release",
+        "href": "https://github.com/csy20/02_OS/releases/tag/v2026.10.01"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=com.csy20.bytewise"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/speech-relay-rust"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/mediapipe-ai"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/router-agent"
+      },
+      {
+        "label": "Play Store",
+        "href": "https://play.google.com/store/apps/details?id=dev.csy20.nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/nen"
+      },
+      {
+        "label": "Source code",
+        "href": "https://github.com/csy20/warrant"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): serialize backend mutations and mirror publication↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1922"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "fix(vector-store): sync the facade mirror only for confirmed updates↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1923"
+      },
+      {
+        "label": "semantica-agi/semantica",
+        "href": "https://github.com/semantica-agi/semantica"
+      },
+      {
+        "label": "feat(kg): add opt-in content screening before text extraction↗",
+        "href": "https://github.com/semantica-agi/semantica/pull/1718"
+      },
+      {
+        "label": "google/gvisor",
+        "href": "https://github.com/google/gvisor"
+      },
+      {
+        "label": "tcp: handle receive-buffer exhaustion with small segments↗",
+        "href": "https://github.com/google/gvisor/pull/15325"
+      },
+      {
+        "label": "dart-lang/sdk",
+        "href": "https://github.com/dart-lang/sdk"
+      },
+      {
+        "label": "[analysis_server] Track resource provider I/O timings since startup↗",
+        "href": "https://github.com/dart-lang/sdk/pull/64457"
+      },
+      {
+        "label": "All upstream PRs ↗",
+        "href": "https://github.com/pulls?q=is%3Apr%20author%3Acsy20%20-user%3Acsy20"
+      },
+      {
+        "label": "Email me",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "View resume",
+        "href": "/csy20_resume.pdf"
+      },
+      {
+        "label": "chitreshy20@gmail.com↗",
+        "href": "mailto:chitreshy20@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/csy20/"
+      },
+      {
+        "label": "X (the__csy20)",
+        "href": "https://x.com/the__csy20"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@chitresh-y3q"
+      },
+      {
+        "label": "Instagram (csy20)",
+        "href": "https://www.instagram.com/the__csy20/"
+      },
+      {
+        "label": "Chitresh Yadav / csy20",
+        "href": "#hero"
+      },
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Work",
+        "href": "#projects"
+      },
+      {
+        "label": "Open source",
+        "href": "#open-source"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/csy20"
+      }
+    ],
+    "bottom": {
+      "scrollY": 6026,
+      "footer": {
+        "top": 251,
+        "bottom": 331.5
+      },
+      "nav": {
+        "top": 372,
+        "bottom": 434
+      }
+    },
+    "errors": []
+  }
+]

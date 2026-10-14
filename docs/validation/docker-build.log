@@ -1,0 +1,27 @@
+Clean Docker build verification, 14 Oct 2026
+Command: docker build --tag csy20-works:editorial-qa .
+Dockerfile: original node:20-alpine builder / nginx:stable-alpine runtime.
+
+Initial attempt failed at npm ci because 18 optional-peer lock entries were missing.
+An isolated Node 20 / npm 10.8.2 package-lock-only refresh added the missing entries.
+Existing locked package versions and dependency declarations did not change.
+
+Successful clean-build output excerpt:
+#10 20.63 added 358 packages, and audited 359 packages in 20s
+#10 DONE 21.0s
+#13 5.434 vite v8.0.2 building client environment for production...
+#13 5.458 transforming... 438 modules transformed.
+#13 5.944 dist/index.html                             5.99 kB
+#13 5.944 dist/assets/index-CtU_Hh7E.css             42.37 kB
+#13 5.944 dist/assets/index-3riuZ4hU.js              59.55 kB
+#13 5.944 built in 503ms
+#13 DONE 6.0s
+#14 COPY --from=builder /app/dist /usr/share/nginx/html
+#14 DONE 0.1s
+#15 naming to docker.io/library/csy20-works:editorial-qa done
+#15 DONE 0.6s
+
+Both themes, navigation, assets and SPA fallback passed in the isolated Nginx runtime.
+Temporary QA container csy20-editorial-qa was stopped and removed.
+The production preview remains available at http://127.0.0.1:4174/.
+See docker-build.json, docker-runtime.json and nginx-config-and-artifacts.log.

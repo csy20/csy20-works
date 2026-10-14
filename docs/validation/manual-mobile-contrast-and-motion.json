@@ -1,0 +1,516 @@
+[
+  {
+    "theme": "light",
+    "initialIncomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(2) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(4) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(4) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(5) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(5) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(6) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(6) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(7) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(7) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(8) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(8) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(9) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(9) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(10) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(10) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(11) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(11) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(12) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(12) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(13) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(13) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(14) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(14) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(15) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(15) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          }
+        ]
+      }
+    ],
+    "repositoryStatesChecked": [
+      {
+        "label": "All repositories\n21",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "semantica-agi/semantica\n7",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "topoteretes/cognee\n2",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "agent-of-empires/agent-of-empires\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "bolna-ai/bolna\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "cli/cli\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "cloudflare/security-audit-skill\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "dart-lang/sdk\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "google-gemini/gemini-cli\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "google/gvisor\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "gyroflow/gyroflow\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "internetarchive/openlibrary\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "microg/GmsCore\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "redhat-et/ripwire\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "xevrion/breakscale\n1",
+        "violations": [],
+        "incomplete": []
+      }
+    ],
+    "reducedMotion": {
+      "query": true,
+      "dockIconTransform": "none",
+      "headlineOpacity": "1",
+      "headlineTransition": "0s",
+      "headlineAnimation": "none",
+      "contentHeadingCount": 4
+    }
+  },
+  {
+    "theme": "dark",
+    "initialIncomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(2) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(3) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(4) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(4) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(5) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(5) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(6) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(6) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(7) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(7) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(8) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(8) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(9) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(9) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(10) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(10) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(11) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(11) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(12) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(12) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(13) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(13) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(14) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(14) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(15) > .repository-name"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+          },
+          {
+            "target": [
+              ".repository-option[aria-controls=\"contribution-results\"]:nth-child(15) > .repository-count"
+            ],
+            "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+          }
+        ]
+      }
+    ],
+    "repositoryStatesChecked": [
+      {
+        "label": "All repositories\n21",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "semantica-agi/semantica\n7",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "topoteretes/cognee\n2",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "agent-of-empires/agent-of-empires\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "bolna-ai/bolna\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "cli/cli\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "cloudflare/security-audit-skill\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "dart-lang/sdk\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "google-gemini/gemini-cli\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "google/gvisor\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "gyroflow/gyroflow\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "internetarchive/openlibrary\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "microg/GmsCore\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "redhat-et/ripwire\n1",
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "label": "xevrion/breakscale\n1",
+        "violations": [],
+        "incomplete": []
+      }
+    ],
+    "reducedMotion": {
+      "query": true,
+      "dockIconTransform": "none",
+      "headlineOpacity": "1",
+      "headlineTransition": "0s",
+      "headlineAnimation": "none",
+      "contentHeadingCount": 4
+    }
+  }
+]

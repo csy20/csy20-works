@@ -77,33 +77,13 @@ export type SocialLink = {
 export const profile = {
   name: "Chitresh Yadav",
   handle: "csy20",
+  socialHandle: "the__csy20",
   role: "Backend · Applied ML",
   strapline: "Python · Rust · TypeScript",
   heroDescription:
-    "Backend services and applied ML — streaming ASR → MT → TTS over WebRTC, code-mixed Whisper on ONNX, and queue-based media workers.",
+    "I build backend systems and turn machine learning into working products. From realtime speech to local agents, I care about what ships — and how well it runs.",
   availability: "Seeking SDE-1 / Backend / Applied ML roles.",
 };
-
-export const proof = [
-  {
-    label: "Speech",
-    value: "23.6%",
-    detail:
-      "Silero-VAD cut end-to-end ASR → MT → TTS latency. 2505 ms mean / 2580 ms p50.",
-  },
-  {
-    label: "ASR",
-    value: "LoRA",
-    detail:
-      "Fine-tuned Whisper for Hindi–English code-mix, then ONNX int8 in a Rust runtime.",
-  },
-  {
-    label: "Shipped",
-    value: "Play",
-    detail:
-      "Bytewise is live on Google Play — 788+ DSA / system-design lessons, offline-first.",
-  },
-] as const;
 
 export const portraits: Record<PortraitId, Portrait> = {
   twitter: {
@@ -165,7 +145,7 @@ export const projects: Project[] = [
     title: "Speech Relay",
     eyebrow: "Realtime speech-to-speech",
     description:
-      "Streaming ASR → MT → TTS over WebRTC (EN→HI). Instrumented 2505 ms mean / 2580 ms p50 end-to-end, then cut latency 23.6% with Silero-VAD. One shared ASR stream fans out to N listeners (1.56× at 2). ONNX fp16/int8 for ASR/TTS plus a WER/CER eval harness.",
+      "Streaming ASR → MT → TTS over WebRTC (EN→HI). A CPU profile measured 2505 ms mean / 2580 ms p50 across 11 utterances. In a separate VAD comparison, mean latency fell from 4708 ms to 3597 ms (23.6%). One shared ASR stream fans out to multiple listeners; a WER/CER eval harness tracks recognition quality.",
     tags: [
       "Python",
       "faster-whisper",
@@ -177,7 +157,7 @@ export const projects: Project[] = [
     group: "selected",
     spotlight: "2505 ms mean E2E",
     releaseNote:
-      "Silero-VAD replaced fixed-window flushing. Quantized models ran up to 11.25% faster.",
+      "Silero-VAD replaced fixed-window flushing. Benchmark context and results are linked in the engineering notes.",
     links: [
       {
         label: "GitHub",
@@ -324,7 +304,7 @@ export const socialLinks: SocialLink[] = [
     detail: "Talks and recordings.",
   },
   {
-    label: "Instagram (csy20)",
+    label: "Instagram (the__csy20)",
     href: "https://www.instagram.com/the__csy20/",
     icon: "instagram",
     detail: "Personal feed and updates.",
@@ -340,3 +320,84 @@ export const socialLinks: SocialLink[] = [
 export const resumeUrl = config.resumeUrl;
 
 export const colophon = "Instrument Serif · Space Grotesk · 2026";
+
+export type CaseStudy = {
+  title: string;
+  id: string;
+  category: string;
+  overview: string;
+  decision: string;
+  outcome: string;
+  detail: string;
+};
+
+export const caseStudies: CaseStudy[] = [
+  {
+    title: "Speech Relay",
+    id: "speech-relay",
+    category: "Realtime systems / Applied ML",
+    overview:
+      "Spoken translation needs more than a good model. I built an English-to-Hindi speech pipeline over WebRTC, connecting recognition, translation, and synthesis with an instrumented backend.",
+    decision:
+      "Let speech boundaries drive the pipeline. Silero-VAD replaces fixed-window flushing to reduce the wait between speaking and hearing a translation.",
+    outcome:
+      "23.6% lower mean latency in the separate VAD comparison: 4,708 ms fixed-window → 3,597 ms VAD.",
+    detail:
+      "The full-pipeline CPU profile measured 2,505 ms mean and 2,580 ms p50 across 11 utterances using faster-whisper tiny/int8, OPUS-MT, and edge-tts. These profile measurements are separate from the VAD comparison. A shared ASR stream fans out to multiple listeners; WER/CER evaluation tracks recognition quality alongside timing.",
+  },
+  {
+    title: "02_OS",
+    id: "02-os",
+    category: "Local agents / Systems engineering",
+    overview:
+      "Coding agents need useful context on the machine. I built a GNOME desktop with the 02 agent runtime, tree-sitter symbols, and an MCP server for local coding workflows.",
+    decision:
+      "Keep context local and git-aware. Staleness tracking helps agents work with the current code instead of an outdated index.",
+    outcome:
+      "Public alpha · v2026.10.01 live image. No account or required model API.",
+    detail:
+      "The desktop bundles the runtime with a public live image. Symbol extraction and git-aware staleness feed an MCP interface for coding agents. This is an early, publicly downloadable alpha; the release and source are the evidence of its current status.",
+  },
+  {
+    title: "Bytewise",
+    id: "bytewise",
+    category: "Shipped product / Mobile engineering",
+    overview:
+      "Learning should work even when the network doesn't. I shipped a Flutter app with 788+ DSA and system-design lessons, available on Google Play.",
+    decision:
+      "Make reading offline-first. An in-memory cache and SQLite persistence keep lessons available, with Riverpod managing app state.",
+    outcome: "Live on Google Play · a signed, installable product.",
+    detail:
+      "Built with Flutter and Dart, using Riverpod and Drift / SQLite for an offline-first lesson library. The work includes product delivery, release signing, and the published store listing. The lesson count describes content, not users or downloads.",
+  },
+];
+
+export type ProductSpotlight = {
+  title: string;
+  id: string;
+  coverLine: string;
+  overview: string;
+  features: string[];
+};
+
+export const productSpotlights: ProductSpotlight[] = [
+  {
+    title: "Nen",
+    id: "nen",
+    coverLine: "Your music.\nOn your phone.",
+    overview:
+      "An offline music player for the files already on your phone. Published on Google Play, with no ads, no account, and no streaming dependency.",
+    features: [
+      "Offline local playback",
+      "No ads or account",
+      "Lock-screen controls",
+    ],
+  },
+];
+
+export const about = {
+  introduction:
+    "I'm Chitresh, an engineer focused on backend systems and applied machine learning. I like the whole path: understanding a problem, building the system, measuring it, and getting it into someone's hands.",
+  approach:
+    "My work moves between Python, Rust, and TypeScript — speech pipelines, local agent tooling, and queue-based services. I also ship Flutter products and contribute fixes upstream when the work takes me there.",
+};

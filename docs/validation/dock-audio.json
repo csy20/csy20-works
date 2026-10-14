@@ -1,0 +1,225 @@
+{
+  "checkedAt": "2026-10-14T19:23:18.325Z",
+  "scope": "Native browser WebAudio instrumentation; no audible listening performed",
+  "results": [
+    {
+      "name": "Initial page and hover create no AudioContext or ticks",
+      "pass": true,
+      "audio": {
+        "contexts": [],
+        "gains": [],
+        "ramps": [],
+        "starts": [],
+        "stops": [],
+        "disconnects": []
+      }
+    },
+    {
+      "name": "Trusted non-dock click unlocks native context without tone",
+      "pass": true,
+      "audio": {
+        "contexts": [
+          {
+            "state": "running",
+            "time": 1229.699999999255
+          }
+        ],
+        "gains": [],
+        "ramps": [],
+        "starts": [],
+        "stops": [],
+        "disconnects": []
+      }
+    },
+    {
+      "name": "Native tick matches production parameters and cleans nodes",
+      "pass": true,
+      "audio": {
+        "contexts": [
+          {
+            "state": "running",
+            "time": 1229.699999999255
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "at": 0.384,
+            "currentTime": 0.384
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "at": 0.429,
+            "currentTime": 0.384
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.384,
+            "wallTime": 1638,
+            "args": []
+          }
+        ],
+        "stops": [
+          {
+            "currentTime": 0.384,
+            "args": [0.434]
+          }
+        ],
+        "disconnects": ["oscillator", "gain"]
+      }
+    },
+    {
+      "name": "Rapid hover burst rate-limited to at most one tick per immediate burst",
+      "pass": true,
+      "ticks": 1
+    },
+    {
+      "name": "Footer mute stores off and suppresses subsequent hover",
+      "pass": true
+    },
+    {
+      "name": "Muted preference persists through reload and trusted interaction",
+      "pass": true,
+      "audio": {
+        "contexts": [],
+        "gains": [],
+        "ramps": [],
+        "starts": [],
+        "stops": [],
+        "disconnects": []
+      }
+    },
+    {
+      "name": "Keyboard Enter reenables sound without toggle tone, later hover plays",
+      "pass": true,
+      "audio": {
+        "contexts": [
+          {
+            "state": "running",
+            "time": 921.9000000022352
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "at": 1.1733333333333333,
+            "currentTime": 1.1733333333333333
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "at": 1.2183333333333333,
+            "currentTime": 1.1733333333333333
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 1.1733333333333333,
+            "wallTime": 2096.400000002235,
+            "args": []
+          }
+        ],
+        "stops": [
+          {
+            "currentTime": 1.1733333333333333,
+            "args": [1.2233333333333334]
+          }
+        ],
+        "disconnects": ["oscillator", "gain"]
+      }
+    },
+    {
+      "name": "coarse-touch suppresses hover tick, deliberate dock action plays",
+      "pass": true,
+      "audio": {
+        "contexts": [
+          {
+            "state": "running",
+            "time": 870.8999999985099
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "at": 0.33066666666666666,
+            "currentTime": 0.33066666666666666
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "at": 0.37566666666666665,
+            "currentTime": 0.33066666666666666
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.33066666666666666,
+            "wallTime": 1201.1000000014901,
+            "args": []
+          }
+        ],
+        "stops": [
+          {
+            "currentTime": 0.33066666666666666,
+            "args": [0.38066666666666665]
+          }
+        ],
+        "disconnects": ["oscillator", "gain"]
+      }
+    },
+    {
+      "name": "reduced-motion suppresses hover tick, deliberate dock action plays",
+      "pass": true,
+      "audio": {
+        "contexts": [
+          {
+            "state": "running",
+            "time": 829.5
+          }
+        ],
+        "gains": [
+          {
+            "value": 0.03,
+            "at": 0.32,
+            "currentTime": 0.32
+          }
+        ],
+        "ramps": [
+          {
+            "value": 0.0008,
+            "at": 0.365,
+            "currentTime": 0.32
+          }
+        ],
+        "starts": [
+          {
+            "type": "sine",
+            "frequency": 1640,
+            "currentTime": 0.32,
+            "wallTime": 1145.300000000745,
+            "args": []
+          }
+        ],
+        "stops": [
+          {
+            "currentTime": 0.32,
+            "args": [0.37]
+          }
+        ],
+        "disconnects": ["oscillator", "gain"]
+      }
+    }
+  ],
+  "errors": []
+}

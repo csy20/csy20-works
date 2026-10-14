@@ -1,0 +1,128 @@
+[
+  {
+    "theme": "light",
+    "width": 320,
+    "height": 740,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "height": 1024,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 1280,
+    "height": 900,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "height": 1000,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 1920,
+    "height": 1080,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "light",
+    "width": 320,
+    "height": 480,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 320,
+    "height": 740,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 768,
+    "height": 1024,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 1280,
+    "height": 900,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "height": 1000,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 1920,
+    "height": 1080,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  },
+  {
+    "theme": "dark",
+    "width": 320,
+    "height": 480,
+    "visibleContributionCount": 14,
+    "repositoryCount": 9,
+    "nenPublishedProduct": true,
+    "passed": true
+  }
+]

@@ -1,99 +1,104 @@
-import generated from "./contributions.generated.json";
+import snapshot from "./contributions.generated.json";
 
 export type ContributionStatus = "merged" | "open" | "closed";
 
 export type Contribution = {
-  source: "github" | "gerrit";
-  repo: string;
-  stars: number;
+  repository: string;
   number: number;
   title: string;
   url: string;
   status: ContributionStatus;
   createdAt: string;
+  updatedAt: string;
+  closedAt: string | null;
   mergedAt: string | null;
 };
 
-export type ContributionGroup = {
-  repo: string;
-  stars: number;
-  summary: string;
-  featured: boolean;
-  items: Contribution[];
+export type ContributionSummary = {
+  total: number;
   merged: number;
+  open: number;
+  closed: number;
+  repositories: number;
 };
 
-/** Hand-written impact line per repo. Repos without one fall back to a generic summary. */
-const curated: Record<string, { summary: string; featured?: boolean }> = {
-  "semantica-agi/semantica": {
-    summary:
-      "Graph-native context infrastructure for accountable AI. Vector-store concurrency fixes, knowledge-graph content screening, MCP provenance, explorer refactor and docs.",
-    featured: true,
-  },
-  "topoteretes/cognee": {
-    summary:
-      "Open-source AI memory platform. Fixed ingestion of schema-qualified SQL tables; API error mapping in review.",
-    featured: true,
-  },
-  "google/gvisor": {
-    summary:
-      "Application kernel for containers. TCP receive-buffer exhaustion handling with small segments.",
-    featured: true,
-  },
-  "dart-lang/sdk": {
-    summary:
-      "Dart analysis server: resource-provider I/O timing instrumentation.",
-    featured: true,
-  },
-  "internetarchive/openlibrary": {
-    summary: "Spam-check and reCAPTCHA refactor to explicit request params.",
-  },
-  "agent-of-empires/agent-of-empires": {
-    summary: "TUI names the host terminal tab after the selected session.",
-  },
-  "redhat-et/ripwire": {
-    summary:
-      "Symbol resolution fix: literal receivers no longer pin unrelated functions.",
-  },
+// Keep curation separate from generated data so refreshes preserve it.
+// This wallpaper asset submission remains in the snapshot, outside the technical view.
+export const curatedContributionExclusions: Readonly<Record<string, string>> = {
+  "https://github.com/notparth2005/walli/pull/1":
+    "Wallpaper asset submission; this section focuses on engineering contributions.",
 };
 
-const hiddenUrls = new Set(["https://github.com/notparth2005/walli/pull/1"]);
+export function getContributionStatus(record: {
+  state: string;
+  mergedAt: string | null;
+}): ContributionStatus {
+  if (record.mergedAt) return "merged";
+  return record.state === "open" ? "open" : "closed";
+}
 
-const items = (generated.items as Contribution[]).filter(
-  (c) => c.status === "merged" && !hiddenUrls.has(c.url),
-);
+export function summarizeContributions(
+  records: readonly Contribution[],
+): ContributionSummary {
+  return {
+    total: records.length,
+    merged: records.filter((record) => record.status === "merged").length,
+    open: records.filter((record) => record.status === "open").length,
+    closed: records.filter((record) => record.status === "closed").length,
+    repositories: new Set(records.map((record) => record.repository)).size,
+  };
+}
 
-export const contributionGroups: ContributionGroup[] = (() => {
-  const map = new Map<string, Contribution[]>();
-  for (const c of items) {
-    map.set(c.repo, [...(map.get(c.repo) ?? []), c]);
-  }
-  return [...map.entries()]
-    .map(([repo, list]) => {
-      const info = curated[repo];
-      const first = list[0];
-      const merged = list.filter((c) => c.status === "merged").length;
-      return {
-        repo,
-        stars: first?.stars ?? 0,
-        summary: info?.summary ?? first?.title ?? "",
-        featured: Boolean(info?.featured),
-        items: list.sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
-        merged,
-      };
-    })
+export const contributionSnapshot = {
+  generatedAt: snapshot.generatedAt,
+  sourceHref: snapshot.sourceHref,
+  sourceUrl: snapshot.sourceUrl,
+  coverage: snapshot.coverage,
+  complete: snapshot.complete,
+  total: snapshot.total,
+};
+
+export const contributions: readonly Contribution[] = snapshot.records
+  .filter((record) => !(record.url in curatedContributionExclusions))
+  .map((record) => ({ ...record, status: getContributionStatus(record) }))
+  .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+
+export const contributionSummary = summarizeContributions(contributions);
+
+function groupContributionRepositories(records: readonly Contribution[]) {
+  return [...new Set(records.map((record) => record.repository))]
+    .map((repository) => ({
+      repository,
+      ...summarizeContributions(
+        records.filter((record) => record.repository === repository),
+      ),
+    }))
     .sort(
-      (a, b) =>
-        Number(b.featured) - Number(a.featured) ||
-        b.merged - a.merged ||
-        b.stars - a.stars,
+      (a, b) => b.total - a.total || a.repository.localeCompare(b.repository),
     );
-})();
+}
 
-export const contributionStats = {
-  merged: items.filter((c) => c.status === "merged").length,
-  open: items.filter((c) => c.status === "open").length,
-  projects: new Set(
-    items.filter((c) => c.status === "merged").map((c) => c.repo),
-  ).size,
-};
+export const contributionRepositories =
+  groupContributionRepositories(contributions);
+
+// Present merged evidence while preserving all statuses in the source dataset.
+export const mergedContributions = contributions.filter(
+  (record) => record.status === "merged",
+);
+export const mergedContributionSummary =
+  summarizeContributions(mergedContributions);
+export const mergedContributionRepositories =
+  groupContributionRepositories(mergedContributions);
+
+export function getContributionDate(record: Contribution): string {
+  return record.mergedAt ?? record.closedAt ?? record.createdAt;
+}
+
+export function formatContributionDate(value: string): string {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(value));
+}

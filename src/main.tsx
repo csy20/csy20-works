@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App.tsx";
 import { ErrorBoundary } from "./components/ErrorBoundary.tsx";
 import { ThemeProvider } from "./components/ThemeProvider.tsx";
-import { MotionSafeProvider } from "./components/MotionSafeProvider.tsx";
 import { SoundProvider } from "./components/SoundProvider.tsx";
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -14,11 +13,9 @@ createRoot(rootElement).render(
   <StrictMode>
     <ErrorBoundary>
       <ThemeProvider>
-        <MotionSafeProvider>
-          <SoundProvider>
-            <App />
-          </SoundProvider>
-        </MotionSafeProvider>
+        <SoundProvider>
+          <App />
+        </SoundProvider>
       </ThemeProvider>
     </ErrorBoundary>
   </StrictMode>,

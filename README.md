@@ -1,75 +1,45 @@
-# React + TypeScript + Vite
+# Chitresh Yadav / csy20
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A portfolio focused on Backend and Applied ML: measured speech systems, local agent tooling, shipped mobile products, and upstream engineering work.
 
-Currently, two official plugins are available:
+React · TypeScript · Vite · Tailwind CSS · Framer Motion · Vitest. Fonts, portraits, project logos, resume, and contribution evidence are served locally.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm ci
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+For a production preview:
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm run build
+npm run preview
 ```
 
-<!-- last touch: 2026-07-21 -->
+## Validate
+
+```bash
+npm run lint
+npm test -- --run
+npm run build
+```
+
+## Content and themes
+
+- `src/data/siteContent.ts`: identity, capabilities, projects, case studies, resume, and social links.
+- `src/data/contributions.generated.json`: public GitHub evidence, bundled without a runtime API request.
+- `src/data/contributions.ts`: derived summaries, status handling, and persistent curation exclusions.
+- `src/config.ts`: optional `VITE_EMAIL`, `VITE_RESUME_URL`, and `VITE_THEME_STORAGE_KEY` overrides.
+- `src/index.css`: semantic light/dark design tokens and responsive layouts.
+
+Refresh contribution evidence with `node scripts/update-contributions.mjs`. Failed or incomplete requests preserve the last snapshot. No credentials are needed.
+
+The two themes follow the initial system preference and persist an explicit selection under `csy20-theme` by default. The Vite pre-paint plugin keeps customized keys synchronized with React.
+
+## Hosting
+
+The existing static deployment is preserved. `docker compose up --build` serves Nginx on port 8080. CI publishes main to `csy20.me`; the redesign review branch stays local.
+
+Read [the redesign notes](docs/REDESIGN.md) for review/revert instructions, screenshots, design rationale, validation, and remaining limitations.
