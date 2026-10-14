@@ -10,22 +10,12 @@ import {
 import { ThemeContext, type Theme } from "./useTheme";
 import { config } from "../config";
 
-const SYSTEM_THEME_QUERY = "(prefers-color-scheme: dark)";
-
 type ThemePreference = { theme: Theme; explicit: boolean };
 
-function getSystemTheme(): Theme {
-  try {
-    return window.matchMedia(SYSTEM_THEME_QUERY).matches ? "dark" : "light";
-  } catch {
-    return "light";
-  }
-}
+const DEFAULT_PREFERENCE: ThemePreference = { theme: "light", explicit: false };
 
 function getInitialPreference(): ThemePreference {
-  if (typeof window === "undefined") {
-    return { theme: "light", explicit: false };
-  }
+  if (typeof window === "undefined") return DEFAULT_PREFERENCE;
 
   try {
     const stored = window.localStorage.getItem(config.themeStorageKey);
@@ -36,7 +26,7 @@ function getInitialPreference(): ThemePreference {
     // Private browsing and restricted storage still get a complete theme.
   }
 
-  return { theme: getSystemTheme(), explicit: false };
+  return DEFAULT_PREFERENCE;
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -63,41 +53,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [theme, explicit]);
 
   useEffect(() => {
-    if (explicit) return;
-
-    let media: MediaQueryList;
-    try {
-      media = window.matchMedia(SYSTEM_THEME_QUERY);
-    } catch {
-      return;
-    }
-
-    const updateSystemPreference = (event: MediaQueryListEvent) => {
-      setPreference((current) =>
-        current.explicit
-          ? current
-          : { theme: event.matches ? "dark" : "light", explicit: false },
-      );
-    };
-
-    if (typeof media.addEventListener === "function") {
-      media.addEventListener("change", updateSystemPreference);
-      return () => media.removeEventListener("change", updateSystemPreference);
-    }
-
-    // Support older WebKit without making media APIs a rendering dependency.
-    media.addListener?.(updateSystemPreference);
-    return () => media.removeListener?.(updateSystemPreference);
-  }, [explicit]);
-
-  useEffect(() => {
     const syncStoredPreference = (event: StorageEvent) => {
       if (event.key !== config.themeStorageKey && event.key !== null) return;
 
       if (event.newValue === "light" || event.newValue === "dark") {
         setPreference({ theme: event.newValue, explicit: true });
       } else {
-        setPreference({ theme: getSystemTheme(), explicit: false });
+        setPreference(DEFAULT_PREFERENCE);
       }
     };
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -100,15 +100,7 @@
             theme = stored;
           }
         } catch {}
-        if (!theme) {
-          try {
-            theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light";
-          } catch {
-            theme = "light";
-          }
-        }
+        if (!theme) theme = "light";
         document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.style.colorScheme = theme;
         const meta = document.querySelector('meta[name="theme-color"]');

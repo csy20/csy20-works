@@ -50,16 +50,16 @@ afterEach(() => {
 });
 
 describe("ThemeProvider", () => {
-  it("uses the system theme without saving an implicit preference", () => {
+  it("defaults to the light theme and ignores the operating system", () => {
     const changeSystemTheme = mockSystemTheme(true);
     const { result } = renderHook(useTheme, { wrapper: ThemeProvider });
 
-    expect(result.current.theme).toBe("dark");
-    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
-    expect(document.documentElement.style.colorScheme).toBe("dark");
+    expect(result.current.theme).toBe("light");
+    expect(document.documentElement).toHaveAttribute("data-theme", "light");
+    expect(document.documentElement.style.colorScheme).toBe("light");
     expect(document.querySelector('meta[name="theme-color"]')).toHaveAttribute(
       "content",
-      "#111214",
+      "#F6F5F1",
     );
     expect(window.localStorage.getItem(config.themeStorageKey)).toBeNull();
 
@@ -113,14 +113,14 @@ describe("ThemeProvider", () => {
       throw new Error("Storage is unavailable");
     });
     const { result } = renderHook(useTheme, { wrapper: ThemeProvider });
-    expect(result.current.theme).toBe("dark");
+    expect(result.current.theme).toBe("light");
 
     act(() => result.current.toggleTheme());
-    expect(result.current.theme).toBe("light");
-    expect(document.documentElement).toHaveAttribute("data-theme", "light");
+    expect(result.current.theme).toBe("dark");
+    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
   });
 
-  it("synchronizes another tab and resumes system preference when storage clears", () => {
+  it("synchronizes another tab and returns to the light default when storage clears", () => {
     mockSystemTheme(true);
     const { result } = renderHook(useTheme, { wrapper: ThemeProvider });
 
@@ -135,7 +135,7 @@ describe("ThemeProvider", () => {
     expect(result.current.theme).toBe("light");
 
     act(() => window.dispatchEvent(new StorageEvent("storage", { key: null })));
-    expect(result.current.theme).toBe("dark");
+    expect(result.current.theme).toBe("light");
   });
 
   it("keeps expanded content and child state when switching themes", async () => {
