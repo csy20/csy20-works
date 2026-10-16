@@ -299,7 +299,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "YouTube",
-    href: "https://www.youtube.com/@chitresh-y3q",
+    href: "https://www.youtube.com/@the__csy20",
     icon: "youtube",
     detail: "Talks and recordings.",
   },
