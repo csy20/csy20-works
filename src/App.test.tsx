@@ -110,7 +110,9 @@ describe("portfolio", () => {
     );
     const dockDestinations = [
       { label: "Home", href: "#hero" },
-      ...socialLinks.filter((link) => link.icon !== "instagram"),
+      ...socialLinks.filter(
+        (link) => link.icon !== "instagram" && link.icon !== "linkedin",
+      ),
     ];
     const dockLinks = dock.getAllByRole("link");
     expect(dockLinks).toHaveLength(dockDestinations.length);

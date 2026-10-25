@@ -6,7 +6,9 @@ import { Icon } from "./ui/Icon";
 import { MoonIcon, SunIcon } from "./ui/ThemeIcons";
 import { useSound } from "./useSound";
 
-const dockLinks = socialLinks.filter((link) => link.icon !== "instagram");
+const dockLinks = socialLinks.filter(
+  (link) => link.icon !== "instagram" && link.icon !== "linkedin",
+);
 
 function useDockMagnification() {
   const [allowed, setAllowed] = useState(false);
