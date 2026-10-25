@@ -98,7 +98,11 @@ export function SocialDock() {
           >
             {icon(<Icon name={link.icon} size={20} />)}
             <span className="dock-tooltip" aria-hidden="true">
-              {link.icon === "x" ? "X" : link.label}
+              {link.icon === "x"
+                ? "X"
+                : link.icon === "threads"
+                  ? "Threads"
+                  : link.label}
             </span>
           </motion.a>
         );

@@ -65,7 +65,8 @@ export type SocialIcon =
   | "x"
   | "email"
   | "youtube"
-  | "instagram";
+  | "instagram"
+  | "threads";
 
 export type SocialLink = {
   label: string;
@@ -296,6 +297,12 @@ export const socialLinks: SocialLink[] = [
     href: "https://x.com/the__csy20",
     icon: "x",
     detail: "Notes and work in public.",
+  },
+  {
+    label: "Threads (the__csy20)",
+    href: "https://www.threads.com/@the__csy20",
+    icon: "threads",
+    detail: "Posts and updates.",
   },
   {
     label: "YouTube",
